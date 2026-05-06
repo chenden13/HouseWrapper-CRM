@@ -19,11 +19,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
     // Simulated login delay
     setTimeout(() => {
-      if (username === '1' && password === '1') {
-        onLogin({ username: '1', role: 'admin', name: '店長管理者' });
-      } else if (username === 'staff' && password === 'staff123') {
-
-        onLogin({ username: 'staff', role: 'employee', name: '店內員工' });
+      if (username === '613' && password === '613') {
+        onLogin({ username: '613', role: 'admin', name: '店長管理者' });
+      } else if (username === '1' && password === '1') {
+        onLogin({ username: '1', role: 'employee', name: '現場員工' });
       } else {
         setError('帳號或密碼錯誤，請重新輸入');
         setLoading(false);

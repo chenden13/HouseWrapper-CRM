@@ -335,27 +335,31 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
       </div>
 
       {/* ── 財務資訊 ── */}
-      <div className="form-group col-span-12">
-        <h3 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#059669' }}>
-          <DollarSign size={18} /> 最終帳務核算
-        </h3>
-      </div>
-      <div className="form-group col-span-3">
-        <label className="form-label">總成交報價</label>
-        <input type="number" name="totalAmount" className="form-control" style={{ fontWeight: 'bold', color: 'var(--primary)' }} value={formData.totalAmount || ''} onChange={handleChange} />
-      </div>
-      <div className="form-group col-span-3">
-        <label className="form-label">材料/工本支出</label>
-        <input type="number" name="cost" className="form-control" value={formData.cost || ''} onChange={handleChange} />
-      </div>
-      <div className="form-group col-span-3">
-        <label className="form-label">最終利潤</label>
-        <input type="number" name="revenue" className="form-control" style={{ fontWeight: 'bold', color: '#166534' }} value={formData.revenue || ''} onChange={handleChange} />
-      </div>
-      <div className="form-group col-span-3">
-        <label className="form-label">POS/內部編號</label>
-        <input type="text" name="posId" className="form-control" value={formData.posId || ''} onChange={handleChange} />
-      </div>
+      {userRole === 'admin' && (
+        <>
+          <div className="form-group col-span-12">
+            <h3 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#059669' }}>
+              <DollarSign size={18} /> 最終帳務核算
+            </h3>
+          </div>
+          <div className="form-group col-span-3">
+            <label className="form-label">總成交報價</label>
+            <input type="number" name="totalAmount" className="form-control" style={{ fontWeight: 'bold', color: 'var(--primary)' }} value={formData.totalAmount || ''} onChange={handleChange} />
+          </div>
+          <div className="form-group col-span-3">
+            <label className="form-label">材料/工本支出</label>
+            <input type="number" name="cost" className="form-control" value={formData.cost || ''} onChange={handleChange} />
+          </div>
+          <div className="form-group col-span-3">
+            <label className="form-label">最終利潤</label>
+            <input type="number" name="revenue" className="form-control" style={{ fontWeight: 'bold', color: '#166534' }} value={formData.revenue || ''} onChange={handleChange} />
+          </div>
+          <div className="form-group col-span-3">
+            <label className="form-label">POS/內部編號</label>
+            <input type="text" name="posId" className="form-control" value={formData.posId || ''} onChange={handleChange} />
+          </div>
+        </>
+      )}
 
       {/* ── 客戶特徵 (新增) ── */}
       <div className="form-group col-span-12">

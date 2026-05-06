@@ -70,12 +70,13 @@ interface PendingEditFormProps {
   customer?: Customer; 
   onSuggestId?: string;
   vehicleMaster?: any[];
+  userRole?: Role;
   onSubmit: (updatedCustomer: Customer, moveToConstruction: boolean) => void;
   onCancel: () => void;
 }
 
 export const PendingEditForm: React.FC<PendingEditFormProps> = ({ 
-  customer, onSuggestId, vehicleMaster = [], onSubmit, onCancel 
+  customer, onSuggestId, vehicleMaster = [], userRole, onSubmit, onCancel 
 }) => {
   const [formData, setFormData] = useState<Partial<Customer>>(() => {
     if (customer) {
@@ -611,10 +612,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
             <label className="form-label">膜料顏色</label>
             <input type="text" name="filmColor" className="form-control" placeholder="顏色細項" value={formData.filmColor || ''} onChange={handleChange} />
           </div>
-          <div className="form-group col-span-4">
-            <label className="form-label">施工價格 ($)</label>
-            <input type="number" name="mainServicePrice" className="form-control" value={prices.mainServicePrice || ''} onChange={handlePriceChange} placeholder="0" />
-          </div>
+          {userRole === 'admin' && (
+            <div className="form-group col-span-4">
+              <label className="form-label">施工價格 ($)</label>
+              <input type="number" name="mainServicePrice" className="form-control" value={prices.mainServicePrice || ''} onChange={handlePriceChange} placeholder="0" />
+            </div>
+          )}
 
           {/* 隔熱紙項目 (優化後) */}
           <React.Fragment>
@@ -650,10 +653,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               </div>
 
               <div style={{ display: 'flex', gap: '12px', marginTop: '12px', alignItems: 'center' }}>
-                <div style={{ flex: '0 0 140px' }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
-                  <input type="number" name="windowTintPrice" className="form-control" value={prices.windowTintPrice || ''} onChange={handlePriceChange} placeholder="$" />
-                </div>
+                {userRole === 'admin' && (
+                  <div style={{ flex: '0 0 140px' }}>
+                    <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
+                    <input type="number" name="windowTintPrice" className="form-control" value={prices.windowTintPrice || ''} onChange={handlePriceChange} placeholder="$" />
+                  </div>
+                )}
                 <div style={{ flex: '0 0 160px' }}>
                   <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計進場日期</label>
                   <input type="date" name="windowTintDate" className="form-control" value={formData.windowTintDate || ''} onChange={handleChange} />
@@ -688,10 +693,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               </div>
 
               <div style={{ display: 'flex', gap: '12px', marginTop: '12px', alignItems: 'center' }}>
-                <div style={{ flex: '0 0 140px' }}>
-                   <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
-                   <input type="number" name={row.priceField} className="form-control" value={(prices as any)[row.priceField] || ''} onChange={handlePriceChange} placeholder="$" />
-                </div>
+                {userRole === 'admin' && (
+                  <div style={{ flex: '0 0 140px' }}>
+                     <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
+                     <input type="number" name={row.priceField} className="form-control" value={(prices as any)[row.priceField] || ''} onChange={handlePriceChange} placeholder="$" />
+                  </div>
+                )}
                 <div style={{ flex: '0 0 160px' }}>
                    <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計日期</label>
                    <input type="date" name={row.dateField} className="form-control" value={formData[row.dateField as keyof Customer] as string || ''} onChange={handleChange} />
@@ -720,10 +727,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
                     <label className="form-label">配件名稱</label>
                     <input type="text" className="form-control" value={acc.name} onChange={(e) => updateAccessory(acc.id, 'name', e.target.value)} placeholder="車牌框..." />
                   </div>
-                  <div className="form-group" style={{ flex: 1 }}>
-                    <label className="form-label">價格 ($)</label>
-                    <input type="number" className="form-control" value={acc.price || ''} onChange={(e) => updateAccessory(acc.id, 'price', Number(e.target.value))} placeholder="0" />
-                  </div>
+                  {userRole === 'admin' && (
+                    <div className="form-group" style={{ flex: 1 }}>
+                      <label className="form-label">價格 ($)</label>
+                      <input type="number" className="form-control" value={acc.price || ''} onChange={(e) => updateAccessory(acc.id, 'price', Number(e.target.value))} placeholder="0" />
+                    </div>
+                  )}
                   <div className="form-group" style={{ flex: 1 }}>
                     <label className="form-label">預計施工</label>
                     <input 
@@ -769,95 +778,97 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
           </div>
 
           {/* ── 價格總結區間 ── */}
-          <div className="col-span-12" style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', marginTop: '20px' }}>
-            <div style={{ marginBottom: '16px' }}>
-              <label className="form-label" style={{ marginBottom: '8px', display: 'block', color: '#1e3a8a', fontWeight: 'bold' }}>選擇適用活動 / 優惠 (可多選)</label>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {PROMOTIONS.filter(p => p.id !== 'none').map(p => {
-                  const selected = discountTypes.includes(p.id);
-                  return (
-                    <button
-                      key={p.id}
-                      type="button"
-                      onClick={() => toggleDiscount(p.id)}
-                      style={{ 
-                        padding: '6px 14px', borderRadius: '20px', 
-                        border: `1.5px solid ${selected ? '#3b82f6' : '#cbd5e1'}`, 
-                        background: selected ? '#eff6ff' : '#fff', 
-                        color: selected ? '#1e40af' : '#475569', 
-                        fontSize: '0.8rem', fontWeight: selected ? '700' : '500', 
-                        cursor: 'pointer', transition: 'all 0.15s' 
-                      }}
-                    >
-                      {selected ? '✓ ' : ''}{p.label}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-            
-            {discountTypes.includes('other') && (
-              <div style={{ display: 'flex', gap: '20px', marginBottom: '16px', background: '#fff', padding: '12px', borderRadius: '8px', border: '1px dashed #cbd5e1' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
-                  <label className="form-label" style={{ margin: 0, minWidth: '60px' }}>活動名稱</label>
-                  <input 
-                    type="text" 
-                    className="form-control" 
-                    value={customDiscountName} 
-                    onChange={(e) => setCustomDiscountName(e.target.value)} 
-                    placeholder="手動輸入活動名稱" 
-                  />
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
-                  <label className="form-label" style={{ margin: 0, minWidth: '60px', color: '#be185d' }}>折抵金額</label>
-                  <input 
-                    type="number" 
-                    className="form-control" 
-                    style={{ borderColor: '#fca5a5' }}
-                    value={customDiscountAmount || ''} 
-                    onChange={(e) => setCustomDiscountAmount(Number(e.target.value))} 
-                    placeholder="例如: 1500" 
-                  />
-                </div>
-              </div>
-            )}
-
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderTop: '1px dashed #cbd5e1', paddingTop: '16px' }}>
-              <div>
-                <div style={{ color: '#64748b', fontSize: '0.85rem', marginBottom: '4px' }}>小計: ${subtotal.toLocaleString()}</div>
-                {discountAmount > 0 && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginBottom: '4px' }}>折抵: -${discountAmount.toLocaleString()}</div>}
-                <div style={{ marginTop: '8px', padding: '4px 8px', background: profit >= 0 ? '#f0fdf4' : '#fef2f2', color: profit >= 0 ? '#166534' : '#ef4444', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold', display: 'inline-block' }}>
-                   預估利潤: ${profit.toLocaleString()}
+          {userRole === 'admin' && (
+            <div className="col-span-12" style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', marginTop: '20px' }}>
+              <div style={{ marginBottom: '16px' }}>
+                <label className="form-label" style={{ marginBottom: '8px', display: 'block', color: '#1e3a8a', fontWeight: 'bold' }}>選擇適用活動 / 優惠 (可多選)</label>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {PROMOTIONS.filter(p => p.id !== 'none').map(p => {
+                    const selected = discountTypes.includes(p.id);
+                    return (
+                      <button
+                        key={p.id}
+                        type="button"
+                        onClick={() => toggleDiscount(p.id)}
+                        style={{ 
+                          padding: '6px 14px', borderRadius: '20px', 
+                          border: `1.5px solid ${selected ? '#3b82f6' : '#cbd5e1'}`, 
+                          background: selected ? '#eff6ff' : '#fff', 
+                          color: selected ? '#1e40af' : '#475569', 
+                          fontSize: '0.8rem', fontWeight: selected ? '700' : '500', 
+                          cursor: 'pointer', transition: 'all 0.15s' 
+                        }}
+                      >
+                        {selected ? '✓ ' : ''}{p.label}
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
               
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'flex-end', marginBottom: '4px' }}>
-                  <label style={{ fontSize: '0.75rem', color: '#64748b', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <input type="checkbox" checked={prices.useManualTotal} onChange={(e) => setPrices(prev => ({ ...prev, useManualTotal: e.target.checked }))} /> 手動調整總價
-                  </label>
-                </div>
-                
-                {prices.useManualTotal ? (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--primary)' }}>$</span>
+              {discountTypes.includes('other') && (
+                <div style={{ display: 'flex', gap: '20px', marginBottom: '16px', background: '#fff', padding: '12px', borderRadius: '8px', border: '1px dashed #cbd5e1' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                    <label className="form-label" style={{ margin: 0, minWidth: '60px' }}>活動名稱</label>
+                    <input 
+                      type="text" 
+                      className="form-control" 
+                      value={customDiscountName} 
+                      onChange={(e) => setCustomDiscountName(e.target.value)} 
+                      placeholder="手動輸入活動名稱" 
+                    />
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                    <label className="form-label" style={{ margin: 0, minWidth: '60px', color: '#be185d' }}>折抵金額</label>
                     <input 
                       type="number" 
                       className="form-control" 
-                      style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--primary)', width: '160px', textAlign: 'right' }} 
-                      value={prices.manualTotalPrice || ''} 
-                      onChange={(e) => setPrices(prev => ({ ...prev, manualTotalPrice: Number(e.target.value) }))} 
+                      style={{ borderColor: '#fca5a5' }}
+                      value={customDiscountAmount || ''} 
+                      onChange={(e) => setCustomDiscountAmount(Number(e.target.value))} 
+                      placeholder="例如: 1500" 
                     />
                   </div>
-                ) : (
-                  <div style={{ fontSize: '2.4rem', fontWeight: '900', color: 'var(--primary)', letterSpacing: '-1.5px' }}>
-                    ${totalPrice.toLocaleString()}
+                </div>
+              )}
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderTop: '1px dashed #cbd5e1', paddingTop: '16px' }}>
+                <div>
+                  <div style={{ color: '#64748b', fontSize: '0.85rem', marginBottom: '4px' }}>小計: ${subtotal.toLocaleString()}</div>
+                  {discountAmount > 0 && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginBottom: '4px' }}>折抵: -${discountAmount.toLocaleString()}</div>}
+                  <div style={{ marginTop: '8px', padding: '4px 8px', background: profit >= 0 ? '#f0fdf4' : '#fef2f2', color: profit >= 0 ? '#166534' : '#ef4444', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold', display: 'inline-block' }}>
+                    預估利潤: ${profit.toLocaleString()}
                   </div>
-                )}
-                <div style={{ color: '#94a3b8', fontSize: '0.75rem' }}>最終報價金額</div>
+                </div>
+                
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'flex-end', marginBottom: '4px' }}>
+                    <label style={{ fontSize: '0.75rem', color: '#64748b', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <input type="checkbox" checked={prices.useManualTotal} onChange={(e) => setPrices(prev => ({ ...prev, useManualTotal: e.target.checked }))} /> 手動調整總價
+                    </label>
+                  </div>
+                  
+                  {prices.useManualTotal ? (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--primary)' }}>$</span>
+                      <input 
+                        type="number" 
+                        className="form-control" 
+                        style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--primary)', width: '160px', textAlign: 'right' }} 
+                        value={prices.manualTotalPrice || ''} 
+                        onChange={(e) => setPrices(prev => ({ ...prev, manualTotalPrice: Number(e.target.value) }))} 
+                      />
+                    </div>
+                  ) : (
+                    <div style={{ fontSize: '2.4rem', fontWeight: '900', color: 'var(--primary)', letterSpacing: '-1.5px' }}>
+                      ${totalPrice.toLocaleString()}
+                    </div>
+                  )}
+                  <div style={{ color: '#94a3b8', fontSize: '0.75rem' }}>最終報價金額</div>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </>
       )}
 

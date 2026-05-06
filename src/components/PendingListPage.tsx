@@ -110,10 +110,12 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
           </h2>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
             <p style={{ color: '#64748b', fontSize: '0.9rem' }}>管理已收訂、預約進場的案件進度</p>
-            <div style={{ background: '#f0fdf4', padding: '4px 12px', borderRadius: '20px', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span style={{ fontSize: '0.8rem', color: '#166534', fontWeight: 'bold' }}>待收款總額:</span>
-              <span style={{ fontSize: '1.1rem', color: '#15803d', fontWeight: '800' }}>${totalBudgetSum.toLocaleString()}</span>
-            </div>
+            {userRole === 'admin' && (
+              <div style={{ background: '#f0fdf4', padding: '4px 12px', borderRadius: '20px', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ fontSize: '0.8rem', color: '#166534', fontWeight: 'bold' }}>待收款總額:</span>
+                <span style={{ fontSize: '1.1rem', color: '#15803d', fontWeight: '800' }}>${totalBudgetSum.toLocaleString()}</span>
+              </div>
+            )}
           </div>
         </div>
 

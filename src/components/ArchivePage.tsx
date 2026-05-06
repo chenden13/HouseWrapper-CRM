@@ -600,17 +600,19 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                         </div>
                       )}
 
-                      <div style={{ background: '#fff', padding: '20px', borderRadius: '16px', border: '1px solid #f1f5f9' }}>
-                        <Section icon={<DollarSign size={18} />} title="帳務資訊" color="#059669">
-                          <InfoRow label="總成交金額" value={customer.totalAmount ? `$ ${customer.totalAmount.toLocaleString()}` : '—'} />
-                          {userRole === 'admin' && <InfoRow label="成本支出" value={customer.cost ? `$ ${customer.cost.toLocaleString()}` : '—'} />}
-                          {customer.appliedDiscountName && (
-                            <div style={{ marginTop: '10px', padding: '10px', background: '#fdf2f8', borderRadius: '8px', fontSize: '0.8rem', color: '#be185d', fontWeight: '600' }}>
-                              套用優惠: {customer.appliedDiscountName}
-                            </div>
-                          )}
-                        </Section>
-                      </div>
+                      {userRole === 'admin' && (
+                        <div style={{ background: '#fff', padding: '20px', borderRadius: '16px', border: '1px solid #f1f5f9' }}>
+                          <Section icon={<DollarSign size={18} />} title="帳務資訊" color="#059669">
+                            <InfoRow label="總成交金額" value={customer.totalAmount ? `$ ${customer.totalAmount.toLocaleString()}` : '—'} />
+                            <InfoRow label="成本支出" value={customer.cost ? `$ ${customer.cost.toLocaleString()}` : '—'} />
+                            {customer.appliedDiscountName && (
+                              <div style={{ marginTop: '10px', padding: '10px', background: '#fdf2f8', borderRadius: '8px', fontSize: '0.8rem', color: '#be185d', fontWeight: '600' }}>
+                                套用優惠: {customer.appliedDiscountName}
+                              </div>
+                            )}
+                          </Section>
+                        </div>
+                      )}
 
                       <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
                         <Section icon={<FileText size={18} />} title="最後結案備註" color="#475569">

@@ -23,8 +23,8 @@ export const MobileDashboard: React.FC<MobileDashboardProps> = ({ user, onNaviga
     { id: 'monitor', label: '施工監控', icon: Hammer, color: '#ef4444', count: stats.monitor },
     { id: 'archive', label: '完工檔案', icon: History, color: '#6366f1' },
     { id: 'inventory', label: '膜料庫存', icon: Box, color: '#10b981' },
-    { id: 'finance', label: '收支記帳', icon: Wallet, color: '#ec4899' },
-  ];
+    { id: 'finance', label: '收支記帳', icon: Wallet, color: '#ec4899', adminOnly: true },
+  ].filter(item => !item.adminOnly || user.role === 'admin');
 
   return (
     <div style={{ background: '#f8fafc', minHeight: '100vh', padding: '24px 16px 40px' }}>

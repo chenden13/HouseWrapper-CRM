@@ -398,6 +398,7 @@ function App() {
               customer={selectedCustomer || undefined} 
               onSuggestId={generateCustomerId()}
               vehicleMaster={vehicleMaster}
+              userRole={currentUser.role}
               onSubmit={handleAddOrUpdateCustomer} 
               onCancel={() => setIsPendingEditModalOpen(false)} 
             />
@@ -430,7 +431,11 @@ function App() {
             <ArchiveEditForm 
               customer={selectedCustomer} 
               vehicleMaster={vehicleMaster}
-              onUpdate={handleGenericUpdate} 
+              userRole={currentUser.role}
+              onSubmit={(c) => {
+                handleGenericUpdate(c);
+                setIsArchiveEditModalOpen(false);
+              }} 
               onCancel={() => setIsArchiveEditModalOpen(false)} 
             />
           </Modal>
@@ -480,9 +485,11 @@ function App() {
             <button className={`nav-tab ${view === 'inventory' ? 'active' : ''}`} onClick={() => setView('inventory')}>
               <Box size={17} /> 膜料庫存
             </button>
-            <button className={`nav-tab ${view === 'finance' ? 'active' : ''}`} onClick={() => setView('finance')}>
-              <Wallet size={17} /> 收支記帳
-            </button>
+            {currentUser.role === 'admin' && (
+              <button className={`nav-tab ${view === 'finance' ? 'active' : ''}`} onClick={() => setView('finance')}>
+                <Wallet size={17} /> 收支記帳
+              </button>
+            )}
           </div>
 
           <div style={{ width: '1px', height: '24px', background: '#e2e8f0', margin: '0 8px' }}></div>
@@ -593,6 +600,7 @@ function App() {
           customer={selectedCustomer} 
           onSuggestId={generateCustomerId()}
           vehicleMaster={vehicleMaster}
+          userRole={currentUser.role}
           onSubmit={(updatedCustomer, moveToConstruction) => {
              handleAddOrUpdateCustomer(updatedCustomer);
              if (moveToConstruction) {

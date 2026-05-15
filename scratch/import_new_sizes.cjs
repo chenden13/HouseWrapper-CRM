@@ -33,7 +33,8 @@ async function importNewSizes() {
       const size = String(row[startIndex + 2] || '').trim();
       
       if (brand && model && brand !== '廠牌') {
-        const id = `${brand}_${model}`.replace(/\s+/g, '_').toLowerCase();
+        // MATCH THE ORIGINAL NORMALIZATION (Case sensitive + underscores)
+        const id = `${brand}_${model}`.replace(/\s+/g, '_');
         vehicleMap.set(id, { id, brand, model, size });
       }
     });
@@ -44,21 +45,14 @@ async function importNewSizes() {
   
   if (vehicles.length === 0) return;
 
-  // Clear existing data to ensure a clean overwrite
-  console.log('Clearing existing vehicle_master data...');
-  const { error: deleteError } = await supabase.from('vehicle_master').delete().neq('id', 'placeholder_that_doesnt_exist');
-  if (deleteError) {
-    console.warn('Delete error (might be expected if RLS is on):', deleteError.message);
-  }
-
-  console.log('Upserting data to Supabase...');
-  const batchSize = 50; // Smaller batches to avoid RLS/timeout issues
+  console.log('Upserting data to Supabase (Overwrite mode)...');
+  const batchSize = 100;
   for (let i = 0; i < vehicles.length; i += batchSize) {
     const batch = vehicles.slice(i, i + batchSize);
     const { error } = await supabase.from('vehicle_master').upsert(batch);
     if (error) {
       console.error(`Batch ${Math.floor(i/batchSize) + 1} failed:`, error.message);
-      // Try one by one if batch fails to find the problematic record
+      // Try one by one
       for (const item of batch) {
         const { error: singleError } = await supabase.from('vehicle_master').upsert(item);
         if (singleError) console.error(`  - Failed on ${item.id}:`, singleError.message);

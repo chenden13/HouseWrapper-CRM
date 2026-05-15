@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Tag, CheckSquare, ShieldCheck, Zap, Info, ArrowRight, Palette, Sun, LayoutPanelTop, MonitorPlay, Video, Car, Droplets, Sparkles, Gem, Wind, Waves } from 'lucide-react';
+import vehiclesData from '../data/vehicles.json';
 
 interface Vehicle {
   brand: string;
@@ -145,29 +146,16 @@ const calculateWrapPrice = (basePrice: number, size: string) => {
   return basePrice + (SIZE_OFFSET[size] || 0);
 };
 
-// 內建常用車型資料 (移至元件外確保穩定)
-const BUILTIN_VEHICLES = [
-  { brand: 'Toyota', model: 'bZ4X', size: 'XL' },
-  { brand: 'Toyota', model: 'Corolla Cross', size: 'L' },
-  { brand: 'Toyota', model: 'RAV4', size: 'XL' },
-  { brand: 'Toyota', model: 'Land Cruiser', size: '2XL' },
-  { brand: 'Tesla', model: 'Model 3', size: 'L' },
-  { brand: 'Tesla', model: 'Model Y', size: 'XL' },
-  { brand: 'Porsche', model: 'Cayenne', size: 'XL' },
-  { brand: 'Porsche', model: 'Macan', size: 'L' },
-  { brand: 'BMW', model: 'X5', size: 'XL' },
-  { brand: 'BMW', model: 'X3', size: 'L' },
-];
-
 export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaster, onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [activeCategory, setActiveCategory] = useState<'detailing' | 'film'>('detailing');
 
-  // 合併內建與雲端資料
+  // 合併內建與雲端資料 (內建資料優先以覆蓋舊有的資料庫內容)
   const fullMaster = useMemo(() => {
     const list = Array.isArray(vehicleMaster) ? vehicleMaster : [];
-    const combined = [...list, ...BUILTIN_VEHICLES];
+    // 將內建資料放在前面，確保 unique map 優先採用
+    const combined = [...vehiclesData, ...list];
     
     // 去重並清洗資料
     const unique = new Map();
@@ -217,7 +205,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
       )}
       <header style={{ marginBottom: '30px', textAlign: 'center', paddingTop: onBack ? '10px' : '20px' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: '900', color: 'var(--primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
-          <Tag size={32} color="var(--accent)" /> 服務報價快速查詢
+          <Tag size={32} color="var(--accent)" /> 服務報價快速查詢 (V2)
         </h2>
         <p style={{ color: '#64748b', fontSize: '1rem' }}>輸入車型即可自動對應尺寸並查看各項服務建議售價</p>
         <div style={{ fontSize: '0.6rem', color: '#cbd5e1', marginTop: '4px' }}>
@@ -313,22 +301,33 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
         )}
       </div>
 
-      {/* 分類切換器 */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginBottom: '40px' }}>
+      {/* 分類切換器 - 加強視覺提示 */}
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        background: '#f1f5f9', 
+        padding: '6px', 
+        borderRadius: '16px', 
+        maxWidth: '400px', 
+        margin: '0 auto 40px auto',
+        boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)'
+      }}>
         <button 
           onClick={() => setActiveCategory('detailing')}
           style={{ 
-            padding: '12px 24px', 
+            flex: 1,
+            padding: '12px', 
             borderRadius: '12px', 
             border: 'none', 
             cursor: 'pointer',
             fontWeight: 'bold',
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             gap: '8px',
-            background: activeCategory === 'detailing' ? 'var(--primary)' : '#f1f5f9',
-            color: activeCategory === 'detailing' ? '#fff' : '#64748b',
-            boxShadow: activeCategory === 'detailing' ? '0 10px 15px -3px rgba(37, 99, 235, 0.3)' : 'none',
+            background: activeCategory === 'detailing' ? '#fff' : 'transparent',
+            color: activeCategory === 'detailing' ? '#0ea5e9' : '#64748b',
+            boxShadow: activeCategory === 'detailing' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
             transition: 'all 0.2s'
           }}
         >
@@ -337,17 +336,19 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
         <button 
           onClick={() => setActiveCategory('film')}
           style={{ 
-            padding: '12px 24px', 
+            flex: 1,
+            padding: '12px', 
             borderRadius: '12px', 
             border: 'none', 
             cursor: 'pointer',
             fontWeight: 'bold',
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             gap: '8px',
-            background: activeCategory === 'film' ? 'var(--primary)' : '#f1f5f9',
-            color: activeCategory === 'film' ? '#fff' : '#64748b',
-            boxShadow: activeCategory === 'film' ? '0 10px 15px -3px rgba(37, 99, 235, 0.3)' : 'none',
+            background: activeCategory === 'film' ? '#fff' : 'transparent',
+            color: activeCategory === 'film' ? '#4f46e5' : '#64748b',
+            boxShadow: activeCategory === 'film' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
             transition: 'all 0.2s'
           }}
         >
@@ -394,7 +395,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>精緻洗車服務</h4>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
-                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>單次施工</div>
+                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>單次施工 ({selectedVehicle.size})</div>
                   <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
                     <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
                     {DETAILING_PRICING[selectedVehicle.size]?.wash.toLocaleString()}
@@ -643,9 +644,8 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* 其他服務 (小項) */}
+            {/* 其他服務 (小項) */}
           <div style={{ marginTop: '30px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px' }}>
              {/* 隔熱紙方案 */}
              <div className="glass-panel" style={{ padding: '25px', borderRadius: '20px', border: '1px solid #e2e8f0', gridColumn: 'span 2' }}>
@@ -752,10 +752,12 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                     <div style={{ fontSize: '1.2rem', fontWeight: '800', color: '#475569' }}>$ 8,000 ~ 15,000</div>
                   </div>
                 </div>
-             </div>
+              </div>
+            </div>
           </div>
-        </div>
-      ) : (
+        )}
+      </div>
+    ) : (
         <div style={{ textAlign: 'center', padding: '100px 20px', background: '#f8fafc', borderRadius: '32px', border: '2px dashed #e2e8f0' }}>
           <div style={{ background: '#fff', width: '100px', height: '100px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', boxShadow: '0 10px 20px rgba(0,0,0,0.05)' }}>
              <Car size={48} color="#cbd5e1" />

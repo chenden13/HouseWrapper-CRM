@@ -43,17 +43,17 @@ const BUILTIN_VEHICLES = [
   { brand: 'Porsche', model: 'Cayman', size: 'S' },
 ];
 
-export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({ 
-  brand, model, vehicleSize, vehicleMaster, onSelect 
+export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
+  brand, model, vehicleSize, vehicleMaster, onSelect
 }) => {
   // 合併雲端母檔與內建清單
   const fullMaster = [...vehicleMaster, ...BUILTIN_VEHICLES];
 
   // 品牌清單 (去重)
   const brands = Array.from(new Set(fullMaster.map(v => v.brand))).sort();
-  
+
   // 根據目前輸入的品牌，過濾出對應的車型清單
-  const filteredModels = fullMaster.filter(v => 
+  const filteredModels = fullMaster.filter(v =>
     v.brand && brand && v.brand.toLowerCase() === brand.toLowerCase()
   );
 
@@ -77,13 +77,13 @@ export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
     <>
       <div className="form-group col-span-4">
         <label className="form-label">汽車品牌</label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           list="brand-list"
-          className="form-control" 
-          placeholder="輸入英文字母可快速選擇..." 
-          value={brand} 
-          onChange={handleBrandChange} 
+          className="form-control"
+          placeholder="輸入英文字母可快速選擇..."
+          value={brand}
+          onChange={handleBrandChange}
         />
         <datalist id="brand-list">
           {brands.map(b => <option key={b} value={b} />)}
@@ -92,13 +92,13 @@ export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
 
       <div className="form-group col-span-4">
         <label className="form-label">車種 (Model)</label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           list="model-list"
-          className="form-control" 
-          placeholder="請先選擇品牌" 
-          value={model} 
-          onChange={handleModelChange} 
+          className="form-control"
+          placeholder="請先選擇品牌"
+          value={model}
+          onChange={handleModelChange}
         />
         <datalist id="model-list">
           {filteredModels.map(m => (
@@ -111,8 +111,8 @@ export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
 
       <div className="form-group col-span-4">
         <label className="form-label">車型大小 (尺寸)</label>
-        <div 
-          className="form-control" 
+        <div
+          className="form-control"
           style={{ background: '#f1f5f9', display: 'flex', alignItems: 'center', fontWeight: 'bold', color: '#1e293b' }}
         >
           {vehicleSize || '未設定'}

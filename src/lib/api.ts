@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Customer, FilmInventory, InventoryLog } from '../types';
 
-const supabaseUrl = 'https://emqtgyntrpounnmssxcf.supabase.co';
-const supabaseKey = 'sb_publishable_4nQj5X6GRrTi3Xs0G31hAA_jfGTmCoo';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 

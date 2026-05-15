@@ -64,7 +64,7 @@ function App() {
 
   useEffect(() => {
     const initCloud = async () => {
-      console.log('正在連線至雲端:', 'https://emqtgyntrpounnmssxcf.supabase.co');
+      console.log('正在連線至雲端:', import.meta.env.VITE_SUPABASE_URL);
       // 增加超時保護
       setTimeout(() => {}, 15000); 
       

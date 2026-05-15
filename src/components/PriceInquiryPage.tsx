@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Tag, CheckSquare, ShieldCheck, Zap, Info, ArrowRight, Palette, Sun, LayoutPanelTop, MonitorPlay, Video, Car } from 'lucide-react';
+import { Search, Tag, CheckSquare, ShieldCheck, Zap, Info, ArrowRight, Palette, Sun, LayoutPanelTop, MonitorPlay, Video, Car, Droplets, Sparkles, Gem, Wind, Waves } from 'lucide-react';
 
 interface Vehicle {
   brand: string;
@@ -19,6 +19,17 @@ const PRICING_MATRIX: { [key: string]: { colorChange: number; ppf: number; front
   'L':  { colorChange: 60000, ppf: 100000, frontPpf: 35000, tint: '12000~18000', mirror: '6500' },
   'XL': { colorChange: 65000, ppf: 105000, frontPpf: 40000, tint: '15000~22000', mirror: '7000' },
   '2XL':{ colorChange: 75000, ppf: 110000, frontPpf: 45000, tint: '18000~28000', mirror: '7500' },
+  '3XL':{ colorChange: 85000, ppf: 125000, frontPpf: 50000, tint: '22000~35000', mirror: '8000' },
+};
+
+const DETAILING_PRICING: Record<string, { wash: number; interior: number; miniDetail: number; fullDetail: number; coating: number }> = {
+  'XS': { wash: 500, interior: 1500, miniDetail: 3000, fullDetail: 6000, coating: 8000 },
+  'S':  { wash: 600, interior: 1800, miniDetail: 3500, fullDetail: 7000, coating: 10000 },
+  'M':  { wash: 700, interior: 2000, miniDetail: 4000, fullDetail: 8000, coating: 12000 },
+  'L':  { wash: 800, interior: 2500, miniDetail: 5000, fullDetail: 10000, coating: 15000 },
+  'XL': { wash: 1000, interior: 3000, miniDetail: 6000, fullDetail: 12000, coating: 18000 },
+  '2XL':{ wash: 1200, interior: 3500, miniDetail: 7000, fullDetail: 14000, coating: 22000 },
+  '3XL':{ wash: 1500, interior: 4000, miniDetail: 8000, fullDetail: 16000, coating: 25000 },
 };
 
 const PPF_PRICING: Record<string, Record<string, number>> = {
@@ -151,6 +162,7 @@ const BUILTIN_VEHICLES = [
 export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaster, onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
+  const [activeCategory, setActiveCategory] = useState<'detailing' | 'film'>('detailing');
 
   // 合併內建與雲端資料
   const fullMaster = useMemo(() => {
@@ -205,7 +217,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
       )}
       <header style={{ marginBottom: '30px', textAlign: 'center', paddingTop: onBack ? '10px' : '20px' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: '900', color: 'var(--primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
-          <Tag size={32} color="var(--accent)" /> 膜料報價快速查詢
+          <Tag size={32} color="var(--accent)" /> 服務報價快速查詢
         </h2>
         <p style={{ color: '#64748b', fontSize: '1rem' }}>輸入車型即可自動對應尺寸並查看各項服務建議售價</p>
         <div style={{ fontSize: '0.6rem', color: '#cbd5e1', marginTop: '4px' }}>
@@ -214,7 +226,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
       </header>
 
       {/* 搜尋區 */}
-      <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto 40px auto', zIndex: 100 }}>
+      <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto 20px auto', zIndex: 100 }}>
         <div className="glass-panel" style={{ padding: '6px', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '10px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0' }}>
           <div style={{ paddingLeft: '15px', color: '#94a3b8' }}>
             <Search size={22} />
@@ -240,7 +252,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
           )}
         </div>
 
-        {/* 搜尋結果選單 - 改為相對定位以確保在手機上 100% 可見 */}
+        {/* 搜尋結果選單 */}
         {searchTerm && !selectedVehicle && (
           <div style={{ 
             marginTop: '12px',
@@ -250,6 +262,8 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
             border: '1px solid #e2e8f0', 
             overflow: 'hidden',
             zIndex: 100,
+            position: 'absolute',
+            width: '100%',
             animation: 'fadeIn 0.3s ease-out'
           }}>
             {filteredVehicles.length > 0 ? (
@@ -299,10 +313,64 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
         )}
       </div>
 
+      {/* 分類切換器 */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginBottom: '40px' }}>
+        <button 
+          onClick={() => setActiveCategory('detailing')}
+          style={{ 
+            padding: '12px 24px', 
+            borderRadius: '12px', 
+            border: 'none', 
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: activeCategory === 'detailing' ? 'var(--primary)' : '#f1f5f9',
+            color: activeCategory === 'detailing' ? '#fff' : '#64748b',
+            boxShadow: activeCategory === 'detailing' ? '0 10px 15px -3px rgba(37, 99, 235, 0.3)' : 'none',
+            transition: 'all 0.2s'
+          }}
+        >
+          <Sparkles size={18} /> 汽車美容
+        </button>
+        <button 
+          onClick={() => setActiveCategory('film')}
+          style={{ 
+            padding: '12px 24px', 
+            borderRadius: '12px', 
+            border: 'none', 
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: activeCategory === 'film' ? 'var(--primary)' : '#f1f5f9',
+            color: activeCategory === 'film' ? '#fff' : '#64748b',
+            boxShadow: activeCategory === 'film' ? '0 10px 15px -3px rgba(37, 99, 235, 0.3)' : 'none',
+            transition: 'all 0.2s'
+          }}
+        >
+          <Palette size={18} /> 貼膜服務
+        </button>
+      </div>
+
       {selectedVehicle ? (
         <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
           {/* 選中的車輛資訊 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px', background: 'linear-gradient(135deg, #4f46e5 0%, #3730a3 100%)', padding: '30px', borderRadius: '24px', color: '#fff', boxShadow: '0 20px 25px -5px rgba(79, 70, 229, 0.2)' }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '20px', 
+            marginBottom: '30px', 
+            background: activeCategory === 'detailing' 
+              ? 'linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%)' 
+              : 'linear-gradient(135deg, #4f46e5 0%, #3730a3 100%)', 
+            padding: '30px', 
+            borderRadius: '24px', 
+            color: '#fff', 
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' 
+          }}>
             <div style={{ background: 'rgba(255,255,255,0.2)', width: '70px', height: '70px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Car size={36} />
             </div>
@@ -316,8 +384,128 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
             </div>
           </div>
 
-          {/* 價目表卡片網格 */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px' }}>
+          {activeCategory === 'detailing' ? (
+            /* 汽車美容報價內容 */
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px' }}>
+              {/* 精緻洗車 */}
+              <div className="glass-panel" style={{ padding: '25px', borderRadius: '24px', border: '1px solid #e2e8f0', background: '#fff' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', color: '#0ea5e9' }}>
+                  <Waves size={24} />
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>精緻洗車服務</h4>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
+                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>單次施工</div>
+                  <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
+                    <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
+                    {DETAILING_PRICING[selectedVehicle.size]?.wash.toLocaleString()}
+                  </div>
+                </div>
+                <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 中性泡沫手洗</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 鋁圈深層清潔</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 玻璃除油膜 (前擋)</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 基礎內裝除塵</li>
+                </ul>
+              </div>
+
+              {/* 內裝深層 */}
+              <div className="glass-panel" style={{ padding: '25px', borderRadius: '24px', border: '1px solid #e2e8f0', background: '#fff' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', color: '#6366f1' }}>
+                  <Wind size={24} />
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>內裝深層護理</h4>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
+                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>職人手作</div>
+                  <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
+                    <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
+                    {DETAILING_PRICING[selectedVehicle.size]?.interior.toLocaleString()}
+                  </div>
+                </div>
+                <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 皮革滋養護理</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 高溫蒸氣殺菌</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 踏墊深層洗滌</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 內裝塑件上蠟</li>
+                </ul>
+              </div>
+
+              {/* 小美容 */}
+              <div className="glass-panel" style={{ padding: '25px', borderRadius: '24px', border: '1px solid #e2e8f0', background: '#fff' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', color: '#f59e0b' }}>
+                  <Sparkles size={24} />
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>車體小美容 / 拋光</h4>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
+                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>漆面還原</div>
+                  <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
+                    <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
+                    {DETAILING_PRICING[selectedVehicle.size]?.miniDetail.toLocaleString()}
+                  </div>
+                </div>
+                <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 單劑拋光增亮</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 柏油鐵粉去除</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 手作封體護理</li>
+                </ul>
+              </div>
+
+              {/* 大美容 */}
+              <div className="glass-panel" style={{ padding: '25px', borderRadius: '24px', border: '1px solid #e2e8f0', background: '#fff' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', color: '#ef4444' }}>
+                  <ShieldCheck size={24} />
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>極致大美容</h4>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
+                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>全車修復</div>
+                  <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
+                    <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
+                    {DETAILING_PRICING[selectedVehicle.size]?.fullDetail.toLocaleString()}
+                  </div>
+                </div>
+                <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 多劑式漆面修正</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 玻璃全車拋光</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><CheckSquare size={16} color="#10b981" /> 引擎室清潔護理</li>
+                </ul>
+              </div>
+
+              {/* 石英鍍膜 */}
+              <div className="glass-panel" style={{ padding: '25px', borderRadius: '24px', border: '1px solid #e2e8f0', background: 'linear-gradient(to bottom right, #fff, #f0f9ff)', gridColumn: 'span 2' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', color: '#8b5cf6' }}>
+                  <Gem size={24} />
+                  <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>頂級石英鍍膜方案 (一年期/兩年期)</h4>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
+                  <div>
+                    <p style={{ fontSize: '0.9rem', color: '#64748b', lineHeight: '1.6', marginBottom: '20px' }}>
+                      使用歐美頂級鍍膜藥劑，提供極致潑水與漆面硬度提升，有效防止酸雨、跳石與紫外線傷害。
+                    </p>
+                    <div style={{ background: '#f5f3ff', padding: '15px', borderRadius: '12px', border: '1px solid #ddd6fe' }}>
+                      <div style={{ fontWeight: 'bold', color: '#5b21b6', marginBottom: '8px' }}>包含項目：</div>
+                      <div style={{ fontSize: '0.85rem', color: '#7c3aed', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                        <span>• 全車漆面鍍膜</span>
+                        <span>• 玻璃撥水鍍膜</span>
+                        <span>• 鋁圈耐高溫鍍膜</span>
+                        <span>• 塑件還原鍍膜</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '4px' }}>建議售價起</div>
+                    <div style={{ fontSize: '3rem', fontWeight: '900', color: '#1e293b', lineHeight: 1 }}>
+                      <span style={{ fontSize: '1.2rem', marginRight: '4px' }}>$</span>
+                      {DETAILING_PRICING[selectedVehicle.size]?.coating.toLocaleString()}
+                    </div>
+                    <div style={{ marginTop: '10px', fontSize: '0.8rem', color: '#8b5cf6', fontWeight: 'bold' }}>
+                      * 視漆面狀況與鍍膜等級調整
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* 貼膜服務報價內容 */
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px' }}>
             {/* 改色膜 */}
             <div className="glass-panel" style={{ padding: '25px', borderRadius: '20px', border: '1px solid #e2e8f0', gridColumn: 'span 2' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', color: '#4f46e5' }}>

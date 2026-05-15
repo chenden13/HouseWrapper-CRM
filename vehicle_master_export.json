@@ -1,0 +1,1652 @@
+[
+  {
+    "id": "ALFA_ROMEO_33",
+    "brand": "ALFA ROMEO",
+    "model": "33",
+    "size": "S"
+  },
+  {
+    "id": "DAIHATSU_Sirion",
+    "brand": "DAIHATSU",
+    "model": "Sirion",
+    "size": "S"
+  },
+  {
+    "id": "INFINITI_Q30_/_Q60",
+    "brand": "INFINITI",
+    "model": "Q30 / Q60",
+    "size": "M"
+  },
+  {
+    "id": "MAZDA_Mazda_2",
+    "brand": "MAZDA",
+    "model": "Mazda 2",
+    "size": "S"
+  },
+  {
+    "id": "SAAB_9-3_Sedan_/_Convertible",
+    "brand": "SAAB",
+    "model": "9-3 Sedan / Convertible",
+    "size": "L"
+  },
+  {
+    "id": "ALFA_ROMEO_147_/_155_/_156",
+    "brand": "ALFA ROMEO",
+    "model": "147 / 155 / 156",
+    "size": "M"
+  },
+  {
+    "id": "DAIHATSU_Terios",
+    "brand": "DAIHATSU",
+    "model": "Terios",
+    "size": "S"
+  },
+  {
+    "id": "INFINITI_Q50_/_Q70",
+    "brand": "INFINITI",
+    "model": "Q50 / Q70",
+    "size": "L"
+  },
+  {
+    "id": "MAZDA_Mazda_3",
+    "brand": "MAZDA",
+    "model": "Mazda 3",
+    "size": "M"
+  },
+  {
+    "id": "SAAB_9-3_SportCombi",
+    "brand": "SAAB",
+    "model": "9-3 SportCombi",
+    "size": "L"
+  },
+  {
+    "id": "ALFA_ROMEO_159",
+    "brand": "ALFA ROMEO",
+    "model": "159",
+    "size": "L"
+  },
+  {
+    "id": "DAIHATSU_Coo",
+    "brand": "DAIHATSU",
+    "model": "Coo",
+    "size": "S"
+  },
+  {
+    "id": "INFINITI_QX30",
+    "brand": "INFINITI",
+    "model": "QX30",
+    "size": "L"
+  },
+  {
+    "id": "MAZDA_Mazda_6",
+    "brand": "MAZDA",
+    "model": "Mazda 6",
+    "size": "L"
+  },
+  {
+    "id": "SAAB_9-5_Sedan_/_SportCombi",
+    "brand": "SAAB",
+    "model": "9-5 Sedan / SportCombi",
+    "size": "L"
+  },
+  {
+    "id": "ALFA_ROMEO_164_/_166",
+    "brand": "ALFA ROMEO",
+    "model": "164 / 166",
+    "size": "M"
+  },
+  {
+    "id": "FERRARI_348_/_355_/_360",
+    "brand": "FERRARI",
+    "model": "348 / 355 / 360",
+    "size": "S"
+  },
+  {
+    "id": "INFINITI_QX50_/_QX55_/_QX60",
+    "brand": "INFINITI",
+    "model": "QX50 / QX55 / QX60",
+    "size": "XL"
+  },
+  {
+    "id": "MAZDA_CX-3_/_CX-30",
+    "brand": "MAZDA",
+    "model": "CX-3 / CX-30",
+    "size": "M"
+  },
+  {
+    "id": "SKODA_Citigo",
+    "brand": "SKODA",
+    "model": "Citigo",
+    "size": "S"
+  },
+  {
+    "id": "ALFA_ROMEO_4C",
+    "brand": "ALFA ROMEO",
+    "model": "4C",
+    "size": "S"
+  },
+  {
+    "id": "FERRARI_F430_/_296_GTB",
+    "brand": "FERRARI",
+    "model": "F430 / 296 GTB",
+    "size": "M"
+  },
+  {
+    "id": "JAGUAR_XE",
+    "brand": "JAGUAR",
+    "model": "XE",
+    "size": "M"
+  },
+  {
+    "id": "MAZDA_CX-5_/_CX-60",
+    "brand": "MAZDA",
+    "model": "CX-5 / CX-60",
+    "size": "XL"
+  },
+  {
+    "id": "SKODA_Fabia",
+    "brand": "SKODA",
+    "model": "Fabia",
+    "size": "S"
+  },
+  {
+    "id": "ALFA_ROMEO_Brera",
+    "brand": "ALFA ROMEO",
+    "model": "Brera",
+    "size": "M"
+  },
+  {
+    "id": "FERRARI_456_/_458_/_488",
+    "brand": "FERRARI",
+    "model": "456 / 458 / 488",
+    "size": "M"
+  },
+  {
+    "id": "JAGUAR_XF",
+    "brand": "JAGUAR",
+    "model": "XF",
+    "size": "L"
+  },
+  {
+    "id": "MAZDA_CX-9_/_CX-90",
+    "brand": "MAZDA",
+    "model": "CX-9 / CX-90",
+    "size": "2XL"
+  },
+  {
+    "id": "SKODA_Fabia_Combi",
+    "brand": "SKODA",
+    "model": "Fabia Combi",
+    "size": "M"
+  },
+  {
+    "id": "ALFA_ROMEO_GTV",
+    "brand": "ALFA ROMEO",
+    "model": "GTV",
+    "size": "S"
+  },
+  {
+    "id": "FERRARI_550_/_575",
+    "brand": "FERRARI",
+    "model": "550 / 575",
+    "size": "M"
+  },
+  {
+    "id": "JAGUAR_XJ",
+    "brand": "JAGUAR",
+    "model": "XJ",
+    "size": "XL"
+  },
+  {
+    "id": "MAZDA_MX-5",
+    "brand": "MAZDA",
+    "model": "MX-5",
+    "size": "XS"
+  },
+  {
+    "id": "SKODA_Rapid_/_Rapid_Spaceback",
+    "brand": "SKODA",
+    "model": "Rapid / Rapid Spaceback",
+    "size": "M"
+  },
+  {
+    "id": "ALFA_ROMEO_Giulietta",
+    "brand": "ALFA ROMEO",
+    "model": "Giulietta",
+    "size": "M"
+  },
+  {
+    "id": "FERRARI_599_/_612_/_GTC4",
+    "brand": "FERRARI",
+    "model": "599 / 612 / GTC4",
+    "size": "L"
+  },
+  {
+    "id": "JAGUAR_F-Type",
+    "brand": "JAGUAR",
+    "model": "F-Type",
+    "size": "M"
+  },
+  {
+    "id": "McLAREN_12C_/_650S",
+    "brand": "McLAREN",
+    "model": "12C / 650S",
+    "size": "S"
+  },
+  {
+    "id": "SKODA_Scala",
+    "brand": "SKODA",
+    "model": "Scala",
+    "size": "M"
+  },
+  {
+    "id": "ALFA_ROMEO_Giulia",
+    "brand": "ALFA ROMEO",
+    "model": "Giulia",
+    "size": "L"
+  },
+  {
+    "id": "FERRARI_812_/_F8_/_F12",
+    "brand": "FERRARI",
+    "model": "812 / F8 / F12",
+    "size": "M"
+  },
+  {
+    "id": "JAGUAR_F-Pace",
+    "brand": "JAGUAR",
+    "model": "F-Pace",
+    "size": "XL"
+  },
+  {
+    "id": "McLAREN_570_/_720_/_Artura",
+    "brand": "McLAREN",
+    "model": "570 / 720 / Artura",
+    "size": "M"
+  },
+  {
+    "id": "SKODA_Kamiq",
+    "brand": "SKODA",
+    "model": "Kamiq",
+    "size": "M"
+  },
+  {
+    "id": "ALFA_ROMEO_Stelvio",
+    "brand": "ALFA ROMEO",
+    "model": "Stelvio",
+    "size": "XL"
+  },
+  {
+    "id": "FERRARI_California_/_Portofino_/_Roma",
+    "brand": "FERRARI",
+    "model": "California / Portofino / Roma",
+    "size": "M"
+  },
+  {
+    "id": "JAGUAR_I-Pace",
+    "brand": "JAGUAR",
+    "model": "I-Pace",
+    "size": "XL"
+  },
+  {
+    "id": "MERCEDES-BENZ_A_/_B_/_CLA",
+    "brand": "MERCEDES-BENZ",
+    "model": "A / B / CLA",
+    "size": "M"
+  },
+  {
+    "id": "SKODA_Octavia_/_Octavia_Combi",
+    "brand": "SKODA",
+    "model": "Octavia / Octavia Combi",
+    "size": "L"
+  },
+  {
+    "id": "ASTON_MARTIN_Vantage",
+    "brand": "ASTON MARTIN",
+    "model": "Vantage",
+    "size": "M"
+  },
+  {
+    "id": "FERRARI_SF90",
+    "brand": "FERRARI",
+    "model": "SF90",
+    "size": "M"
+  },
+  {
+    "id": "KIA_Picanto_/_Morning",
+    "brand": "KIA",
+    "model": "Picanto / Morning",
+    "size": "S"
+  },
+  {
+    "id": "MERCEDES-BENZ_C-Class_(new)",
+    "brand": "MERCEDES-BENZ",
+    "model": "C-Class (new)",
+    "size": "L"
+  },
+  {
+    "id": "SKODA_Karoq",
+    "brand": "SKODA",
+    "model": "Karoq",
+    "size": "L"
+  },
+  {
+    "id": "ASTON_MARTIN_DB11",
+    "brand": "ASTON MARTIN",
+    "model": "DB11",
+    "size": "M"
+  },
+  {
+    "id": "FIAT_Panda_/_Punto",
+    "brand": "FIAT",
+    "model": "Panda / Punto",
+    "size": "S"
+  },
+  {
+    "id": "KIA_Stonic",
+    "brand": "KIA",
+    "model": "Stonic",
+    "size": "M"
+  },
+  {
+    "id": "MERCEDES-BENZ_E-Class",
+    "brand": "MERCEDES-BENZ",
+    "model": "E-Class",
+    "size": "L"
+  },
+  {
+    "id": "SKODA_Yeti",
+    "brand": "SKODA",
+    "model": "Yeti",
+    "size": "L"
+  },
+  {
+    "id": "ASTON_MARTIN_DBS",
+    "brand": "ASTON MARTIN",
+    "model": "DBS",
+    "size": "M"
+  },
+  {
+    "id": "FIAT_500_/_Abarth_500",
+    "brand": "FIAT",
+    "model": "500 / Abarth 500",
+    "size": "S"
+  },
+  {
+    "id": "KIA_Soul",
+    "brand": "KIA",
+    "model": "Soul",
+    "size": "M"
+  },
+  {
+    "id": "MERCEDES-BENZ_S-Class",
+    "brand": "MERCEDES-BENZ",
+    "model": "S-Class",
+    "size": "XL"
+  },
+  {
+    "id": "SKODA_Superb_/_Superb_Combi",
+    "brand": "SKODA",
+    "model": "Superb / Superb Combi",
+    "size": "L"
+  },
+  {
+    "id": "ASTON_MARTIN_Vanquish",
+    "brand": "ASTON MARTIN",
+    "model": "Vanquish",
+    "size": "L"
+  },
+  {
+    "id": "FIAT_Abarth_124_Spider",
+    "brand": "FIAT",
+    "model": "Abarth 124 Spider",
+    "size": "S"
+  },
+  {
+    "id": "KIA_Sportage_(old)",
+    "brand": "KIA",
+    "model": "Sportage (old)",
+    "size": "L"
+  },
+  {
+    "id": "MERCEDES-BENZ_GLA_(new)",
+    "brand": "MERCEDES-BENZ",
+    "model": "GLA (new)",
+    "size": "L"
+  },
+  {
+    "id": "SKODA_Kodiaq",
+    "brand": "SKODA",
+    "model": "Kodiaq",
+    "size": "XL"
+  },
+  {
+    "id": "ASTON_MARTIN_Virage",
+    "brand": "ASTON MARTIN",
+    "model": "Virage",
+    "size": "M"
+  },
+  {
+    "id": "FIAT_500X",
+    "brand": "FIAT",
+    "model": "500X",
+    "size": "L"
+  },
+  {
+    "id": "KIA_Sportage_(new)",
+    "brand": "KIA",
+    "model": "Sportage (new)",
+    "size": "XL"
+  },
+  {
+    "id": "MERCEDES-BENZ_GLB_/_GLC_/_GLE",
+    "brand": "MERCEDES-BENZ",
+    "model": "GLB / GLC / GLE",
+    "size": "XL"
+  },
+  {
+    "id": "SMART_ForTwo",
+    "brand": "SMART",
+    "model": "ForTwo",
+    "size": "XS"
+  },
+  {
+    "id": "ASTON_MARTIN_Rapide_S",
+    "brand": "ASTON MARTIN",
+    "model": "Rapide S",
+    "size": "XL"
+  },
+  {
+    "id": "FORD_Fiesta",
+    "brand": "FORD",
+    "model": "Fiesta",
+    "size": "S"
+  },
+  {
+    "id": "KIA_Sorento",
+    "brand": "KIA",
+    "model": "Sorento",
+    "size": "XL"
+  },
+  {
+    "id": "MERCEDES-BENZ_GLS_/_G-Class_/_V-Class",
+    "brand": "MERCEDES-BENZ",
+    "model": "GLS / G-Class / V-Class",
+    "size": "2XL"
+  },
+  {
+    "id": "SMART_ForFour",
+    "brand": "SMART",
+    "model": "ForFour",
+    "size": "S"
+  },
+  {
+    "id": "ASTON_MARTIN_DBX",
+    "brand": "ASTON MARTIN",
+    "model": "DBX",
+    "size": "XL"
+  },
+  {
+    "id": "FORD_Focus_5D",
+    "brand": "FORD",
+    "model": "Focus 5D",
+    "size": "M"
+  },
+  {
+    "id": "KIA_Carnival",
+    "brand": "KIA",
+    "model": "Carnival",
+    "size": "2XL"
+  },
+  {
+    "id": "MERCEDES-BENZ_EQB",
+    "brand": "MERCEDES-BENZ",
+    "model": "EQB",
+    "size": "XL"
+  },
+  {
+    "id": "SUBARU_BRZ",
+    "brand": "SUBARU",
+    "model": "BRZ",
+    "size": "S"
+  },
+  {
+    "id": "AUDI_A1_/_S1",
+    "brand": "AUDI",
+    "model": "A1 / S1",
+    "size": "S"
+  },
+  {
+    "id": "FORD_Focus_Sedan_/_Wagon",
+    "brand": "FORD",
+    "model": "Focus Sedan / Wagon",
+    "size": "L"
+  },
+  {
+    "id": "KIA_EV6",
+    "brand": "KIA",
+    "model": "EV6",
+    "size": "L"
+  },
+  {
+    "id": "MERCEDES-BENZ_EQC",
+    "brand": "MERCEDES-BENZ",
+    "model": "EQC",
+    "size": "XL"
+  },
+  {
+    "id": "SUBARU_Impreza",
+    "brand": "SUBARU",
+    "model": "Impreza",
+    "size": "M"
+  },
+  {
+    "id": "AUDI_A3_/_S3",
+    "brand": "AUDI",
+    "model": "A3 / S3",
+    "size": "M"
+  },
+  {
+    "id": "FORD_Ecosport",
+    "brand": "FORD",
+    "model": "Ecosport",
+    "size": "M"
+  },
+  {
+    "id": "KIA_EV9",
+    "brand": "KIA",
+    "model": "EV9",
+    "size": "XL"
+  },
+  {
+    "id": "MERCEDES-BENZ_EQE",
+    "brand": "MERCEDES-BENZ",
+    "model": "EQE",
+    "size": "XL"
+  },
+  {
+    "id": "SUBARU_XV",
+    "brand": "SUBARU",
+    "model": "XV",
+    "size": "L"
+  },
+  {
+    "id": "AUDI_A4_/_S4",
+    "brand": "AUDI",
+    "model": "A4 / S4",
+    "size": "M"
+  },
+  {
+    "id": "FORD_Escape_/_Kuga",
+    "brand": "FORD",
+    "model": "Escape / Kuga",
+    "size": "XL"
+  },
+  {
+    "id": "LAMBORGHINI_Gallardo",
+    "brand": "LAMBORGHINI",
+    "model": "Gallardo",
+    "size": "S"
+  },
+  {
+    "id": "MERCEDES-BENZ_EQE_SUV",
+    "brand": "MERCEDES-BENZ",
+    "model": "EQE SUV",
+    "size": "XL"
+  },
+  {
+    "id": "SUBARU_Forester_(new)",
+    "brand": "SUBARU",
+    "model": "Forester (new)",
+    "size": "XL"
+  },
+  {
+    "id": "AUDI_A4_Avant",
+    "brand": "AUDI",
+    "model": "A4 Avant",
+    "size": "L"
+  },
+  {
+    "id": "FORD_Mondeo",
+    "brand": "FORD",
+    "model": "Mondeo",
+    "size": "L"
+  },
+  {
+    "id": "LAMBORGHINI_Huracan",
+    "brand": "LAMBORGHINI",
+    "model": "Huracan",
+    "size": "M"
+  },
+  {
+    "id": "MERCEDES-BENZ_EQS",
+    "brand": "MERCEDES-BENZ",
+    "model": "EQS",
+    "size": "2XL"
+  },
+  {
+    "id": "SUBARU_Outback_(new)",
+    "brand": "SUBARU",
+    "model": "Outback (new)",
+    "size": "XL"
+  },
+  {
+    "id": "AUDI_A5_/_S5",
+    "brand": "AUDI",
+    "model": "A5 / S5",
+    "size": "M"
+  },
+  {
+    "id": "FORD_Mustang",
+    "brand": "FORD",
+    "model": "Mustang",
+    "size": "L"
+  },
+  {
+    "id": "LAMBORGHINI_Aventador",
+    "brand": "LAMBORGHINI",
+    "model": "Aventador",
+    "size": "L"
+  },
+  {
+    "id": "MERCEDES-BENZ_EQS_SUV",
+    "brand": "MERCEDES-BENZ",
+    "model": "EQS SUV",
+    "size": "2XL"
+  },
+  {
+    "id": "SUZUKI_Ignis_/_Jimny",
+    "brand": "SUZUKI",
+    "model": "Ignis / Jimny",
+    "size": "S"
+  },
+  {
+    "id": "AUDI_A5_Sportback",
+    "brand": "AUDI",
+    "model": "A5 Sportback",
+    "size": "L"
+  },
+  {
+    "id": "FORD_Mustang_Mach-E",
+    "brand": "FORD",
+    "model": "Mustang Mach-E",
+    "size": "XL"
+  },
+  {
+    "id": "LAMBORGHINI_Urus",
+    "brand": "LAMBORGHINI",
+    "model": "Urus",
+    "size": "XL"
+  },
+  {
+    "id": "MINI_Cooper",
+    "brand": "MINI",
+    "model": "Cooper",
+    "size": "S"
+  },
+  {
+    "id": "SUZUKI_Swift_/_Solio",
+    "brand": "SUZUKI",
+    "model": "Swift / Solio",
+    "size": "S"
+  },
+  {
+    "id": "AUDI_A6_/_S6",
+    "brand": "AUDI",
+    "model": "A6 / S6",
+    "size": "L"
+  },
+  {
+    "id": "FORD_Explorer",
+    "brand": "FORD",
+    "model": "Explorer",
+    "size": "XL"
+  },
+  {
+    "id": "LAND_ROVER_Evoque",
+    "brand": "LAND ROVER",
+    "model": "Evoque",
+    "size": "XL"
+  },
+  {
+    "id": "MINI_Clubman_/_Countryman",
+    "brand": "MINI",
+    "model": "Clubman / Countryman",
+    "size": "M"
+  },
+  {
+    "id": "SUZUKI_SX4_/_Vitara",
+    "brand": "SUZUKI",
+    "model": "SX4 / Vitara",
+    "size": "M"
+  },
+  {
+    "id": "AUDI_A6_Avant",
+    "brand": "AUDI",
+    "model": "A6 Avant",
+    "size": "L"
+  },
+  {
+    "id": "FORD_Ranger",
+    "brand": "FORD",
+    "model": "Ranger",
+    "size": "2XL"
+  },
+  {
+    "id": "LAND_ROVER_Discovery_Sport",
+    "brand": "LAND ROVER",
+    "model": "Discovery Sport",
+    "size": "XL"
+  },
+  {
+    "id": "MINI_Countryman_(new)",
+    "brand": "MINI",
+    "model": "Countryman (new)",
+    "size": "L"
+  },
+  {
+    "id": "SUZUKI_Escudo_2.4",
+    "brand": "SUZUKI",
+    "model": "Escudo 2.4",
+    "size": "L"
+  },
+  {
+    "id": "AUDI_A7_/_S7",
+    "brand": "AUDI",
+    "model": "A7 / S7",
+    "size": "L"
+  },
+  {
+    "id": "FORD_Tourneo",
+    "brand": "FORD",
+    "model": "Tourneo",
+    "size": "2XL"
+  },
+  {
+    "id": "LAND_ROVER_Velar",
+    "brand": "LAND ROVER",
+    "model": "Velar",
+    "size": "XL"
+  },
+  {
+    "id": "MITSUBISHI_Colt_Plus_/_Lancer",
+    "brand": "MITSUBISHI",
+    "model": "Colt Plus / Lancer",
+    "size": "M"
+  },
+  {
+    "id": "TESLA_Model_3",
+    "brand": "TESLA",
+    "model": "Model 3",
+    "size": "S"
+  },
+  {
+    "id": "AUDI_A8_/_S8",
+    "brand": "AUDI",
+    "model": "A8 / S8",
+    "size": "XL"
+  },
+  {
+    "id": "FORD_Territory",
+    "brand": "FORD",
+    "model": "Territory",
+    "size": "XL"
+  },
+  {
+    "id": "LAND_ROVER_Defender_(new)",
+    "brand": "LAND ROVER",
+    "model": "Defender (new)",
+    "size": "2XL"
+  },
+  {
+    "id": "MITSUBISHI_Eclipse_Cross",
+    "brand": "MITSUBISHI",
+    "model": "Eclipse Cross",
+    "size": "L"
+  },
+  {
+    "id": "TESLA_Model_S",
+    "brand": "TESLA",
+    "model": "Model S",
+    "size": "M"
+  },
+  {
+    "id": "AUDI_TT",
+    "brand": "AUDI",
+    "model": "TT",
+    "size": "M"
+  },
+  {
+    "id": "FORMOSA_Matiz",
+    "brand": "FORMOSA",
+    "model": "Matiz",
+    "size": "XS"
+  },
+  {
+    "id": "LAND_ROVER_Discovery",
+    "brand": "LAND ROVER",
+    "model": "Discovery",
+    "size": "2XL"
+  },
+  {
+    "id": "MITSUBISHI_Outlander_/_Zinger",
+    "brand": "MITSUBISHI",
+    "model": "Outlander / Zinger",
+    "size": "XL"
+  },
+  {
+    "id": "TESLA_Model_Y",
+    "brand": "TESLA",
+    "model": "Model Y",
+    "size": "S"
+  },
+  {
+    "id": "AUDI_R8",
+    "brand": "AUDI",
+    "model": "R8",
+    "size": "M"
+  },
+  {
+    "id": "FORMOSA_Magnus",
+    "brand": "FORMOSA",
+    "model": "Magnus",
+    "size": "L"
+  },
+  {
+    "id": "LAND_ROVER_Range_Rover",
+    "brand": "LAND ROVER",
+    "model": "Range Rover",
+    "size": "2XL"
+  },
+  {
+    "id": "MITSUBISHI_Delica",
+    "brand": "MITSUBISHI",
+    "model": "Delica",
+    "size": "XL"
+  },
+  {
+    "id": "TESLA_Model_X",
+    "brand": "TESLA",
+    "model": "Model X",
+    "size": "L"
+  },
+  {
+    "id": "AUDI_RS3_/_RS4_/_RS5",
+    "brand": "AUDI",
+    "model": "RS3 / RS4 / RS5",
+    "size": "M"
+  },
+  {
+    "id": "HONDA_Fit_(old)",
+    "brand": "HONDA",
+    "model": "Fit (old)",
+    "size": "S"
+  },
+  {
+    "id": "LEXUS_LBX",
+    "brand": "LEXUS",
+    "model": "LBX",
+    "size": "M"
+  },
+  {
+    "id": "NISSAN_March",
+    "brand": "NISSAN",
+    "model": "March",
+    "size": "S"
+  },
+  {
+    "id": "TOYOTA_Yaris",
+    "brand": "TOYOTA",
+    "model": "Yaris",
+    "size": "S"
+  },
+  {
+    "id": "AUDI_RS6_/_RS7",
+    "brand": "AUDI",
+    "model": "RS6 / RS7",
+    "size": "L"
+  },
+  {
+    "id": "HONDA_Fit_(new)",
+    "brand": "HONDA",
+    "model": "Fit (new)",
+    "size": "M"
+  },
+  {
+    "id": "LEXUS_CT_/_IS",
+    "brand": "LEXUS",
+    "model": "CT / IS",
+    "size": "M"
+  },
+  {
+    "id": "NISSAN_Sentra",
+    "brand": "NISSAN",
+    "model": "Sentra",
+    "size": "M"
+  },
+  {
+    "id": "TOYOTA_Vios",
+    "brand": "TOYOTA",
+    "model": "Vios",
+    "size": "M"
+  },
+  {
+    "id": "AUDI_Q2",
+    "brand": "AUDI",
+    "model": "Q2",
+    "size": "M"
+  },
+  {
+    "id": "HONDA_City_/_Civic",
+    "brand": "HONDA",
+    "model": "City / Civic",
+    "size": "M"
+  },
+  {
+    "id": "LEXUS_UX",
+    "brand": "LEXUS",
+    "model": "UX",
+    "size": "L"
+  },
+  {
+    "id": "NISSAN_Altima_/_Teana",
+    "brand": "NISSAN",
+    "model": "Altima / Teana",
+    "size": "L"
+  },
+  {
+    "id": "TOYOTA_Corolla_Altis",
+    "brand": "TOYOTA",
+    "model": "Corolla Altis",
+    "size": "M"
+  },
+  {
+    "id": "AUDI_Q3",
+    "brand": "AUDI",
+    "model": "Q3",
+    "size": "L"
+  },
+  {
+    "id": "HONDA_Accord",
+    "brand": "HONDA",
+    "model": "Accord",
+    "size": "L"
+  },
+  {
+    "id": "LEXUS_ES_/_GS",
+    "brand": "LEXUS",
+    "model": "ES / GS",
+    "size": "L"
+  },
+  {
+    "id": "NISSAN_X-Trail_/_Murano",
+    "brand": "NISSAN",
+    "model": "X-Trail / Murano",
+    "size": "XL"
+  },
+  {
+    "id": "TOYOTA_Corolla_Cross",
+    "brand": "TOYOTA",
+    "model": "Corolla Cross",
+    "size": "L"
+  },
+  {
+    "id": "AUDI_Q4_e-tron",
+    "brand": "AUDI",
+    "model": "Q4 e-tron",
+    "size": "L"
+  },
+  {
+    "id": "HONDA_HR-V",
+    "brand": "HONDA",
+    "model": "HR-V",
+    "size": "L"
+  },
+  {
+    "id": "LEXUS_NX_/_RX",
+    "brand": "LEXUS",
+    "model": "NX / RX",
+    "size": "XL"
+  },
+  {
+    "id": "NISSAN_Serena",
+    "brand": "NISSAN",
+    "model": "Serena",
+    "size": "XL"
+  },
+  {
+    "id": "TOYOTA_Camry",
+    "brand": "TOYOTA",
+    "model": "Camry",
+    "size": "L"
+  },
+  {
+    "id": "AUDI_Q5",
+    "brand": "AUDI",
+    "model": "Q5",
+    "size": "XL"
+  },
+  {
+    "id": "HONDA_CR-V_(pre-2017)",
+    "brand": "HONDA",
+    "model": "CR-V (pre-2017)",
+    "size": "L"
+  },
+  {
+    "id": "LEXUS_LS",
+    "brand": "LEXUS",
+    "model": "LS",
+    "size": "XL"
+  },
+  {
+    "id": "NISSAN_Quest",
+    "brand": "NISSAN",
+    "model": "Quest",
+    "size": "2XL"
+  },
+  {
+    "id": "TOYOTA_RAV4_(new)",
+    "brand": "TOYOTA",
+    "model": "RAV4 (new)",
+    "size": "XL"
+  },
+  {
+    "id": "AUDI_Q7",
+    "brand": "AUDI",
+    "model": "Q7",
+    "size": "XL"
+  },
+  {
+    "id": "HONDA_CR-V_(2017~)",
+    "brand": "HONDA",
+    "model": "CR-V (2017~)",
+    "size": "XL"
+  },
+  {
+    "id": "LEXUS_LM_/_LX",
+    "brand": "LEXUS",
+    "model": "LM / LX",
+    "size": "3XL"
+  },
+  {
+    "id": "OPEL_Corsa",
+    "brand": "OPEL",
+    "model": "Corsa",
+    "size": "S"
+  },
+  {
+    "id": "TOYOTA_Previa",
+    "brand": "TOYOTA",
+    "model": "Previa",
+    "size": "XL"
+  },
+  {
+    "id": "AUDI_Q8",
+    "brand": "AUDI",
+    "model": "Q8",
+    "size": "XL"
+  },
+  {
+    "id": "HONDA_Odyssey_(old)",
+    "brand": "HONDA",
+    "model": "Odyssey (old)",
+    "size": "L"
+  },
+  {
+    "id": "LOTUS_Elise_/_Exige",
+    "brand": "LOTUS",
+    "model": "Elise / Exige",
+    "size": "XS"
+  },
+  {
+    "id": "OPEL_Astra",
+    "brand": "OPEL",
+    "model": "Astra",
+    "size": "M"
+  },
+  {
+    "id": "TOYOTA_Alphard_(old)",
+    "brand": "TOYOTA",
+    "model": "Alphard (old)",
+    "size": "2XL"
+  },
+  {
+    "id": "AUDI_e-tron",
+    "brand": "AUDI",
+    "model": "e-tron",
+    "size": "XL"
+  },
+  {
+    "id": "HONDA_Odyssey_(new)",
+    "brand": "HONDA",
+    "model": "Odyssey (new)",
+    "size": "XL"
+  },
+  {
+    "id": "LOTUS_Evora",
+    "brand": "LOTUS",
+    "model": "Evora",
+    "size": "S"
+  },
+  {
+    "id": "OPEL_Astra_Sportwagon",
+    "brand": "OPEL",
+    "model": "Astra Sportwagon",
+    "size": "L"
+  },
+  {
+    "id": "TOYOTA_Alphard_(new)",
+    "brand": "TOYOTA",
+    "model": "Alphard (new)",
+    "size": "3XL"
+  },
+  {
+    "id": "AUDI_e-tron_Sportback",
+    "brand": "AUDI",
+    "model": "e-tron Sportback",
+    "size": "XL"
+  },
+  {
+    "id": "HONDA_Step_WGN",
+    "brand": "HONDA",
+    "model": "Step WGN",
+    "size": "XL"
+  },
+  {
+    "id": "LUXGEN_S3_/_S5_/_U5_/_U6",
+    "brand": "LUXGEN",
+    "model": "S3 / S5 / U5 / U6",
+    "size": "L"
+  },
+  {
+    "id": "OPEL_Insignia",
+    "brand": "OPEL",
+    "model": "Insignia",
+    "size": "L"
+  },
+  {
+    "id": "TOYOTA_Land_Cruiser",
+    "brand": "TOYOTA",
+    "model": "Land Cruiser",
+    "size": "2XL"
+  },
+  {
+    "id": "AUDI_e-tron_GT",
+    "brand": "AUDI",
+    "model": "e-tron GT",
+    "size": "L"
+  },
+  {
+    "id": "HONDA_NSX_/_S2000",
+    "brand": "HONDA",
+    "model": "NSX / S2000",
+    "size": "S"
+  },
+  {
+    "id": "LUXGEN_U7_/_M7_/_URX_/_n7",
+    "brand": "LUXGEN",
+    "model": "U7 / M7 / URX / n7",
+    "size": "XL"
+  },
+  {
+    "id": "OPEL_Zafira",
+    "brand": "OPEL",
+    "model": "Zafira",
+    "size": "L"
+  },
+  {
+    "id": "VOLKSWAGEN_Polo",
+    "brand": "VOLKSWAGEN",
+    "model": "Polo",
+    "size": "S"
+  },
+  {
+    "id": "BENTLEY_Continental_GT",
+    "brand": "BENTLEY",
+    "model": "Continental GT",
+    "size": "L"
+  },
+  {
+    "id": "PEUGEOT_106_/_107",
+    "brand": "PEUGEOT",
+    "model": "106 / 107",
+    "size": "XS"
+  },
+  {
+    "id": "VOLKSWAGEN_Golf",
+    "brand": "VOLKSWAGEN",
+    "model": "Golf",
+    "size": "M"
+  },
+  {
+    "id": "BENTLEY_Flying_Spur",
+    "brand": "BENTLEY",
+    "model": "Flying Spur",
+    "size": "XL"
+  },
+  {
+    "id": "PEUGEOT_206_/_207_/_208",
+    "brand": "PEUGEOT",
+    "model": "206 / 207 / 208",
+    "size": "S"
+  },
+  {
+    "id": "VOLKSWAGEN_Golf_Variant_/_Passat",
+    "brand": "VOLKSWAGEN",
+    "model": "Golf Variant / Passat",
+    "size": "L"
+  },
+  {
+    "id": "BENTLEY_Turbo_R",
+    "brand": "BENTLEY",
+    "model": "Turbo R",
+    "size": "XL"
+  },
+  {
+    "id": "PEUGEOT_308",
+    "brand": "PEUGEOT",
+    "model": "308",
+    "size": "M"
+  },
+  {
+    "id": "VOLKSWAGEN_Tiguan_(new)",
+    "brand": "VOLKSWAGEN",
+    "model": "Tiguan (new)",
+    "size": "XL"
+  },
+  {
+    "id": "BENTLEY_Type_R",
+    "brand": "BENTLEY",
+    "model": "Type R",
+    "size": "XL"
+  },
+  {
+    "id": "PEUGEOT_3008_/_408",
+    "brand": "PEUGEOT",
+    "model": "3008 / 408",
+    "size": "L"
+  },
+  {
+    "id": "VOLKSWAGEN_Touareg",
+    "brand": "VOLKSWAGEN",
+    "model": "Touareg",
+    "size": "XL"
+  },
+  {
+    "id": "BENTLEY_Bentayga",
+    "brand": "BENTLEY",
+    "model": "Bentayga",
+    "size": "2XL"
+  },
+  {
+    "id": "PEUGEOT_5008_(new)",
+    "brand": "PEUGEOT",
+    "model": "5008 (new)",
+    "size": "XL"
+  },
+  {
+    "id": "VOLKSWAGEN_Multivan_/_ID.Buzz",
+    "brand": "VOLKSWAGEN",
+    "model": "Multivan / ID.Buzz",
+    "size": "2XL"
+  },
+  {
+    "id": "BENTLEY_Mulsanne",
+    "brand": "BENTLEY",
+    "model": "Mulsanne",
+    "size": "2XL"
+  },
+  {
+    "id": "PEUGEOT_Traveller",
+    "brand": "PEUGEOT",
+    "model": "Traveller",
+    "size": "2XL"
+  },
+  {
+    "id": "VOLKSWAGEN_T-Roc",
+    "brand": "VOLKSWAGEN",
+    "model": "T-Roc",
+    "size": "L"
+  },
+  {
+    "id": "BMW_1_Series",
+    "brand": "BMW",
+    "model": "1 Series",
+    "size": "M"
+  },
+  {
+    "id": "PORSCHE_Boxster_/_Cayman",
+    "brand": "PORSCHE",
+    "model": "Boxster / Cayman",
+    "size": "S"
+  },
+  {
+    "id": "VOLKSWAGEN_T-Cross",
+    "brand": "VOLKSWAGEN",
+    "model": "T-Cross",
+    "size": "M"
+  },
+  {
+    "id": "BMW_2_Series",
+    "brand": "BMW",
+    "model": "2 Series",
+    "size": "M"
+  },
+  {
+    "id": "PORSCHE_911",
+    "brand": "PORSCHE",
+    "model": "911",
+    "size": "M"
+  },
+  {
+    "id": "BMW_2_Series_Active_Tourer",
+    "brand": "BMW",
+    "model": "2 Series Active Tourer",
+    "size": "L"
+  },
+  {
+    "id": "PORSCHE_Taycan_/_Panamera",
+    "brand": "PORSCHE",
+    "model": "Taycan / Panamera",
+    "size": "L"
+  },
+  {
+    "id": "VOLVO_V40_/_EX30",
+    "brand": "VOLVO",
+    "model": "V40 / EX30",
+    "size": "M"
+  },
+  {
+    "id": "BMW_3_Series",
+    "brand": "BMW",
+    "model": "3 Series",
+    "size": "M"
+  },
+  {
+    "id": "PORSCHE_Macan_/_Cayenne",
+    "brand": "PORSCHE",
+    "model": "Macan / Cayenne",
+    "size": "XL"
+  },
+  {
+    "id": "VOLVO_S60",
+    "brand": "VOLVO",
+    "model": "S60",
+    "size": "M"
+  },
+  {
+    "id": "BMW_3_Series_Touring_(pre-2019)",
+    "brand": "BMW",
+    "model": "3 Series Touring (pre-2019)",
+    "size": "M"
+  },
+  {
+    "id": "PROTON_Savvy",
+    "brand": "PROTON",
+    "model": "Savvy",
+    "size": "S"
+  },
+  {
+    "id": "VOLVO_S90_/_V60",
+    "brand": "VOLVO",
+    "model": "S90 / V60",
+    "size": "L"
+  },
+  {
+    "id": "BMW_3_Series_Touring_(2019~)",
+    "brand": "BMW",
+    "model": "3 Series Touring (2019~)",
+    "size": "L"
+  },
+  {
+    "id": "PROTON_Gen2_/_Persona",
+    "brand": "PROTON",
+    "model": "Gen2 / Persona",
+    "size": "M"
+  },
+  {
+    "id": "VOLVO_XC40",
+    "brand": "VOLVO",
+    "model": "XC40",
+    "size": "L"
+  },
+  {
+    "id": "BMW_3_Series_GT",
+    "brand": "BMW",
+    "model": "3 Series GT",
+    "size": "L"
+  },
+  {
+    "id": "RENAULT_Twingo",
+    "brand": "RENAULT",
+    "model": "Twingo",
+    "size": "XS"
+  },
+  {
+    "id": "VOLVO_XC60_/_XC90",
+    "brand": "VOLVO",
+    "model": "XC60 / XC90",
+    "size": "XL"
+  },
+  {
+    "id": "BMW_4_Series_(pre-2020)",
+    "brand": "BMW",
+    "model": "4 Series (pre-2020)",
+    "size": "M"
+  },
+  {
+    "id": "RENAULT_Megane",
+    "brand": "RENAULT",
+    "model": "Megane",
+    "size": "M"
+  },
+  {
+    "id": "BMW_4_Series_(2020~)",
+    "brand": "BMW",
+    "model": "4 Series (2020~)",
+    "size": "L"
+  },
+  {
+    "id": "RENAULT_Scenic",
+    "brand": "RENAULT",
+    "model": "Scenic",
+    "size": "L"
+  },
+  {
+    "id": "BMW_5_Series",
+    "brand": "BMW",
+    "model": "5 Series",
+    "size": "L"
+  },
+  {
+    "id": "BMW_5_Series_GT",
+    "brand": "BMW",
+    "model": "5 Series GT",
+    "size": "XL"
+  },
+  {
+    "id": "BMW_6_Series",
+    "brand": "BMW",
+    "model": "6 Series",
+    "size": "XL"
+  },
+  {
+    "id": "BMW_7_Series",
+    "brand": "BMW",
+    "model": "7 Series",
+    "size": "XL"
+  },
+  {
+    "id": "BMW_8_Series_/_Gran_Coupe",
+    "brand": "BMW",
+    "model": "8 Series / Gran Coupe",
+    "size": "L"
+  },
+  {
+    "id": "BMW_M2",
+    "brand": "BMW",
+    "model": "M2",
+    "size": "L"
+  },
+  {
+    "id": "BMW_M3_/_M4_(pre-2021)",
+    "brand": "BMW",
+    "model": "M3 / M4 (pre-2021)",
+    "size": "L"
+  },
+  {
+    "id": "BMW_M3_/_M4_(2021~)",
+    "brand": "BMW",
+    "model": "M3 / M4 (2021~)",
+    "size": "XL"
+  },
+  {
+    "id": "BMW_M5_/_M6",
+    "brand": "BMW",
+    "model": "M5 / M6",
+    "size": "XL"
+  },
+  {
+    "id": "BMW_Z3_/_Z4",
+    "brand": "BMW",
+    "model": "Z3 / Z4",
+    "size": "S"
+  },
+  {
+    "id": "BMW_i3_/_i8",
+    "brand": "BMW",
+    "model": "i3 / i8",
+    "size": "M"
+  },
+  {
+    "id": "BMW_i4",
+    "brand": "BMW",
+    "model": "i4",
+    "size": "L"
+  },
+  {
+    "id": "BMW_X1_/_X2",
+    "brand": "BMW",
+    "model": "X1 / X2",
+    "size": "L"
+  },
+  {
+    "id": "BMW_X3_/_X4_/_X5_/_X6",
+    "brand": "BMW",
+    "model": "X3 / X4 / X5 / X6",
+    "size": "XL"
+  },
+  {
+    "id": "BMW_X7",
+    "brand": "BMW",
+    "model": "X7",
+    "size": "2XL"
+  },
+  {
+    "id": "BMW_iX",
+    "brand": "BMW",
+    "model": "iX",
+    "size": "XL"
+  },
+  {
+    "id": "CADILLAC_ATS",
+    "brand": "CADILLAC",
+    "model": "ATS",
+    "size": "M"
+  },
+  {
+    "id": "CADILLAC_CTS",
+    "brand": "CADILLAC",
+    "model": "CTS",
+    "size": "L"
+  },
+  {
+    "id": "CADILLAC_STS",
+    "brand": "CADILLAC",
+    "model": "STS",
+    "size": "L"
+  },
+  {
+    "id": "CADILLAC_SRX",
+    "brand": "CADILLAC",
+    "model": "SRX",
+    "size": "XL"
+  },
+  {
+    "id": "CADILLAC_Escalade",
+    "brand": "CADILLAC",
+    "model": "Escalade",
+    "size": "2XL"
+  },
+  {
+    "id": "CHRYSLER_300M",
+    "brand": "CHRYSLER",
+    "model": "300M",
+    "size": "L"
+  },
+  {
+    "id": "CHRYSLER_300C",
+    "brand": "CHRYSLER",
+    "model": "300C",
+    "size": "XL"
+  },
+  {
+    "id": "CHRYSLER_PT_Cruiser",
+    "brand": "CHRYSLER",
+    "model": "PT Cruiser",
+    "size": "L"
+  },
+  {
+    "id": "CITROEN_C3",
+    "brand": "CITROEN",
+    "model": "C3",
+    "size": "S"
+  },
+  {
+    "id": "CITROEN_C4",
+    "brand": "CITROEN",
+    "model": "C4",
+    "size": "M"
+  },
+  {
+    "id": "CITROEN_C4_Picasso",
+    "brand": "CITROEN",
+    "model": "C4 Picasso",
+    "size": "L"
+  },
+  {
+    "id": "CITROEN_C5",
+    "brand": "CITROEN",
+    "model": "C5",
+    "size": "L"
+  },
+  {
+    "id": "CITROEN_C6",
+    "brand": "CITROEN",
+    "model": "C6",
+    "size": "L"
+  },
+  {
+    "id": "CITROEN_DS3",
+    "brand": "CITROEN",
+    "model": "DS3",
+    "size": "S"
+  },
+  {
+    "id": "CITROEN_DS4",
+    "brand": "CITROEN",
+    "model": "DS4",
+    "size": "M"
+  },
+  {
+    "id": "CITROEN_DS5",
+    "brand": "CITROEN",
+    "model": "DS5",
+    "size": "L"
+  },
+  {
+    "id": "CITROEN_Grand_C4_/_Berlingo",
+    "brand": "CITROEN",
+    "model": "Grand C4 / Berlingo",
+    "size": "XL"
+  }
+]

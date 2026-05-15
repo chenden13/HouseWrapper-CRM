@@ -11,6 +11,7 @@ interface Vehicle {
 interface PriceInquiryPageProps {
   vehicleMaster: any[];
   onBack?: () => void;
+  initialMode?: 'detailing' | 'film';
 }
 
 const PRICING_MATRIX: { [key: string]: { colorChange: number; ppf: number; frontPpf: number; tint: string; mirror: string } } = {
@@ -146,34 +147,61 @@ const calculateWrapPrice = (basePrice: number, size: string) => {
   return basePrice + (SIZE_OFFSET[size] || 0);
 };
 
-export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaster, onBack }) => {
+export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaster, onBack, initialMode }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
-  const [activeCategory, setActiveCategory] = useState<'detailing' | 'film'>('detailing');
+  const [activeCategory, setActiveCategory] = useState<'detailing' | 'film'>(initialMode || 'detailing');
 
-  // 合併內建與雲端資料 (內建資料優先以覆蓋舊有的資料庫內容)
+  // 合併內建與雲端資料
   const fullMaster = useMemo(() => {
     const list = Array.isArray(vehicleMaster) ? vehicleMaster : [];
-    // 將內建資料放在前面，確保 unique map 優先採用
-    const combined = [...vehiclesData, ...list];
     
-    // 去重並清洗資料
-    const unique = new Map();
-    combined.forEach(v => {
+    // 建立資料庫尺寸對照表 (用於美容)
+    const dbSizeMap = new Map();
+    list.forEach(v => {
       const b = String(v.brand || '').trim();
       const m = String(v.model || '').trim();
       if (!b && !m) return;
-      
       const key = `${b}_${m}`.toLowerCase();
+      // 如果有多筆，保留第一筆看到的 (通常是舊資料)
+      if (!dbSizeMap.has(key)) dbSizeMap.set(key, v.size);
+    });
+
+    // 以新資料 (JSON) 為主體，但保留舊資料尺寸
+    const unique = new Map();
+    
+    // 1. 處理新版尺寸表 (用於貼膜)
+    vehiclesData.forEach(v => {
+      const b = String(v.brand || '').trim();
+      const m = String(v.model || '').trim();
+      const key = `${b}_${m}`.toLowerCase();
+      
+      const dbSize = dbSizeMap.get(key);
+      unique.set(key, {
+        brand: b,
+        model: m,
+        size: v.size || 'M', // 貼膜用的新尺寸
+        detailingSize: dbSize || v.size || 'M' // 美容用的舊尺寸 (若無則用新尺寸)
+      });
+    });
+
+    // 2. 補上資料庫中有但新表沒有的車型
+    list.forEach(v => {
+      const b = String(v.brand || '').trim();
+      const m = String(v.model || '').trim();
+      const key = `${b}_${m}`.toLowerCase();
+      
       if (!unique.has(key)) {
         unique.set(key, {
           brand: b,
           model: m,
-          size: v.size || 'M'
+          size: v.size || 'M',
+          detailingSize: v.size || 'M'
         });
       }
     });
-    return Array.from(unique.values()) as Vehicle[];
+
+    return Array.from(unique.values());
   }, [vehicleMaster]);
 
   const filteredVehicles = useMemo(() => {
@@ -186,12 +214,16 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
     ).slice(0, 15);
   }, [searchTerm, fullMaster]);
 
-  const handleSelect = (v: Vehicle) => {
+  const handleSelect = (v: any) => {
     setSelectedVehicle(v);
     setSearchTerm(`${v.brand} ${v.model}`);
   };
 
-  const pricing = selectedVehicle ? PRICING_MATRIX[selectedVehicle.size] || PRICING_MATRIX['M'] : null;
+  const currentSize = selectedVehicle 
+    ? (activeCategory === 'detailing' ? (selectedVehicle as any).detailingSize : selectedVehicle.size)
+    : 'M';
+
+  const pricing = selectedVehicle ? PRICING_MATRIX[currentSize] || PRICING_MATRIX['M'] : null;
 
   return (
     <div style={{ padding: '0 20px 40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
@@ -205,7 +237,11 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
       )}
       <header style={{ marginBottom: '30px', textAlign: 'center', paddingTop: onBack ? '10px' : '20px' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: '900', color: 'var(--primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
-          <Tag size={32} color="var(--accent)" /> 服務報價快速查詢 (V2)
+          {activeCategory === 'detailing' ? (
+            <><Sparkles size={32} color="#0ea5e9" /> 汽車美容報價查詢</>
+          ) : (
+            <><Palette size={32} color="#4f46e5" /> 貼膜施工報價查詢</>
+          )}
         </h2>
         <p style={{ color: '#64748b', fontSize: '1rem' }}>輸入車型即可自動對應尺寸並查看各項服務建議售價</p>
         <div style={{ fontSize: '0.6rem', color: '#cbd5e1', marginTop: '4px' }}>
@@ -301,60 +337,62 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
         )}
       </div>
 
-      {/* 分類切換器 - 加強視覺提示 */}
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        background: '#f1f5f9', 
-        padding: '6px', 
-        borderRadius: '16px', 
-        maxWidth: '400px', 
-        margin: '0 auto 40px auto',
-        boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)'
-      }}>
-        <button 
-          onClick={() => setActiveCategory('detailing')}
-          style={{ 
-            flex: 1,
-            padding: '12px', 
-            borderRadius: '12px', 
-            border: 'none', 
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            background: activeCategory === 'detailing' ? '#fff' : 'transparent',
-            color: activeCategory === 'detailing' ? '#0ea5e9' : '#64748b',
-            boxShadow: activeCategory === 'detailing' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
-            transition: 'all 0.2s'
-          }}
-        >
-          <Sparkles size={18} /> 汽車美容
-        </button>
-        <button 
-          onClick={() => setActiveCategory('film')}
-          style={{ 
-            flex: 1,
-            padding: '12px', 
-            borderRadius: '12px', 
-            border: 'none', 
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            background: activeCategory === 'film' ? '#fff' : 'transparent',
-            color: activeCategory === 'film' ? '#4f46e5' : '#64748b',
-            boxShadow: activeCategory === 'film' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
-            transition: 'all 0.2s'
-          }}
-        >
-          <Palette size={18} /> 貼膜服務
-        </button>
-      </div>
+      {/* 分類切換器 - 如果有 initialMode 就隱藏，避免混淆 */}
+      {!initialMode && (
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          background: '#f1f5f9', 
+          padding: '6px', 
+          borderRadius: '16px', 
+          maxWidth: '400px', 
+          margin: '0 auto 40px auto',
+          boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)'
+        }}>
+          <button 
+            onClick={() => setActiveCategory('detailing')}
+            style={{ 
+              flex: 1,
+              padding: '12px', 
+              borderRadius: '12px', 
+              border: 'none', 
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              background: activeCategory === 'detailing' ? '#fff' : 'transparent',
+              color: activeCategory === 'detailing' ? '#0ea5e9' : '#64748b',
+              boxShadow: activeCategory === 'detailing' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
+              transition: 'all 0.2s'
+            }}
+          >
+            <Sparkles size={18} /> 汽車美容
+          </button>
+          <button 
+            onClick={() => setActiveCategory('film')}
+            style={{ 
+              flex: 1,
+              padding: '12px', 
+              borderRadius: '12px', 
+              border: 'none', 
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              background: activeCategory === 'film' ? '#fff' : 'transparent',
+              color: activeCategory === 'film' ? '#4f46e5' : '#64748b',
+              boxShadow: activeCategory === 'film' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
+              transition: 'all 0.2s'
+            }}
+          >
+            <Palette size={18} /> 貼膜服務
+          </button>
+        </div>
+      )}
 
       {selectedVehicle ? (
         <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
@@ -377,10 +415,12 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
             </div>
             <div style={{ flex: 1 }}>
               <h3 style={{ fontSize: '1.8rem', margin: 0, fontWeight: '900' }}>{selectedVehicle.brand} {selectedVehicle.model}</h3>
-              <p style={{ margin: '5px 0 0 0', opacity: 0.8, fontSize: '1rem' }}>對應母檔尺寸: <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>{selectedVehicle.size}</span></p>
+              <p style={{ margin: '5px 0 0 0', opacity: 0.8, fontSize: '1rem' }}>
+                對應{activeCategory === 'detailing' ? '美容' : '貼膜'}尺寸: <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>{currentSize}</span>
+              </p>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '900' }}>{selectedVehicle.size}</div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '900' }}>{currentSize}</div>
               <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>VEHICLE SIZE</div>
             </div>
           </div>
@@ -395,10 +435,10 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>精緻洗車服務</h4>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
-                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>單次施工 ({selectedVehicle.size})</div>
+                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>單次施工 ({currentSize})</div>
                   <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
                     <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
-                    {DETAILING_PRICING[selectedVehicle.size]?.wash.toLocaleString()}
+                    {DETAILING_PRICING[currentSize]?.wash.toLocaleString()}
                   </div>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -419,7 +459,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <div style={{ fontSize: '0.9rem', color: '#64748b' }}>職人手作</div>
                   <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
                     <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
-                    {DETAILING_PRICING[selectedVehicle.size]?.interior.toLocaleString()}
+                    {DETAILING_PRICING[currentSize]?.interior.toLocaleString()}
                   </div>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -440,7 +480,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <div style={{ fontSize: '0.9rem', color: '#64748b' }}>漆面還原</div>
                   <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
                     <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
-                    {DETAILING_PRICING[selectedVehicle.size]?.miniDetail.toLocaleString()}
+                    {DETAILING_PRICING[currentSize]?.miniDetail.toLocaleString()}
                   </div>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -460,7 +500,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <div style={{ fontSize: '0.9rem', color: '#64748b' }}>全車修復</div>
                   <div style={{ fontSize: '2rem', fontWeight: '900', color: '#1e293b' }}>
                     <span style={{ fontSize: '1rem', marginRight: '4px' }}>$</span>
-                    {DETAILING_PRICING[selectedVehicle.size]?.fullDetail.toLocaleString()}
+                    {DETAILING_PRICING[currentSize]?.fullDetail.toLocaleString()}
                   </div>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -495,7 +535,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                     <div style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '4px' }}>建議售價起</div>
                     <div style={{ fontSize: '3rem', fontWeight: '900', color: '#1e293b', lineHeight: 1 }}>
                       <span style={{ fontSize: '1.2rem', marginRight: '4px' }}>$</span>
-                      {DETAILING_PRICING[selectedVehicle.size]?.coating.toLocaleString()}
+                      {DETAILING_PRICING[currentSize]?.coating.toLocaleString()}
                     </div>
                     <div style={{ marginTop: '10px', fontSize: '0.8rem', color: '#8b5cf6', fontWeight: 'bold' }}>
                       * 視漆面狀況與鍍膜等級調整

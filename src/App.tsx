@@ -26,7 +26,7 @@ import { PriceInquiryPage } from './components/PriceInquiryPage';
 import { TrackingPage } from './components/TrackingPage';
 import { PreparationPage } from './components/PreparationPage';
 import { VehicleMasterImport } from './components/VehicleMasterImport';
-import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList } from 'lucide-react';
+import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList, Sparkles, Palette } from 'lucide-react';
 
 import { useIsMobile } from './hooks/useIsMobile';
 import { MobileDashboard } from './components/mobile/MobileDashboard';
@@ -46,7 +46,7 @@ function App() {
   const [financeRecords, setFinanceRecords] = useState<FinanceRecord[]>([]);
   const [settlements, setSettlements] = useState<any[]>([]);
   const isMobile = useIsMobile();
-  const [view, setView] = useState<'dashboard' | 'inquiry' | 'pending' | 'archive' | 'monitor' | 'inventory' | 'finance' | 'price' | 'tracking' | 'preparation'>(isMobile ? 'dashboard' : 'pending');
+  const [view, setView] = useState<'dashboard' | 'inquiry' | 'pending' | 'archive' | 'monitor' | 'inventory' | 'finance' | 'price_detailing' | 'price_film' | 'tracking' | 'preparation'>(isMobile ? 'dashboard' : 'pending');
   const [isLoading, setIsLoading] = useState(true);
   const [importProgress, setImportProgress] = useState<{current: number, total: number} | null>(null);
 
@@ -419,8 +419,10 @@ function App() {
             onBack={() => setView('dashboard')}
             onDeleteCustomer={handleDeleteCustomer}
           />
-        ) : view === 'price' ? (
-          <PriceInquiryPage vehicleMaster={vehicleMaster} onBack={() => setView('dashboard')} />
+        ) : view === 'price_detailing' ? (
+          <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="detailing" onBack={() => setView('dashboard')} />
+        ) : view === 'price_film' ? (
+          <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="film" onBack={() => setView('dashboard')} />
         ) : view === 'inventory' ? (
           <MobileInventory onBack={() => setView('dashboard')} />
         ) : view === 'finance' ? (
@@ -525,8 +527,11 @@ function App() {
             <button className={`nav-tab ${view === 'inventory' ? 'active' : ''}`} onClick={() => setView('inventory')}>
               <Box size={17} /> 膜料庫存
             </button>
-            <button className={`nav-tab ${view === 'price' ? 'active' : ''}`} onClick={() => setView('price')}>
-              <Tag size={17} /> 價目查詢
+            <button className={`nav-tab ${view === 'price_detailing' ? 'active' : ''}`} onClick={() => setView('price_detailing')}>
+              <Sparkles size={17} /> 美容報價
+            </button>
+            <button className={`nav-tab ${view === 'price_film' ? 'active' : ''}`} onClick={() => setView('price_film')}>
+              <Palette size={17} /> 貼膜報價
             </button>
             {currentUser.role === 'admin' && (
               <button className={`nav-tab ${view === 'finance' ? 'active' : ''}`} onClick={() => setView('finance')}>
@@ -608,8 +613,10 @@ function App() {
           onBack={() => setView('pending')}
         />
 
-      ) : view === 'price' ? (
-        <PriceInquiryPage vehicleMaster={vehicleMaster} />
+      ) : view === 'price_detailing' ? (
+        <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="detailing" />
+      ) : view === 'price_film' ? (
+        <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="film" />
 
       ) : view === 'tracking' ? (
         <TrackingPage 

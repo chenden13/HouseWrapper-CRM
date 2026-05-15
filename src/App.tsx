@@ -518,21 +518,34 @@ function App() {
             <button className={`nav-tab ${view === 'monitor' ? 'active' : ''}`} onClick={() => setView('monitor')}>
               <Hammer size={17} /> 現場監控
             </button>
-            <button className={`nav-tab ${view === 'archive' ? 'active' : ''}`} onClick={() => setView('archive')}>
-              <History size={17} /> 完工檔案
+            <button className={`nav-tab ${view === 'inventory' ? 'active' : ''}`} onClick={() => setView('inventory')}>
+              <Box size={17} /> 膜料庫存
             </button>
             <button className={`nav-tab ${view === 'tracking' ? 'active' : ''}`} onClick={() => setView('tracking')}>
               <Bell size={17} /> 售後追蹤
             </button>
-            <button className={`nav-tab ${view === 'inventory' ? 'active' : ''}`} onClick={() => setView('inventory')}>
-              <Box size={17} /> 膜料庫存
+            <button className={`nav-tab ${view === 'archive' ? 'active' : ''}`} onClick={() => setView('archive')}>
+              <History size={17} /> 完工檔案
             </button>
-            <button className={`nav-tab ${view === 'price_detailing' ? 'active' : ''}`} onClick={() => setView('price_detailing')}>
-              <Sparkles size={17} /> 美容報價
-            </button>
-            <button className={`nav-tab ${view === 'price_film' ? 'active' : ''}`} onClick={() => setView('price_film')}>
-              <Palette size={17} /> 貼膜報價
-            </button>
+            <div className="nav-dropdown">
+              <button className={`nav-tab ${(view === 'price_detailing' || view === 'price_film') ? 'active-parent' : ''}`}>
+                <Tag size={17} /> 價目查詢 <ChevronDown size={14} style={{ marginLeft: '4px' }} />
+              </button>
+              <div className="nav-dropdown-content">
+                <button 
+                  className={`dropdown-item ${view === 'price_detailing' ? 'active' : ''}`} 
+                  onClick={() => setView('price_detailing')}
+                >
+                  <Sparkles size={16} /> 汽車美容報價
+                </button>
+                <button 
+                  className={`dropdown-item ${view === 'price_film' ? 'active' : ''}`} 
+                  onClick={() => setView('price_film')}
+                >
+                  <Palette size={16} /> 貼膜施工報價
+                </button>
+              </div>
+            </div>
             {currentUser.role === 'admin' && (
               <button className={`nav-tab ${view === 'finance' ? 'active' : ''}`} onClick={() => setView('finance')}>
                 <Wallet size={17} /> 收支記帳
@@ -614,9 +627,9 @@ function App() {
         />
 
       ) : view === 'price_detailing' ? (
-        <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="detailing" />
+        <PriceInquiryPage key="detailing" vehicleMaster={vehicleMaster} initialMode="detailing" />
       ) : view === 'price_film' ? (
-        <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="film" />
+        <PriceInquiryPage key="film" vehicleMaster={vehicleMaster} initialMode="film" />
 
       ) : view === 'tracking' ? (
         <TrackingPage 

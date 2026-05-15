@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   UserPlus, Clock, Hammer, History, Box, Wallet, 
-  Settings, LogOut, User as UserIcon, Plus, ChevronRight
+  Settings, LogOut, User as UserIcon, Plus, ChevronRight, Tag
 } from 'lucide-react';
 import type { User } from '../../types';
 
@@ -23,6 +23,7 @@ export const MobileDashboard: React.FC<MobileDashboardProps> = ({ user, onNaviga
     { id: 'monitor', label: '施工監控', icon: Hammer, color: '#ef4444', count: stats.monitor },
     { id: 'archive', label: '完工檔案', icon: History, color: '#6366f1' },
     { id: 'inventory', label: '膜料庫存', icon: Box, color: '#10b981' },
+    { id: 'price', label: '價目查詢', icon: Tag, color: '#8b5cf6' },
     { id: 'finance', label: '收支記帳', icon: Wallet, color: '#ec4899', adminOnly: true },
   ].filter(item => !item.adminOnly || user.role === 'admin');
 

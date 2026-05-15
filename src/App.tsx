@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+// Build hash refresh: 2026-05-08 19:03
 import { api } from './lib/api';
 
 
@@ -21,8 +22,11 @@ import { InventoryPage } from './components/InventoryPage';
 import { LoginPage } from './components/LoginPage';
 import { ActiveConstructionPage } from './components/ActiveConstructionPage';
 import { FinancePage } from './components/FinancePage';
+import { PriceInquiryPage } from './components/PriceInquiryPage';
+import { TrackingPage } from './components/TrackingPage';
+import { PreparationPage } from './components/PreparationPage';
 import { VehicleMasterImport } from './components/VehicleMasterImport';
-import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car } from 'lucide-react';
+import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList } from 'lucide-react';
 
 import { useIsMobile } from './hooks/useIsMobile';
 import { MobileDashboard } from './components/mobile/MobileDashboard';
@@ -42,7 +46,7 @@ function App() {
   const [financeRecords, setFinanceRecords] = useState<FinanceRecord[]>([]);
   const [settlements, setSettlements] = useState<any[]>([]);
   const isMobile = useIsMobile();
-  const [view, setView] = useState<'dashboard' | 'inquiry' | 'pending' | 'archive' | 'monitor' | 'inventory' | 'finance'>(isMobile ? 'dashboard' : 'pending');
+  const [view, setView] = useState<'dashboard' | 'inquiry' | 'pending' | 'archive' | 'monitor' | 'inventory' | 'finance' | 'price' | 'tracking' | 'preparation'>(isMobile ? 'dashboard' : 'pending');
   const [isLoading, setIsLoading] = useState(true);
   const [importProgress, setImportProgress] = useState<{current: number, total: number} | null>(null);
 
@@ -114,8 +118,14 @@ function App() {
   };
 
 
-  const handleAddOrUpdateCustomer = async (target: Customer) => {
+  const handleAddOrUpdateCustomer = async (target: Customer, moveToConstruction?: boolean, originalId?: string) => {
     try {
+      // If ID changed, delete the old record first
+      if (originalId && originalId !== target.id) {
+        await api.deleteCustomer(originalId);
+        setCustomers(prev => prev.filter(c => c.id !== originalId));
+      }
+
       await api.upsertCustomer(target);
       setCustomers(prev => {
         const exists = prev.find(c => c.id === target.id);
@@ -141,8 +151,14 @@ function App() {
     }
   };
 
-  const handleGenericUpdate = async (updatedCustomer: Customer) => {
+  const handleGenericUpdate = async (updatedCustomer: Customer, originalId?: string) => {
     try {
+      // If ID changed, delete the old record first
+      if (originalId && originalId !== updatedCustomer.id) {
+        await api.deleteCustomer(originalId);
+        setCustomers(prev => prev.filter(c => c.id !== originalId));
+      }
+
       await api.upsertCustomer(updatedCustomer);
       setCustomers(prev => prev.map(c => c.id === updatedCustomer.id ? updatedCustomer : c));
     } catch (err) {
@@ -150,7 +166,19 @@ function App() {
     }
     setIsConstructionModalOpen(false);
     setIsCompletedModalOpen(false);
+    setIsArchiveEditModalOpen(false);
     setSelectedCustomer(null);
+  };
+
+  const handleDeleteCustomer = async (id: string) => {
+    if (!window.confirm('確定要永久刪除此客戶資料嗎？此動作無法復原。')) return;
+    try {
+      await api.deleteCustomer(id);
+      setCustomers(prev => prev.filter(c => c.id !== id));
+    } catch (err) {
+      console.error('刪除失敗:', err);
+      alert('刪除失敗，請檢查網路連線');
+    }
   };
 
 
@@ -364,13 +392,17 @@ function App() {
           <MobileActiveConstruction 
             customers={customers} 
             onEditCustomer={(c) => { setSelectedCustomer(c); setIsConstructionModalOpen(true); }}
+            onAddNew={() => { setSelectedCustomer(null); setIsPendingEditModalOpen(true); }}
             onBack={() => setView('dashboard')}
+            onDeleteCustomer={handleDeleteCustomer}
           />
         ) : view === 'pending' ? (
           <MobilePendingList 
             customers={customers}
             onEditCustomer={handleEditCustomer}
+            onAddNew={() => { setSelectedCustomer(null); setIsPendingEditModalOpen(true); }}
             onBack={() => setView('dashboard')}
+            onDeleteCustomer={handleDeleteCustomer}
           />
         ) : view === 'inquiry' ? (
           <MobileInquiryList 
@@ -378,13 +410,17 @@ function App() {
             onEditCustomer={handleEditCustomer}
             onAddNew={() => { setSelectedCustomer(null); setIsIntakeModalOpen(true); }}
             onBack={() => setView('dashboard')}
+            onDeleteCustomer={handleDeleteCustomer}
           />
         ) : view === 'archive' ? (
           <MobileArchive 
             customers={customers}
             onEdit={(c) => { setSelectedCustomer(c); setIsArchiveEditModalOpen(true); }}
             onBack={() => setView('dashboard')}
+            onDeleteCustomer={handleDeleteCustomer}
           />
+        ) : view === 'price' ? (
+          <PriceInquiryPage vehicleMaster={vehicleMaster} onBack={() => setView('dashboard')} />
         ) : view === 'inventory' ? (
           <MobileInventory onBack={() => setView('dashboard')} />
         ) : view === 'finance' ? (
@@ -399,7 +435,7 @@ function App() {
               onSuggestId={generateCustomerId()}
               vehicleMaster={vehicleMaster}
               userRole={currentUser.role}
-              onSubmit={handleAddOrUpdateCustomer} 
+              onSubmit={(c, m, o) => handleAddOrUpdateCustomer(c, m, o)} 
               onCancel={() => setIsPendingEditModalOpen(false)} 
             />
           </Modal>
@@ -426,20 +462,18 @@ function App() {
           </Modal>
         )}
 
-        {isArchiveEditModalOpen && selectedCustomer && (
-          <Modal isOpen={isArchiveEditModalOpen} onClose={() => setIsArchiveEditModalOpen(false)} title="編輯完工檔案">
-            <ArchiveEditForm 
-              customer={selectedCustomer} 
-              vehicleMaster={vehicleMaster}
-              userRole={currentUser.role}
-              onSubmit={(c) => {
-                handleGenericUpdate(c);
-                setIsArchiveEditModalOpen(false);
-              }} 
-              onCancel={() => setIsArchiveEditModalOpen(false)} 
-            />
+          <Modal isOpen={isArchiveEditModalOpen} onClose={() => setIsArchiveEditModalOpen(false)} title="編輯完工檔案庫">
+            {selectedCustomer && (
+              <ArchiveEditForm 
+                customer={selectedCustomer} 
+                userRole={currentUser.role}
+                onSubmit={(c, o) => {
+                  handleGenericUpdate(c, o);
+                }} 
+                onCancel={() => setIsArchiveEditModalOpen(false)} 
+              />
+            )}
           </Modal>
-        )}
       </div>
     );
   }
@@ -457,33 +491,42 @@ function App() {
           <p style={{ color: '#64748b', fontWeight: 'bold' }}>{importProgress.current} / {importProgress.total} 筆已完成</p>
         </div>
       )}
-      <header className="app-header glass-panel" style={{ padding: '16px 24px', height: 'auto', gap: '30px' }}>
-        <div className="brand" style={{ gap: '15px' }}>
-          <div style={{ width: '38px', height: '38px', background: 'var(--primary)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 'bold', fontSize: '1.2rem' }}>C</div>
+      <header className="app-header glass-panel" style={{ padding: '8px 20px', height: 'auto', gap: '20px' }}>
+        <div className="brand" style={{ gap: '10px' }}>
+          <div style={{ width: '32px', height: '32px', background: 'var(--primary)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 'bold', fontSize: '1.1rem' }}>C</div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <h1 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '900', color: 'var(--primary)', letterSpacing: '-0.5px' }}>
+            <h1 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '900', color: 'var(--primary)', letterSpacing: '-0.5px', lineHeight: 1.2 }}>
               好室多膜 CRM
             </h1>
-            <span style={{ fontSize: '0.85rem', color: '#94a3b8', fontWeight: 'bold' }}>PRO MAX V.613</span>
+            <span style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 'bold' }}>PRO MAX V.613</span>
           </div>
         </div>
 
-        <div className="header-actions" style={{ display: 'flex', gap: '24px', alignItems: 'center', flex: 1, justifyContent: 'space-between' }}>
-          <div className="nav-group">
+        <div className="header-actions" style={{ display: 'flex', gap: '15px', alignItems: 'center', flex: 1, justifyContent: 'space-between' }}>
+          <div className="nav-group" style={{ padding: '3px' }}>
             <button className={`nav-tab ${view === 'inquiry' ? 'active' : ''}`} onClick={() => setView('inquiry')}>
-              <UserPlus size={18} /> 諮詢進件區
+              <UserPlus size={17} /> 諮詢區
             </button>
             <button className={`nav-tab ${view === 'pending' ? 'active' : ''}`} onClick={() => setView('pending')}>
-              <Clock size={18} /> 待施工排程
+              <Clock size={17} /> 待施工區
+            </button>
+            <button className={`nav-tab ${view === 'preparation' ? 'active' : ''}`} onClick={() => setView('preparation')}>
+              <ClipboardList size={17} /> 事前準備
             </button>
             <button className={`nav-tab ${view === 'monitor' ? 'active' : ''}`} onClick={() => setView('monitor')}>
-              <Hammer size={17} /> 現場施工監控
+              <Hammer size={17} /> 現場監控
             </button>
             <button className={`nav-tab ${view === 'archive' ? 'active' : ''}`} onClick={() => setView('archive')}>
               <History size={17} /> 完工檔案
             </button>
+            <button className={`nav-tab ${view === 'tracking' ? 'active' : ''}`} onClick={() => setView('tracking')}>
+              <Bell size={17} /> 售後追蹤
+            </button>
             <button className={`nav-tab ${view === 'inventory' ? 'active' : ''}`} onClick={() => setView('inventory')}>
               <Box size={17} /> 膜料庫存
+            </button>
+            <button className={`nav-tab ${view === 'price' ? 'active' : ''}`} onClick={() => setView('price')}>
+              <Tag size={17} /> 價目查詢
             </button>
             {currentUser.role === 'admin' && (
               <button className={`nav-tab ${view === 'finance' ? 'active' : ''}`} onClick={() => setView('finance')}>
@@ -512,6 +555,7 @@ function App() {
           onEditCustomer={handleEditCustomer}
           userRole={currentUser.role}
           onAddNew={() => setIsIntakeModalOpen(true)}
+          onDeleteCustomer={handleDeleteCustomer}
         />
       ) : view === 'monitor' ? (
         <ActiveConstructionPage
@@ -520,6 +564,7 @@ function App() {
             setSelectedCustomer(c);
             setIsConstructionModalOpen(true);
           }}
+          onDeleteCustomer={handleDeleteCustomer}
         />
       ) : view === 'pending' ? (
         <PendingListPage
@@ -529,6 +574,7 @@ function App() {
           userRole={currentUser.role}
           onImportClick={() => setIsPendingImportModalOpen(true)}
           onAddNew={() => { setSelectedCustomer(null); setIsPendingEditModalOpen(true); }}
+          onDeleteCustomer={handleDeleteCustomer}
         />
       ) : view === 'archive' ? (
         <ArchivePage 
@@ -542,8 +588,13 @@ function App() {
           onViewDetail={() => {}} 
           userRole={currentUser.role}
           onImportClick={() => setIsImportModalOpen(true)}
+          onDeleteCustomer={handleDeleteCustomer}
         />
-
+      ) : view === 'preparation' ? (
+        <PreparationPage 
+          customers={customers} 
+          onUpdateCustomer={handleGenericUpdate} 
+        />
       ) : view === 'inventory' ? (
         <InventoryPage 
           inventory={inventory}
@@ -555,6 +606,15 @@ function App() {
           onRemoveInventory={handleRemoveInventory}
           onAddPurchaseRecord={handleAddPurchaseRecord}
           onBack={() => setView('pending')}
+        />
+
+      ) : view === 'price' ? (
+        <PriceInquiryPage vehicleMaster={vehicleMaster} />
+
+      ) : view === 'tracking' ? (
+        <TrackingPage 
+          customers={customers} 
+          onUpdateCustomer={handleGenericUpdate} 
         />
 
       ) : view === 'finance' ? (
@@ -601,8 +661,8 @@ function App() {
           onSuggestId={generateCustomerId()}
           vehicleMaster={vehicleMaster}
           userRole={currentUser.role}
-          onSubmit={(updatedCustomer, moveToConstruction) => {
-             handleAddOrUpdateCustomer(updatedCustomer);
+          onSubmit={(updatedCustomer, moveToConstruction, originalId) => {
+             handleAddOrUpdateCustomer(updatedCustomer, moveToConstruction, originalId);
              if (moveToConstruction) {
                 // If it moved to construction, we might want some feedback or different behavior, 
                 // but handleAddOrUpdate already saves it with the new status.
@@ -639,18 +699,16 @@ function App() {
         )}
       </Modal>
 
-      <Modal isOpen={isArchiveEditModalOpen} onClose={() => setIsArchiveEditModalOpen(false)} title="微調完工存檔資料">
+      <Modal isOpen={isArchiveEditModalOpen} onClose={() => setIsArchiveEditModalOpen(false)} title="編輯完工檔案庫">
         {selectedCustomer && (
           <ArchiveEditForm 
             customer={selectedCustomer} 
-            onSubmit={(c) => {
-              handleGenericUpdate(c);
-              setIsArchiveEditModalOpen(false);
+            userRole={currentUser.role}
+            onSubmit={(c, o) => {
+              handleGenericUpdate(c, o);
             }} 
             onCancel={() => setIsArchiveEditModalOpen(false)} 
-            userRole={currentUser.role}
           />
-
         )}
       </Modal>
 

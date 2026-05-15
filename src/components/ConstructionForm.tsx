@@ -6,12 +6,7 @@ import { api } from '../lib/api';
 import { getYouTubeEmbedUrl } from '../lib/utils';
 import { PendingEditForm } from './PendingEditForm';
 
-const GIFT_OPTIONS = [
-  '大燈', '日行燈', 'ABC柱', '握把',
-  '前進氣口', '後進氣口', '充電蓋',
-  '尾燈(三項)', '玻璃鍍膜(三項)', '彩繪(視範圍)',
-  '浮雕(視範圍)', '鋼琴烤漆(視範圍)'
-];
+
 
 interface ConstructionFormProps {
   customer: Customer;
@@ -53,9 +48,7 @@ export const ConstructionForm: React.FC<ConstructionFormProps> = ({ customer, on
       if (formData.digitalMirror) addCheck(`電子後視鏡安裝: ${formData.digitalMirror}`);
       if (formData.electricMod) addCheck(`電動改裝項目: ${formData.electricMod}`);
       
-      if (formData.giftItems && formData.giftItems.length > 0) {
-        addCheck(`贈送配件施工: ${formData.giftItems.join(', ')}`);
-      }
+
       
       addCheck('完工自主檢查 (收邊、氣泡、完整度)');
       addCheck('交車前清潔與環境整理');
@@ -73,11 +66,7 @@ export const ConstructionForm: React.FC<ConstructionFormProps> = ({ customer, on
     }));
   };
 
-  const toggleGift = (gift: string) => {
-    const current = formData.giftItems || [];
-    const next = current.includes(gift) ? current.filter(g => g !== gift) : [...current, gift];
-    setFormData(prev => ({ ...prev, giftItems: next }));
-  };
+
 
   const addAccessory = () => {
     const newAcc: Accessory = { id: `acc_${Date.now()}`, name: '', price: 0 };

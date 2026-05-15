@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Search, Clock, ChevronRight, Hash, Calendar, Phone } from 'lucide-react';
+import { Search, Clock, ChevronRight, Hash, Calendar, Phone, Trash2, Plus } from 'lucide-react';
 import type { Customer } from '../../types';
 
 interface MobilePendingListProps {
   customers: Customer[];
   onEditCustomer: (customer: Customer) => void;
+  onDeleteCustomer: (id: string) => void;
+  onAddNew: () => void;
   onBack: () => void;
 }
 
-export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers, onEditCustomer, onBack }) => {
+export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers, onEditCustomer, onDeleteCustomer, onAddNew, onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const pendingCustomers = customers.filter(c => {
@@ -55,6 +57,24 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
           <h2 style={{ fontSize: '1.4rem', fontWeight: '900', color: '#1e293b', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Clock size={24} color="#f59e0b" /> 待施工排程
           </h2>
+          <button 
+            onClick={onAddNew}
+            style={{ 
+              background: 'var(--primary)', 
+              color: '#fff', 
+              border: 'none', 
+              borderRadius: '12px', 
+              padding: '8px 12px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '6px',
+              fontSize: '0.85rem',
+              fontWeight: 'bold',
+              boxShadow: '0 4px 12px rgba(225, 29, 72, 0.2)'
+            }}
+          >
+            <Plus size={18} /> 新增
+          </button>
         </div>
       </header>
 
@@ -74,9 +94,15 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
           <div 
             key={customer.id} 
             onClick={() => onEditCustomer(customer)}
-            style={{ background: '#fff', borderRadius: '16px', padding: '16px', border: '1px solid #e2e8f0' }}
+            style={{ background: '#fff', borderRadius: '16px', padding: '16px', border: '1px solid #e2e8f0', position: 'relative' }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
+            <button 
+              onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }}
+              style={{ position: 'absolute', top: '16px', right: '16px', background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444' }}
+            >
+              <Trash2 size={16} />
+            </button>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingRight: '40px' }}>
               <div>
                 <div style={{ fontSize: '1.1rem', fontWeight: '900', color: '#1e293b' }}>{customer.name}</div>
                 <div style={{ fontSize: '0.85rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -93,7 +119,7 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
               <div>
                 <div style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>施工時間</div>
                 <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#166534' }}>
-                  {customer.constructionStartDate || customer.expectedEndDate || '未定'}
+                  {customer.constructionStartDate || '未定'}
                   {customer.constructionEndDate ? ` ~ ${customer.constructionEndDate.slice(5)}` : ''}
                 </div>
               </div>
@@ -111,7 +137,7 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
               <div>
                 <div style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>預計交車</div>
                 <div style={{ fontSize: '0.85rem', fontWeight: '500', color: '#be185d' }}>
-                  {customer.constructionStartDate ? (customer.expectedEndDate || '未定') : (customer.deliveryDate || '未定')}
+                  {customer.expectedEndDate || '未定'}
                 </div>
               </div>
             </div>

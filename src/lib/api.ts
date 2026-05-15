@@ -51,6 +51,14 @@ export const api = {
     }
   },
 
+  deleteCustomer: async (id: string) => {
+    const { error } = await supabase.from('customers').delete().eq('id', id);
+    if (error) {
+      console.error('Supabase Delete Error:', error);
+      throw error;
+    }
+  },
+
   // --- 庫存 ---
   getInventory: async () => {
     const { data, error } = await supabase.from('inventory').select('*');

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Search, UserPlus, ChevronRight, Calendar, Plus } from 'lucide-react';
+import { Search, UserPlus, ChevronRight, Calendar, Plus, Trash2 } from 'lucide-react';
 import type { Customer } from '../../types';
 
 interface MobileInquiryListProps {
   customers: Customer[];
   onEditCustomer: (customer: Customer) => void;
+  onDeleteCustomer: (id: string) => void;
   onAddNew: () => void;
   onBack: () => void;
 }
 
-export const MobileInquiryList: React.FC<MobileInquiryListProps> = ({ customers, onEditCustomer, onAddNew, onBack }) => {
+export const MobileInquiryList: React.FC<MobileInquiryListProps> = ({ customers, onEditCustomer, onDeleteCustomer, onAddNew, onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const inquiries = customers.filter(c => 
@@ -59,15 +60,23 @@ export const MobileInquiryList: React.FC<MobileInquiryListProps> = ({ customers,
           <div 
             key={customer.id} 
             onClick={() => onEditCustomer(customer)}
-            style={{ background: '#fff', borderRadius: '16px', padding: '16px', border: '1px solid #e2e8f0' }}
+            style={{ background: '#fff', borderRadius: '16px', padding: '16px', border: '1px solid #e2e8f0', position: 'relative' }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+            <button 
+              onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }}
+              style={{ position: 'absolute', top: '16px', right: '16px', background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444' }}
+            >
+              <Trash2 size={16} />
+            </button>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', paddingRight: '40px' }}>
               <div style={{ fontWeight: '900', color: '#1e293b', fontSize: '1.1rem' }}>{customer.name}</div>
-              <div style={{ fontSize: '0.8rem', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <Calendar size={12} /> {customer.consultationDate || '未記'}
-              </div>
             </div>
             
+            <div style={{ fontSize: '0.8rem', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '4px' }}>
+                <Calendar size={12} /> {customer.consultationDate || '未記'}
+            </div>
+
             <div style={{ fontSize: '0.9rem', color: '#64748b', marginBottom: '12px' }}>{customer.phone}</div>
             
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f1f5f9', paddingTop: '12px' }}>

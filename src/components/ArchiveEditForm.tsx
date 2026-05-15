@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Customer, Accessory, Role } from '../types';
 
 import { 
@@ -21,16 +21,11 @@ const TINT_GROUPS: Record<string, string[]> = {
   "Xpel": ["Xpel-X2 Plus"]
 };
 
-const GIFT_OPTIONS = [
-  '大燈', '日行燈', 'ABC柱', '握把',
-  '前踏板', '後踏板', '充電蓋',
-  '尾燈(三項)', '玻璃鍍膜(三項)', '彩繪(視範圍)',
-  '浮雕(視範圍)', '鋼琴烤漆(視範圍)'
-];
+
 
 interface ArchiveEditFormProps {
   customer: Customer;
-  onSubmit: (updatedCustomer: Customer) => void;
+  onSubmit: (updatedCustomer: Customer, originalId?: string) => void;
   onCancel: () => void;
   userRole?: Role;
 }
@@ -47,9 +42,10 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
       constructionStartDate: customer.constructionStartDate || customer.expectedEndDate || '',
       expectedEndDate: hasNewFormat ? customer.expectedEndDate : (customer.deliveryDate || ''),
       customAccessories: customer.customAccessories || [],
-      giftItems: customer.giftItems || []
+
     };
   });
+  const [originalId] = useState(customer.id);
 
   const [damagePhotos, setDamagePhotos] = useState<CategorizedPhoto[]>(customer.damagePhotos || []);
   const [progressPhotos, setProgressPhotos] = useState<CategorizedPhoto[]>(customer.progressPhotos || []);
@@ -149,7 +145,7 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
       ...formData,
       damagePhotos,
       progressPhotos
-    });
+    }, originalId);
   };
 
   return (
@@ -258,7 +254,13 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
       </div>
       <div className="form-group col-span-4">
         <label className="form-label">膜料顏色 (細項)</label>
-        <input type="text" name="filmColor" className="form-control" value={formData.filmColor || ''} onChange={handleChange} />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <input type="text" name="filmColor" className="form-control" value={formData.filmColor || ''} onChange={handleChange} />
+          <label style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', color: '#7c3aed', cursor: 'pointer' }}>
+            <input type="checkbox" name="hasHoodPpf" checked={formData.hasHoodPpf || false} onChange={handleChange} /> 
+            加購：引擎蓋+前葉子板犀牛皮 (Pixel8bit)
+          </label>
+        </div>
       </div>
       
       <div className="form-group col-span-3">
@@ -294,8 +296,12 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
         <input type="text" name="digitalMirror" className="form-control" value={formData.digitalMirror || ''} onChange={handleChange} />
       </div>
       <div className="form-group col-span-3">
-        <label className="form-label">電改項目</label>
-        <input type="text" name="electricMod" className="form-control" value={formData.electricMod || ''} onChange={handleChange} />
+        <label className="form-label">後半車鍍膜</label>
+        <select name="rearCoating" className="form-control" value={formData.rearCoating || ''} onChange={handleChange}>
+          <option value="">無加購</option>
+          <option value="Servfaces (一年期)">Servfaces (一年期)</option>
+          <option value="CarPro (兩年期)">CarPro (兩年期)</option>
+        </select>
       </div>
 
       {/* ── 客製配件 ── */}
@@ -316,27 +322,9 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
         </div>
       </div>
 
-      <div className="form-group col-span-6">
-        <label className="form-label">贈送項目實績</label>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', padding: '10px', background: '#fffbeb', borderRadius: '8px', border: '1px solid #fde68a' }}>
-          {GIFT_OPTIONS.map(gift => {
-            const selected = (formData.giftItems || []).includes(gift);
-            return (
-              <button key={gift} type="button" onClick={() => {
-                const current = formData.giftItems || [];
-                const next = current.includes(gift) ? current.filter(g => g !== gift) : [...current, gift];
-                setFormData(prev => ({ ...prev, giftItems: next }));
-              }} style={{ padding: '3px 8px', borderRadius: '15px', border: `1px solid ${selected ? '#f59e0b' : '#e2e8f0'}`, background: selected ? '#fef3c7' : '#fff', color: selected ? '#92400e' : '#64748b', fontSize: '0.72rem', cursor: 'pointer' }}>
-                {gift}
-              </button>
-            );
-          })}
-        </div>
-      </div>
+
 
       {/* ── 財務資訊 ── */}
-      {userRole === 'admin' && (
-        <>
           <div className="form-group col-span-12">
             <h3 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#059669' }}>
               <DollarSign size={18} /> 最終帳務核算
@@ -358,8 +346,6 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
             <label className="form-label">POS/內部編號</label>
             <input type="text" name="posId" className="form-control" value={formData.posId || ''} onChange={handleChange} />
           </div>
-        </>
-      )}
 
       {/* ── 客戶特徵 (新增) ── */}
       <div className="form-group col-span-12">
@@ -479,7 +465,7 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
             <h4 style={{ fontSize: '0.9rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><AlertTriangle size={16} /> 車損照片</h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '10px' }}>
               <label 
-                style={{ aspectRation: '1/1', border: '2px dashed #cbd5e1', borderRadius: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: isUploading ? 'not-allowed' : 'pointer', background: '#f8fafc', padding: '10px' }}
+                style={{ aspectRatio: '1/1', border: '2px dashed #cbd5e1', borderRadius: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: isUploading ? 'not-allowed' : 'pointer', background: '#f8fafc', padding: '10px' }}
               >
                 <input type="file" multiple accept="image/*" style={{ display: 'none' }} disabled={isUploading} onChange={(e) => handleFileUpload(e, 'damage')} />
                 <Plus size={20} color="#64748b" />
@@ -499,7 +485,7 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
              <h4 style={{ fontSize: '0.9rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><ImageIcon size={16} /> 施工紀錄照片</h4>
              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '10px' }}>
               <label 
-                style={{ aspectRation: '1/1', border: '2px dashed #cbd5e1', borderRadius: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: isUploading ? 'not-allowed' : 'pointer', background: '#f8fafc', padding: '10px' }}
+                style={{ aspectRatio: '1/1', border: '2px dashed #cbd5e1', borderRadius: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: isUploading ? 'not-allowed' : 'pointer', background: '#f8fafc', padding: '10px' }}
               >
                 <input type="file" multiple accept="image/*" style={{ display: 'none' }} disabled={isUploading} onChange={(e) => handleFileUpload(e, 'progress')} />
                 <Plus size={20} color="#64748b" />

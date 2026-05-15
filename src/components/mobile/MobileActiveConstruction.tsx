@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Search, Hammer, Clock, ChevronRight, CheckCircle2, Car } from 'lucide-react';
+import { Search, Hammer, Clock, ChevronRight, CheckCircle2, Car, Trash2, Plus } from 'lucide-react';
 import type { Customer } from '../../types';
 
 interface MobileActiveConstructionProps {
   customers: Customer[];
   onEditCustomer: (customer: Customer) => void;
+  onDeleteCustomer: (id: string) => void;
+  onAddNew: () => void;
   onBack: () => void;
 }
 
-export const MobileActiveConstruction: React.FC<MobileActiveConstructionProps> = ({ customers, onEditCustomer, onBack }) => {
+export const MobileActiveConstruction: React.FC<MobileActiveConstructionProps> = ({ customers, onEditCustomer, onDeleteCustomer, onAddNew, onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const constructionCustomers = customers.filter(c => {
@@ -55,9 +57,29 @@ export const MobileActiveConstruction: React.FC<MobileActiveConstructionProps> =
           <h2 style={{ fontSize: '1.4rem', fontWeight: '900', color: '#1e293b', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Hammer size={24} color="var(--primary)" /> 店內施工中
           </h2>
-          <span style={{ background: 'var(--primary)', color: '#fff', padding: '2px 10px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 'bold' }}>
-            {constructionCustomers.length} 台
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <button 
+              onClick={onAddNew}
+              style={{ 
+                background: 'var(--primary)', 
+                color: '#fff', 
+                border: 'none', 
+                borderRadius: '12px', 
+                padding: '8px 12px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '6px',
+                fontSize: '0.85rem',
+                fontWeight: 'bold',
+                boxShadow: '0 4px 12px rgba(225, 29, 72, 0.2)'
+              }}
+            >
+              <Plus size={18} /> 新增
+            </button>
+            <span style={{ background: '#f1f5f9', color: '#64748b', padding: '4px 10px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 'bold' }}>
+              {constructionCustomers.length} 台
+            </span>
+          </div>
         </div>
       </header>
 
@@ -79,9 +101,15 @@ export const MobileActiveConstruction: React.FC<MobileActiveConstructionProps> =
             <div 
               key={customer.id} 
               onClick={() => onEditCustomer(customer)}
-              style={{ background: '#fff', borderRadius: '16px', padding: '16px', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}
+              style={{ background: '#fff', borderRadius: '16px', padding: '16px', border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)', position: 'relative' }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <button 
+                onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }}
+                style={{ position: 'absolute', top: '16px', right: '16px', background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444', zIndex: 10 }}
+              >
+                <Trash2 size={16} />
+              </button>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingRight: '40px' }}>
                 <div>
                   <div style={{ fontSize: '1.2rem', fontWeight: '900', color: '#1e293b' }}>{customer.plateNumber || '尚未掛牌'}</div>
                   <div style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 'bold' }}>{customer.name} • {customer.brand} {customer.model}</div>

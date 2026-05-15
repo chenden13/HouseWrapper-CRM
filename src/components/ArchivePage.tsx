@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import * as XLSX from 'xlsx';
+import XLSX from 'xlsx-js-style';
 import type { Customer, Role } from '../types';
 
 import {
   Search, Calendar, ShieldCheck,
   ChevronDown, ChevronUp, Gift, Package, CheckCircle2, FileUp, ListChecks,
   XCircle, FileText, AlertCircle, Hash, DollarSign,
-  ArrowUp, ArrowDown, Save, Image as ImageIcon, Camera, UserCheck, Clock
+  ArrowUp, ArrowDown, Save, Image as ImageIcon, Camera, UserCheck, Clock, Trash2
 } from 'lucide-react';
 
 
@@ -16,6 +16,7 @@ interface ArchivePageProps {
   onViewDetail: (customer: Customer) => void;
   onUpdate: (customer: Customer) => void;
   onEdit: (customer: Customer) => void;
+  onDeleteCustomer: (id: string) => void;
   userRole?: Role;
   onImportClick: () => void;
 }
@@ -61,7 +62,7 @@ const Section = ({ icon, title, children, color = '#64748b' }: { icon: React.Rea
 );
 
 export const ArchivePage: React.FC<ArchivePageProps> = ({ 
-  customers, onBack, onUpdate, onEdit, userRole, onImportClick
+  customers, onBack, onUpdate, onEdit, onDeleteCustomer, userRole, onImportClick
 }) => {
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -106,6 +107,14 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
              electricMod.includes(term) || 
              posId.includes(term) || 
              notes.includes(term);
+    })
+    .filter(c => {
+      if (sortBy === 'id') {
+        const id = String(c.id || '');
+        // 排除自動生成的 ID
+        if (id.includes('無編號') || (id.startsWith('c_') && id.length > 15)) return false;
+      }
+      return true;
     })
     .sort((a, b) => {
       if (sortBy === 'id') {
@@ -169,7 +178,21 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
     };
 
     // 1. 按照施工日期由「最早」到「最晚」排序
-    const sortedData = [...filteredCustomers].sort((a, b) => {
+    // 1. 獲取所有完工、定金、預約的客戶，並套用目前的搜尋過濾
+    const exportTargets = customers
+      .filter(c => ['completed', 'deposit', 'scheduled'].includes(c.status))
+      .filter(c => {
+        const lowerSearch = searchTerm.toLowerCase();
+        return (
+          c.name.toLowerCase().includes(lowerSearch) || 
+          c.phone.toLowerCase().includes(lowerSearch) || 
+          c.plateNumber.toLowerCase().includes(lowerSearch) ||
+          (c.model || '').toLowerCase().includes(lowerSearch) ||
+          (c.filmColor || '').toLowerCase().includes(lowerSearch)
+        );
+      });
+
+    const sortedData = [...exportTargets].sort((a, b) => {
       const valA = normalizeDate(a.expectedStartDate || a.expectedEndDate || a.deliveryDate || '');
       const valB = normalizeDate(b.expectedStartDate || b.expectedEndDate || b.deliveryDate || '');
       if (!valA) return 1;
@@ -225,16 +248,20 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
       lastMonth = month;
 
       exportData.push({
-        '施工月份': month,
-        '編號': c.id,
+        '大禮包交付': c.giftGiven ? 'O' : 'X',
+        '表單+注意事項': c.formSent ? 'O' : 'X',
+        '2周追蹤': c.followUp2Weeks ? 'O' : 'X',
+        '留車日期': c.expectedStartDate || '',
+        '施工日期': c.constructionStartDate || '',
+        '完工照發送': c.photosSent ? 'O' : 'X',
+        '編號': (String(c.id).includes('無編號') || (String(c.id).startsWith('c_') && String(c.id).length > 10)) ? '無編號' : c.id,
         '客戶姓名': c.name,
         '電話': c.phone,
         '車牌': c.plateNumber,
         '汽車品牌': brand,
         '車型': model,
-        '留車日期': c.expectedStartDate || '',
-        '施工日期': c.constructionStartDate || c.expectedEndDate || '',
-        '完工/交車日期': c.deliveryDate || (c.constructionStartDate ? c.expectedEndDate : ''),
+        '完工/交車日期': c.deliveryDate || c.expectedEndDate || '',
+        '目前狀態': c.status === 'completed' ? '已完工' : c.status === 'deposit' ? '已付定金' : '已預約',
         '交車時間': c.expectedDeliveryTime || '',
         '主施工項目': c.mainService || '',
         '膜料品牌': c.mainServiceBrand || '',
@@ -243,32 +270,69 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
         '電子後視鏡': c.digitalMirror || '',
         '電動改裝': c.electricMod || '',
         '加購配件': (c.customAccessories || []).map(a => a.name).filter(n => n).join(', '),
-        '贈送項目': (c.giftItems || []).join(', '),
-        '大禮包交付': c.giftGiven ? 'O' : 'X',
-        '表單發送': c.formSent ? 'O' : 'X',
-        '二週關心': c.followUp2Weeks ? 'O' : 'X',
-        '照片傳送': c.photosSent ? 'O' : 'X',
+
         '施工金額': c.totalAmount || 0,
         '毛利': c.revenue || 0,
         '活動折扣': c.appliedDiscountName || '',
         '得知管道': c.fromChannel || '',
-        '備註': c.notes || ''
+        '備註': c.notes || '',
+        '施工月份': month
       });
     });
 
     const ws = XLSX.utils.json_to_sheet(exportData);
     
+    // 2.5 套用樣式 (字體、標題、框線)
+    const range = XLSX.utils.decode_range(ws['!ref'] || 'A1');
+    for (let R = range.s.r; R <= range.e.r; ++R) {
+      for (let C = range.s.c; C <= range.e.c; ++C) {
+        const cell_address = XLSX.utils.encode_cell({ c: C, r: R });
+        if (!ws[cell_address]) continue;
+
+        // 全域基本樣式 (微軟正黑體)
+        ws[cell_address].s = {
+          font: { name: "Microsoft JhengHei", sz: 10, color: { rgb: "333333" } },
+          alignment: { vertical: "center", horizontal: "left", wrapText: true },
+          border: {
+            top: { style: "thin", color: { rgb: "EEEEEE" } },
+            bottom: { style: "thin", color: { rgb: "EEEEEE" } },
+            left: { style: "thin", color: { rgb: "EEEEEE" } },
+            right: { style: "thin", color: { rgb: "EEEEEE" } }
+          }
+        };
+
+        // 標題列樣式 (Row 0)
+        if (R === 0) {
+          ws[cell_address].s = {
+            font: { name: "Microsoft JhengHei", sz: 11, bold: true, color: { rgb: "FFFFFF" } },
+            fill: { fgColor: { rgb: "4F46E5" } }, // 使用與 CRM 相同的 Primary Color
+            alignment: { vertical: "center", horizontal: "center" },
+            border: {
+              top: { style: "thin", color: { rgb: "3730A3" } },
+              bottom: { style: "thin", color: { rgb: "3730A3" } },
+              left: { style: "thin", color: { rgb: "3730A3" } },
+              right: { style: "thin", color: { rgb: "3730A3" } }
+            }
+          };
+        }
+      }
+    }
+    
     // 3. 設定欄位寬度 (避免重疊)
     const wscols = [
-      {wch: 12}, // 月份
+      {wch: 12}, // 大禮包
+      {wch: 10}, // 表單
+      {wch: 10}, // 2周
+      {wch: 12}, // 留車日期
+      {wch: 12}, // 施工日期
+      {wch: 12}, // 照片發送
       {wch: 8},  // 編號
       {wch: 15}, // 姓名
       {wch: 15}, // 電話
       {wch: 12}, // 車牌
       {wch: 12}, // 品牌
       {wch: 15}, // 車型
-      {wch: 12}, // 留車日期
-      {wch: 12}, // 交車日期
+      {wch: 12}, // 完工日期
       {wch: 12}, // 交車時間
       {wch: 18}, // 項目
       {wch: 18}, // 品牌
@@ -278,15 +342,12 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
       {wch: 18}, // 改裝
       {wch: 30}, // 配件
       {wch: 30}, // 贈送
-      {wch: 12}, // 大禮包
-      {wch: 10}, // 表單
-      {wch: 10}, // 關心
-      {wch: 10}, // 照片
       {wch: 12}, // 金額
       {wch: 12}, // 毛利
       {wch: 15}, // 折扣
       {wch: 15}, // 管道
       {wch: 40}, // 備註
+      {wch: 12}, // 月份
     ];
     ws['!cols'] = wscols;
 
@@ -298,7 +359,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
     
     // 檔名加上日期
     const dateStr = new Date().toISOString().split('T')[0];
-    XLSX.writeFile(wb, `CRM_完工資料匯出(依施工順序)_${dateStr}.xlsx`);
+    XLSX.writeFile(wb, `CRM_綜合資料匯出(完工+待施工)_${dateStr}.xlsx`);
   };
 
   const toggle = (customer: Customer, field: keyof Customer) => {
@@ -406,7 +467,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                 className="list-row"
                 style={{ 
                   display: 'grid', 
-                  gridTemplateColumns: '70px 180px 180px 110px 110px 110px 1.5fr 50px',
+                  gridTemplateColumns: '70px 180px 180px 110px 110px 110px 1.5fr 100px',
                   alignItems: 'center',
                   padding: '16px',
                   gap: '12px',
@@ -419,7 +480,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                 }}
               >
                 <div style={{ fontWeight: 'bold', color: '#64748b', fontSize: '0.8rem' }}>
-                  {String(customer.id).includes('無編號') || (String(customer.id).startsWith('c_') && String(customer.id).length > 10) ? '—' : (customer.id || '—')}
+                  {String(customer.id).includes('無編號') || (String(customer.id).startsWith('c_') && String(customer.id).length > 10) ? '無編號' : (customer.id || '無編號')}
                 </div>
                 
                 {/* 2. 客戶資訊 */}
@@ -450,12 +511,22 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                 <div style={{ paddingRight: '20px' }}>
                   <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--primary)' }}>
                     {customer.mainServiceBrand} - {customer.filmColor}
+                    {customer.rearCoating && <span style={{ color: '#0369a1', marginLeft: '8px' }}>(+ {customer.rearCoating})</span>}
+                    {customer.hasHoodPpf && <span style={{ color: '#7c3aed', marginLeft: '8px' }}>(+ 引擎蓋犀牛皮)</span>}
                   </div>
                   {customer.notes && <div className="text-truncate" style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '2px' }}>{customer.notes}</div>}
                 </div>
 
                 {/* 8. 操作 */}
-                <div style={{ textAlign: 'right' }}>
+                <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '15px' }}>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#cbd5e1', padding: '5px', transition: 'color 0.2s' }}
+                    className="delete-btn-hover"
+                    title="刪除檔案"
+                  >
+                    <Trash2 size={20} />
+                  </button>
                   {isExpanded ? <ChevronUp size={24} color="var(--primary)" /> : <ChevronDown size={24} color="#cbd5e1" />}
                 </div>
               </div>
@@ -506,17 +577,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                         </div>
                       )}
 
-                      {customer.giftItems && customer.giftItems.length > 0 && (
-                        <div style={{ marginTop: '20px' }}>
-                          <Section icon={<Gift size={18} />} title="贈送與優惠" color="#f59e0b">
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                              {customer.giftItems.map(g => (
-                                <span key={g} style={{ padding: '4px 12px', borderRadius: '20px', background: '#fffbeb', color: '#92400e', fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid #fde68a' }}>{g}</span>
-                              ))}
-                            </div>
-                          </Section>
-                        </div>
-                      )}
+
 
                       {/* 客戶習性與特徵 (新增) */}
                       <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '2px solid #f1f5f9' }}>
@@ -549,11 +610,10 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                         <Section icon={<CheckCircle2 size={18} />} title="售後與交付狀態" color="#10b981">
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '16px' }}>
                             <ToggleBadge ok={customer.giftGiven} label="大禮包交付" onToggle={() => toggle(customer, 'giftGiven')} />
-                            <ToggleBadge ok={customer.formSent} label="表單發送" onToggle={() => toggle(customer, 'formSent')} />
+                            <ToggleBadge ok={customer.formSent} label="表單+注意事項" onToggle={() => toggle(customer, 'formSent')} />
                             <ToggleBadge ok={customer.photosSent} label="完工照傳送" onToggle={() => toggle(customer, 'photosSent')} />
                           </div>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                             <ToggleBadge ok={customer.followUp3Days} label="3天初探關心" onToggle={() => toggle(customer, 'followUp3Days')} />
                              <ToggleBadge ok={customer.followUp2Weeks} label="2週穏定度追蹤" onToggle={() => toggle(customer, 'followUp2Weeks')} />
                              <ToggleBadge ok={customer.followUp6Months} label="6個月健檢提醒" onToggle={() => toggle(customer, 'followUp6Months')} />
                              <ToggleBadge ok={customer.followUp1Year} label="1年活動邀約" onToggle={() => toggle(customer, 'followUp1Year')} />
@@ -600,7 +660,6 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                         </div>
                       )}
 
-                      {userRole === 'admin' && (
                         <div style={{ background: '#fff', padding: '20px', borderRadius: '16px', border: '1px solid #f1f5f9' }}>
                           <Section icon={<DollarSign size={18} />} title="帳務資訊" color="#059669">
                             <InfoRow label="總成交金額" value={customer.totalAmount ? `$ ${customer.totalAmount.toLocaleString()}` : '—'} />
@@ -612,7 +671,6 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                             )}
                           </Section>
                         </div>
-                      )}
 
                       <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
                         <Section icon={<FileText size={18} />} title="最後結案備註" color="#475569">

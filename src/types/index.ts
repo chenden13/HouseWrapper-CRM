@@ -52,6 +52,7 @@ export interface Customer {
   inCalendar?: boolean;
   mainService?: string;
   mainServiceBrand?: string;
+  mainServiceSeries?: string;
   expectedStartDate?: string;    // 預計進場/留車日期
   constructionTime?: string;     // 預計進場時間/留車時間
   constructionStartDate?: string; // 預計施工日期
@@ -59,6 +60,12 @@ export interface Customer {
   expectedEndDate?: string;      // 預計交車日期
   expectedDeliveryTime?: string; // 預計交車時間
   materialOrdered?: boolean;
+  prepDone?: boolean;            // 事前準備是否全部完成
+  tintPrepDone?: boolean;        // 隔熱紙是否約好
+  mirrorPrepDone?: boolean;      // 電子後視鏡是否約好
+  partsPrepDone?: boolean;       // 其他配件是否備齊
+  inConstructionSchedule?: boolean; // 是否加入施工排程
+  inWashSchedule?: boolean;         // 是否加入洗車排程
   
   windowTint?: string;
   windowTintBrand?: string;
@@ -76,6 +83,10 @@ export interface Customer {
   electricModPrice?: number;
   electricModScheduledTime?: string;
   electricModDate?: string;
+  rearCoating?: string;
+  rearCoatingPrice?: number;
+  hasHoodPpf?: boolean;
+  hoodPpfPrice?: number;
   mainServicePrice?: number;
   
   customAccessories?: Accessory[];

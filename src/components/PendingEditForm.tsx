@@ -40,12 +40,74 @@ const TINT_GROUPS: Record<string, string[]> = {
   "Xpel": ["Xpel-X2 Plus"]
 };
 
-const GIFT_OPTIONS = [
-  '大燈', '日行燈', 'ABC柱', '握把',
-  '前踏板', '後踏板', '充電蓋',
-  '尾燈(三項)', '玻璃鍍膜(三項)', '彩繪(視範圍)',
-  '浮雕(視範圍)', '鋼琴烤漆(視範圍)'
-];
+const COLOR_WRAP_SERIES: Record<string, Record<string, number>> = {
+  'AX': {
+    'E系列': 60000,
+    'V系列': 63000,
+    'G系列': 65000,
+    'T系列': 68000,
+  },
+  '3M': {
+    'G/M/S系列': 70000,
+    'GP/SP系列': 75000,
+    'HG系列': 80000,
+  }
+};
+
+const PPF_PRICING: Record<string, Record<string, number>> = {
+  'AX': {
+    '亮面': 90000,
+    '消光': 100000
+  },
+  'Pixel8bot': {
+    '亮面': 100000,
+    '消光': 110000
+  },
+  '3M': {
+    '100g (亮面)': 110000,
+    '150g (亮面)': 125000,
+    '200g (亮面)': 135000,
+    '200g (消光)': 145000
+  },
+  'Stek': {
+    'Lite (亮面)': 130000,
+    'Matte (消光)': 140000
+  }
+};
+
+const FRONT_PPF_PRICING: Record<string, number> = {
+  'Pixel8bit': 35000,
+  '3M 150g': 45000,
+  '3M 200g': 55000
+};
+
+const REAR_COATING_PRICING: Record<string, number> = {
+  'Servfaces (一年期)': 12000,
+  'CarPro (兩年期)': 18000
+};
+
+const MIRROR_REC_LIST: Record<string, number> = {
+  '大邁 M996': 12800,
+  '快譯通 S95B': 14000,
+  '快譯通 S95A': 14000,
+  '快譯通 S86': 12000,
+  'DOD T-one plus': 20000
+};
+
+const DASHCAM_REC_LIST: Record<string, number> = {
+  '快譯通 V92GH': 11500
+};
+
+const SIZE_OFFSET: Record<string, number> = {
+  'XS': -5000,
+  'S': 0,
+  'M': 5000,
+  'L': 10000,
+  'XL': 15000,
+  '2XL': 20000,
+};
+
+
 
 const PROMOTIONS = [
   { id: 'none', label: '無優惠', type: 'none', val: 0 },
@@ -71,7 +133,7 @@ interface PendingEditFormProps {
   onSuggestId?: string;
   vehicleMaster?: any[];
   userRole?: Role;
-  onSubmit: (updatedCustomer: Customer, moveToConstruction: boolean) => void;
+  onSubmit: (updatedCustomer: Customer, moveToConstruction: boolean, originalId?: string) => void;
   onCancel: () => void;
 }
 
@@ -80,18 +142,18 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
 }) => {
   const [formData, setFormData] = useState<Partial<Customer>>(() => {
     if (customer) {
-      // Data Migration: If it's an old record (missing constructionStartDate), 
-      // move expectedEndDate to constructionStartDate and deliveryDate to expectedEndDate.
-      const hasNewFormat = !!customer.constructionStartDate;
+      // 修正過往可能導致交車日期被清空的遷移邏輯
+      // 確保 expectedEndDate (預計交車日期) 不會被 deliveryDate (通常施工中為空) 覆蓋
       return { 
         ...customer, 
-        constructionStartDate: customer.constructionStartDate || customer.expectedEndDate || '',
-        expectedEndDate: hasNewFormat ? customer.expectedEndDate : (customer.deliveryDate || ''),
+        constructionStartDate: customer.constructionStartDate || '',
+        expectedEndDate: customer.expectedEndDate || '',
         customAccessories: customer.customAccessories || [] 
       };
     }
     return { id: onSuggestId, status: 'scheduled', customAccessories: [] };
   });
+  const [originalId] = useState(customer?.id);
   
   const [showConsultation, setShowConsultation] = useState(false);
   const [selectedPart, setSelectedPart] = useState<string>('前保桿');
@@ -149,6 +211,8 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     windowTintPrice: customer?.windowTintPrice || 0,
     digitalMirrorPrice: customer?.digitalMirrorPrice || 0,
     electricModPrice: customer?.electricModPrice || 0,
+    rearCoatingPrice: customer?.rearCoatingPrice || 0,
+    hoodPpfPrice: customer?.hoodPpfPrice || 0,
     cost: customer?.cost || 0,
     manualTotalPrice: customer?.totalAmount || 0,
     useManualTotal: false
@@ -203,7 +267,104 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     }
   }, [formData.model, formData.windowTintBrand, formData.hasSunroof]);
 
-  let subtotal = (prices.mainServicePrice || 0) + (prices.windowTintPrice || 0) + (prices.digitalMirrorPrice || 0) + (prices.electricModPrice || 0);
+  // 主施工項目 (改色/犀牛皮) 對應價格邏輯
+  React.useEffect(() => {
+    const service = formData.mainService || '';
+    const brand = formData.mainServiceBrand || '';
+    const series = formData.mainServiceSeries || '';
+    const size = formData.vehicleSize || '';
+    
+    if (service === '全車改色膜' && (brand === 'AX' || brand === '3M') && series) {
+      const basePrices = COLOR_WRAP_SERIES[brand];
+      if (basePrices && basePrices[series]) {
+        const basePrice = basePrices[series];
+        const offset = SIZE_OFFSET[size] || 0;
+        const targetPrice = basePrice + offset;
+        
+        if (targetPrice > 0 && prices.mainServicePrice !== targetPrice) {
+          setPrices(prev => ({ ...prev, mainServicePrice: targetPrice }));
+        }
+      }
+    } else if (service === '全車犀牛皮' && brand && series) {
+      const basePrices = PPF_PRICING[brand];
+      if (basePrices && basePrices[series]) {
+        const basePrice = basePrices[series];
+        const offset = SIZE_OFFSET[size] || 0;
+        const targetPrice = basePrice + offset;
+        
+        if (targetPrice > 0 && prices.mainServicePrice !== targetPrice) {
+          setPrices(prev => ({ ...prev, mainServicePrice: targetPrice }));
+        }
+      }
+    } else if (service === '局部保護/改色' && brand && FRONT_PPF_PRICING[brand]) {
+      const base = FRONT_PPF_PRICING[brand];
+      let targetPrice = base;
+      if (size === 'XL') targetPrice += 5000;
+      else if (size === '2XL') targetPrice += 10000;
+      
+      if (targetPrice > 0 && prices.mainServicePrice !== targetPrice) {
+        setPrices(prev => ({ ...prev, mainServicePrice: targetPrice }));
+      }
+    }
+  }, [formData.mainService, formData.mainServiceBrand, formData.mainServiceSeries, formData.vehicleSize]);
+
+  // 後半車鍍膜價格邏輯
+  React.useEffect(() => {
+    const rearCoating = formData.rearCoating || '';
+    const size = formData.vehicleSize || '';
+    
+    if (rearCoating && REAR_COATING_PRICING[rearCoating]) {
+      const base = REAR_COATING_PRICING[rearCoating];
+      let targetPrice = base;
+      if (size === 'L') targetPrice += 1000;
+      else if (size === 'XL') targetPrice += 2000;
+      else if (size === '2XL') targetPrice += 3000;
+      
+      if (targetPrice > 0 && prices.rearCoatingPrice !== targetPrice) {
+        setPrices(prev => ({ ...prev, rearCoatingPrice: targetPrice }));
+      }
+    } else if (!rearCoating && prices.rearCoatingPrice !== 0) {
+      setPrices(prev => ({ ...prev, rearCoatingPrice: 0 }));
+    }
+  }, [formData.rearCoating, formData.vehicleSize]);
+
+  // 改色加購引擎蓋犀牛皮邏輯
+  React.useEffect(() => {
+    const hasHoodPpf = formData.hasHoodPpf;
+    const service = formData.mainService || '';
+    
+    if (service === '全車改色膜' && hasHoodPpf) {
+      if (prices.hoodPpfPrice !== 18000) {
+        setPrices(prev => ({ ...prev, hoodPpfPrice: 18000 }));
+      }
+    } else if (prices.hoodPpfPrice !== 0) {
+      setPrices(prev => ({ ...prev, hoodPpfPrice: 0 }));
+    }
+  }, [formData.hasHoodPpf, formData.mainService]);
+
+  // 電子後視鏡價格邏輯
+  React.useEffect(() => {
+    const mirror = formData.digitalMirror || '';
+    if (mirror && MIRROR_REC_LIST[mirror]) {
+      const targetPrice = MIRROR_REC_LIST[mirror];
+      if (prices.digitalMirrorPrice !== targetPrice) {
+        setPrices(prev => ({ ...prev, digitalMirrorPrice: targetPrice }));
+      }
+    }
+  }, [formData.digitalMirror]);
+
+  // 行車記錄器價格邏輯 (若電動改裝或其他欄位有用到)
+  React.useEffect(() => {
+    const mod = formData.electricMod || '';
+    if (mod && DASHCAM_REC_LIST[mod]) {
+      const targetPrice = DASHCAM_REC_LIST[mod];
+      if (prices.electricModPrice !== targetPrice) {
+        setPrices(prev => ({ ...prev, electricModPrice: targetPrice }));
+      }
+    }
+  }, [formData.electricMod]);
+
+  let subtotal = (prices.mainServicePrice || 0) + (prices.windowTintPrice || 0) + (prices.digitalMirrorPrice || 0) + (prices.electricModPrice || 0) + (prices.rearCoatingPrice || 0) + (prices.hoodPpfPrice || 0);
   formData.customAccessories?.forEach(acc => {
     subtotal += Number(acc.price) || 0;
   });
@@ -254,11 +415,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     setFormData(prev => ({ ...prev, [field]: !prev[field] }));
   };
 
-  const toggleGift = (gift: string) => {
-    const current = formData.giftItems || [];
-    const next = current.includes(gift) ? current.filter(g => g !== gift) : [...current, gift];
-    setFormData(prev => ({ ...prev, giftItems: next }));
-  };
+
 
   const addAccessory = () => {
     const newAcc: Accessory = { id: `acc_${Date.now()}`, name: '', price: 0 };
@@ -313,6 +470,8 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
       discountAmount: discountAmount,
       digitalMirrorPrice: prices.digitalMirrorPrice,
       electricModPrice: prices.electricModPrice,
+      rearCoatingPrice: prices.rearCoatingPrice,
+      hoodPpfPrice: prices.hoodPpfPrice,
       cost: prices.cost
     };
   };
@@ -320,7 +479,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     const status = (formData.status === 'new') ? 'scheduled' : (formData.status as StatusType);
-    onSubmit(prepareSubmitData(status), false);
+    onSubmit(prepareSubmitData(status), false, originalId);
   };
 
   const handleMoveToConstruction = (e: React.FormEvent) => {
@@ -353,19 +512,19 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
       updatedData.constructionChecklist = simplifiedChecklist;
     }
 
-    onSubmit(updatedData, true);
+    onSubmit(updatedData, true, originalId);
   };
 
   const handleConvert = () => {
     const isConfirm = window.confirm('確定要將此諮詢案件轉為「正式下定」嗎？轉入後將可以填寫報價與排程時間。');
     if (!isConfirm) return;
-    onSubmit(prepareSubmitData('scheduled'), false);
+    onSubmit(prepareSubmitData('scheduled'), false, originalId);
   };
 
   const handleRevertToInquiry = () => {
     const isConfirm = window.confirm('確定要將此案件「退回諮詢進件區」嗎？狀態將變回新案件，並從排程名單中移除。');
     if (!isConfirm) return;
-    onSubmit(prepareSubmitData('new'), false);
+    onSubmit(prepareSubmitData('new'), false, originalId);
   };
 
   return (
@@ -600,22 +759,81 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
           </div>
           <div className="form-group col-span-2">
             <label className="form-label">品牌</label>
-            <select name="mainServiceBrand" className="form-control" value={formData.mainServiceBrand || ''} onChange={handleChange}>
+            <select name="mainServiceBrand" className="form-control" value={formData.mainServiceBrand || ''} onChange={(e) => {
+              handleChange(e);
+              setFormData(prev => ({ ...prev, mainServiceSeries: '' }));
+            }}>
               <option value="">選擇品牌</option>
               {((formData.mainService || '').includes('改色') 
                 ? ['AX', '3M', 'CYS', 'TeckWrap'] 
-                : ['3M', 'Michelin', 'Atarap', 'Stek']
+                : (formData.mainService || '').includes('犀牛皮')
+                  ? ['AX', 'Pixel8bot', '3M', 'Stek']
+                  : (formData.mainService === '局部保護/改色')
+                    ? ['Pixel8bit', '3M 150g', '3M 200g']
+                    : ['3M', 'Michelin', 'Atarap', 'Stek']
               ).map(brand => <option key={brand} value={brand}>{brand}</option>)}
             </select>
           </div>
+
+          {formData.mainService === '全車改色膜' && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') && (
+            <div className="form-group col-span-2">
+              <label className="form-label" style={{ color: '#2563eb', fontWeight: 'bold' }}>等級/系列</label>
+              <select name="mainServiceSeries" className="form-control" value={formData.mainServiceSeries || ''} onChange={handleChange} style={{ borderColor: '#3b82f6', background: '#eff6ff' }}>
+                <option value="">選擇系列</option>
+                {Object.keys(COLOR_WRAP_SERIES[formData.mainServiceBrand] || {}).map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+          )}
+
+          {formData.mainService === '全車犀牛皮' && formData.mainServiceBrand && (
+            <div className="form-group col-span-2">
+              <label className="form-label" style={{ color: '#059669', fontWeight: 'bold' }}>規格/系列</label>
+              <select name="mainServiceSeries" className="form-control" value={formData.mainServiceSeries || ''} onChange={handleChange} style={{ borderColor: '#10b981', background: '#f0fdf4' }}>
+                <option value="">選擇規格</option>
+                {Object.keys(PPF_PRICING[formData.mainServiceBrand] || {}).map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+          )}
+
           <div className="form-group col-span-2">
             <label className="form-label">膜料顏色</label>
             <input type="text" name="filmColor" className="form-control" placeholder="顏色細項" value={formData.filmColor || ''} onChange={handleChange} />
           </div>
-          {userRole === 'admin' && (
-            <div className="form-group col-span-4">
-              <label className="form-label">施工價格 ($)</label>
-              <input type="number" name="mainServicePrice" className="form-control" value={prices.mainServicePrice || ''} onChange={handlePriceChange} placeholder="0" />
+          <div className={`form-group ${formData.mainService === '全車改色膜' && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') ? 'col-span-2' : 'col-span-4'}`}>
+            <label className="form-label">施工價格 ($)</label>
+            <input type="number" name="mainServicePrice" className="form-control" value={prices.mainServicePrice || ''} onChange={handlePriceChange} placeholder="0" />
+          </div>
+
+          {formData.mainService === '全車改色膜' && (
+            <div className="col-span-12" style={{ marginTop: '8px', background: '#f5f3ff', padding: '16px', borderRadius: '12px', border: '1px solid #ddd6fe' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <label className="checkbox-wrap" style={{ fontWeight: 'bold', color: '#5b21b6', fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <input type="checkbox" name="hasHoodPpf" checked={!!formData.hasHoodPpf} onChange={handleChange} style={{ width: '18px', height: '18px' }} /> 
+                  加購：引擎蓋+前葉子板犀牛皮 (Pixel8bit)
+                </label>
+                <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                   <span style={{ fontSize: '0.8rem', color: '#7c3aed' }}>加購金額:</span>
+                   <input type="number" name="hoodPpfPrice" className="form-control" style={{ width: '120px', borderColor: '#ddd6fe' }} value={prices.hoodPpfPrice || ''} onChange={handlePriceChange} placeholder="0" />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {formData.mainService === '局部保護/改色' && (
+            <div className="col-span-12" style={{ marginTop: '8px', background: '#fffbeb', padding: '16px', borderRadius: '12px', border: '1px solid #fde68a' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '16px', alignItems: 'end' }}>
+                <div className="col-span-6">
+                  <label className="form-label" style={{ fontWeight: 'bold', color: '#92400e' }}>迎風面加購 - 後半車鍍膜</label>
+                  <select name="rearCoating" className="form-control" value={formData.rearCoating || ''} onChange={handleChange} style={{ borderColor: '#fbbf24' }}>
+                    <option value="">不需要加購</option>
+                    {Object.keys(REAR_COATING_PRICING).map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                  </select>
+                </div>
+                <div className="col-span-6">
+                  <label className="form-label">鍍膜加購價格 ($)</label>
+                  <input type="number" name="rearCoatingPrice" className="form-control" value={prices.rearCoatingPrice || ''} onChange={handlePriceChange} placeholder="0" style={{ borderColor: '#fbbf24' }} />
+                </div>
+              </div>
             </div>
           )}
 
@@ -653,12 +871,10 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               </div>
 
               <div style={{ display: 'flex', gap: '12px', marginTop: '12px', alignItems: 'center' }}>
-                {userRole === 'admin' && (
-                  <div style={{ flex: '0 0 140px' }}>
-                    <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
-                    <input type="number" name="windowTintPrice" className="form-control" value={prices.windowTintPrice || ''} onChange={handlePriceChange} placeholder="$" />
-                  </div>
-                )}
+                <div style={{ flex: '0 0 140px' }}>
+                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
+                  <input type="number" name="windowTintPrice" className="form-control" value={prices.windowTintPrice || ''} onChange={handlePriceChange} placeholder="$" />
+                </div>
                 <div style={{ flex: '0 0 160px' }}>
                   <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計進場日期</label>
                   <input type="date" name="windowTintDate" className="form-control" value={formData.windowTintDate || ''} onChange={handleChange} />
@@ -673,14 +889,30 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
 
           {/* 其他配件項目 (同步優化) */}
           {[
-            { label: '電子後視鏡', field: 'digitalMirror', brandField: 'digitalMirrorBrand', priceField: 'digitalMirrorPrice', scheduleField: 'digitalMirrorScheduledTime', dateField: 'digitalMirrorDate', color: '#8b5cf6' },
-            { label: '電動改裝', field: 'electricMod', brandField: 'electricModBrand', priceField: 'electricModPrice', scheduleField: 'electricModScheduledTime', dateField: 'electricModDate', color: '#ec4899' }
+            {label: '電子後視鏡', field: 'digitalMirror', brandField: 'digitalMirrorBrand', priceField: 'digitalMirrorPrice', scheduleField: 'digitalMirrorScheduledTime', dateField: 'digitalMirrorDate', color: '#8b5cf6', isMirror: true },
+            {label: '行車記錄器/電動改裝', field: 'electricMod', brandField: 'electricModBrand', priceField: 'electricModPrice', scheduleField: 'electricModScheduledTime', dateField: 'electricModDate', color: '#ec4899', isMod: true }
           ].map(row => (
             <div key={row.field} className="col-span-12" style={{ borderLeft: `4px solid ${row.color}`, background: '#f8fafc', padding: '12px 16px', borderRadius: '8px', marginBottom: '8px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '16px' }}>
                 <div className="col-span-4">
                   <label className="form-label" style={{ fontWeight: 'bold', color: row.color }}>{row.label} - 項目</label>
-                  <input type="text" name={row.field} className="form-control" value={formData[row.field as keyof Customer] as string || ''} onChange={handleChange} placeholder="輸入項目名稱" />
+                  {row.isMirror ? (
+                    <select name={row.field} className="form-control" value={formData[row.field as keyof Customer] as string || ''} onChange={handleChange}>
+                      <option value="">請選擇機型</option>
+                      {Object.keys(MIRROR_REC_LIST).map(m => <option key={m} value={m}>{m}</option>)}
+                      <option value="其他">其他 (手動輸入於規格)</option>
+                    </select>
+                  ) : row.isMod ? (
+                    <select name={row.field} className="form-control" value={formData[row.field as keyof Customer] as string || ''} onChange={handleChange}>
+                      <option value="">請選擇或輸入</option>
+                      {Object.keys(DASHCAM_REC_LIST).map(m => <option key={m} value={m}>{m}</option>)}
+                      <option value="電動尾門">電動尾門</option>
+                      <option value="電動前開">電動前開</option>
+                      <option value="其他">其他 (手動輸入於規格)</option>
+                    </select>
+                  ) : (
+                    <input type="text" name={row.field} className="form-control" value={formData[row.field as keyof Customer] as string || ''} onChange={handleChange} placeholder="輸入項目名稱" />
+                  )}
                 </div>
                 <div className="col-span-8">
                   <div style={{ display: 'flex', gap: '12px', alignItems: 'end' }}>
@@ -693,12 +925,10 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               </div>
 
               <div style={{ display: 'flex', gap: '12px', marginTop: '12px', alignItems: 'center' }}>
-                {userRole === 'admin' && (
-                  <div style={{ flex: '0 0 140px' }}>
-                     <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
-                     <input type="number" name={row.priceField} className="form-control" value={(prices as any)[row.priceField] || ''} onChange={handlePriceChange} placeholder="$" />
-                  </div>
-                )}
+                <div style={{ flex: '0 0 140px' }}>
+                   <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
+                   <input type="number" name={row.priceField} className="form-control" value={(prices as any)[row.priceField] || ''} onChange={handlePriceChange} placeholder="$" />
+                </div>
                 <div style={{ flex: '0 0 160px' }}>
                    <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計日期</label>
                    <input type="date" name={row.dateField} className="form-control" value={formData[row.dateField as keyof Customer] as string || ''} onChange={handleChange} />
@@ -727,12 +957,10 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
                     <label className="form-label">配件名稱</label>
                     <input type="text" className="form-control" value={acc.name} onChange={(e) => updateAccessory(acc.id, 'name', e.target.value)} placeholder="車牌框..." />
                   </div>
-                  {userRole === 'admin' && (
-                    <div className="form-group" style={{ flex: 1 }}>
-                      <label className="form-label">價格 ($)</label>
-                      <input type="number" className="form-control" value={acc.price || ''} onChange={(e) => updateAccessory(acc.id, 'price', Number(e.target.value))} placeholder="0" />
-                    </div>
-                  )}
+                  <div className="form-group" style={{ flex: 1 }}>
+                    <label className="form-label">價格 ($)</label>
+                    <input type="number" className="form-control" value={acc.price || ''} onChange={(e) => updateAccessory(acc.id, 'price', Number(e.target.value))} placeholder="0" />
+                  </div>
                   <div className="form-group" style={{ flex: 1 }}>
                     <label className="form-label">預計施工</label>
                     <input 
@@ -755,30 +983,9 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
             </div>
           </div>
 
-          {/* ── 贈送項目 ── */}
-          <h3 className="section-title col-span-12" style={{ borderBottom: '2px solid #e2e8f0', paddingBottom: '8px', marginTop: '20px', color: '#f59e0b' }}>
-            <Gift size={18} /> 贈送清單 (不計費)
-          </h3>
-          <div className="col-span-12">
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '14px', background: '#fffbeb', borderRadius: '12px', border: '1px solid #fde68a' }}>
-              {GIFT_OPTIONS.map(gift => {
-                const selected = (formData.giftItems || []).includes(gift);
-                return (
-                  <button
-                    key={gift}
-                    type="button"
-                    onClick={() => toggleGift(gift)}
-                    style={{ padding: '5px 12px', borderRadius: '20px', border: `1.5px solid ${selected ? '#f59e0b' : '#e2e8f0'}`, background: selected ? '#fef3c7' : '#fff', color: selected ? '#92400e' : '#64748b', fontSize: '0.8rem', fontWeight: selected ? '700' : '500', cursor: 'pointer', transition: 'all 0.15s' }}
-                  >
-                    {selected ? '✓ ' : ''}{gift}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+
 
           {/* ── 價格總結區間 ── */}
-          {userRole === 'admin' && (
             <div className="col-span-12" style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', marginTop: '20px' }}>
               <div style={{ marginBottom: '16px' }}>
                 <label className="form-label" style={{ marginBottom: '8px', display: 'block', color: '#1e3a8a', fontWeight: 'bold' }}>選擇適用活動 / 優惠 (可多選)</label>
@@ -868,7 +1075,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
                 </div>
               </div>
             </div>
-          )}
+
         </>
       )}
 

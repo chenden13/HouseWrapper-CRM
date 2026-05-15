@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Search, History, ChevronRight, Hash, UserCheck } from 'lucide-react';
+import { Search, History, ChevronRight, Hash, UserCheck, Trash2 } from 'lucide-react';
 import type { Customer } from '../../types';
 
 interface MobileArchiveProps {
   customers: Customer[];
   onEdit: (customer: Customer) => void;
+  onDeleteCustomer: (id: string) => void;
   onBack: () => void;
 }
 
-export const MobileArchive: React.FC<MobileArchiveProps> = ({ customers, onEdit, onBack }) => {
+export const MobileArchive: React.FC<MobileArchiveProps> = ({ customers, onEdit, onDeleteCustomer, onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const archiveCustomers = customers.filter(c => {
@@ -86,8 +87,15 @@ export const MobileArchive: React.FC<MobileArchiveProps> = ({ customers, onEdit,
           <div 
             key={customer.id} 
             onClick={() => onEdit(customer)}
-            style={{ background: '#fff', borderRadius: '16px', padding: '16px', border: '1px solid #e2e8f0' }}
+            style={{ background: '#fff', borderRadius: '16px', padding: '16px', border: '1px solid #e2e8f0', position: 'relative' }}
           >
+            <button 
+              onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }}
+              style={{ position: 'absolute', bottom: '16px', right: '16px', background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444', zIndex: 10 }}
+              title="刪除"
+            >
+              <Trash2 size={18} />
+            </button>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
               <div style={{ fontWeight: '900', color: '#1e293b', fontSize: '1.1rem' }}>{customer.plateNumber}</div>
               <div style={{ fontSize: '0.8rem', color: '#6366f1', fontWeight: 'bold' }}>POS: {customer.posId || '-'}</div>

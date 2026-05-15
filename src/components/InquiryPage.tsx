@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Search, UserPlus, Calendar, ChevronRight, Plus } from 'lucide-react';
+import { Search, UserPlus, Calendar, ChevronRight, Plus, Trash2 } from 'lucide-react';
 import type { Customer, Role } from '../types';
 
 interface InquiryPageProps {
   customers: Customer[];
   onEditCustomer: (customer: Customer) => void;
+  onDeleteCustomer: (id: string) => void;
   userRole?: Role;
   onAddNew?: () => void;
 }
 
-export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCustomer, userRole, onAddNew }) => {
+export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCustomer, onDeleteCustomer, userRole, onAddNew }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const inquiries = customers.filter(c => 
@@ -60,7 +61,7 @@ export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCusto
         {/* Table Header */}
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: '80px 120px 180px 180px 1.5fr 1.5fr 60px',
+          gridTemplateColumns: '80px 120px 180px 180px 1.5fr 1.5fr 100px',
           padding: '15px 20px',
           background: '#f8fafc',
           borderBottom: '1px solid #e2e8f0',
@@ -86,7 +87,7 @@ export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCusto
               onClick={() => onEditCustomer(customer)}
               style={{ 
                 display: 'grid', 
-                gridTemplateColumns: '80px 120px 180px 180px 1.5fr 1.5fr 60px',
+                gridTemplateColumns: '80px 120px 180px 180px 1.5fr 1.5fr 100px',
                 alignItems: 'center',
                 padding: '18px 20px',
                 borderBottom: '1px solid #f1f5f9',
@@ -128,9 +129,16 @@ export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCusto
                 </div>
               </div>
 
-              <div style={{ textAlign: 'center' }}>
+              <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', gap: '10px' }}>
                 <button 
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#cbd5e1' }}
+                  onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ef4444', padding: '5px' }}
+                  title="刪除資料"
+                >
+                  <Trash2 size={18} />
+                </button>
+                <button 
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#cbd5e1', padding: '5px' }}
                 >
                   <ChevronRight size={20} />
                 </button>

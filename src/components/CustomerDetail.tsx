@@ -67,16 +67,7 @@ export const CustomerDetail: React.FC<{ customer: Customer }> = ({ customer }) =
           </div>
         )}
 
-        {customer.giftItems && customer.giftItems.length > 0 && (
-          <div style={{ marginTop: '12px', borderTop: '1px dashed #bae6fd', paddingTop: '8px' }}>
-            <div style={{ fontSize: '0.75rem', color: '#64748b' }}>贈送項目</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '4px' }}>
-              {customer.giftItems.map(gift => (
-                <span key={gift} style={{ background: '#fef2f2', padding: '2px 8px', borderRadius: '4px', border: '1px solid #fee2e2', fontSize: '0.85rem', color: '#b91c1c' }}>{gift}</span>
-              ))}
-            </div>
-          </div>
-        )}
+
       </div>
 
       <div style={{ background: '#f9fafb', padding: '16px', borderRadius: '8px' }}>

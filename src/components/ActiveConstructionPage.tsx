@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Search, Hammer, Settings, Camera, Image as ImageIcon } from 'lucide-react';
+import { Search, Hammer, Settings, Camera, Image as ImageIcon, Trash2, ChevronRight } from 'lucide-react';
 import type { Customer } from '../types';
 
 interface ActiveConstructionPageProps {
   customers: Customer[];
   onEditCustomer: (customer: Customer) => void;
+  onDeleteCustomer: (id: string) => void;
 }
 
-export const ActiveConstructionPage: React.FC<ActiveConstructionPageProps> = ({ customers, onEditCustomer }) => {
+export const ActiveConstructionPage: React.FC<ActiveConstructionPageProps> = ({ customers, onEditCustomer, onDeleteCustomer }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const constructionCustomers = customers.filter(c => {
@@ -71,7 +72,7 @@ export const ActiveConstructionPage: React.FC<ActiveConstructionPageProps> = ({ 
         {/* Table Header */}
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: '140px 140px 1.5fr 1.5fr 360px 60px',
+          gridTemplateColumns: '140px 140px 1.5fr 1.5fr 360px 100px',
           padding: '18px 25px',
           background: 'var(--primary)',
           fontWeight: 'bold',
@@ -96,7 +97,7 @@ export const ActiveConstructionPage: React.FC<ActiveConstructionPageProps> = ({ 
                 className="list-row"
                 style={{ 
                   display: 'grid', 
-                  gridTemplateColumns: '140px 140px 1.5fr 1.5fr 360px 60px',
+                  gridTemplateColumns: '140px 140px 1.5fr 1.5fr 360px 100px',
                   alignItems: 'center',
                   padding: '20px 25px',
                   borderBottom: '1px solid #f1f5f9',
@@ -167,26 +168,34 @@ export const ActiveConstructionPage: React.FC<ActiveConstructionPageProps> = ({ 
                   <div style={{ background: '#f0fdf4', padding: '6px', borderRadius: '8px', border: '1px solid #bbf7d0' }}>
                     <div style={{ fontSize: '0.65rem', color: '#166534', fontWeight: 'bold' }}>2.施工期間</div>
                     <div style={{ fontSize: '0.8rem', color: '#064e3b', fontWeight: '800' }}>
-                      {customer.constructionStartDate?.slice(5) || customer.expectedEndDate?.slice(5) || '-'}
+                      {customer.constructionStartDate?.slice(5) || '—'}
                       {customer.constructionEndDate ? ` ~ ${customer.constructionEndDate.slice(5)}` : ''}
                     </div>
                   </div>
                   <div style={{ background: '#fdf2f8', padding: '6px', borderRadius: '8px', border: '1px solid #fbcfe8' }}>
                     <div style={{ fontSize: '0.65rem', color: '#be185d', fontWeight: 'bold' }}>3.預計交車</div>
                     <div style={{ fontSize: '0.8rem', color: '#831843', fontWeight: '800' }}>
-                      {customer.constructionStartDate ? customer.expectedEndDate?.slice(5) : customer.deliveryDate?.slice(5) || '-'}
+                      {customer.expectedEndDate?.slice(5) || '—'}
                     </div>
                     <div style={{ fontSize: '0.7rem', color: '#be185d' }}>{customer.expectedDeliveryTime}</div>
                   </div>
                 </div>
 
                 {/* 6. 操作 */}
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ textAlign: 'center', display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }}
+                    style={{ background: '#fef2f2', border: '1px solid #fee2e2', width: '36px', height: '36px', borderRadius: '10px', cursor: 'pointer', color: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    title="刪除"
+                  >
+                    <Trash2 size={18} />
+                  </button>
                   <button 
                     onClick={() => onEditCustomer(customer)}
-                    style={{ background: '#f1f5f9', border: '1px solid #e2e8f0', width: '40px', height: '40px', borderRadius: '12px', cursor: 'pointer', color: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    style={{ background: '#f1f5f9', border: '1px solid #e2e8f0', width: '36px', height: '36px', borderRadius: '10px', cursor: 'pointer', color: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    title="設定"
                   >
-                    <Settings size={20} />
+                    <Settings size={18} />
                   </button>
                 </div>
               </div>

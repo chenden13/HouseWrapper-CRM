@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import type { Customer } from '../types';
 import { CalendarCheck, Package, Gift, Truck, Clock, CheckCircle } from 'lucide-react';
 
-const GIFT_OPTIONS = [
-  '大燈', '日行燈', 'ABC柱', '握把',
-  '前踏板', '後踏板', '充電蓋',
-  '尾燈(三項)', '玻璃鍍膜(三項)', '彩繪(視範圍)',
-  '浮雕(視範圍)', '鋼琴烤漆(視範圍)'
-];
+
 
 interface ScheduledFormProps {
   customer: Customer;
@@ -23,11 +18,7 @@ export const ScheduledForm: React.FC<ScheduledFormProps> = ({ customer, onUpdate
     setFormData(prev => ({ ...prev, [field]: !prev[field] }));
   };
 
-  const toggleGift = (gift: string) => {
-    const current = formData.giftItems || [];
-    const next = current.includes(gift) ? current.filter(g => g !== gift) : [...current, gift];
-    setFormData(prev => ({ ...prev, giftItems: next }));
-  };
+
 
   const handleSave = () => {
     onUpdate(formData);
@@ -107,26 +98,7 @@ export const ScheduledForm: React.FC<ScheduledFormProps> = ({ customer, onUpdate
         </div>
       </div>
 
-      {/* Gift Items */}
-      <div>
-        <h4 style={{ margin: '0 0 10px 0', fontSize: '0.85rem', color: '#f59e0b', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <Gift size={15} /> 贈送項目（勾選後會加入施工清單）
-        </h4>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '14px', background: '#fffbeb', borderRadius: '12px', border: '1px solid #fde68a' }}>
-          {GIFT_OPTIONS.map(gift => {
-            const selected = (formData.giftItems || []).includes(gift);
-            return (
-              <button
-                key={gift}
-                onClick={() => toggleGift(gift)}
-                style={{ padding: '5px 12px', borderRadius: '20px', border: `1.5px solid ${selected ? '#f59e0b' : '#e2e8f0'}`, background: selected ? '#fef3c7' : '#fff', color: selected ? '#92400e' : '#64748b', fontSize: '0.8rem', fontWeight: selected ? '700' : '500', cursor: 'pointer', transition: 'all 0.15s' }}
-              >
-                {selected ? '✓ ' : ''}{gift}
-              </button>
-            );
-          })}
-        </div>
-      </div>
+
 
       {/* Actions */}
       <div style={{ display: 'flex', gap: '10px', paddingTop: '4px' }}>

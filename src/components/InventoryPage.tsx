@@ -142,7 +142,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
           <p style={{ color: '#64748b', margin: '4px 0 0 0' }}>管理店內存料位置與叫貨採購紀錄</p>
         </div>
 
-        {userRole === 'admin' && (
+
           <div style={{ display: 'flex', background: '#f1f5f9', padding: '4px', borderRadius: '12px', gap: '4px' }}>
             <button 
               onClick={() => setActiveTab('storage')}
@@ -181,7 +181,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
               <HistoryIcon size={16} /> 庫存異動
             </button>
           </div>
-        )}
+
       </header>
 
       <div style={{ position: 'relative' }}>

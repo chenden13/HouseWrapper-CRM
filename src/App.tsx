@@ -419,10 +419,12 @@ function App() {
             onBack={() => setView('dashboard')}
             onDeleteCustomer={handleDeleteCustomer}
           />
+        {/* 
         ) : view === 'price_detailing' ? (
           <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="detailing" onBack={() => setView('dashboard')} />
         ) : view === 'price_film' ? (
           <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="film" onBack={() => setView('dashboard')} />
+        */}
         ) : view === 'inventory' ? (
           <MobileInventory onBack={() => setView('dashboard')} />
         ) : view === 'finance' ? (
@@ -527,6 +529,7 @@ function App() {
             <button className={`nav-tab ${view === 'archive' ? 'active' : ''}`} onClick={() => setView('archive')}>
               <History size={17} /> 完工檔案
             </button>
+            {/* 價目查詢暫時隱藏，已轉移至獨立公開版 
             <div className="nav-dropdown">
               <button className={`nav-tab ${(view === 'price_detailing' || view === 'price_film') ? 'active-parent' : ''}`}>
                 <Tag size={17} /> 價目查詢 <ChevronDown size={14} style={{ marginLeft: '4px' }} />
@@ -546,6 +549,7 @@ function App() {
                 </button>
               </div>
             </div>
+            */}
             {currentUser.role === 'admin' && (
               <button className={`nav-tab ${view === 'finance' ? 'active' : ''}`} onClick={() => setView('finance')}>
                 <Wallet size={17} /> 收支記帳

@@ -595,35 +595,18 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
               </div>
 
               <div style={{ marginTop: '25px', padding: '15px 20px', background: '#f5f3ff', borderRadius: '15px', border: '1px solid #ddd6fe' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ background: '#7c3aed', color: '#fff', padding: '6px', borderRadius: '10px' }}>
-                        <ShieldCheck size={20} />
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 'bold', color: '#5b21b6', fontSize: '0.95rem' }}>全車改色加購 - 迎風面犀牛皮</div>
-                        <div style={{ fontSize: '0.75rem', color: '#7c3aed' }}>品牌: Pixel8bit (Hood+Fender)</div>
-                      </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ background: '#7c3aed', color: '#fff', padding: '6px', borderRadius: '10px' }}>
+                      <ShieldCheck size={20} />
                     </div>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '900', color: '#5b21b6' }}>
-                      <span style={{ fontSize: '0.8rem', marginRight: '3px' }}>+ $</span>18,000
+                    <div>
+                      <div style={{ fontWeight: 'bold', color: '#5b21b6', fontSize: '0.95rem' }}>全車改色加購 - 迎風面犀牛皮</div>
+                      <div style={{ fontSize: '0.75rem', color: '#7c3aed' }}>品牌: Pixel8bit (Hood+Fender)</div>
                     </div>
                   </div>
-                  
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ background: '#8b5cf6', color: '#fff', padding: '6px', borderRadius: '10px' }}>
-                        <Droplets size={20} />
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 'bold', color: '#5b21b6', fontSize: '0.95rem' }}>全車膜料專用鍍膜</div>
-                        <div style={{ fontSize: '0.75rem', color: '#7c3aed' }}>品牌: CarPro / Servfaces (一年期)</div>
-                      </div>
-                    </div>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '900', color: '#5b21b6' }}>
-                      <span style={{ fontSize: '0.8rem', marginRight: '3px' }}>+ $</span>8,000
-                    </div>
+                  <div style={{ fontSize: '1.2rem', fontWeight: '900', color: '#5b21b6' }}>
+                    <span style={{ fontSize: '0.8rem', marginRight: '3px' }}>+ $</span>18,000
                   </div>
                 </div>
               </div>

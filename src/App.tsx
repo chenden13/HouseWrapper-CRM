@@ -26,7 +26,7 @@ import { PriceInquiryPage } from './components/PriceInquiryPage';
 import { TrackingPage } from './components/TrackingPage';
 import { PreparationPage } from './components/PreparationPage';
 import { VehicleMasterImport } from './components/VehicleMasterImport';
-import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList, Sparkles, Palette } from 'lucide-react';
+import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList, Sparkles, Palette, RefreshCcw } from 'lucide-react';
 
 import { useIsMobile } from './hooks/useIsMobile';
 import { MobileDashboard } from './components/mobile/MobileDashboard';
@@ -543,7 +543,7 @@ function App() {
             <h1 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '900', color: 'var(--primary)', letterSpacing: '-0.5px', lineHeight: 1.2 }}>
               好室多膜 CRM
             </h1>
-            <span style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 'bold' }}>PRO MAX V.613</span>
+            <span style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 'bold' }}>PRO MAX V.614</span>
           </div>
         </div>
 
@@ -605,10 +605,21 @@ function App() {
               <div style={{ fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-main)' }}>{currentUser.name}</div>
               <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 'bold' }}>{currentUser.role === 'admin' ? 'ADMIN' : 'STAFF'}</div>
             </div>
+            <button 
+              className="btn" 
+              onClick={loadData} 
+              disabled={loading}
+              title="重新同步雲端資料"
+              style={{ background: '#f8fafc', color: '#0ea5e9', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', cursor: loading ? 'not-allowed' : 'pointer' }}
+            >
+              <RefreshCcw size={18} className={loading ? 'animate-spin' : ''} />
+            </button>
             <button className="btn" onClick={handleLogout} style={{ background: '#f8fafc', color: '#64748b', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center' }}>
               <LogOut size={18} />
             </button>
           </div>
+        </div>
+      </header>
         </div>
       </header>
 

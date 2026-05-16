@@ -55,21 +55,35 @@ export const api = {
 
   upsertCustomer: async (customer: Customer) => {
     const { id, name, phone, plateNumber, brand, model, status, totalAmount, cost, revenue, ...rest } = customer;
-    const { error } = await supabase.from('customers').upsert({
-      id,
-      name,
-      phone,
-      plate_number: plateNumber,
-      brand,
-      model,
-      status,
-      total_amount: totalAmount || 0,
-      cost: cost || 0,
-      revenue: revenue || 0,
+    
+    // 強制數值轉換，避免字串或包含逗號的文字導致資料庫報錯
+    const parseNum = (val: any) => {
+      if (typeof val === 'number') return val;
+      if (!val) return 0;
+      const cleaned = String(val).replace(/[^0-9.-]/g, '');
+      const num = parseFloat(cleaned);
+      return isNaN(num) ? 0 : num;
+    };
+
+    const payload = {
+      id: id || `ID-${Date.now()}`,
+      name: name || '未命名客戶',
+      phone: phone || '',
+      plate_number: plateNumber || '',
+      brand: brand || '',
+      model: model || '',
+      status: status || 'new',
+      total_amount: parseNum(totalAmount),
+      cost: parseNum(cost),
+      revenue: parseNum(revenue),
       data: rest
-    });
+    };
+
+    const { error } = await supabase.from('customers').upsert(payload);
+    
     if (error) {
-      console.error('Supabase DB Error Details:', error);
+      console.error('【資料庫寫入失敗詳情】:', error);
+      alert(`⚠️ 雲端存檔失敗！\n錯誤原因: ${error.message}\n欄位: ${error.details || '無'}`);
       throw error;
     }
   },

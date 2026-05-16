@@ -47,7 +47,8 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
       brand.includes(term) ||
       mainService.includes(term) ||
       mainServiceBrand.includes(term) ||
-      id.includes(term)
+      id.includes(term) ||
+      String(c.data?.notes || '').toLowerCase().includes(term)
     );
   });
 

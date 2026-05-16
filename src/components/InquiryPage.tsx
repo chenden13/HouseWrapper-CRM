@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, UserPlus, Calendar, ChevronRight, Plus, Trash2 } from 'lucide-react';
+import { Search, UserPlus, Calendar, ChevronRight, Plus, Trash2, ArrowUp, ArrowDown, Hash } from 'lucide-react';
 import type { Customer, Role } from '../types';
 
 interface InquiryPageProps {
@@ -12,23 +12,36 @@ interface InquiryPageProps {
 
 export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCustomer, onDeleteCustomer, userRole, onAddNew }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState<'id' | 'date'>('id');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   
   const inquiries = customers
     .filter(c => 
       c.status === 'new' && 
       (
-        String(c.name || '').includes(searchTerm) || 
-        String(c.plateNumber || '').includes(searchTerm) || 
-        String(c.phone || '').includes(searchTerm) ||
-        (c.id && String(c.id).includes(searchTerm))
+        String(c.name || '').toLowerCase().includes(searchTerm.toLowerCase()) || 
+        String(c.phone || '').toLowerCase().includes(searchTerm.toLowerCase()) || 
+        String(c.plateNumber || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(c.model || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(c.brand || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(c.id || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(c.data?.notes || '').toLowerCase().includes(searchTerm.toLowerCase())
       )
     )
     .sort((a, b) => {
-      const idA = String(a.id || '');
-      const idB = String(b.id || '');
-      const cmp = idA.localeCompare(idB, undefined, { numeric: true });
-      return sortOrder === 'asc' ? cmp : -cmp;
+      if (sortBy === 'id') {
+        const idA = String(a.id || '');
+        const idB = String(b.id || '');
+        const cmp = idA.localeCompare(idB, undefined, { numeric: true });
+        return sortOrder === 'asc' ? cmp : -cmp;
+      } else {
+        const dateA = a.expectedStartDate || '';
+        const dateB = b.expectedStartDate || '';
+        if (!dateA) return 1;
+        if (!dateB) return -1;
+        const cmp = dateA.localeCompare(dateB);
+        return sortOrder === 'asc' ? cmp : -cmp;
+      }
     });
 
   return (
@@ -41,7 +54,29 @@ export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCusto
           <p style={{ color: '#64748b', fontSize: '0.9rem' }}>追蹤初步諮詢、尚未收訂的潛在客戶資料</p>
         </div>
 
-        <div style={{ display: 'flex', gap: '15px' }}>
+        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '8px', background: '#f1f5f9', padding: '4px', borderRadius: '12px' }}>
+            <button 
+              className={`btn ${sortBy === 'id' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                if (sortBy === 'id') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+                else { setSortBy('id'); setSortOrder('desc'); }
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '6px 12px' }}
+            >
+              <Hash size={15} /> 編號 {sortBy === 'id' && (sortOrder === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />)}
+            </button>
+            <button 
+              className={`btn ${sortBy === 'date' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                if (sortBy === 'date') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+                else { setSortBy('date'); setSortOrder('desc'); }
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '6px 12px' }}
+            >
+              <Calendar size={15} /> 諮詢日期 {sortBy === 'date' && (sortOrder === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />)}
+            </button>
+          </div>
           <button className="btn btn-primary" style={{ padding: '8px 20px', fontSize: '0.85rem', borderRadius: '10px' }} onClick={onAddNew}>
             <Plus size={16} /> 新增諮詢客戶
           </button>
@@ -49,14 +84,14 @@ export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCusto
             <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} size={18} />
             <input
               type="text"
-              placeholder="搜尋名稱、電話或車型..."
+              placeholder="搜尋全部資訊..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="glass-panel"
               style={{
                 padding: '10px 15px 10px 40px',
                 borderRadius: '12px',
-                width: '260px',
+                width: '240px',
                 fontSize: '0.9rem',
                 outline: 'none'
               }}

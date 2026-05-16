@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import { 
   Users, Calendar, CheckCircle2, AlertCircle, Search, 
-  ChevronRight, Phone, Car, Tag, Clock, Check, ListChecks
+  ChevronRight, Phone, Car, Tag, Clock, Check, ListChecks,
+  ArrowUp, ArrowDown, Hash
 } from 'lucide-react';
 import type { Customer } from '../types';
 
@@ -12,6 +13,8 @@ interface TrackingPageProps {
 
 export const TrackingPage: React.FC<TrackingPageProps> = ({ customers, onUpdateCustomer }) => {
   const [searchTerm, setSearchTerm] = React.useState('');
+  const [sortBy, setSortBy] = React.useState<'date' | 'id'>('date');
+  const [sortOrder, setSortOrder] = React.useState<'asc' | 'desc'>('desc');
 
   // 輔助函式：標準化日期字串
   const normalizeDate = (d: string | undefined): string => {
@@ -37,21 +40,30 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ customers, onUpdateC
           String(c.phone || '').toLowerCase().includes(lowerSearch) || 
           String(c.plateNumber || '').toLowerCase().includes(lowerSearch) ||
           String(c.model || '').toLowerCase().includes(lowerSearch) ||
+          String(c.brand || '').toLowerCase().includes(lowerSearch) ||
+          String(c.id || '').toLowerCase().includes(lowerSearch) ||
+          String(c.data?.notes || '').toLowerCase().includes(lowerSearch) ||
           String(c.filmColor || '').toLowerCase().includes(lowerSearch)
         );
       })
       .sort((a, b) => {
-        // 使用與完工檔案一致的日期優先順序
-        const dateAStr = normalizeDate(a.deliveryDate || a.constructionStartDate || a.expectedEndDate || a.expectedStartDate || '');
-        const dateBStr = normalizeDate(b.deliveryDate || b.constructionStartDate || b.expectedEndDate || b.expectedStartDate || '');
-        
-        if (!dateAStr && dateBStr) return 1;
-        if (dateAStr && !dateBStr) return -1;
-        if (!dateAStr && !dateBStr) return 0;
-
-        return dateBStr.localeCompare(dateAStr);
+        if (sortBy === 'id') {
+          const idA = String(a.id || '');
+          const idB = String(b.id || '');
+          const cmp = idA.localeCompare(idB, undefined, { numeric: true });
+          return sortOrder === 'asc' ? cmp : -cmp;
+        } else {
+          // 使用與完工檔案一致的日期優先順序
+          const dateAStr = normalizeDate(a.deliveryDate || a.constructionStartDate || a.expectedEndDate || a.expectedStartDate || '');
+          const dateBStr = normalizeDate(b.deliveryDate || b.constructionStartDate || b.expectedEndDate || b.expectedStartDate || '');
+          
+          if (!dateAStr && dateBStr) return 1;
+          if (dateAStr && !dateBStr) return -1;
+          if (!dateAStr && !dateBStr) return 0;
+          return sortOrder === 'asc' ? dateAStr.localeCompare(dateBStr) : dateBStr.localeCompare(dateAStr);
+        }
       });
-  }, [customers, searchTerm]);
+  }, [customers, searchTerm, sortBy, sortOrder]);
 
   const handleToggleFollowUp = async (customer: Customer, field: keyof Customer) => {
     const isNowDone = !customer[field];
@@ -196,21 +208,46 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ customers, onUpdateC
           </button>
         </div>
         
-        <div style={{ position: 'relative' }}>
-          <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} size={16} />
-          <input 
-            type="text" 
-            placeholder="快速搜尋客戶..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ 
-              padding: '10px 12px 10px 36px', 
-              borderRadius: '10px', 
-              border: '1px solid #e2e8f0', 
-              width: '280px',
-              fontSize: '0.85rem'
-            }} 
-          />
+        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '8px', background: '#f1f5f9', padding: '4px', borderRadius: '12px' }}>
+            <button 
+              className={`btn ${sortBy === 'id' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                if (sortBy === 'id') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+                else { setSortBy('id'); setSortOrder('desc'); }
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '6px 12px' }}
+            >
+              <Hash size={15} /> 編號 {sortBy === 'id' && (sortOrder === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />)}
+            </button>
+            <button 
+              className={`btn ${sortBy === 'date' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                if (sortBy === 'date') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+                else { setSortBy('date'); setSortOrder('desc'); }
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '6px 12px' }}
+            >
+              <Calendar size={15} /> 完工日期 {sortBy === 'date' && (sortOrder === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />)}
+            </button>
+          </div>
+          <div style={{ position: 'relative' }}>
+            <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} size={16} />
+            <input 
+              type="text" 
+              placeholder="搜尋全部資訊..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ 
+                padding: '10px 12px 10px 36px', 
+                borderRadius: '10px', 
+                border: '1px solid #e2e8f0', 
+                width: '280px',
+                fontSize: '0.85rem',
+                outline: 'none'
+              }} 
+            />
+          </div>
         </div>
       </header>
 

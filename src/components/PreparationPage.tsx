@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { 
   ClipboardList, Search, Clock, Check, 
   AlertCircle, Calendar, Info, Hash,
-  CalendarCheck, Hammer, Droplets
+  CalendarCheck, Hammer, Droplets, ArrowUp, ArrowDown
 } from 'lucide-react';
 import type { Customer } from '../types';
 
@@ -13,6 +13,8 @@ interface PreparationPageProps {
 
 export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onUpdateCustomer }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState<'date' | 'id'>('date');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
   // 輔助函式：標準化日期
   const normalizeDate = (d: string | undefined): string => {
@@ -44,17 +46,27 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
           String(c.phone || '').toLowerCase().includes(lowerSearch) || 
           String(c.plateNumber || '').toLowerCase().includes(lowerSearch) ||
           String(c.model || '').toLowerCase().includes(lowerSearch) ||
-          String(c.id || '').toLowerCase().includes(lowerSearch)
+          String(c.brand || '').toLowerCase().includes(lowerSearch) ||
+          String(c.id || '').toLowerCase().includes(lowerSearch) ||
+          String(c.data?.notes || '').toLowerCase().includes(lowerSearch)
         );
       })
       .sort((a, b) => {
-        const dateA = normalizeDate(a.expectedStartDate || '');
-        const dateB = normalizeDate(b.expectedStartDate || '');
-        if (!dateA) return 1;
-        if (!dateB) return -1;
-        return dateA.localeCompare(dateB);
+        if (sortBy === 'id') {
+          const idA = String(a.id || '');
+          const idB = String(b.id || '');
+          const cmp = idA.localeCompare(idB, undefined, { numeric: true });
+          return sortOrder === 'asc' ? cmp : -cmp;
+        } else {
+          const dateA = normalizeDate(a.expectedStartDate || '');
+          const dateB = normalizeDate(b.expectedStartDate || '');
+          if (!dateA) return 1;
+          if (!dateB) return -1;
+          const cmp = dateA.localeCompare(dateB);
+          return sortOrder === 'asc' ? cmp : -cmp;
+        }
       });
-  }, [customers, searchTerm]);
+  }, [customers, searchTerm, sortBy, sortOrder]);
 
   const handleToggle = async (customer: Customer, field: keyof Customer) => {
     const updated = { ...customer, [field]: !customer[field] };
@@ -74,21 +86,46 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
           <p style={{ color: '#64748b', fontSize: '0.85rem', marginTop: '4px' }}>核對施工所需膜料、隔熱紙與配件到貨狀態</p>
         </div>
         
-        <div style={{ position: 'relative' }}>
-          <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} size={16} />
-          <input 
-            type="text" 
-            placeholder="搜尋姓名、車牌、編號..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ 
-              padding: '10px 12px 10px 36px', 
-              borderRadius: '10px', 
-              border: '1px solid #e2e8f0', 
-              width: '320px',
-              fontSize: '0.85rem'
-            }} 
-          />
+        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '8px', background: '#f1f5f9', padding: '4px', borderRadius: '12px' }}>
+            <button 
+              className={`btn ${sortBy === 'id' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                if (sortBy === 'id') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+                else { setSortBy('id'); setSortOrder('desc'); }
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '6px 12px' }}
+            >
+              <Hash size={15} /> 編號 {sortBy === 'id' && (sortOrder === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />)}
+            </button>
+            <button 
+              className={`btn ${sortBy === 'date' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                if (sortBy === 'date') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+                else { setSortBy('date'); setSortOrder('desc'); }
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '6px 12px' }}
+            >
+              <Calendar size={15} /> 進場日期 {sortBy === 'date' && (sortOrder === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />)}
+            </button>
+          </div>
+          <div style={{ position: 'relative' }}>
+            <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} size={16} />
+            <input 
+              type="text" 
+              placeholder="搜尋全部資訊..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ 
+                padding: '10px 12px 10px 36px', 
+                borderRadius: '10px', 
+                border: '1px solid #e2e8f0', 
+                width: '280px',
+                fontSize: '0.85rem',
+                outline: 'none'
+              }} 
+            />
+          </div>
         </div>
       </header>
 

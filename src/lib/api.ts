@@ -9,9 +9,32 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 export const api = {
   // --- 客戶資料 ---
   getCustomers: async () => {
-    const { data, error } = await supabase.from('customers').select('*');
-    if (error) throw error;
-    return (data || []).map(item => {
+    let allData: any[] = [];
+    let from = 0;
+    const pageSize = 1000;
+    let hasMore = true;
+
+    while (hasMore) {
+      const { data, error } = await supabase
+        .from('customers')
+        .select('*')
+        .range(from, from + pageSize - 1);
+      
+      if (error) throw error;
+      if (data && data.length > 0) {
+        allData = [...allData, ...data];
+        from += pageSize;
+      } else {
+        hasMore = false;
+      }
+      
+      // 安全機制：避免無限迴圈
+      if (data && data.length < pageSize) {
+        hasMore = false;
+      }
+    }
+
+    return (allData || []).map(item => {
       const extraData = (typeof item.data === 'object' && item.data !== null) ? item.data : {};
       return {
         ...extraData,

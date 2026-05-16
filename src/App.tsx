@@ -181,33 +181,40 @@ function App() {
     }
   };
 
-
   const handleImport = async (newCustomers: Customer[]) => {
     setIsImportModalOpen(false);
     setIsPendingImportModalOpen(false);
     
-    // 獲取現有所有資料進行比對
+    console.log('--- 匯入除錯模式啟動 ---');
+    console.log('原始讀取筆數:', newCustomers.length);
+
     const existingIds = new Set(customers.map(c => c.id));
-    // 建立一個「姓名+電話+車牌+日期」的組合字串集合，用來判斷是否為同一筆消費紀錄
     const existingRecords = new Set(customers.map(c => {
       const date = c.expectedStartDate || c.deliveryDate || '';
-      return `${String(c.name).trim()}_${String(c.phone).trim()}_${String(c.plateNumber).trim()}_${date}`.toLowerCase();
+      return `${String(c.name || '').trim()}_${String(c.phone || '').trim()}_${String(c.plateNumber || '').trim()}_${date}`.toLowerCase();
     }));
     
     const processedCustomers: Customer[] = [];
     let skippedCount = 0;
     
     for (const customer of newCustomers) {
-      const date = customer.expectedStartDate || customer.deliveryDate || '';
-      const recordKey = `${String(customer.name).trim()}_${String(customer.phone).trim()}_${String(customer.plateNumber).trim()}_${date}`.toLowerCase();
+      const isTarget = String(customer.name).includes('黃') || 
+                       String(customer.name).includes('欽') || 
+                       String(customer.phone).includes('918');
       
-      // 1. 如果「姓名+電話+車牌+日期」完全一致，判定為「同一筆」重複匯入，才跳過
+      if (isTarget) {
+        console.log('【除錯】讀取到目標對象:', customer);
+      }
+
+      const date = customer.expectedStartDate || customer.deliveryDate || '';
+      const recordKey = `${String(customer.name || '').trim()}_${String(customer.phone || '').trim()}_${String(customer.plateNumber || '').trim()}_${date}`.toLowerCase();
+      
       if (existingRecords.has(recordKey)) {
+        if (isTarget) console.log(`【除錯】重複而被跳過: ${customer.name} (Key: ${recordKey})`);
         skippedCount++;
         continue;
       }
 
-      // 2. 如果是不同日期或不同人，但編號 (ID) 撞號了，則自動加上後綴
       let finalId = customer.id;
       let counter = 1;
       while (existingIds.has(finalId) || processedCustomers.some(pc => pc.id === finalId)) {
@@ -216,7 +223,10 @@ function App() {
       }
       
       processedCustomers.push({ ...customer, id: finalId });
+      if (isTarget) console.log(`【除錯】已加入準備上傳清單，最終 ID: ${finalId}`);
     }
+
+    console.log('處理後準備上傳總筆數:', processedCustomers.length);
 
     if (processedCustomers.length === 0) {
       alert(`本次匯入 0 筆資料 (偵測到 ${skippedCount} 筆重複資料已自動過濾)`);
@@ -235,6 +245,11 @@ function App() {
       alert(`✅ 成功匯入 ${processedCustomers.length} 筆新資料！\n(已自動過濾 ${skippedCount} 筆重複資料)`);
 
     } catch (err) {
+      console.error('雲端同步失敗:', err);
+      alert('上傳雲端失敗，請檢查網路連線。');
+      setImportProgress(null);
+    }
+  };
       console.error('雲端同步失敗:', err);
       alert('上傳雲端失敗，請檢查網路連線。');
       setImportProgress(null);

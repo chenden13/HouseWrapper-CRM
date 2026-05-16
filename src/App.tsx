@@ -186,16 +186,28 @@ function App() {
     setIsImportModalOpen(false);
     setIsPendingImportModalOpen(false);
     
-    // 獲取現有所有編號
+    // 獲取現有所有資料進行比對
     const existingIds = new Set(customers.map(c => c.id));
-    const processedCustomers: Customer[] = [];
+    // 建立一個「姓名+電話+車牌」的組合字串集合，用來判斷是否為同一個人
+    const existingPeople = new Set(customers.map(c => 
+      `${String(c.name).trim()}_${String(c.phone).trim()}_${String(c.plateNumber).trim()}`.toLowerCase()
+    ));
     
-    // 處理重複編號：如果編號重複，自動加上後綴確保兩者共存
+    const processedCustomers: Customer[] = [];
+    let skippedCount = 0;
+    
     for (const customer of newCustomers) {
+      const personKey = `${String(customer.name).trim()}_${String(customer.phone).trim()}_${String(customer.plateNumber).trim()}`.toLowerCase();
+      
+      // 1. 如果「姓名+電話+車牌」完全一致，判定為重複資料，直接跳過
+      if (existingPeople.has(personKey)) {
+        skippedCount++;
+        continue;
+      }
+
+      // 2. 如果是不同人，但編號 (ID) 撞號了，則自動加上後綴
       let finalId = customer.id;
       let counter = 1;
-      
-      // 如果編號已存在或在本次批次中已出現，則加上序號
       while (existingIds.has(finalId) || processedCustomers.some(pc => pc.id === finalId)) {
         finalId = `${customer.id}_${counter}`;
         counter++;
@@ -205,22 +217,20 @@ function App() {
     }
 
     if (processedCustomers.length === 0) {
-      alert('沒有提取到任何資料。');
+      alert(`本次匯入 0 筆資料 (偵測到 ${skippedCount} 筆重複資料已自動過濾)`);
       return;
     }
 
     try {
       setImportProgress({ current: 0, total: processedCustomers.length });
-      // 依序寫入至雲端資料庫
       for (let i = 0; i < processedCustomers.length; i++) {
         await api.upsertCustomer(processedCustomers[i]);
         setImportProgress({ current: i + 1, total: processedCustomers.length });
       }
       
-      // 雲端確認寫入成功後，更新前端畫面
       setCustomers(prev => [...prev, ...processedCustomers]);
       setImportProgress(null);
-      alert(`✅ 成功匯入 ${processedCustomers.length} 筆資料！(重複編號已自動重新命名)`);
+      alert(`✅ 成功匯入 ${processedCustomers.length} 筆新資料！\n(已自動過濾 ${skippedCount} 筆重複資料)`);
 
     } catch (err) {
       console.error('雲端同步失敗:', err);

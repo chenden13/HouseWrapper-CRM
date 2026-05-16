@@ -12,16 +12,24 @@ interface InquiryPageProps {
 
 export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCustomer, onDeleteCustomer, userRole, onAddNew }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   
-  const inquiries = customers.filter(c => 
-    c.status === 'new' && 
-    (
-      String(c.name || '').includes(searchTerm) || 
-      String(c.plateNumber || '').includes(searchTerm) || 
-      String(c.phone || '').includes(searchTerm) ||
-      (c.id && String(c.id).includes(searchTerm))
+  const inquiries = customers
+    .filter(c => 
+      c.status === 'new' && 
+      (
+        String(c.name || '').includes(searchTerm) || 
+        String(c.plateNumber || '').includes(searchTerm) || 
+        String(c.phone || '').includes(searchTerm) ||
+        (c.id && String(c.id).includes(searchTerm))
+      )
     )
-  );
+    .sort((a, b) => {
+      const idA = String(a.id || '');
+      const idB = String(b.id || '');
+      const cmp = idA.localeCompare(idB, undefined, { numeric: true });
+      return sortOrder === 'asc' ? cmp : -cmp;
+    });
 
   return (
     <div style={{ padding: '0 20px 40px 20px', maxWidth: '1400px', margin: '0 auto' }}>
@@ -69,7 +77,12 @@ export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCusto
           color: '#475569',
           fontSize: '0.85rem'
         }}>
-          <div>編號</div>
+          <div 
+            onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')} 
+            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
+          >
+            編號
+          </div>
           <div>諮詢日期</div>
           <div>車主 / 電話</div>
           <div>車牌 / 車型</div>

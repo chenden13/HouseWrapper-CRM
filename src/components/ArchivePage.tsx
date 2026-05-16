@@ -108,14 +108,6 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
              posId.includes(term) || 
              notes.includes(term);
     })
-    .filter(c => {
-      if (sortBy === 'id') {
-        const id = String(c.id || '');
-        // 排除自動生成的 ID
-        if (id.includes('無編號') || (id.startsWith('c_') && id.length > 15)) return false;
-      }
-      return true;
-    })
     .sort((a, b) => {
       if (sortBy === 'id') {
         const idA = String(a.id || '');
@@ -445,7 +437,16 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
         fontWeight: 'bold',
         letterSpacing: '0.05em'
       }}>
-        <div>編號</div>
+        <div 
+          onClick={() => {
+            if (sortBy === 'id') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+            else { setSortBy('id'); setSortOrder('desc'); }
+            setCurrentPage(1);
+          }} 
+          style={{ cursor: 'pointer' }}
+        >
+          編號
+        </div>
         <div>客戶資訊</div>
         <div>車輛資訊</div>
         <div>1.留車進場</div>

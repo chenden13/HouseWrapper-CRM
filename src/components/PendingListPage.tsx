@@ -82,6 +82,10 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
       if (sortKey === 'expectedStartDate') {
         return normalizeDate(cust.expectedStartDate || cust.constructionStartDate || '');
       }
+      if (sortKey === 'id') {
+        // 針對 C-001 格式進行數字提取排序
+        return String(cust.id || '').replace(/[^0-9]/g, '').padStart(10, '0');
+      }
       return String(cust[sortKey as keyof Customer] || '');
     };
 
@@ -141,7 +145,7 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
             fontSize: '0.88rem',
             textAlign: 'center'
           }}>
-            <div style={{ textAlign: 'left' }}>編號</div>
+            <div onClick={() => toggleSort('id')} style={{ textAlign: 'left', cursor: 'pointer' }}>編號</div>
             <div style={{ textAlign: 'left' }}>客戶與車輛</div>
             <div style={{ textAlign: 'left' }}>施工項目</div>
             <div onClick={() => toggleSort('expectedStartDate')} style={{ cursor: 'pointer' }}>預計留車時間</div>

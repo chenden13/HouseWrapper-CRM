@@ -188,24 +188,26 @@ function App() {
     
     // 獲取現有所有資料進行比對
     const existingIds = new Set(customers.map(c => c.id));
-    // 建立一個「姓名+電話+車牌」的組合字串集合，用來判斷是否為同一個人
-    const existingPeople = new Set(customers.map(c => 
-      `${String(c.name).trim()}_${String(c.phone).trim()}_${String(c.plateNumber).trim()}`.toLowerCase()
-    ));
+    // 建立一個「姓名+電話+車牌+日期」的組合字串集合，用來判斷是否為同一筆消費紀錄
+    const existingRecords = new Set(customers.map(c => {
+      const date = c.expectedStartDate || c.deliveryDate || '';
+      return `${String(c.name).trim()}_${String(c.phone).trim()}_${String(c.plateNumber).trim()}_${date}`.toLowerCase();
+    }));
     
     const processedCustomers: Customer[] = [];
     let skippedCount = 0;
     
     for (const customer of newCustomers) {
-      const personKey = `${String(customer.name).trim()}_${String(customer.phone).trim()}_${String(customer.plateNumber).trim()}`.toLowerCase();
+      const date = customer.expectedStartDate || customer.deliveryDate || '';
+      const recordKey = `${String(customer.name).trim()}_${String(customer.phone).trim()}_${String(customer.plateNumber).trim()}_${date}`.toLowerCase();
       
-      // 1. 如果「姓名+電話+車牌」完全一致，判定為重複資料，直接跳過
-      if (existingPeople.has(personKey)) {
+      // 1. 如果「姓名+電話+車牌+日期」完全一致，判定為「同一筆」重複匯入，才跳過
+      if (existingRecords.has(recordKey)) {
         skippedCount++;
         continue;
       }
 
-      // 2. 如果是不同人，但編號 (ID) 撞號了，則自動加上後綴
+      // 2. 如果是不同日期或不同人，但編號 (ID) 撞號了，則自動加上後綴
       let finalId = customer.id;
       let counter = 1;
       while (existingIds.has(finalId) || processedCustomers.some(pc => pc.id === finalId)) {

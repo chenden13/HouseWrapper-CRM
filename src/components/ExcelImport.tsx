@@ -59,24 +59,24 @@ export const ExcelImport: React.FC<ExcelImportProps> = ({ onImport, onCancel }) 
 
         return {
           id: row['編號'] ? String(row['編號']) : `無編號-${Date.now()}-${index}`,
-          name: String(row['姓名'] || ''),
+          name: String(row['姓名'] || row['客戶姓名'] || ''),
           phone: String(row['電話'] || ''),
           plateNumber: String(row['車牌'] || ''),
-          model: String(row['車種'] || ''),
+          model: String(row['車種'] || row['車型'] || ''),
           status: 'completed',
           
-          mainService: String(row['施工項目'] || ''),
-          mainServiceBrand: String(row['品牌'] || ''),
-          filmColor: String(row['膜料細項'] || ''),
+          mainService: String(row['施工項目'] || row['主施工項目'] || ''),
+          mainServiceBrand: String(row['品牌'] || row['膜料品牌'] || ''),
+          filmColor: String(row['膜料細項'] || row['膜料顏色'] || ''),
           notes: String(row['備註'] || ''),
           
           materialOrdered: isChecked(row['是否叫貨']),
           quoteCreated: isChecked(row['是否建立報價單']),
-          giftGiven: isChecked(row['大禮包發送']),
-          formSent: isChecked(row['表單發送']),
-          followUp2Weeks: isChecked(row['兩周關心']),
+          giftGiven: isChecked(row['大禮包發送'] || row['大禮包交付']),
+          formSent: isChecked(row['表單發送'] || row['表單+注意事項']),
+          followUp2Weeks: isChecked(row['兩周關心'] || row['2周追蹤']),
           inCalendar: isChecked(row['是否加入行事曆']),
-          photosSent: isChecked(row['照片是否傳送']),
+          photosSent: isChecked(row['照片是否傳送'] || row['完工照發送']),
           
           totalAmount: Number(row['金額']) || 0,
           cost: Number(row['成本']) || 0,

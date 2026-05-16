@@ -61,15 +61,15 @@ export const PendingExcelImport: React.FC<PendingExcelImportProps> = ({ onImport
 
         return {
           id: row['編號'] ? String(row['編號']) : `無編號-${Date.now()}-${index}`,
-          name: String(row['姓名'] || ''),
+          name: String(row['姓名'] || row['客戶姓名'] || ''),
           phone: String(row['電話'] || ''),
           plateNumber: String(row['車牌'] || ''),
-          model: String(row['車種'] || ''),
+          model: String(row['車種'] || row['車型'] || ''),
           status: 'scheduled',
           
-          mainService: String(row['施工項目'] || ''),
-          mainServiceBrand: String(row['品牌'] || ''),
-          filmColor: String(row['膜料細項'] || ''),
+          mainService: String(row['施工項目'] || row['主施工項目'] || ''),
+          mainServiceBrand: String(row['品牌'] || row['膜料品牌'] || ''),
+          filmColor: String(row['膜料細項'] || row['膜料顏色'] || ''),
           
           materialOrdered: isChecked(row['是否叫貨']),
           quoteCreated: isChecked(row['報價單']),

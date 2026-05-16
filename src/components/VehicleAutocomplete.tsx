@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import vehiclesData from '../data/vehicles.json';
 
 interface VehicleAutocompleteProps {
   brand: string;
@@ -8,46 +9,29 @@ interface VehicleAutocompleteProps {
   onSelect: (data: { brand: string; model: string; vehicleSize: string }) => void;
 }
 
-const BUILTIN_VEHICLES = [
-  { brand: 'Toyota', model: 'bZ4X', size: 'XL' },
-  { brand: 'Toyota', model: 'Corolla Cross', size: 'L' },
-  { brand: 'Toyota', model: 'RAV4', size: 'XL' },
-  { brand: 'Toyota', model: 'Land Cruiser', size: '2XL' },
-  { brand: 'Toyota', model: 'GR86', size: 'S' },
-  { brand: 'Toyota', model: '86', size: 'S' },
-  { brand: 'Honda', model: 'HR-V', size: 'L' },
-  { brand: 'Honda', model: 'CR-V', size: 'XL' },
-  { brand: 'Honda', model: 'Pilot / 大七人座', size: '2XL' },
-  { brand: 'Hyundai', model: 'i10', size: 'S' },
-  { brand: 'Hyundai', model: 'i20', size: 'S' },
-  { brand: 'Hyundai', model: 'Accent', size: 'M' },
-  { brand: 'Hyundai', model: 'Venue', size: 'M' },
-  { brand: 'Hyundai', model: 'Elantra (Avante)', size: 'M' },
-  { brand: 'Hyundai', model: 'i30', size: 'M' },
-  { brand: 'Hyundai', model: 'Veloster', size: 'M' },
-  { brand: 'Hyundai', model: 'Ioniq (油電)', size: 'M' },
-  { brand: 'Hyundai', model: 'Kona', size: 'M' },
-  { brand: 'Hyundai', model: 'Kona Electric', size: 'M' },
-  { brand: 'Hyundai', model: 'Tucson (舊款)', size: 'L' },
-  { brand: 'Hyundai', model: 'Tucson L (新款)', size: 'XL' },
-  { brand: 'Hyundai', model: 'Santa Fe', size: 'XL' },
-  { brand: 'Hyundai', model: 'Palisade', size: '2XL' },
-  { brand: 'Hyundai', model: 'Custin (庫斯汀)', size: 'XL' },
-  { brand: 'Hyundai', model: 'Staria', size: '2XL' },
-  { brand: 'Hyundai', model: 'Grand Starex / H1', size: '2XL' },
-  { brand: 'Hyundai', model: 'Ioniq 5', size: 'XL' },
-  { brand: 'Hyundai', model: 'Ioniq 6', size: 'L' },
-  { brand: 'Hyundai', model: 'Ioniq 7 (未來)', size: '2XL' },
-  { brand: 'Mazda', model: 'MX-5', size: 'XS' },
-  { brand: 'Subaru', model: 'BRZ', size: 'S' },
-  { brand: 'Porsche', model: 'Cayman', size: 'S' },
-];
+// 已經移至 vehicles.json，這裡可以移除或作為極少數備份
+const BUILTIN_VEHICLES: any[] = [];
 
 export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
   brand, model, vehicleSize, vehicleMaster, onSelect
 }) => {
-  // 合併雲端母檔與內建清單
-  const fullMaster = [...vehicleMaster, ...BUILTIN_VEHICLES];
+  // 合併雲端母檔與新版 JSON (JSON 優先以確保貼膜尺寸準確)
+  const fullMaster = React.useMemo(() => {
+    const unique = new Map();
+    // 1. 先放 JSON (新規則)
+    vehiclesData.forEach(v => {
+      const key = `${v.brand}_${v.model}`.toLowerCase();
+      unique.set(key, { ...v, id: key });
+    });
+    // 2. 補上資料庫中有的 (若 JSON 已有則不覆蓋)
+    vehicleMaster.forEach(v => {
+      const key = `${v.brand}_${v.model}`.toLowerCase();
+      if (!unique.has(key)) {
+        unique.set(key, { ...v, id: key });
+      }
+    });
+    return Array.from(unique.values()) as any[];
+  }, [vehicleMaster]);
 
   // 品牌清單 (去重)
   const brands = Array.from(new Set(fullMaster.map(v => v.brand))).sort();

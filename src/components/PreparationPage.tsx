@@ -40,11 +40,11 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
       .filter(c => {
         const lowerSearch = searchTerm.toLowerCase();
         return (
-          c.name.toLowerCase().includes(lowerSearch) || 
-          c.phone.toLowerCase().includes(lowerSearch) || 
-          (c.plateNumber || '').toLowerCase().includes(lowerSearch) ||
-          (c.model || '').toLowerCase().includes(lowerSearch) ||
-          (c.id || '').toLowerCase().includes(lowerSearch)
+          String(c.name || '').toLowerCase().includes(lowerSearch) || 
+          String(c.phone || '').toLowerCase().includes(lowerSearch) || 
+          String(c.plateNumber || '').toLowerCase().includes(lowerSearch) ||
+          String(c.model || '').toLowerCase().includes(lowerSearch) ||
+          String(c.id || '').toLowerCase().includes(lowerSearch)
         );
       })
       .sort((a, b) => {

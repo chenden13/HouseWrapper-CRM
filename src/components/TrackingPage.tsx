@@ -33,11 +33,11 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ customers, onUpdateC
       .filter(c => {
         const lowerSearch = searchTerm.toLowerCase();
         return (
-          c.name.toLowerCase().includes(lowerSearch) || 
-          c.phone.toLowerCase().includes(lowerSearch) || 
-          c.plateNumber.toLowerCase().includes(lowerSearch) ||
-          (c.model || '').toLowerCase().includes(lowerSearch) ||
-          (c.filmColor || '').toLowerCase().includes(lowerSearch)
+          String(c.name || '').toLowerCase().includes(lowerSearch) || 
+          String(c.phone || '').toLowerCase().includes(lowerSearch) || 
+          String(c.plateNumber || '').toLowerCase().includes(lowerSearch) ||
+          String(c.model || '').toLowerCase().includes(lowerSearch) ||
+          String(c.filmColor || '').toLowerCase().includes(lowerSearch)
         );
       })
       .sort((a, b) => {

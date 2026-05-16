@@ -186,31 +186,45 @@ function App() {
     setIsImportModalOpen(false);
     setIsPendingImportModalOpen(false);
     
-    // 過濾出尚未存在於本地狀態的資料
+    // 獲取現有所有編號
     const existingIds = new Set(customers.map(c => c.id));
-    const filtered = newCustomers.filter(c => !existingIds.has(c.id));
+    const processedCustomers: Customer[] = [];
+    
+    // 處理重複編號：如果編號重複，自動加上後綴確保兩者共存
+    for (const customer of newCustomers) {
+      let finalId = customer.id;
+      let counter = 1;
+      
+      // 如果編號已存在或在本次批次中已出現，則加上序號
+      while (existingIds.has(finalId) || processedCustomers.some(pc => pc.id === finalId)) {
+        finalId = `${customer.id}_${counter}`;
+        counter++;
+      }
+      
+      processedCustomers.push({ ...customer, id: finalId });
+    }
 
-    if (filtered.length === 0) {
-      alert('沒有提取到任何新資料，或者編號皆已存在。');
+    if (processedCustomers.length === 0) {
+      alert('沒有提取到任何資料。');
       return;
     }
 
     try {
-      setImportProgress({ current: 0, total: filtered.length });
-      // 依序寫入至雲端資料庫 (使用 for...of 避免短時間發出上百個請求導致被阻擋)
-      for (let i = 0; i < filtered.length; i++) {
-        await api.upsertCustomer(filtered[i]);
-        setImportProgress({ current: i + 1, total: filtered.length });
+      setImportProgress({ current: 0, total: processedCustomers.length });
+      // 依序寫入至雲端資料庫
+      for (let i = 0; i < processedCustomers.length; i++) {
+        await api.upsertCustomer(processedCustomers[i]);
+        setImportProgress({ current: i + 1, total: processedCustomers.length });
       }
       
-      // 雲端確認寫入成功後，一併更新前端畫面
-      setCustomers(prev => [...prev, ...filtered]);
+      // 雲端確認寫入成功後，更新前端畫面
+      setCustomers(prev => [...prev, ...processedCustomers]);
       setImportProgress(null);
-      alert(`✅ 成功匯入並同步 ${filtered.length} 筆資料至雲端資料庫！`);
+      alert(`✅ 成功匯入 ${processedCustomers.length} 筆資料！(重複編號已自動重新命名)`);
 
     } catch (err) {
       console.error('雲端同步失敗:', err);
-      alert('上傳雲端失敗，請檢查網路連線。您可能需要重新整理網頁再試一次。');
+      alert('上傳雲端失敗，請檢查網路連線。');
       setImportProgress(null);
     }
   };

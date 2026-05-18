@@ -62,38 +62,39 @@ function App() {
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const [vehicleMaster, setVehicleMaster] = useState<any[]>([]);
 
-  useEffect(() => {
-    const initCloud = async () => {
-      console.log('正在連線至雲端:', import.meta.env.VITE_SUPABASE_URL);
-      // 增加超時保護
-      setTimeout(() => {}, 15000); 
+  const loadData = async () => {
+    if (!currentUser) return;
+    setIsLoading(true);
+    console.log('正在重新同步雲端資料...');
+    try {
+      const [cloudCustomers, cloudInventory, cloudLogs, cloudPurchases, cloudFinance, cloudSettlements, cloudVehicleMaster] = await Promise.all([
+        api.getCustomers().catch(e => { console.error('客戶讀取失敗', e); return []; }),
+        api.getInventory().catch(e => { console.error('庫存讀取失敗', e); return []; }),
+        api.getInventoryLogs().catch(e => { console.error('日誌讀取失敗', e); return []; }),
+        api.getPurchaseRecords().catch(e => { console.error('叫貨紀錄讀取失敗', e); return []; }),
+        api.getFinanceRecords().catch(e => { console.error('財務紀錄讀取失敗', e); return []; }),
+        api.getFinanceSettlements().catch(e => { console.error('結算紀錄讀取失敗', e); return []; }),
+        api.getVehicleMaster().catch(e => { console.error('車型母檔讀取失敗', e); return []; })
+      ]);
       
-      try {
-        const cloudCustomers = await api.getCustomers().catch(e => { console.error('客戶讀取失敗', e); return []; });
-        const cloudInventory = await api.getInventory().catch(e => { console.error('庫存讀取失敗', e); return []; });
-        const cloudLogs = await api.getInventoryLogs().catch(e => { console.error('日誌讀取失敗', e); return []; });
-        const cloudPurchases = await api.getPurchaseRecords().catch(e => { console.error('叫貨紀錄讀取失敗', e); return []; });
-        const cloudFinance = await api.getFinanceRecords().catch(e => { console.error('財務紀錄讀取失敗', e); return []; });
-        const cloudSettlements = await api.getFinanceSettlements().catch(e => { console.error('結算紀錄讀取失敗', e); return []; });
-        const cloudVehicleMaster = await api.getVehicleMaster().catch(e => { console.error('車型母檔讀取失敗', e); return []; });
-        
-        setCustomers(cloudCustomers || []);
-        setInventory(cloudInventory || []);
-        setInventoryLogs(cloudLogs || []);
-        setPurchaseRecords(cloudPurchases || []);
-        setFinanceRecords(cloudFinance || []);
-        setSettlements(cloudSettlements || []);
-        setVehicleMaster(cloudVehicleMaster || []);
-      } catch (err: any) {
-        console.error('雲端總體初始化失敗:', err);
-        alert(`❌ 雲端同步嚴重失敗：\n${err.message}`);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+      setCustomers(cloudCustomers);
+      setInventory(cloudInventory);
+      setInventoryLogs(cloudLogs);
+      setPurchaseRecords(cloudPurchases);
+      setFinanceRecords(cloudFinance);
+      setSettlements(cloudSettlements);
+      setVehicleMaster(cloudVehicleMaster);
+    } catch (err: any) {
+      console.error('重新讀取失敗:', err);
+      alert(`❌ 重新讀取失敗：\n${err.message}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     if (currentUser) {
-      initCloud();
+      loadData();
       if (isMobile) setView('dashboard');
     }
   }, [currentUser, isMobile]);
@@ -114,7 +115,29 @@ function App() {
 
    const generateCustomerId = () => {
     const list = Array.isArray(customers) ? customers : [];
-    return `C-${String(list.length + 1).padStart(3, '0')}`;
+    let maxNum = 522; // Baseline starts from 522, so the next auto-fill is 523
+    
+    list.forEach(c => {
+      if (c.id) {
+        // Try to match standard format like C-123 or C-0123
+        const match = c.id.match(/C-(\d+)/i);
+        if (match) {
+          const num = parseInt(match[1], 10);
+          if (!isNaN(num) && num > maxNum) {
+            maxNum = num;
+          }
+        } else {
+          // Fallback: extract any digits from the ID
+          const pureNum = parseInt(c.id.replace(/[^0-9]/g, ''), 10);
+          // Avoid matching large timestamps (e.g. Date.now() has 13 digits)
+          if (!isNaN(pureNum) && pureNum > maxNum && pureNum < 10000) {
+            maxNum = pureNum;
+          }
+        }
+      }
+    });
+    
+    return `C-${String(maxNum + 1).padStart(3, '0')}`;
   };
 
 
@@ -245,11 +268,6 @@ function App() {
       alert(`✅ 成功匯入 ${processedCustomers.length} 筆新資料！\n(已自動過濾 ${skippedCount} 筆重複資料)`);
 
     } catch (err) {
-      console.error('雲端同步失敗:', err);
-      alert('上傳雲端失敗，請檢查網路連線。');
-      setImportProgress(null);
-    }
-  };
       console.error('雲端同步失敗:', err);
       alert('上傳雲端失敗，請檢查網路連線。');
       setImportProgress(null);
@@ -460,12 +478,6 @@ function App() {
             onBack={() => setView('dashboard')}
             onDeleteCustomer={handleDeleteCustomer}
           />
-        {/* 
-        ) : view === 'price_detailing' ? (
-          <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="detailing" onBack={() => setView('dashboard')} />
-        ) : view === 'price_film' ? (
-          <PriceInquiryPage vehicleMaster={vehicleMaster} initialMode="film" onBack={() => setView('dashboard')} />
-        */}
         ) : view === 'inventory' ? (
           <MobileInventory onBack={() => setView('dashboard')} />
         ) : view === 'finance' ? (
@@ -608,18 +620,16 @@ function App() {
             <button 
               className="btn" 
               onClick={loadData} 
-              disabled={loading}
+              disabled={isLoading}
               title="重新同步雲端資料"
-              style={{ background: '#f8fafc', color: '#0ea5e9', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', cursor: loading ? 'not-allowed' : 'pointer' }}
+              style={{ background: '#f8fafc', color: '#0ea5e9', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', cursor: isLoading ? 'not-allowed' : 'pointer' }}
             >
-              <RefreshCcw size={18} className={loading ? 'animate-spin' : ''} />
+              <RefreshCcw size={18} className={isLoading ? 'animate-spin' : ''} />
             </button>
             <button className="btn" onClick={handleLogout} style={{ background: '#f8fafc', color: '#64748b', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center' }}>
               <LogOut size={18} />
             </button>
           </div>
-        </div>
-      </header>
         </div>
       </header>
 

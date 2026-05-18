@@ -19,7 +19,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
     // Simulated login delay
     setTimeout(() => {
-      if (username === '613' && password === '613') {
+      if (username === '613' && password === 'q120591') {
         onLogin({ username: '613', role: 'admin', name: '店長管理者' });
       } else if (username === '1' && password === '1') {
         onLogin({ username: '1', role: 'employee', name: '現場員工' });

@@ -109,6 +109,7 @@ export const api = {
         ...item,
         lastUpdated: item.last_updated || item.lastUpdated,
         currentMeters: Number(loc.currentMeters || item.current_meters || 0),
+        notes: loc.notes || item.notes || '', // 自動還原備註
         location: {
           zone: loc.zone || item.zone || 'A',
           section: Number(loc.section || item.section || 1),
@@ -119,16 +120,17 @@ export const api = {
   },
 
   updateInventory: async (item: FilmInventory) => {
-    const { id, lastUpdated, currentMeters, location, ...rest } = item;
+    const { id, lastUpdated, currentMeters, location, notes, ...rest } = item;
     
-    // 將 currentMeters 存入 location JSON 物件中，避免資料庫欄位缺失報錯
+    // 將 currentMeters 與 notes 存入 location JSON 物件中，避免資料庫欄位缺失報錯
     const updateData: any = {
       ...rest,
       id,
       last_updated: lastUpdated || new Date().toISOString().split('T')[0],
       location: {
         ...location,
-        currentMeters: Number(currentMeters || 0)
+        currentMeters: Number(currentMeters || 0),
+        notes: notes || '' // 安全存放備註
       }
     };
 

@@ -211,24 +211,24 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
       <div style={{ position: 'relative' }}>
         {activeTab === 'storage' && (
           /* Original Storage View code */
-          <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '24px' }}>
-            <aside style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '170px 1fr', gap: '24px' }}>
+            <aside style={{ display: 'flex', flexDirection: 'column', gap: '8px', flexShrink: 0 }}>
               {Object.entries(ZONE_CONFIG).map(([key, config]) => (
                 <button 
                   key={key}
                   onClick={() => { setActiveZone(key as ZoneKey); setActiveSubGroupIndex(0); }}
                   style={{
-                    display: 'flex', flexDirection: 'column', padding: '16px', borderRadius: '12px', textAlign: 'left',
+                    display: 'flex', flexDirection: 'column', padding: '10px 12px', borderRadius: '10px', textAlign: 'left',
                     background: activeZone === key ? 'var(--primary)' : '#fff',
                     color: activeZone === key ? '#fff' : '#1e293b',
                     border: '1px solid',
                     borderColor: activeZone === key ? 'var(--primary)' : '#e2e8f0',
                     cursor: 'pointer', transition: 'all 0.2s',
-                    boxShadow: activeZone === key ? '0 4px 12px rgba(59, 130, 246, 0.3)' : 'none'
+                    boxShadow: activeZone === key ? '0 2px 6px rgba(59, 130, 246, 0.15)' : 'none'
                   }}
                 >
-                  <div style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '4px' }}>區域 {key}</div>
-                  <div style={{ fontSize: '0.8rem', opacity: activeZone === key ? 0.9 : 0.6 }}>{config.name}</div>
+                  <div style={{ fontWeight: '800', fontSize: '0.95rem', marginBottom: '2px' }}>區域 {key}</div>
+                  <div style={{ fontSize: '0.72rem', opacity: activeZone === key ? 0.9 : 0.6, wordBreak: 'break-all' }}>{config.name}</div>
                 </button>
               ))}
             </aside>
@@ -296,8 +296,8 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                             {item ? (
                               <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: '12px', minWidth: 0 }}>
                                 <div style={{ flex: 1, minWidth: 0 }}>
-                                  <div style={{ fontWeight: 'bold', fontSize: '0.95rem', color: '#1e293b', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }} title={item.color}>{item.color}</div>
-                                  <div style={{ fontSize: '0.8rem', color: '#64748b', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{item.brand}</div>
+                                  <div style={{ fontWeight: '800', fontSize: '0.92rem', color: '#1e293b', wordBreak: 'break-word', lineHeight: '1.2' }}>{item.color}</div>
+                                  <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px', wordBreak: 'break-word' }}>{item.brand}</div>
                                 </div>
                                 
                                 {/* Meter adjustment controls */}

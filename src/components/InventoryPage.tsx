@@ -31,13 +31,36 @@ const ZONE_CONFIG = {
 
 type ZoneKey = keyof typeof ZONE_CONFIG;
 
+// 智慧合併分組顯示輔助函數
+const getSubGroups = (zone: ZoneKey) => {
+  const config = ZONE_CONFIG[zone];
+  if (config.sections <= 3) {
+    return [{
+      label: `${zone}1 ~ ${zone}${config.sections}`,
+      sections: Array.from({ length: config.sections }, (_, i) => i + 1)
+    }];
+  } else if (config.sections === 6) {
+    return [
+      { label: `${zone}1 ~ ${zone}3`, sections: [1, 2, 3] },
+      { label: `${zone}4 ~ ${zone}6`, sections: [4, 5, 6] }
+    ];
+  } else {
+    // 直立層架 sections 為 5
+    return [
+      { label: `${zone}1 ~ ${zone}3`, sections: [1, 2, 3] },
+      { label: `${zone}4 ~ ${zone}5`, sections: [4, 5] }
+    ];
+  }
+};
+
+
 export const InventoryPage: React.FC<InventoryPageProps> = ({ 
   inventory, inventoryLogs = [], purchaseRecords = [], userRole, onUpdateInventory, onAddInventory, onRemoveInventory, onAddPurchaseRecord, onBack 
 }) => {
   const [activeTab, setActiveTab] = useState<'storage' | 'history' | 'purchases'>('storage');
   const [activeZone, setActiveZone] = useState<ZoneKey>('A');
 
-  const [activeSection, setActiveSection] = useState(1);
+  const [activeSubGroupIndex, setActiveSubGroupIndex] = useState(0);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<Partial<FilmInventory> | null>(null);
 
@@ -193,7 +216,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
               {Object.entries(ZONE_CONFIG).map(([key, config]) => (
                 <button 
                   key={key}
-                  onClick={() => { setActiveZone(key as ZoneKey); setActiveSection(1); }}
+                  onClick={() => { setActiveZone(key as ZoneKey); setActiveSubGroupIndex(0); }}
                   style={{
                     display: 'flex', flexDirection: 'column', padding: '16px', borderRadius: '12px', textAlign: 'left',
                     background: activeZone === key ? 'var(--primary)' : '#fff',
@@ -218,99 +241,107 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                 </div>
                 
                 <div style={{ display: 'flex', gap: '8px' }}>
-                  {Array.from({ length: ZONE_CONFIG[activeZone].sections }, (_, i) => i + 1).map(s => (
+                  {getSubGroups(activeZone).map((group, idx) => (
                     <button
-                      key={s}
-                      onClick={() => setActiveSection(s)}
+                      key={idx}
+                      onClick={() => setActiveSubGroupIndex(idx)}
                       style={{
-                        padding: '6px 16px', borderRadius: '6px', border: '1px solid',
-                        background: activeSection === s ? '#1e293b' : '#fff',
-                        color: activeSection === s ? '#fff' : '#64748b',
-                        borderColor: activeSection === s ? '#1e293b' : '#e2e8f0',
-                        cursor: 'pointer', fontWeight: 'bold'
+                        padding: '8px 20px', borderRadius: '8px', border: '1px solid',
+                        background: activeSubGroupIndex === idx ? '#1e293b' : '#fff',
+                        color: activeSubGroupIndex === idx ? '#fff' : '#64748b',
+                        borderColor: activeSubGroupIndex === idx ? '#1e293b' : '#e2e8f0',
+                        cursor: 'pointer', fontWeight: 'bold', fontSize: '0.9rem',
+                        boxShadow: activeSubGroupIndex === idx ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
+                        transition: 'all 0.2s'
                       }}
                     >
-                      {activeZone}{s}
+                      {group.label}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {Array.from({ length: ZONE_CONFIG[activeZone].slots }, (_, i) => i + 1).map(slotNum => {
-                  const item = getInventoryAt(activeZone, activeSection, slotNum);
-                  return (
-                    <div 
-                      key={slotNum}
-                      onClick={() => handleSlotClick(activeZone, activeSection, slotNum)}
-                      style={{
-                        display: 'flex', alignItems: 'center', gap: '16px', borderRadius: '10px', border: '1px solid',
-                        borderColor: item ? 'var(--primary)' : '#e2e8f0',
-                        background: item ? '#eff6ff' : '#fff',
-                        padding: '12px 20px', cursor: 'pointer', transition: 'all 0.2s',
-                        boxShadow: item ? '0 2px 4px rgba(59, 130, 246, 0.05)' : 'none',
-                        position: 'relative'
-                      }}
-                    >
-                      <div style={{ width: '60px', fontWeight: '800', color: '#94a3b8', fontSize: '1rem' }}>
-                        #{slotNum}
-                      </div>
-                      
-                      {item ? (
-                        <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: '24px' }}>
-                          <div style={{ flex: 1 }}>
-                            <div style={{ fontWeight: 'bold', fontSize: '1.05rem', color: '#1e293b' }}>{item.color}</div>
-                            <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{item.brand}</div>
-                          </div>
-                          
-                          {/* Meter adjustment controls */}
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#fff', padding: '4px 10px', borderRadius: '25px', border: '1px solid #e2e8f0' }}>
-                             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                               <button 
-                                 onClick={(e) => handleAdjustMeters(item, -0.1, e)}
-                                 style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
-                                 title="減少 10cm"
-                               >-0.1</button>
-                               <button 
-                                 onClick={(e) => handleAdjustMeters(item, -1, e)}
-                                 style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fee2e2', color: '#dc2626', fontSize: '0.7rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
-                                 title="減少 1M"
-                               >-1M</button>
-                             </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                {(getSubGroups(activeZone)[activeSubGroupIndex]?.sections || [1]).map(sectionNum => (
+                  <div key={sectionNum} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <h3 style={{ margin: '8px 0 4px 0', color: '#1e293b', fontSize: '1.15rem', fontWeight: '800', borderLeft: '4px solid var(--primary)', paddingLeft: '8px' }}>
+                      貨架編號：{activeZone}{sectionNum}
+                    </h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {Array.from({ length: ZONE_CONFIG[activeZone].slots }, (_, i) => i + 1).map(slotNum => {
+                        const item = getInventoryAt(activeZone, sectionNum, slotNum);
+                        return (
+                          <div 
+                            key={slotNum}
+                            onClick={() => handleSlotClick(activeZone, sectionNum, slotNum)}
+                            style={{
+                              display: 'flex', alignItems: 'center', gap: '16px', borderRadius: '10px', border: '1px solid',
+                              borderColor: item ? 'var(--primary)' : '#e2e8f0',
+                              background: item ? '#eff6ff' : '#fff',
+                              padding: '12px 20px', cursor: 'pointer', transition: 'all 0.2s',
+                              boxShadow: item ? '0 2px 4px rgba(59, 130, 246, 0.05)' : 'none',
+                              position: 'relative'
+                            }}
+                          >
+                            <div style={{ width: '60px', fontWeight: '800', color: '#94a3b8', fontSize: '1rem' }}>
+                              #{slotNum}
+                            </div>
+                            
+                            {item ? (
+                              <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: '24px' }}>
+                                <div style={{ flex: 1 }}>
+                                  <div style={{ fontWeight: 'bold', fontSize: '1.05rem', color: '#1e293b' }}>{item.color}</div>
+                                  <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{item.brand}</div>
+                                </div>
+                                
+                                {/* Meter adjustment controls */}
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#fff', padding: '4px 10px', borderRadius: '25px', border: '1px solid #e2e8f0' }}>
+                                   <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                                     <button 
+                                       onClick={(e) => handleAdjustMeters(item, -0.1, e)}
+                                       style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       title="減少 10cm"
+                                     >-0.1</button>
+                                     <button 
+                                       onClick={(e) => handleAdjustMeters(item, -1, e)}
+                                       style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fee2e2', color: '#dc2626', fontSize: '0.7rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       title="減少 1M"
+                                     >-1M</button>
+                                   </div>
 
-                             <div style={{ minWidth: '50px', textAlign: 'center' }}>
-                               <div style={{ fontWeight: '800', color: 'var(--primary)', fontSize: '1rem' }}>{item.currentMeters || 0}</div>
-                               <div style={{ fontSize: '0.6rem', color: '#94a3b8', marginTop: '-2px' }}>METERS</div>
-                             </div>
+                                   <div style={{ minWidth: '50px', textAlign: 'center' }}>
+                                     <div style={{ fontWeight: '800', color: 'var(--primary)', fontSize: '1rem' }}>{item.currentMeters || 0}</div>
+                                     <div style={{ fontSize: '0.6rem', color: '#94a3b8', marginTop: '-2px' }}>METERS</div>
+                                   </div>
 
-                             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                               <button 
-                                 onClick={(e) => handleAdjustMeters(item, 0.1, e)}
-                                 style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
-                                 title="增加 10cm"
-                               >+0.1</button>
-                               <button 
-                                 onClick={(e) => handleAdjustMeters(item, 1, e)}
-                                 style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#ecfdf5', color: '#059669', fontSize: '0.7rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
-                                 title="增加 1M"
-                               >+1M</button>
-                             </div>
+                                   <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                                     <button 
+                                       onClick={(e) => handleAdjustMeters(item, 0.1, e)}
+                                       style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       title="增加 10cm"
+                                     >+0.1</button>
+                                     <button 
+                                       onClick={(e) => handleAdjustMeters(item, 1, e)}
+                                       style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#ecfdf5', color: '#059669', fontSize: '0.7rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       title="增加 1M"
+                                     >+1M</button>
+                                   </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'space-between', color: '#cbd5e1' }}>
+                                <span style={{ fontSize: '0.9rem' }}>尚未存放膜料</span>
+                                <Plus size={18} />
+                              </div>
+                            )}
                           </div>
-
-                          <div style={{ width: '120px', fontSize: '0.8rem', color: '#94a3b8', textAlign: 'right' }}>
-                            更新: {item.lastUpdated}
-                          </div>
-                        </div>
-                      ) : (
-                        <div style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'space-between', color: '#cbd5e1' }}>
-                          <span style={{ fontSize: '0.9rem' }}>尚未存放膜料</span>
-                          <Plus size={18} />
-                        </div>
-                      )}
+                        );
+                      })}
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
+
             </main>
           </div>
         )}
@@ -422,7 +453,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
           <div className="glass-panel" style={{ width: '450px', padding: '32px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-              <h2 style={{ margin: 0, fontSize: '1.4rem' }}>儲位資訊：{activeZone}{activeSection}-{editingItem?.location?.slot}</h2>
+              <h2 style={{ margin: 0, fontSize: '1.4rem' }}>儲位資訊：{editingItem?.location?.zone}{editingItem?.location?.section}-{editingItem?.location?.slot}</h2>
               <button onClick={() => setIsEditModalOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8' }}>
                  <X size={24} color="#94a3b8" />
               </button>

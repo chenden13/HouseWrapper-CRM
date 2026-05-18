@@ -119,25 +119,18 @@ function App() {
     
     list.forEach(c => {
       if (c.id) {
-        // Try to match standard format like C-123 or C-0123
-        const match = c.id.match(/C-(\d+)/i);
+        // Match optional 'C-' (case-insensitive) followed by digits at the beginning of the ID
+        const match = String(c.id).trim().match(/^(?:C-)?(\d+)/i);
         if (match) {
           const num = parseInt(match[1], 10);
-          if (!isNaN(num) && num > maxNum) {
+          if (!isNaN(num) && num > maxNum && num < 100000) {
             maxNum = num;
-          }
-        } else {
-          // Fallback: extract any digits from the ID
-          const pureNum = parseInt(c.id.replace(/[^0-9]/g, ''), 10);
-          // Avoid matching large timestamps (e.g. Date.now() has 13 digits)
-          if (!isNaN(pureNum) && pureNum > maxNum && pureNum < 10000) {
-            maxNum = pureNum;
           }
         }
       }
     });
     
-    return `C-${String(maxNum + 1).padStart(3, '0')}`;
+    return String(maxNum + 1);
   };
 
 

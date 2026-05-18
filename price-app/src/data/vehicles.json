@@ -1,4657 +1,6512 @@
 [
   {
-    "brand": "ALFA ROMEO",
-    "model": "33",
-    "size": "S"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Mira",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "G25 / G35 / G37 Sedan",
-    "size": "L"
-  },
-  {
-    "brand": "Maserati",
-    "model": "Ghibli",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "106",
-    "size": "S"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Model 3（舊款）",
-    "size": "S"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "75/145/146/147 / 155 / 156",
-    "size": "M"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Move",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "Q50",
-    "size": "L"
-  },
-  {
-    "brand": "Maserati",
-    "model": "Quattroporte",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "107 / 108",
-    "size": "S"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Model 3 Highland（新款）",
-    "size": "S"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "159",
-    "size": "L"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Tanto",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "Q70 / M25 / M37 / M56",
-    "size": "XL"
-  },
-  {
-    "brand": "Maserati",
-    "model": "GranTurismo（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "206",
-    "size": "S"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Model S（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "164 / 166",
-    "size": "M"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Copen",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "Q45",
-    "size": "XL"
-  },
-  {
-    "brand": "Maserati",
-    "model": "GranTurismo（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "207",
-    "size": "S"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Model S Plaid",
-    "size": "M"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "4C",
-    "size": "S"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Cast",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "G37 Coupe",
-    "size": "M"
-  },
-  {
-    "brand": "Maserati",
-    "model": "GranCabrio",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "208（舊款）",
-    "size": "S"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Model Y（舊款）",
-    "size": "S"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "Brera",
-    "size": "M"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Wake",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "Q60",
-    "size": "M"
-  },
-  {
-    "brand": "Maserati",
-    "model": "MC20",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "208（新款）",
-    "size": "S"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Model Y Juniper（新款）",
-    "size": "S"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "GTV",
-    "size": "S"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Taft",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "IPL G Coupe",
-    "size": "M"
-  },
-  {
-    "brand": "Maserati",
-    "model": "MC12",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "308 Hatchback（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Model X（舊款 ）",
-    "size": "L"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "Giulietta",
-    "size": "M"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Sirion",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "EX35 / EX37",
-    "size": "L"
-  },
-  {
-    "brand": "Maserati",
-    "model": "Grecale",
-    "size": "XL"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "308 Hatchback（新款）",
-    "size": "M"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Model X Plaid",
-    "size": "L"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "Giulia",
-    "size": "L"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "YRV",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "QX30",
-    "size": "L"
-  },
-  {
-    "brand": "Maserati",
-    "model": "Levante",
-    "size": "2XL"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "308 SW",
-    "size": "L"
-  },
-  {
-    "brand": "TESLA",
-    "model": "Cybertruck",
-    "size": "2XL"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "Stelvio",
-    "size": "XL"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Charade",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "FX35 / FX37 / FX50",
-    "size": "XL"
-  },
-  {
-    "brand": "Maserati",
-    "model": "GranTurismo Folgore",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "408（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Yaris（舊款）",
-    "size": "S"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "Spider",
-    "size": "S"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Boon",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "QX50",
-    "size": "XL"
-  },
-  {
-    "brand": "Maserati",
-    "model": "Grecale Folgore",
-    "size": "XL"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "408（新款 Fastback）",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Yaris Cross",
-    "size": "M"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "GT",
-    "size": "M"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Coo",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "QX55",
-    "size": "XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Mazda2 Hatchback",
-    "size": "S"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "508 Sedan",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Vios",
-    "size": "M"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "MiTo",
-    "size": "S"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Terios",
-    "size": "S"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "QX60",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Mazda2 Sedan",
-    "size": "S"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "508 SW",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Auris",
-    "size": "M"
-  },
-  {
-    "brand": "ALFA ROMEO",
-    "model": "Tonale",
-    "size": "L"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Rocky",
-    "size": "M"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "QX70",
-    "size": "XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Demio",
-    "size": "S"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "2008（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Prius C",
-    "size": "S"
-  },
-  {
-    "brand": "ASTON MARTIN",
-    "model": "Vantage",
-    "size": "M"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Xenia",
-    "size": "L"
-  },
-  {
-    "brand": "INFINITI",
-    "model": "QX80",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Mazda3 Hatchback（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "2008（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Prius（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "ASTON MARTIN",
-    "model": "DB9.DB11.DBS",
-    "size": "L"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Luxio",
-    "size": "L"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "D-Max（單廂）",
-    "size": "XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Mazda3 Hatchback（新款）",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "3008（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Prius（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "ASTON MARTIN",
-    "model": "DB12.DBS Superleggera",
-    "size": "L"
-  },
-  {
-    "brand": "DAIHATSU",
-    "model": "Gran Max",
-    "size": "L"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "D-Max Space Cab",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Mazda3 Sedan",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "3008（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Corolla Altis（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "ASTON MARTIN",
-    "model": "Vanquish",
-    "size": "L"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Neon",
-    "size": "M"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "D-Max Double Cab",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Mazda5",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "5008（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Corolla Altis（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "ASTON MARTIN",
-    "model": "Virage",
-    "size": "L"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Dart",
-    "size": "M"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "D-Max V-Cross",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Mazda6 Sedan",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "5008（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Corolla Sport",
-    "size": "M"
-  },
-  {
-    "brand": "ASTON MARTIN",
-    "model": "Rapide.S.AMR",
-    "size": "XL"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Avenger",
-    "size": "L"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "MU-X",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "Mazda6 Wagon",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "Rifter",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Camry（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "ASTON MARTIN",
-    "model": "DBX.DBX707",
-    "size": "XL"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Charger",
-    "size": "XL"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "MU-7",
-    "size": "XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "MX-5（Miata）",
-    "size": "S"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "Traveller",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Camry（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "ALPINE",
-    "model": "A110",
-    "size": "S"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Challenger",
-    "size": "XL"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "Elf（小貨車）",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "RX-7",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "Expert",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Crown（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "ALPINE",
-    "model": "A110GT",
-    "size": "S"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Viper",
-    "size": "M"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "N-Series",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "RX-8",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "RCZ",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Crown Crossover / Sport / Sedan",
-    "size": "XL"
-  },
-  {
-    "brand": "ALPINE",
-    "model": "A110S",
-    "size": "S"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Journey",
-    "size": "XL"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "Forward（F-Series）",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-3",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "e-208",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "GR86",
-    "size": "S"
-  },
-  {
-    "brand": "ALPINE",
-    "model": "A110R",
-    "size": "S"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Durango",
-    "size": "2XL"
-  },
-  {
-    "brand": "Isuzu",
-    "model": "Giga",
-    "size": "2XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-30",
-    "size": "M"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "e-2008",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Supra",
-    "size": "M"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A1 / S1",
-    "size": "S"
-  },
-  {
-    "brand": "DODGE",
-    "model": "Grand Caravan",
-    "size": "2XL"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "XE",
-    "size": "M"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-5（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "e-3008",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "MR2",
-    "size": "S"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A3 / S3 / RS3",
-    "size": "M"
-  },
-  {
-    "brand": "DODGE",
-    "model": "RAM 1500",
-    "size": "2XL"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "XF",
-    "size": "L"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-5（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Peugeot",
-    "model": "e-5008",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Celica",
-    "size": "S"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A4 / S4",
-    "size": "L"
-  },
-  {
-    "brand": "DODGE",
-    "model": "RAM 2500",
-    "size": "2XL"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "XJ",
-    "size": "XL"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-50",
-    "size": "XL"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Boxster（718 Boxster）",
-    "size": "S"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Raize",
-    "size": "M"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A4 / RS4 Avant",
-    "size": "L"
-  },
-  {
-    "brand": "DODGE",
-    "model": "RAM TRX",
-    "size": "2XL"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "S-Type",
-    "size": "L"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-60",
-    "size": "XL"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Cayman（718 Cayman）",
-    "size": "S"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Corolla Cross",
-    "size": "L"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A5 / S5 / RS5 Coupe",
-    "size": "L"
-  },
-  {
-    "brand": "Foxtron",
-    "model": "Model C（n⁷）",
-    "size": "XL"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "X-Type",
-    "size": "M"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-7",
-    "size": "XL"
-  },
-  {
-    "brand": "Porsche",
-    "model": "911 Carrera / Carrera S",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "RAV4（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A5 / RS5 Sportback",
-    "size": "L"
-  },
-  {
-    "brand": "Foxtron",
-    "model": "Model E",
-    "size": "XL"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "F-Type Coupe",
-    "size": "M"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-8",
-    "size": "2XL"
-  },
-  {
-    "brand": "Porsche",
-    "model": "911 Turbo / Turbo S",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "RAV4（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A6 / S6",
-    "size": "L"
-  },
-  {
-    "brand": "Foxtron",
-    "model": "Model D",
-    "size": "2XL"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "F-Type Convertible",
-    "size": "M"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-9",
-    "size": "2XL"
-  },
-  {
-    "brand": "Porsche",
-    "model": "911 GT3 / GT3 RS",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "bZ4X",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A6 / RS6 Avant",
-    "size": "L"
-  },
-  {
-    "brand": "Foxtron",
-    "model": "Model V",
-    "size": "2XL"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "XK / XKR",
-    "size": "M"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "CX-90",
-    "size": "2XL"
-  },
-  {
-    "brand": "Porsche",
-    "model": "911 Dakar",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Harrier",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A7 / S7 / RS7",
-    "size": "L"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "348 / 355 / 360",
-    "size": "S"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "E-Pace",
-    "size": "L"
-  },
-  {
-    "brand": "MAZDA",
-    "model": "MX-30",
-    "size": "L"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Panamera（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Highlander",
-    "size": "2XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A8 / S8",
-    "size": "XL"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "F430 / 296 GTB / 296GTS",
-    "size": "M"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "F-Pace",
-    "size": "XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "540C",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Panamera（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Land Cruiser Prado（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "TT/TTS/TTRS",
-    "size": "S"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "456 / 458 / 488 / F8",
-    "size": "M"
-  },
-  {
-    "brand": "JAGUAR",
-    "model": "I-Pace",
-    "size": "XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "570S",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Panamera Sport Turismo",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Land Cruiser Prado（新款 250）",
-    "size": "2XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "R8",
-    "size": "M"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "550 / 575",
-    "size": "M"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Renegade",
-    "size": "L"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "570GT",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Taycan Sedan",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Land Cruiser 200 / 300",
-    "size": "2XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "Q2",
-    "size": "S"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "599 / 612 / 812 / GTC4 / F12",
-    "size": "M"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Compass",
-    "size": "L"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "600LT",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Taycan Cross Turismo",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Sequoia",
-    "size": "2XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "Q3",
-    "size": "M"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "California / Portofino / Roma",
-    "size": "M"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Cherokee",
-    "size": "XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "650S",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Macan（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Sienta",
-    "size": "L"
-  },
-  {
-    "brand": "AUDI",
-    "model": "Q4",
-    "size": "L"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "SF90",
-    "size": "L"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Grand Cherokee（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "675LT",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Macan EV（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Wish",
-    "size": "L"
-  },
-  {
-    "brand": "AUDI",
-    "model": "Q5",
-    "size": "XL"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "LaFerrari",
-    "size": "L"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Grand Cherokee（新款 L）",
-    "size": "2XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "720S",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Cayenne（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Previa",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "Q7",
-    "size": "2XL"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "SF90 Stradale / Spider",
-    "size": "L"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Commander",
-    "size": "2XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "750S",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Cayenne（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Estima",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "Q8",
-    "size": "2XL"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "Enzo",
-    "size": "L"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Wrangler 2D",
-    "size": "L"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "GT",
-    "size": "L"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Cayenne Coupe",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Noah / Voxy",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "e-tron",
-    "size": "XL"
-  },
-  {
-    "brand": "FERRARI",
-    "model": "Purosangue",
-    "size": "XL"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Wrangler Unlimited（4D）",
-    "size": "XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "GTS",
-    "size": "L"
-  },
-  {
-    "brand": "Porsche",
-    "model": "918 Spyder",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Alphard（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "e-tron Sportback",
-    "size": "XL"
-  },
-  {
-    "brand": "FIAT",
-    "model": "500",
-    "size": "S"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Gladiator",
-    "size": "2XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "Artura",
-    "size": "M"
-  },
-  {
-    "brand": "Porsche",
-    "model": "Carrera GT",
-    "size": "M"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Alphard（新款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "e-tron GT",
-    "size": "L"
-  },
-  {
-    "brand": "FIAT",
-    "model": "500C",
-    "size": "S"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Gladiator Rubicon",
-    "size": "2XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "P1",
-    "size": "M"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM 1500（單廂）",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Vellfire",
-    "size": "2XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "Q4 e-tron",
-    "size": "L"
-  },
-  {
-    "brand": "FIAT",
-    "model": "500e",
-    "size": "S"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Avenger EV",
-    "size": "L"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "Senna",
-    "size": "M"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM 1500 Crew Cab",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Granvia",
-    "size": "2XL"
-  },
-  {
-    "brand": "AUDI",
-    "model": "Q6 e-tron",
-    "size": "XL"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Panda",
-    "size": "S"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Wagoneer S",
-    "size": "2XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "Speedtail",
-    "size": "L"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM 1500 TRX",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Hiace",
-    "size": "2XL"
-  },
-  {
     "brand": "ACURA",
-    "model": "Integra",
-    "size": "S"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Punto",
-    "size": "S"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Wagoneer",
-    "size": "2XL"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "Elva",
-    "size": "M"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM 2500",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Hilux（單廂）",
-    "size": "XL"
+    "model": "ADX",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
     "brand": "ACURA",
     "model": "ILX",
-    "size": "M"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Tipo Hatchback",
-    "size": "M"
-  },
-  {
-    "brand": "Jeep",
-    "model": "Grand Wagoneer",
-    "size": "2XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "A-Class Hatchback",
-    "size": "A"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM 3500",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Hilux（雙廂）",
-    "size": "2XL"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "ACURA",
-    "model": "TLX",
-    "size": "L"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Tipo Sedan",
-    "size": "M"
-  },
-  {
-    "brand": "KIA",
-    "model": "Picanto / Morning",
-    "size": "S"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "A-Class Sedan",
-    "size": "A"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM Heavy Duty（HD）",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Tacoma",
-    "size": "2XL"
-  },
-  {
-    "brand": "ACURA",
-    "model": "TSX",
-    "size": "M"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Tipo Wagon",
-    "size": "L"
-  },
-  {
-    "brand": "KIA",
-    "model": "Rio",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "A35 / A45 AMG",
-    "size": "A"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM ProMaster",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "Tundra",
-    "size": "2XL"
-  },
-  {
-    "brand": "ACURA",
-    "model": "TL",
-    "size": "L"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Linea",
-    "size": "M"
-  },
-  {
-    "brand": "KIA",
-    "model": "Ceed / Xceed",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "B-Class",
-    "size": "M"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM ProMaster City",
-    "size": "XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "bZ3",
-    "size": "L"
-  },
-  {
-    "brand": "ACURA",
-    "model": "RL / RLX",
-    "size": "XL"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Bravo",
-    "size": "M"
-  },
-  {
-    "brand": "KIA",
-    "model": "Soul",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "CLA Coupe",
-    "size": "M"
-  },
-  {
-    "brand": "RAM",
-    "model": "RAM 1500 REV（EV）",
-    "size": "2XL"
-  },
-  {
-    "brand": "Toyota",
-    "model": "bZ4X",
-    "size": "XL"
-  },
-  {
-    "brand": "ACURA",
-    "model": "ADX",
-    "size": "L"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Marea",
-    "size": "L"
-  },
-  {
-    "brand": "KIA",
-    "model": "Cerato / Forte / K3",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "CLA Shooting Brake",
-    "size": "M"
-  },
-  {
-    "brand": "Renault",
-    "model": "Twingo",
-    "size": "S"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "up!",
-    "size": "S"
-  },
-  {
-    "brand": "ACURA",
-    "model": "RDX",
-    "size": "XL"
-  },
-  {
-    "brand": "FIAT",
-    "model": "500X",
-    "size": "L"
-  },
-  {
-    "brand": "KIA",
-    "model": "K5 / Optima",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "C-Class Sedan（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "Renault",
-    "model": "Clio",
-    "size": "S"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Polo（舊款）",
-    "size": "S"
+    "model": "Integra",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
     "brand": "ACURA",
     "model": "MDX",
-    "size": "2XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
-    "brand": "FIAT",
-    "model": "600e",
-    "size": "L"
+    "brand": "ACURA",
+    "model": "NSX",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "KIA",
-    "model": "K8",
-    "size": "XL"
+    "brand": "ACURA",
+    "model": "RDX",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "MERCEDES-BENZ",
-    "model": "C-Class Sedan（新款 W206）",
-    "size": "M"
+    "brand": "ACURA",
+    "model": "RL / RLX",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "Renault",
-    "model": "Zoe",
-    "size": "S"
+    "brand": "ACURA",
+    "model": "TL",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "VOLKSWAGEN",
-    "model": "Polo（新款）",
-    "size": "S"
+    "brand": "ACURA",
+    "model": "TLX",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "ACURA",
+    "model": "TSX",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "ACURA",
     "model": "ZDX",
-    "size": "XL"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "FIAT",
-    "model": "Freemont",
-    "size": "XL"
+    "brand": "ALFA ROMEO",
+    "model": "147 / 155 / 156",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "KIA",
-    "model": "K9 / K900",
-    "size": "2XL"
+    "brand": "ALFA ROMEO",
+    "model": "159",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "MERCEDES-BENZ",
-    "model": "C-Class Estate",
-    "size": "M"
+    "brand": "ALFA ROMEO",
+    "model": "164 / 166",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "Renault",
-    "model": "Megane Hatchback（舊款）",
-    "size": "S"
+    "brand": "ALFA ROMEO",
+    "model": "33",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "VOLKSWAGEN",
-    "model": "Golf Hatchback（舊款）",
-    "size": "M"
+    "brand": "ALFA ROMEO",
+    "model": "4C",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "ACURA",
-    "model": "NSX",
-    "size": "S"
+    "brand": "ALFA ROMEO",
+    "model": "75/145/146/147 / 155 / 156",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "FIAT",
-    "model": "Doblo",
-    "size": "XL"
+    "brand": "ALFA ROMEO",
+    "model": "Brera",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "KIA",
-    "model": "Stonic",
-    "size": "M"
+    "brand": "ALFA ROMEO",
+    "model": "Giulia",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "MERCEDES-BENZ",
-    "model": "C43 / C63 AMG",
-    "size": "M"
+    "brand": "ALFA ROMEO",
+    "model": "Giulietta",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "Renault",
-    "model": "Megane Hatchback（新款）",
-    "size": "S"
+    "brand": "ALFA ROMEO",
+    "model": "GT",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "VOLKSWAGEN",
-    "model": "Golf Hatchback（新款）",
-    "size": "M"
+    "brand": "ALFA ROMEO",
+    "model": "GTV",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "BENTLEY",
-    "model": "Continental系列",
-    "size": "L"
+    "brand": "ALFA ROMEO",
+    "model": "MiTo",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "FIAT",
-    "model": "Ulysse",
-    "size": "2XL"
+    "brand": "ALFA ROMEO",
+    "model": "Spider",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "KIA",
-    "model": "Seltos",
-    "size": "L"
+    "brand": "ALFA ROMEO",
+    "model": "Stelvio",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "MERCEDES-BENZ",
-    "model": "E-Class Sedan",
-    "size": "L"
+    "brand": "ALFA ROMEO",
+    "model": "Tonale",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "Renault",
-    "model": "Megane Sedan",
-    "size": "L"
+    "brand": "ALPINE",
+    "model": "A110",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "VOLKSWAGEN",
-    "model": "Golf Variant",
-    "size": "L"
+    "brand": "ALPINE",
+    "model": "A110GT",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "ALPINE",
+    "model": "A110R",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "ALPINE",
+    "model": "A110S",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "DB11",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "DB12.DBS Superleggera",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "DB9.DB11.DBS",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "DBS",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "DBX",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "DBX.DBX707",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "Rapide S",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "Rapide.S.AMR",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "Vanquish",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "Vantage",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "ASTON MARTIN",
+    "model": "Virage",
+    "size": "L",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A1 / S1",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A3 / S3",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A3 / S3 / RS3",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A4 / RS4 Avant",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A4 / S4",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A4 Avant",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A5 / RS5 Sportback",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A5 / S5",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A5 / S5 / RS5 Coupe",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A5 Sportback",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A6 / RS6 Avant",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A6 / S6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A6 Avant",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A7 / S7",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A7 / S7 / RS7",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A8 / S8",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "AUDI",
+    "model": "e-tron",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "AUDI",
+    "model": "e-tron GT",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "e-tron Sportback",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "AUDI",
+    "model": "Q2",
+    "size": "S",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "Q3",
+    "size": "M",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "Q4",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "Q4 e-tron",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "Q5",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "AUDI",
+    "model": "Q6 e-tron",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "AUDI",
+    "model": "Q7",
+    "size": "2XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "AUDI",
+    "model": "Q8",
+    "size": "2XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "AUDI",
+    "model": "R8",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "RS3 / RS4 / RS5",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "RS6 / RS7",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "TT",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "TT/TTS/TTRS",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
     "brand": "BENTLEY",
     "model": "Arnage",
-    "size": "XL"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Scudo",
-    "size": "2XL"
-  },
-  {
-    "brand": "KIA",
-    "model": "Niro",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "E-Class Estate",
-    "size": "L"
-  },
-  {
-    "brand": "Renault",
-    "model": "Megane Estate",
-    "size": "L"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Scirocco",
-    "size": "M"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "BENTLEY",
-    "model": "Flying Spur系列",
-    "size": "XL"
-  },
-  {
-    "brand": "FIAT",
-    "model": "124 Spider",
-    "size": "S"
-  },
-  {
-    "brand": "KIA",
-    "model": "Sportage（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "CLS",
-    "size": "L"
-  },
-  {
-    "brand": "Renault",
-    "model": "Fluence",
-    "size": "L"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Jetta（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "BENTLEY",
-    "model": "Turbo R",
-    "size": "XL"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Abarth 500",
-    "size": "S"
-  },
-  {
-    "brand": "KIA",
-    "model": "Sportage（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "CLE Coupe",
-    "size": "L"
-  },
-  {
-    "brand": "Renault",
-    "model": "Laguna",
-    "size": "L"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Jetta（新款）",
-    "size": "M"
-  },
-  {
-    "brand": "BENTLEY",
-    "model": "Type R",
-    "size": "XL"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Abarth 595 / 695",
-    "size": "S"
-  },
-  {
-    "brand": "KIA",
-    "model": "Sorento",
-    "size": "XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "S-Class（標準軸）",
-    "size": "XL"
-  },
-  {
-    "brand": "Renault",
-    "model": "Talisman",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Passat Sedan",
-    "size": "L"
+    "model": "Bentayga",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "BENTLEY",
     "model": "Bentayga系列",
-    "size": "2XL"
-  },
-  {
-    "brand": "FORD",
-    "model": "Fiesta",
-    "size": "S"
-  },
-  {
-    "brand": "KIA",
-    "model": "Telluride",
-    "size": "2XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "S-Class L",
-    "size": "XL"
-  },
-  {
-    "brand": "Renault",
-    "model": "Captur（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Passat Variant",
-    "size": "XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "BENTLEY",
     "model": "Brooklands",
-    "size": "XL"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "FORD",
-    "model": "Focus Hatchback",
-    "size": "M"
+    "brand": "BENTLEY",
+    "model": "Continental GT",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "KIA",
-    "model": "Carnival（舊款）",
-    "size": "XL"
+    "brand": "BENTLEY",
+    "model": "Continental系列",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "MERCEDES-BENZ",
-    "model": "Maybach S-Class",
-    "size": "XL"
+    "brand": "BENTLEY",
+    "model": "Flying Spur",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "Renault",
-    "model": "Captur（新款）",
-    "size": "M"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Arteon",
-    "size": "XL"
+    "brand": "BENTLEY",
+    "model": "Flying Spur系列",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "BENTLEY",
     "model": "Mulsanne",
-    "size": "2XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
-    "brand": "FORD",
-    "model": "Focus Sedan",
-    "size": "M"
+    "brand": "BENTLEY",
+    "model": "Turbo R",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "KIA",
-    "model": "Carnival（新款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "SLK / SLC",
-    "size": "S"
-  },
-  {
-    "brand": "Renault",
-    "model": "Kadjar",
-    "size": "L"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Beetle",
-    "size": "M"
+    "brand": "BENTLEY",
+    "model": "Type R",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "BMW",
     "model": "1 Series",
-    "size": "S"
-  },
-  {
-    "brand": "FORD",
-    "model": "Focus Wagon / ST Wagon",
-    "size": "L"
-  },
-  {
-    "brand": "KIA",
-    "model": "EV3",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "SL",
-    "size": "L"
-  },
-  {
-    "brand": "Renault",
-    "model": "Austral",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Beetle Cabriolet",
-    "size": "M"
+    "size": "S",
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
-    "model": "2 Series Coupe",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Escort",
-    "size": "L"
-  },
-  {
-    "brand": "KIA",
-    "model": "EV5",
-    "size": "XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "AMG GT Coupe",
-    "size": "L"
-  },
-  {
-    "brand": "Renault",
-    "model": "Koleos",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "T-Cross",
-    "size": "M"
-  },
-  {
-    "brand": "BMW",
-    "model": "2 Series Gran Coupe",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Mondeo",
-    "size": "L"
-  },
-  {
-    "brand": "KIA",
-    "model": "EV6",
-    "size": "XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "AMG GT 4-Door",
-    "size": "XL"
-  },
-  {
-    "brand": "Renault",
-    "model": "Espace（新款 SUV 化）",
-    "size": "2XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Taigo / Nivus",
-    "size": "M"
+    "model": "2 Series",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
     "model": "2 Series Active Tourer",
-    "size": "M"
+    "size": "M",
+    "detailingSize": "L"
   },
   {
-    "brand": "FORD",
-    "model": "Fusion",
-    "size": "L"
+    "brand": "BMW",
+    "model": "2 Series Coupe",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "KIA",
-    "model": "EV9",
-    "size": "2XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "GLA",
-    "size": "M"
-  },
-  {
-    "brand": "Renault",
-    "model": "Scenic（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "T-Roc（舊款）",
-    "size": "L"
+    "brand": "BMW",
+    "model": "2 Series Gran Coupe",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
     "model": "3 Series",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Taurus",
-    "size": "XL"
-  },
-  {
-    "brand": "KIA",
-    "model": "Stinger",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "GLB",
-    "size": "M"
-  },
-  {
-    "brand": "Renault",
-    "model": "Grand Scenic",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "T-Roc（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "BMW",
-    "model": "3 Series Touring (pre-2019)",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Mustang",
-    "size": "L"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Gallardo",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "GLC（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Renault",
-    "model": "Kangoo",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Tiguan（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "BMW",
-    "model": "3 Series Touring (2019~)",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Mustang Mach-E",
-    "size": "XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Huracán",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "GLC（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Renault",
-    "model": "Trafic",
-    "size": "2XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Tiguan（新款）",
-    "size": "XL"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
     "model": "3 Series GT",
-    "size": "L"
-  },
-  {
-    "brand": "FORD",
-    "model": "GT",
-    "size": "L"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Huracán EVO",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "GLE",
-    "size": "XL"
-  },
-  {
-    "brand": "Renault",
-    "model": "Master",
-    "size": "2XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Tiguan Allspace",
-    "size": "2XL"
+    "size": "L",
+    "detailingSize": "L"
   },
   {
     "brand": "BMW",
-    "model": "4 Series (pre-2020)",
-    "size": "M"
+    "model": "3 Series Touring (2019~)",
+    "size": "M",
+    "detailingSize": "L"
   },
   {
-    "brand": "FORD",
-    "model": "EcoSport",
-    "size": "M"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Huracán STO",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "GLE Coupe",
-    "size": "XL"
-  },
-  {
-    "brand": "Renault",
-    "model": "Megane RS",
-    "size": "L"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Touareg（舊款）",
-    "size": "XL"
+    "brand": "BMW",
+    "model": "3 Series Touring (pre-2019)",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
     "model": "4 Series (2020~)",
-    "size": "M"
+    "size": "M",
+    "detailingSize": "L"
   },
   {
-    "brand": "FORD",
-    "model": "Puma",
-    "size": "M"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Huracán Tecnica",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "GLS",
-    "size": "2XL"
-  },
-  {
-    "brand": "Renault",
-    "model": "Alpine A110（Renault 關聯品牌）",
-    "size": "S"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Touareg（新款）",
-    "size": "XL"
+    "brand": "BMW",
+    "model": "4 Series (pre-2020)",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
     "model": "4 Series Gran Coupe",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Kuga / Escape",
-    "size": "XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Murciélago",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "G-Class（G Wagon）",
-    "size": "2XL"
-  },
-  {
-    "brand": "Renault",
-    "model": "Megane E-Tech",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Atlas / Teramont",
-    "size": "2XL"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
-    "model": "5 Series Sedan",
-    "size": "L"
-  },
-  {
-    "brand": "FORD",
-    "model": "Territory",
-    "size": "XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Aventador",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "B-Class",
-    "size": "M"
-  },
-  {
-    "brand": "Renault",
-    "model": "Scenic E-Tech",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Touran",
-    "size": "L"
-  },
-  {
-    "brand": "BMW",
-    "model": "5 Series Touring",
-    "size": "L"
-  },
-  {
-    "brand": "FORD",
-    "model": "Edge",
-    "size": "XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Aventador SV / SVJ",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "V-Class",
-    "size": "2XL"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Ghost（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Caddy（短軸）",
-    "size": "XL"
+    "model": "5 Series",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
     "brand": "BMW",
     "model": "5 Series GT",
-    "size": "L"
+    "size": "L",
+    "detailingSize": "XL"
   },
   {
-    "brand": "FORD",
-    "model": "Explorer",
-    "size": "XL"
+    "brand": "BMW",
+    "model": "5 Series Sedan",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "LAMBORGHINI",
-    "model": "Revuelto",
-    "size": "L"
+    "brand": "BMW",
+    "model": "5 Series Touring",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "MERCEDES-BENZ",
-    "model": "Vito",
-    "size": "2XL"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Ghost（新款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Caddy Maxi",
-    "size": "2XL"
+    "brand": "BMW",
+    "model": "6 Series",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "BMW",
     "model": "6 Series GT",
-    "size": "L"
-  },
-  {
-    "brand": "FORD",
-    "model": "Expedition",
-    "size": "2XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Urus",
-    "size": "XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "Sprinter",
-    "size": "2XL"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Phantom（標準版）",
-    "size": "2XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Multivan",
-    "size": "2XL"
+    "size": "L",
+    "detailingSize": "L"
   },
   {
     "brand": "BMW",
     "model": "7 Series",
-    "size": "XL"
-  },
-  {
-    "brand": "FORD",
-    "model": "Tourneo Connect",
-    "size": "XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Urus Performante",
-    "size": "XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "EQA",
-    "size": "M"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Phantom EWB",
-    "size": "2XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Caravelle",
-    "size": "2XL"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "BMW",
     "model": "8 Series / Gran Coupe",
-    "size": "XL"
-  },
-  {
-    "brand": "FORD",
-    "model": "Tourneo Custom",
-    "size": "2XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Urus SE",
-    "size": "XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "EQB",
-    "size": "L"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Silver Spur",
-    "size": "2XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Transporter",
-    "size": "2XL"
-  },
-  {
-    "brand": "BMW",
-    "model": "M135i",
-    "size": "S"
-  },
-  {
-    "brand": "FORD",
-    "model": "Galaxy",
-    "size": "XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Diablo",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "EQC",
-    "size": "L"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Silver Shadow",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Crafter",
-    "size": "2XL"
-  },
-  {
-    "brand": "BMW",
-    "model": "M2",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "S-Max",
-    "size": "XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Countach",
-    "size": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "EQE Sedan",
-    "size": "L"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Silver Seraph",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "ID.3",
-    "size": "M"
-  },
-  {
-    "brand": "BMW",
-    "model": "M3(G80前)",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Maverick",
-    "size": "XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Countach LPI 800-4",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "EQE SUV",
-    "size": "XL"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Wraith",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "ID.4",
-    "size": "XL"
-  },
-  {
-    "brand": "BMW",
-    "model": "M3(新款G80)",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Ranger",
-    "size": "2XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Sian",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "EQS Sedan",
-    "size": "2XL"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Spectre",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "ID.5",
-    "size": "XL"
-  },
-  {
-    "brand": "BMW",
-    "model": "M4(G82前)",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "F-150",
-    "size": "2XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Centenario",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "EQS SUV",
-    "size": "2XL"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Dawn",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "ID.6",
-    "size": "2XL"
-  },
-  {
-    "brand": "BMW",
-    "model": "M4(新款G82)",
-    "size": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "F-250 / Super Duty",
-    "size": "2XL"
-  },
-  {
-    "brand": "LAMBORGHINI",
-    "model": "Veneno",
-    "size": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "Maybach EQS SUV",
-    "size": "2XL"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Corniche",
-    "size": "XL"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "ID.Buzz",
-    "size": "2XL"
-  },
-  {
-    "brand": "BMW",
-    "model": "M5",
-    "size": "L"
-  },
-  {
-    "brand": "FORD",
-    "model": "Explorer EV",
-    "size": "XL"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Range Rover Evoque",
-    "size": "XL"
-  },
-  {
-    "brand": "MG",
-    "model": "MG3（舊款）",
-    "size": "S"
-  },
-  {
-    "brand": "ROLLS-ROYCE",
-    "model": "Cullinan",
-    "size": "2XL"
-  },
-  {
-    "brand": "Volvo",
-    "model": "S40",
-    "size": "M"
-  },
-  {
-    "brand": "BMW",
-    "model": "M8",
-    "size": "XL"
-  },
-  {
-    "brand": "FORD",
-    "model": "Capri EV",
-    "size": "L"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Discovery Sport",
-    "size": "XL"
-  },
-  {
-    "brand": "MG",
-    "model": "MG3 Hybrid+（新款）",
-    "size": "M"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Citigo",
-    "size": "XS"
-  },
-  {
-    "brand": "Volvo",
-    "model": "S60（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "BMW",
-    "model": "Z3 / Z4",
-    "size": "S"
-  },
-  {
-    "brand": "FORD",
-    "model": "E-Transit",
-    "size": "2XL"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Freelander 2",
-    "size": "L"
-  },
-  {
-    "brand": "MG",
-    "model": "MG5",
-    "size": "L"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Fabia Hatchback（舊款）",
-    "size": "S"
-  },
-  {
-    "brand": "Volvo",
-    "model": "S60（新款）",
-    "size": "L"
+    "size": "XL",
+    "detailingSize": "L"
   },
   {
     "brand": "BMW",
     "model": "i3",
-    "size": "S"
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "FORMOSA",
-    "model": "Matiz",
-    "size": "XS"
+    "brand": "BMW",
+    "model": "i3 / i8",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "LAND ROVER",
-    "model": "Range Rover Velar",
-    "size": "XL"
-  },
-  {
-    "brand": "MG",
-    "model": "MG6",
-    "size": "L"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Fabia Hatchback（新款）",
-    "size": "S"
-  },
-  {
-    "brand": "Volvo",
-    "model": "V40",
-    "size": "S"
+    "brand": "BMW",
+    "model": "i4",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
     "brand": "BMW",
     "model": "i8",
-    "size": "L"
-  },
-  {
-    "brand": "FORMOSA",
-    "model": "Magnus",
-    "size": "L"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Range Rover Sport",
-    "size": "2XL"
-  },
-  {
-    "brand": "MG",
-    "model": "MG7",
-    "size": "XL"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Fabia Combi",
-    "size": "M"
-  },
-  {
-    "brand": "Volvo",
-    "model": "V50",
-    "size": "M"
+    "size": "L",
+    "detailingSize": "L"
   },
   {
     "brand": "BMW",
-    "model": "X1 / X2 / iX1/iX2",
-    "size": "M"
-  },
-  {
-    "brand": "Genesis",
-    "model": "G70",
-    "size": "L"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Discovery 4 / 5",
-    "size": "2XL"
-  },
-  {
-    "brand": "MG",
-    "model": "ZS（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Scala",
-    "size": "M"
-  },
-  {
-    "brand": "Volvo",
-    "model": "V60（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "BMW",
-    "model": "iX3/X3 / X4",
-    "size": "L"
-  },
-  {
-    "brand": "Genesis",
-    "model": "G80",
-    "size": "XL"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Range Rover（標準版）",
-    "size": "2XL"
-  },
-  {
-    "brand": "MG",
-    "model": "ZS EV",
-    "size": "L"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Rapid",
-    "size": "M"
-  },
-  {
-    "brand": "Volvo",
-    "model": "V60（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "BMW",
-    "model": "X5 / X6",
-    "size": "XL"
-  },
-  {
-    "brand": "Genesis",
-    "model": "G90",
-    "size": "2XL"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Range Rover LWB",
-    "size": "2XL"
-  },
-  {
-    "brand": "MG",
-    "model": "HS（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Rapid Spaceback",
-    "size": "M"
-  },
-  {
-    "brand": "Volvo",
-    "model": "S80",
-    "size": "XL"
-  },
-  {
-    "brand": "BMW",
-    "model": "X7",
-    "size": "2XL"
-  },
-  {
-    "brand": "Genesis",
-    "model": "G70 Shooting Brake",
-    "size": "L"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Range Rover SV / SVAutobiography",
-    "size": "2XL"
-  },
-  {
-    "brand": "MG",
-    "model": "HS（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Octavia Sedan（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "Volvo",
-    "model": "S90",
-    "size": "2XL"
+    "model": "iX",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "BMW",
     "model": "iX/iX M60",
-    "size": "XL"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "Genesis",
-    "model": "GV60",
-    "size": "L"
+    "brand": "BMW",
+    "model": "iX3/X3 / X4",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "LAND ROVER",
-    "model": "Defender 90",
-    "size": "XL"
+    "brand": "BMW",
+    "model": "M135i",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "MG",
-    "model": "Marvel R",
-    "size": "XL"
+    "brand": "BMW",
+    "model": "M2",
+    "size": "M",
+    "detailingSize": "L"
   },
   {
-    "brand": "Škoda",
-    "model": "Octavia Sedan（新款）",
-    "size": "M"
+    "brand": "BMW",
+    "model": "M3 / M4 (2021~)",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "Volvo",
-    "model": "V70",
-    "size": "XL"
+    "brand": "BMW",
+    "model": "M3 / M4 (pre-2021)",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "BMW",
+    "model": "M3(G80前)",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "BMW",
+    "model": "M3(新款G80)",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "BMW",
+    "model": "M4(G82前)",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "BMW",
+    "model": "M4(新款G82)",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "BMW",
+    "model": "M5",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "BMW",
+    "model": "M5 / M6",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "BMW",
+    "model": "M8",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "BMW",
+    "model": "X1 / X2",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "BMW",
+    "model": "X1 / X2 / iX1/iX2",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "BMW",
+    "model": "X3 / X4 / X5 / X6",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "BMW",
+    "model": "X5 / X6",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "BMW",
+    "model": "X7",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "BMW",
+    "model": "Z3 / Z4",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
     "brand": "CADILLAC",
     "model": "ATS",
-    "size": "M"
-  },
-  {
-    "brand": "Genesis",
-    "model": "GV70",
-    "size": "XL"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Defender 110",
-    "size": "2XL"
-  },
-  {
-    "brand": "MG",
-    "model": "Cyberster",
-    "size": "L"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Octavia Combi（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Volvo",
-    "model": "V90",
-    "size": "2XL"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "CTS",
-    "size": "L"
-  },
-  {
-    "brand": "Genesis",
-    "model": "GV80",
-    "size": "2XL"
-  },
-  {
-    "brand": "LAND ROVER",
-    "model": "Defender 130",
-    "size": "2XL"
-  },
-  {
-    "brand": "MG",
-    "model": "MG4 EV",
-    "size": "M"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Octavia Combi（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Volvo",
-    "model": "V90 Cross Country",
-    "size": "2XL"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "CT4",
-    "size": "M"
-  },
-  {
-    "brand": "Genesis",
-    "model": "Electrified G80",
-    "size": "XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "CT200h",
-    "size": "M"
-  },
-  {
-    "brand": "MG",
-    "model": "MG S5 EV",
-    "size": "XL"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Superb Sedan",
-    "size": "XL"
-  },
-  {
-    "brand": "Volvo",
-    "model": "XC40（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "CT5",
-    "size": "L"
-  },
-  {
-    "brand": "Genesis",
-    "model": "Electrified GV70",
-    "size": "XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "IS",
-    "size": "M"
-  },
-  {
-    "brand": "MINI",
-    "model": "MINI 3 Door（3D）",
-    "size": "S"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Superb Combi",
-    "size": "XL"
-  },
-  {
-    "brand": "Volvo",
-    "model": "XC40 Recharge",
-    "size": "XL"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "CT6",
-    "size": "XL"
-  },
-  {
-    "brand": "GMC",
-    "model": "Terrain",
-    "size": "XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "HS250h",
-    "size": "M"
-  },
-  {
-    "brand": "MINI",
-    "model": "MINI 5 Door（5D）",
-    "size": "M"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Kamiq",
-    "size": "M"
-  },
-  {
-    "brand": "Volvo",
-    "model": "XC60（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "STS",
-    "size": "L"
-  },
-  {
-    "brand": "GMC",
-    "model": "Acadia",
-    "size": "2XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "ES",
-    "size": "L"
-  },
-  {
-    "brand": "MINI",
-    "model": "MINI Electric / Cooper EV",
-    "size": "S"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Karoq（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Volvo",
-    "model": "XC60（新款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "XTS",
-    "size": "XL"
-  },
-  {
-    "brand": "GMC",
-    "model": "Yukon XL",
-    "size": "2XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "GS",
-    "size": "L"
-  },
-  {
-    "brand": "MINI",
-    "model": "MINI Coupe",
-    "size": "S"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Karoq（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Volvo",
-    "model": "XC70",
-    "size": "33"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "XT4",
-    "size": "L"
-  },
-  {
-    "brand": "GMC",
-    "model": "Yukon XL",
-    "size": "2XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "LS（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "MINI",
-    "model": "MINI Roadster",
-    "size": "S"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Kodiaq（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Volvo",
-    "model": "XC90（舊款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "XT5",
-    "size": "XL"
-  },
-  {
-    "brand": "GMC",
-    "model": "Hummer EV SUV",
-    "size": "2XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "LS（新款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "MINI",
-    "model": "John Cooper Works（JCW）",
-    "size": "S"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Kodiaq（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Volvo",
-    "model": "XC90（新款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "XT6",
-    "size": "2XL"
-  },
-  {
-    "brand": "GMC",
-    "model": "Canyon",
-    "size": "2XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "RC",
-    "size": "M"
-  },
-  {
-    "brand": "MINI",
-    "model": "MINI Clubman（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Enyaq Coupe",
-    "size": "XL"
-  },
-  {
-    "brand": "Volvo",
-    "model": "EX30",
-    "size": "L"
-  },
-  {
-    "brand": "CADILLAC",
-    "model": "Lyriq",
-    "size": "XL"
-  },
-  {
-    "brand": "GMC",
-    "model": "Sierra 1500",
-    "size": "2XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "RC F",
-    "size": "M"
-  },
-  {
-    "brand": "MINI",
-    "model": "MINI Clubman（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Enyaq iV",
-    "size": "XL"
-  },
-  {
-    "brand": "Volvo",
-    "model": "EX40",
-    "size": "XL"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "CADILLAC",
     "model": "Celestiq",
-    "size": "2XL"
-  },
-  {
-    "brand": "GMC",
-    "model": "Sierra HD / 2500 / 3500",
-    "size": "2XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "LC500 / LC500h",
-    "size": "M"
-  },
-  {
-    "brand": "MINI",
-    "model": "MINI Countryman（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "Škoda",
-    "model": "Elroq",
-    "size": "XL"
-  },
-  {
-    "brand": "Volvo",
-    "model": "EC40（原 C40 Recharge）",
-    "size": "XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "CADILLAC",
-    "model": "SRX",
-    "size": "XL"
+    "model": "CT4",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "GMC",
-    "model": "Hummer EV Pickup",
-    "size": "2XL"
+    "brand": "CADILLAC",
+    "model": "CT5",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "LEXUS",
-    "model": "LFA",
-    "size": "M"
+    "brand": "CADILLAC",
+    "model": "CT6",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "MINI",
-    "model": "MINI Countryman（新款 U25）",
-    "size": "L"
+    "brand": "CADILLAC",
+    "model": "CTS",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "Smart",
-    "model": "Fortwo Coupe",
-    "size": "XS"
-  },
-  {
-    "brand": "Volvo",
-    "model": "EX90",
-    "size": "2XL"
+    "brand": "CADILLAC",
+    "model": "Escalade",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "CADILLAC",
     "model": "Escalade 系列",
-    "size": "2XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
-    "brand": "GMC",
-    "model": "Savana",
-    "size": "2XL"
+    "brand": "CADILLAC",
+    "model": "Lyriq",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "LEXUS",
-    "model": "LBX",
-    "size": "M"
+    "brand": "CADILLAC",
+    "model": "SRX",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "MINI",
-    "model": "MINI Aceman",
-    "size": "L"
+    "brand": "CADILLAC",
+    "model": "STS",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "Smart",
-    "model": "Fortwo Cabrio",
-    "size": "XS"
+    "brand": "CADILLAC",
+    "model": "XT4",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "Volvo",
-    "model": "EM90",
-    "size": "2XL"
+    "brand": "CADILLAC",
+    "model": "XT5",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "CHRYSLER",
-    "model": "200",
-    "size": "L"
+    "brand": "CADILLAC",
+    "model": "XT6",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
-    "brand": "HONDA",
-    "model": "Fit (old)",
-    "size": "S"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "UX",
-    "size": "L"
-  },
-  {
-    "brand": "MINI",
-    "model": "Paceman",
-    "size": "M"
-  },
-  {
-    "brand": "Smart",
-    "model": "Forfour",
-    "size": "S"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "300M",
-    "size": "L"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Fit (new)",
-    "size": "S"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "NX（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Colt Plus",
-    "size": "M"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Justy",
-    "size": "S"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "300/300C",
-    "size": "XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Jazz",
-    "size": "S"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "NX（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Lancer Fortis",
-    "size": "M"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Impreza Hatchback（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "Concorde",
-    "size": "XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "City Hatchback",
-    "size": "S"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "RX（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Lancer Evolution（EVO）",
-    "size": "M"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Impreza Hatchback（新款）",
-    "size": "M"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "LHS",
-    "size": "XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "City",
-    "size": "S"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "RX（新款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Grand Lancer",
-    "size": "M"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Impreza Sedan",
-    "size": "M"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "New Yorker",
-    "size": "XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Civic（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "RZ",
-    "size": "XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Attrage",
-    "size": "M"
-  },
-  {
-    "brand": "Subaru",
-    "model": "WRX（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "PT Cruiser",
-    "size": "L"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Civic（11代 / 新款）",
-    "size": "M"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "GX",
-    "size": "2XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Mirage",
-    "size": "S"
-  },
-  {
-    "brand": "Subaru",
-    "model": "WRX（新款 VB）",
-    "size": "M"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "Voyager",
-    "size": "2XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Accord",
-    "size": "M"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "LX",
-    "size": "2XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "ASX",
-    "size": "M"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Legacy（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "Grand Voyager",
-    "size": "2XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Insight",
-    "size": "M"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "LM（四座 / 七座）",
-    "size": "2XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Eclipse Cross",
-    "size": "L"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Legacy（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "Pacifica",
-    "size": "2XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Legend",
-    "size": "XL"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "RZ450e",
-    "size": "XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Outlander（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Levorg（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "CHRYSLER",
-    "model": "Crossfire",
-    "size": "M"
-  },
-  {
-    "brand": "HONDA",
-    "model": "CR-Z",
-    "size": "S"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "MKZ",
-    "size": "L"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Outlander（新款）",
-    "size": "2XL"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Levorg（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C1",
-    "size": "S"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Integra",
-    "size": "S"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "Continental",
-    "size": "XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Pajero / Montero",
-    "size": "2XL"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Outback（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C2",
-    "size": "S"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Prelude",
-    "size": "S"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "LS",
-    "size": "L"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Pajero Sport",
-    "size": "2XL"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Outback（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C3",
-    "size": "S"
-  },
-  {
-    "brand": "HONDA",
-    "model": "S2000",
-    "size": "S"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "Town Car",
-    "size": "2XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Zinger",
-    "size": "XL"
-  },
-  {
-    "brand": "Subaru",
-    "model": "XV（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C4",
-    "size": "M"
-  },
-  {
-    "brand": "HONDA",
-    "model": "NSX",
-    "size": "S"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "Corsair",
-    "size": "XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Delica D:5",
-    "size": "XL"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Crosstrek（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C4 X",
-    "size": "L"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Civic Type R",
-    "size": "M"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "Nautilus",
-    "size": "XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Triton（單廂）",
-    "size": "XL"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Forester（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C4 Picasso",
-    "size": "L"
-  },
-  {
-    "brand": "HONDA",
-    "model": "WR-V",
-    "size": "M"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "Aviator",
-    "size": "2XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Triton（雙廂）",
-    "size": "2XL"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Forester（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C5",
-    "size": "L"
-  },
-  {
-    "brand": "HONDA",
-    "model": "HR-V（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "Navigator",
-    "size": "2XL"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "i-MiEV",
-    "size": "XS"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Ascent",
-    "size": "2XL"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C5 X",
-    "size": "XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "HR-V（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "Navigator L",
-    "size": "2XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "March",
-    "size": "S"
-  },
-  {
-    "brand": "Subaru",
-    "model": "Solterra",
-    "size": "XL"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "C6",
-    "size": "L"
-  },
-  {
-    "brand": "HONDA",
-    "model": "ZR-V",
-    "size": "XL"
-  },
-  {
-    "brand": "Lincoln",
-    "model": "Star Concept（概念）",
-    "size": "XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Tiida Hatchback",
-    "size": "M"
-  },
-  {
-    "brand": "Subaru",
-    "model": "BRZ",
-    "size": "S"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "DS3",
-    "size": "S"
-  },
-  {
-    "brand": "HONDA",
-    "model": "CR-V（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Lotus",
-    "model": "Elise",
-    "size": "S"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Note",
-    "size": "M"
-  },
-  {
-    "brand": "Subaru",
-    "model": "SVX",
-    "size": "M"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "DS4",
-    "size": "M"
-  },
-  {
-    "brand": "HONDA",
-    "model": "CR-V（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Lotus",
-    "model": "Exige",
-    "size": "S"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Tiida Sedan",
-    "size": "M"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Alto",
-    "size": "XS"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "DS5",
-    "size": "L"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Passport",
-    "size": "2XL"
-  },
-  {
-    "brand": "Lotus",
-    "model": "Europa",
-    "size": "S"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Sentra（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Cervo",
-    "size": "XS"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "Grand C4 / Berlingo",
-    "size": "XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Pilot",
-    "size": "2XL"
-  },
-  {
-    "brand": "Lotus",
-    "model": "Evora",
-    "size": "S"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Sentra（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Lapin",
-    "size": "XS"
-  },
-  {
-    "brand": "CITROEN",
-    "model": "SpaceTourer",
-    "size": "2XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Freed",
-    "size": "L"
-  },
-  {
-    "brand": "Lotus",
-    "model": "Emira",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Sylphy",
-    "size": "L"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Hustler",
-    "size": "XS"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Spark",
-    "size": "S"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Step WGN",
-    "size": "XL"
-  },
-  {
-    "brand": "Lotus",
-    "model": "Evija",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Teana",
-    "size": "L"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Spacia",
-    "size": "XS"
+    "brand": "CADILLAC",
+    "model": "XTS",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "CHEVROLET",
     "model": "Aveo",
-    "size": "M"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Odyssey（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Lotus",
-    "model": "Eletre",
-    "size": "2XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Altima",
-    "size": "L"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Swift（舊款）",
-    "size": "S"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Cruze",
-    "size": "M"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Odyssey（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "Lotus",
-    "model": "Emeya",
-    "size": "XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Maxima",
-    "size": "XL"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Swift（新款）",
-    "size": "M"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Malibu",
-    "size": "L"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Honda e",
-    "size": "S"
-  },
-  {
-    "brand": "Luxgen",
-    "model": "S3",
-    "size": "L"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "370Z",
-    "size": "M"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Swift Sport",
-    "size": "M"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Impala",
-    "size": "XL"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Prologue",
-    "size": "2XL"
-  },
-  {
-    "brand": "Luxgen",
-    "model": "S5 Turbo",
-    "size": "L"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "400Z / Z Proto",
-    "size": "M"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Baleno",
-    "size": "S"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Sonic",
-    "size": "M"
-  },
-  {
-    "brand": "HUMMER",
-    "model": "H1",
-    "size": "2XL"
-  },
-  {
-    "brand": "Luxgen",
-    "model": "M7 Turbo",
-    "size": "XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "GT-R R35",
-    "size": "L"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Ignis",
-    "size": "S"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Bolt EV",
-    "size": "M"
-  },
-  {
-    "brand": "HUMMER",
-    "model": "H2",
-    "size": "2XL"
-  },
-  {
-    "brand": "Luxgen",
-    "model": "M7 ECO Hyper",
-    "size": "XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Kicks（舊款）",
-    "size": "M"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Ciaz",
-    "size": "M"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Bolt EUV",
-    "size": "L"
-  },
-  {
-    "brand": "HUMMER",
-    "model": "H3",
-    "size": "2XL"
-  },
-  {
-    "brand": "Luxgen",
-    "model": "M7 Turbo",
-    "size": "XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Kicks e-POWER（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Jimny（3D）",
-    "size": "S"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Camaro",
-    "size": "L"
-  },
-  {
-    "brand": "HUMMER",
-    "model": "Hummer EV SUV",
-    "size": "2XL"
-  },
-  {
-    "brand": "Luxgen",
-    "model": "M7 ECO Hyper",
-    "size": "XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Juke",
-    "size": "M"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Jimny 5D",
-    "size": "M"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Corvette C7",
-    "size": "M"
-  },
-  {
-    "brand": "HUMMER",
-    "model": "Hummer EV Pickup",
-    "size": "2XL"
-  },
-  {
-    "brand": "Luxgen",
-    "model": "n⁷ LR / LR+ / Performance",
-    "size": "XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Qashqai",
-    "size": "L"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Vitara",
-    "size": "L"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Corvette C8",
-    "size": "M"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "i10",
-    "size": "S"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "X-Trail（舊款）",
-    "size": "XL"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "SX4 S-Cross（舊款）",
-    "size": "L"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Trax",
-    "size": "L"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "i20",
-    "size": "S"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "X-Trail（新款）",
-    "size": "XL"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "SX4 S-Cross（新款）",
-    "size": "L"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Trailblazer",
-    "size": "L"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Accent",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Murano",
-    "size": "XL"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Across",
-    "size": "XL"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Equinox",
-    "size": "XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Venue",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Pathfinder",
-    "size": "2XL"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Ertiga",
-    "size": "L"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "CHEVROLET",
     "model": "Blazer",
-    "size": "XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Elantra（Avante）",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Patrol",
-    "size": "2XL"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "XL7",
-    "size": "XL"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Traverse",
-    "size": "2XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Elantra N",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Livina",
-    "size": "L"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Every Wagon",
-    "size": "S"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Tahoe",
-    "size": "2XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "i30 N",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Serena",
-    "size": "XL"
-  },
-  {
-    "brand": "SUZUKI",
-    "model": "Cappuccino",
-    "size": "XS"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Suburban",
-    "size": "2XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Veloster",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Elgrand",
-    "size": "2XL"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Colorado",
-    "size": "2XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Sonata",
-    "size": "L"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Quest",
-    "size": "2XL"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Silverado",
-    "size": "2XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Grandeur / Azera",
-    "size": "XL"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Frontier / Navara（單廂）",
-    "size": "XL"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Express Van",
-    "size": "2XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Kona",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Navara（雙廂）",
-    "size": "2XL"
-  },
-  {
-    "brand": "CHEVROLET",
-    "model": "Equinox EV",
-    "size": "XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Kona Electric",
-    "size": "M"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Leaf（舊款）",
-    "size": "M"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "CHEVROLET",
     "model": "Blazer EV",
-    "size": "XL"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "HYUNDAI",
-    "model": "Bayon",
-    "size": "M"
+    "brand": "CHEVROLET",
+    "model": "Bolt EUV",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "NISSAN",
-    "model": "Leaf（新款）",
-    "size": "L"
+    "brand": "CHEVROLET",
+    "model": "Bolt EV",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Camaro",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Colorado",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Corvette C7",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Corvette C8",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Cruze",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Equinox",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Equinox EV",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Express Van",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Impala",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Malibu",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CHEVROLET",
+    "model": "Silverado",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "CHEVROLET",
     "model": "Silverado EV",
-    "size": "2XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
-    "brand": "HYUNDAI",
-    "model": "Tucson（舊款）",
-    "size": "XL"
+    "brand": "CHEVROLET",
+    "model": "Sonic",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
-    "brand": "NISSAN",
-    "model": "Ariya",
-    "size": "XL"
+    "brand": "CHEVROLET",
+    "model": "Spark",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
-    "brand": "CMC",
-    "model": "Veryca（威利）廂車",
-    "size": "S"
+    "brand": "CHEVROLET",
+    "model": "Suburban",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
-    "brand": "HYUNDAI",
-    "model": "Tucson L（新款）",
-    "size": "XL"
+    "brand": "CHEVROLET",
+    "model": "Tahoe",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
-    "brand": "CMC",
-    "model": "Veryca（威利）貨車",
-    "size": "S"
+    "brand": "CHEVROLET",
+    "model": "Trailblazer",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "HYUNDAI",
-    "model": "Santa Fe",
-    "size": "XL"
+    "brand": "CHEVROLET",
+    "model": "Traverse",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
-    "brand": "CMC",
-    "model": "Veryca A190",
-    "size": "S"
+    "brand": "CHEVROLET",
+    "model": "Trax",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "HYUNDAI",
-    "model": "Palisade",
-    "size": "2XL"
+    "brand": "CHRYSLER",
+    "model": "200",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
-    "brand": "CMC",
-    "model": "Delica 貨車",
-    "size": "XL"
+    "brand": "CHRYSLER",
+    "model": "300/300C",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
-    "brand": "HYUNDAI",
-    "model": "Custin（庫斯汀）",
-    "size": "XL"
+    "brand": "CHRYSLER",
+    "model": "300C",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "300M",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "Concorde",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "Crossfire",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "Grand Voyager",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "LHS",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "New Yorker",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "Pacifica",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "PT Cruiser",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CHRYSLER",
+    "model": "Voyager",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C1",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C2",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C3",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C4",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C4 Picasso",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C4 X",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C5",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C5 X",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "C6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "DS3",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "DS4",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "DS5",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "Grand C4 / Berlingo",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "SpaceTourer",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "CMC",
     "model": "Delica 廂車",
-    "size": "XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Staria",
-    "size": "2XL"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "CMC",
-    "model": "Zinger",
-    "size": "XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Grand Starex / H-1",
-    "size": "2XL"
-  },
-  {
-    "brand": "CMC",
-    "model": "Zinger Pick-Up",
-    "size": "XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Ioniq Hybrid",
-    "size": "L"
-  },
-  {
-    "brand": "CMC",
-    "model": "Grunder",
-    "size": "L"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Ioniq 5",
-    "size": "L"
-  },
-  {
-    "brand": "CMC",
-    "model": "Savrin",
-    "size": "XL"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Ioniq 6",
-    "size": "L"
-  },
-  {
-    "brand": "CMC",
-    "model": "J Space",
-    "size": "L"
-  },
-  {
-    "brand": "HYUNDAI",
-    "model": "Ioniq 9（預估）",
-    "size": "2XL"
+    "model": "Delica 貨車",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "CMC",
     "model": "ET35 / 電動商車",
-    "size": "2XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "CMC",
+    "model": "Grunder",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CMC",
+    "model": "J Space",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "CMC",
+    "model": "Savrin",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CMC",
+    "model": "Veryca A190",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "CMC",
+    "model": "Veryca（威利）廂車",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "CMC",
+    "model": "Veryca（威利）貨車",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "CMC",
+    "model": "Zinger",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CMC",
+    "model": "Zinger Pick-Up",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Boon",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Cast",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Charade",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Coo",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Copen",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Gran Max",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Luxio",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Mira",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Move",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Rocky",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Sirion",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Taft",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Tanto",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Terios",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Wake",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "Xenia",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "DAIHATSU",
+    "model": "YRV",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Avenger",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Challenger",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Charger",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Dart",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Durango",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Grand Caravan",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Journey",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Neon",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "DODGE",
+    "model": "RAM 1500",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "DODGE",
+    "model": "RAM 2500",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "DODGE",
+    "model": "RAM TRX",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "DODGE",
+    "model": "Viper",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "348 / 355 / 360",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "456 / 458 / 488",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "456 / 458 / 488 / F8",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "550 / 575",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "599 / 612 / 812 / GTC4 / F12",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "599 / 612 / GTC4",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "812 / F8 / F12",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "California / Portofino / Roma",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "Enzo",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "F430 / 296 GTB",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "F430 / 296 GTB / 296GTS",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "LaFerrari",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "Purosangue",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "SF90",
+    "size": "L",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "SF90 Stradale / Spider",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FIAT",
+    "model": "124 Spider",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "500",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "500 / Abarth 500",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "500C",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "500e",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "500X",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FIAT",
+    "model": "600e",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Abarth 124 Spider",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Abarth 500",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Abarth 595 / 695",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Bravo",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Doblo",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Freemont",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Linea",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Marea",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Panda",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Panda / Punto",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Punto",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Scudo",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Tipo Hatchback",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Tipo Sedan",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Tipo Wagon",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FIAT",
+    "model": "Ulysse",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Capri EV",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "E-Transit",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "EcoSport",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FORD",
+    "model": "Edge",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Escape / Kuga",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Escort",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "Expedition",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Explorer",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Explorer EV",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "F-150",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "F-250 / Super Duty",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Fiesta",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FORD",
+    "model": "Focus 5D",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FORD",
+    "model": "Focus Hatchback",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FORD",
+    "model": "Focus Sedan",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FORD",
+    "model": "Focus Sedan / Wagon",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "Focus Wagon / ST Wagon",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "Fusion",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "Galaxy",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "GT",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "Kuga / Escape",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Maverick",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Mondeo",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "Mustang",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "Mustang Mach-E",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Puma",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FORD",
+    "model": "Ranger",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "S-Max",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Taurus",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Territory",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Tourneo",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Tourneo Connect",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "Tourneo Custom",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORMOSA",
+    "model": "Magnus",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORMOSA",
+    "model": "Matiz",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "Foxtron",
+    "model": "Model C（n⁷）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Foxtron",
+    "model": "Model D",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Foxtron",
+    "model": "Model E",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Foxtron",
+    "model": "Model V",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Genesis",
+    "model": "Electrified G80",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Genesis",
+    "model": "Electrified GV70",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Genesis",
+    "model": "G70",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Genesis",
+    "model": "G70 Shooting Brake",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Genesis",
+    "model": "G80",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Genesis",
+    "model": "G90",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Genesis",
+    "model": "GV60",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Genesis",
+    "model": "GV70",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Genesis",
+    "model": "GV80",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Acadia",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Canyon",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Hummer EV Pickup",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Hummer EV SUV",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Savana",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Sierra 1500",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Sierra HD / 2500 / 3500",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Terrain",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "Yukon XL",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Accord",
+    "size": "M",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HONDA",
+    "model": "City",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "City / Civic",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
+    "model": "City Hatchback",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Civic Type R",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Civic（11代 / 新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Civic（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
+    "model": "CR-V (2017~)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "CR-V (pre-2017)",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HONDA",
+    "model": "CR-V（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "CR-V（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "CR-Z",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Fit (new)",
+    "size": "S",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Fit (old)",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Freed",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Honda e",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "HR-V",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HONDA",
+    "model": "HR-V（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HONDA",
+    "model": "HR-V（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Insight",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Integra",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Jazz",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Legend",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "NSX",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "NSX / S2000",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Odyssey (new)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Odyssey (old)",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Odyssey（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Odyssey（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Passport",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Pilot",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Prelude",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Prologue",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "S2000",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HONDA",
+    "model": "Step WGN",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HONDA",
+    "model": "WR-V",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
+    "model": "ZR-V",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HUMMER",
+    "model": "H1",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HUMMER",
+    "model": "H2",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HUMMER",
+    "model": "H3",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HUMMER",
+    "model": "Hummer EV Pickup",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HUMMER",
+    "model": "Hummer EV SUV",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Accent",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Bayon",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Custin（庫斯汀）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Elantra N",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Elantra（Avante）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Grand Starex / H-1",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Grandeur / Azera",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "i10",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "i20",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
     "brand": "HYUNDAI",
     "model": "i30 N",
-    "size": "M"
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Ioniq 5",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Ioniq 6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Ioniq 9（預估）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Ioniq Hybrid",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Kona",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Kona Electric",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "HYUNDAI",
     "model": "Kona N",
-    "size": "M"
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Palisade",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Santa Fe",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Sonata",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Staria",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Tucson L（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Tucson（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Veloster",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "Venue",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "EX35 / EX37",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "FX35 / FX37 / FX50",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "G25 / G35 / G37 Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "G37 Coupe",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "IPL G Coupe",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "Q30 / Q60",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "Q45",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "Q50",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "Q50 / Q70",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "Q60",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "Q70 / M25 / M37 / M56",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "QX30",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "QX50",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "QX50 / QX55 / QX60",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "QX55",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "QX60",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "QX70",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "QX80",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "D-Max Double Cab",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "D-Max Space Cab",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "D-Max V-Cross",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "D-Max（單廂）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "Elf（小貨車）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "Forward（F-Series）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "Giga",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "MU-7",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "MU-X",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Isuzu",
+    "model": "N-Series",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "E-Pace",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "F-Pace",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "F-Type",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "F-Type Convertible",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "F-Type Coupe",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "I-Pace",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "S-Type",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "X-Type",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "XE",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "XF",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "XJ",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "XK / XKR",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Avenger EV",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Cherokee",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Commander",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Compass",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Gladiator",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Gladiator Rubicon",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Grand Cherokee（新款 L）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Grand Cherokee（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Grand Wagoneer",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Renegade",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Wagoneer",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Wagoneer S",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Wrangler 2D",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Jeep",
+    "model": "Wrangler Unlimited（4D）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Carnival",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Carnival（新款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Carnival（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Ceed / Xceed",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "KIA",
+    "model": "Cerato / Forte / K3",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "KIA",
+    "model": "EV3",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "EV5",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "EV6",
+    "size": "XL",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "EV9",
+    "size": "2XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "K5 / Optima",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "K8",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "K9 / K900",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Niro",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "Picanto / Morning",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "KIA",
+    "model": "Rio",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "KIA",
+    "model": "Seltos",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "Sorento",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Soul",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "KIA",
+    "model": "Sportage (new)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Sportage (old)",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "Sportage（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Sportage（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "Stinger",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "Stonic",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "KIA",
+    "model": "Telluride",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Aventador",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Aventador SV / SVJ",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Centenario",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Countach",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Countach LPI 800-4",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Diablo",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Gallardo",
+    "size": "M",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Huracan",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Huracán",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Huracán EVO",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Huracán STO",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Huracán Tecnica",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Murciélago",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Revuelto",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Sian",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Urus",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Urus Performante",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Urus SE",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LAMBORGHINI",
+    "model": "Veneno",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Defender (new)",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Defender 110",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Defender 130",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Defender 90",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Discovery",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Discovery 4 / 5",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Discovery Sport",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Evoque",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Freelander 2",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Range Rover",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Range Rover Evoque",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Range Rover LWB",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Range Rover Sport",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Range Rover SV / SVAutobiography",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Range Rover Velar",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Range Rover（標準版）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "Velar",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "CT / IS",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "CT200h",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "ES",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "ES / GS",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "GS",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "GX",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "HS250h",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "IS",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LBX",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LC500 / LC500h",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LFA",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LM / LX",
+    "size": "3XL",
+    "detailingSize": "3XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LM（四座 / 七座）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LS",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LS（新款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LS（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LX",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "NX / RX",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "NX（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "NX（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "RC",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "RC F",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "RX（新款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "RX（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "RZ",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "RZ450e",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "UX",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "Aviator",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "Continental",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "Corsair",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "LS",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "MKZ",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "Nautilus",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "Navigator",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "Navigator L",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "Star Concept（概念）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Lincoln",
+    "model": "Town Car",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Lotus",
+    "model": "Eletre",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Lotus",
+    "model": "Elise",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Lotus",
+    "model": "Emeya",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Lotus",
+    "model": "Emira",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Lotus",
+    "model": "Europa",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Lotus",
+    "model": "Evija",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Lotus",
+    "model": "Evora",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Lotus",
+    "model": "Exige",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "LOTUS",
+    "model": "Elise / Exige",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "Luxgen",
+    "model": "M7 ECO Hyper",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Luxgen",
+    "model": "M7 Turbo",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Luxgen",
+    "model": "n⁷ LR / LR+ / Performance",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Luxgen",
+    "model": "S3",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Luxgen",
+    "model": "S5 Turbo",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LUXGEN",
+    "model": "S3 / S5 / U5 / U6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LUXGEN",
+    "model": "U7 / M7 / URX / n7",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Maserati",
+    "model": "Ghibli",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Maserati",
+    "model": "GranCabrio",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Maserati",
+    "model": "GranTurismo Folgore",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Maserati",
+    "model": "GranTurismo（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Maserati",
+    "model": "GranTurismo（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Maserati",
+    "model": "Grecale",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Maserati",
+    "model": "Grecale Folgore",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Maserati",
+    "model": "Levante",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Maserati",
+    "model": "MC12",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Maserati",
+    "model": "MC20",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Maserati",
+    "model": "Quattroporte",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-3",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-3 / CX-30",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-30",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-5 / CX-60",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-5（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-5（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-50",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-60",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-7",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-8",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-9",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-9 / CX-90",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "CX-90",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Demio",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda 2",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda 3",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda 6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda2 Hatchback",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda2 Sedan",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda3 Hatchback（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda3 Hatchback（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda3 Sedan",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda5",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda6 Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "Mazda6 Wagon",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "MX-30",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "MX-5",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "MX-5（Miata）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "RX-7",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MAZDA",
+    "model": "RX-8",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "12C / 650S",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "540C",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "570 / 720 / Artura",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "570GT",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "570S",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "600LT",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "650S",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "675LT",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "720S",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "750S",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "Artura",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "Elva",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "GT",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "GTS",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "P1",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "Senna",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "McLAREN",
+    "model": "Speedtail",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "A / B / CLA",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "A-Class Hatchback",
+    "size": "A",
+    "detailingSize": "A"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "A-Class Sedan",
+    "size": "A",
+    "detailingSize": "A"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "A35 / A45 AMG",
+    "size": "A",
+    "detailingSize": "A"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "AMG GT 4-Door",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "AMG GT Coupe",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "B-Class",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "C-Class (new)",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "C-Class Estate",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "C-Class Sedan（新款 W206）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "C-Class Sedan（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "C43 / C63 AMG",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "CLA Coupe",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "CLA Shooting Brake",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "CLE Coupe",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "CLS",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "E-Class",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "E-Class Estate",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "E-Class Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQA",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQB",
+    "size": "L",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQC",
+    "size": "L",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQE",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQE Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQE SUV",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQS",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQS Sedan",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "EQS SUV",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "G-Class（G Wagon）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLA",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLA (new)",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLB",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLB / GLC / GLE",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLC（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLC（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLE",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLE Coupe",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLS",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "GLS / G-Class / V-Class",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "Maybach EQS SUV",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "Maybach S-Class",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "S-Class",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "S-Class L",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "S-Class（標準軸）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "SL",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "SLK / SLC",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "Sprinter",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "V-Class",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "Vito",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MG",
+    "model": "Cyberster",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MG",
+    "model": "HS（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MG",
+    "model": "HS（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MG",
+    "model": "Marvel R",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MG",
+    "model": "MG S5 EV",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MG",
+    "model": "MG3 Hybrid+（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MG",
+    "model": "MG3（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MG",
+    "model": "MG4 EV",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MG",
+    "model": "MG5",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MG",
+    "model": "MG6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MG",
+    "model": "MG7",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MG",
+    "model": "ZS EV",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MG",
+    "model": "ZS（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MINI",
+    "model": "Clubman / Countryman",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MINI",
+    "model": "Cooper",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MINI",
+    "model": "Countryman (new)",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MINI",
+    "model": "John Cooper Works（JCW）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI 3 Door（3D）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI 5 Door（5D）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI Aceman",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI Clubman（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI Clubman（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI Countryman（新款 U25）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI Countryman（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI Coupe",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI Electric / Cooper EV",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MINI",
+    "model": "MINI Roadster",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MINI",
+    "model": "Paceman",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "ASX",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Attrage",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Colt Plus",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Colt Plus / Lancer",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Delica",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Delica D:5",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Eclipse Cross",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Grand Lancer",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "i-MiEV",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Lancer Evolution（EVO）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Lancer Fortis",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Mirage",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Outlander / Zinger",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Outlander（新款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Outlander（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Pajero / Montero",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Pajero Sport",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Triton（單廂）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Triton（雙廂）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "Zinger",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "370Z",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "400Z / Z Proto",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Altima",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Altima / Teana",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Ariya",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Elgrand",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Frontier / Navara（單廂）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "GT-R R35",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Juke",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Kicks e-POWER（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Kicks（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Leaf（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Leaf（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Livina",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "March",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Maxima",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Murano",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Navara（雙廂）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Note",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Pathfinder",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Patrol",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Qashqai",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Quest",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Sentra",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Sentra（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Sentra（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Serena",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Sylphy",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Teana",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Tiida Hatchback",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "Tiida Sedan",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "X-Trail / Murano",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "X-Trail（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
+    "model": "X-Trail（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "OPEL",
+    "model": "Astra",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "OPEL",
+    "model": "Astra Sportwagon",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "OPEL",
+    "model": "Corsa",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "OPEL",
+    "model": "Insignia",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "OPEL",
+    "model": "Zafira",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "106",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "107 / 108",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "2008（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "2008（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "206",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "207",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "208（新款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "208（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "3008（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "3008（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "308 Hatchback（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "308 Hatchback（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "308 SW",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "408（新款 Fastback）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "408（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "5008（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "5008（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "508 Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "508 SW",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "e-2008",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "e-208",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "e-3008",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "e-5008",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "Expert",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "RCZ",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "Rifter",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "Traveller",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "PEUGEOT",
+    "model": "106 / 107",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "PEUGEOT",
+    "model": "206 / 207 / 208",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "PEUGEOT",
+    "model": "3008 / 408",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "PEUGEOT",
+    "model": "308",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "PEUGEOT",
+    "model": "5008 (new)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Porsche",
+    "model": "911 Carrera / Carrera S",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Porsche",
+    "model": "911 Dakar",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Porsche",
+    "model": "911 GT3 / GT3 RS",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Porsche",
+    "model": "911 Turbo / Turbo S",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Porsche",
+    "model": "918 Spyder",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Boxster（718 Boxster）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Carrera GT",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Cayenne Coupe",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Cayenne（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Cayenne（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Cayman（718 Cayman）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Macan EV（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Macan（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Panamera Sport Turismo",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Panamera（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Panamera（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Taycan Cross Turismo",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Taycan Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "PORSCHE",
+    "model": "911",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "PORSCHE",
+    "model": "Boxster / Cayman",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "PORSCHE",
+    "model": "Macan / Cayenne",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "PORSCHE",
+    "model": "Taycan / Panamera",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "PROTON",
+    "model": "Gen2 / Persona",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "PROTON",
+    "model": "Savvy",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM 1500 Crew Cab",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM 1500 REV（EV）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM 1500 TRX",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM 1500（單廂）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM 2500",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM 3500",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM Heavy Duty（HD）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM ProMaster",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "RAM",
+    "model": "RAM ProMaster City",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Alpine A110（Renault 關聯品牌）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Renault",
+    "model": "Austral",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Captur（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Renault",
+    "model": "Captur（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Renault",
+    "model": "Clio",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Renault",
+    "model": "Espace（新款 SUV 化）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Fluence",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Renault",
+    "model": "Grand Scenic",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Kadjar",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Renault",
+    "model": "Kangoo",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Koleos",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Laguna",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Renault",
+    "model": "Master",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Megane E-Tech",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Megane Estate",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Renault",
+    "model": "Megane Hatchback（新款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Renault",
+    "model": "Megane Hatchback（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Renault",
+    "model": "Megane RS",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Renault",
+    "model": "Megane Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Renault",
+    "model": "Scenic E-Tech",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Scenic（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Renault",
+    "model": "Talisman",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Trafic",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Renault",
+    "model": "Twingo",
+    "size": "S",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "Renault",
+    "model": "Zoe",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "RENAULT",
+    "model": "Megane",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "RENAULT",
+    "model": "Scenic",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Corniche",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Cullinan",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Dawn",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Ghost（新款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Ghost（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Phantom EWB",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Phantom（標準版）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Silver Seraph",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Silver Shadow",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Silver Spur",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Spectre",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ROLLS-ROYCE",
+    "model": "Wraith",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "SAAB",
+    "model": "9-3 Sedan / Convertible",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SAAB",
+    "model": "9-3 SportCombi",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SAAB",
+    "model": "9-5 Sedan / SportCombi",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Citigo",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Fabia",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Fabia Combi",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Kamiq",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Karoq",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Kodiaq",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Octavia / Octavia Combi",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Rapid / Rapid Spaceback",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Scala",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Superb / Superb Combi",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SKODA",
+    "model": "Yeti",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Citigo",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Elroq",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Enyaq Coupe",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Enyaq iV",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia Combi",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia Hatchback（新款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia Hatchback（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Kamiq",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Karoq（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Karoq（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Kodiaq（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Kodiaq（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia Combi（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia Combi（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia Sedan（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia Sedan（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Rapid",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Rapid Spaceback",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Scala",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb Combi",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb Sedan",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Smart",
+    "model": "Forfour",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Smart",
+    "model": "Fortwo Cabrio",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "Smart",
+    "model": "Fortwo Coupe",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "SMART",
+    "model": "ForTwo",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Ascent",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Subaru",
+    "model": "BRZ",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Crosstrek（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Forester（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Forester（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Impreza Hatchback（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Impreza Hatchback（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Impreza Sedan",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Justy",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Legacy（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Legacy（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Levorg（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Levorg（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Outback（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Outback（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Subaru",
+    "model": "Solterra",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Subaru",
+    "model": "SVX",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Subaru",
+    "model": "WRX（新款 VB）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Subaru",
+    "model": "WRX（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Subaru",
+    "model": "XV（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SUBARU",
+    "model": "Forester (new)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "SUBARU",
+    "model": "Impreza",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SUBARU",
+    "model": "Outback (new)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "SUBARU",
+    "model": "XV",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Across",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Alto",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Baleno",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Cappuccino",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Cervo",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Ciaz",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Ertiga",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Escudo 2.4",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Every Wagon",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Hustler",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Ignis",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Ignis / Jimny",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Jimny 5D",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Jimny（3D）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Lapin",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Spacia",
+    "size": "XS",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Swift / Solio",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Swift Sport",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Swift（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Swift（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "SX4 / Vitara",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "SX4 S-Cross（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "SX4 S-Cross（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "Vitara",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SUZUKI",
+    "model": "XL7",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Cybertruck",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model 3",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model 3 Highland（新款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model 3（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model S",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model S Plaid",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model S（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model X",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model X Plaid",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model X（舊款 ）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model Y",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model Y Juniper（新款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "TESLA",
+    "model": "Model Y（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Alphard（新款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Alphard（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Auris",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Toyota",
+    "model": "bZ3",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Toyota",
+    "model": "bZ4X",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Camry（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Camry（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Celica",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Corolla Altis（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Corolla Altis（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Corolla Cross",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Corolla Sport",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Crown Crossover / Sport / Sedan",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Crown（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Estima",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "GR86",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Granvia",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Harrier",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Hiace",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Highlander",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Hilux（單廂）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Hilux（雙廂）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Land Cruiser 200 / 300",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Land Cruiser Prado（新款 250）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Land Cruiser Prado（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "MR2",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Noah / Voxy",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Previa",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Prius C",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Prius（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Prius（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Raize",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Toyota",
+    "model": "RAV4（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "RAV4（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Sequoia",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Sienta",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Supra",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Tacoma",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Tundra",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Vellfire",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Vios",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Wish",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Yaris Cross",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Yaris（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "TOYOTA",
+    "model": "Alphard (new)",
+    "size": "3XL",
+    "detailingSize": "3XL"
+  },
+  {
+    "brand": "TOYOTA",
+    "model": "Alphard (old)",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "TOYOTA",
+    "model": "Camry",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "TOYOTA",
+    "model": "Corolla Altis",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "TOYOTA",
+    "model": "Land Cruiser",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "TOYOTA",
+    "model": "RAV4 (new)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "TOYOTA",
+    "model": "Yaris",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Arteon",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Atlas / Teramont",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Beetle",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Beetle Cabriolet",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Caddy Maxi",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Caddy（短軸）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Caravelle",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Crafter",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Golf",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Golf Hatchback（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Golf Hatchback（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Golf Variant",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Golf Variant / Passat",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "ID.3",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "ID.4",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "ID.5",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "ID.6",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "ID.Buzz",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Jetta（新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Jetta（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Multivan",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Multivan / ID.Buzz",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Passat Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Passat Variant",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Polo",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Polo（新款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Polo（舊款）",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Scirocco",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "T-Cross",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "T-Roc",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "T-Roc（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "T-Roc（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Taigo / Nivus",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Tiguan (new)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Tiguan Allspace",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Tiguan（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Tiguan（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Touareg",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Touareg（新款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Touareg（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Touran",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "Transporter",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "up!",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Volvo",
+    "model": "EC40（原 C40 Recharge）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "EM90",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "EX30",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Volvo",
+    "model": "EX40",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "EX90",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "S40",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Volvo",
+    "model": "S60（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Volvo",
+    "model": "S60（舊款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Volvo",
+    "model": "S80",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "S90",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "V40",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "Volvo",
+    "model": "V50",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Volvo",
+    "model": "V60（新款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Volvo",
+    "model": "V60（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Volvo",
+    "model": "V70",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "V90",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "V90 Cross Country",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC40 Recharge",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC40（舊款）",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC60（新款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC60（舊款）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC70",
+    "size": "33",
+    "detailingSize": "33"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC90（新款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC90（舊款）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLVO",
+    "model": "S60",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLVO",
+    "model": "S90 / V60",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLVO",
+    "model": "V40 / EX30",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLVO",
+    "model": "XC40",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "VOLVO",
+    "model": "XC60 / XC90",
+    "size": "XL",
+    "detailingSize": "XL"
   }
 ]

@@ -181,7 +181,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
         brand: b,
         model: m,
         size: v.size || 'M', // 貼膜用的新尺寸
-        detailingSize: dbSize || v.size || 'M' // 美容用的舊尺寸 (若無則用新尺寸)
+        detailingSize: (v as any).detailingSize || dbSize || v.size || 'M' // 優先讀取 JSON 內的美容尺寸
       });
     });
 
@@ -318,8 +318,11 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                       <span style={{ marginLeft: '10px', color: '#64748b' }}>{v.model}</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ background: '#eff6ff', color: '#3b82f6', fontSize: '0.8rem', padding: '4px 10px', borderRadius: '6px', fontWeight: 'bold' }}>
-                        {v.size || '未知'}
+                      <span style={{ background: '#e0e7ff', color: '#4f46e5', fontSize: '0.75rem', padding: '4px 8px', borderRadius: '6px', fontWeight: 'bold' }}>
+                        貼膜: {v.size || 'M'}
+                      </span>
+                      <span style={{ background: '#e0f2fe', color: '#0ea5e9', fontSize: '0.75rem', padding: '4px 8px', borderRadius: '6px', fontWeight: 'bold' }}>
+                        洗車: {v.detailingSize || 'M'}
                       </span>
                       <ArrowRight size={16} color="#cbd5e1" />
                     </div>
@@ -403,9 +406,9 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
             gap: '20px', 
             marginBottom: '30px', 
             background: activeCategory === 'detailing' 
-              ? 'linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%)' 
-              : 'linear-gradient(135deg, #4f46e5 0%, #3730a3 100%)', 
-            padding: '30px', 
+              ? 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)' 
+              : 'linear-gradient(135deg, #4f46e5 0%, #4338ca 100%)', 
+            padding: '25px 30px', 
             borderRadius: '24px', 
             color: '#fff', 
             boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' 
@@ -415,13 +418,18 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
             </div>
             <div style={{ flex: 1 }}>
               <h3 style={{ fontSize: '1.8rem', margin: 0, fontWeight: '900' }}>{selectedVehicle.brand} {selectedVehicle.model}</h3>
-              <p style={{ margin: '5px 0 0 0', opacity: 0.8, fontSize: '1rem' }}>
-                對應{activeCategory === 'detailing' ? '美容' : '貼膜'}尺寸: <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>{currentSize}</span>
-              </p>
+              <div style={{ display: 'flex', gap: '12px', marginTop: '8px', flexWrap: 'wrap' }}>
+                <span style={{ background: 'rgba(255, 255, 255, 0.2)', padding: '4px 12px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 'bold' }}>
+                  貼膜尺寸: {selectedVehicle.size || 'M'}
+                </span>
+                <span style={{ background: 'rgba(255, 255, 255, 0.35)', padding: '4px 12px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 'bold', border: '1px solid rgba(255, 255, 255, 0.5)' }}>
+                  洗車/美容尺寸: {(selectedVehicle as any).detailingSize || 'M'}
+                </span>
+              </div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '900' }}>{currentSize}</div>
-              <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>VEHICLE SIZE</div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '900', lineHeight: '1' }}>{currentSize}</div>
+              <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '4px' }}>目前對應尺寸 ({activeCategory === 'detailing' ? '洗車美容' : '貼膜'})</div>
             </div>
           </div>
 
@@ -434,10 +442,9 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <Waves size={24} />
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>精緻洗車服務</h4>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
-                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>單次施工 ({currentSize})</div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#64748b' }}>
-                    洽詢報價
+                <div style={{ marginBottom: '20px' }}>
+                  <div style={{ background: '#e0f2fe', border: '1px solid #bae6fd', color: '#0369a1', padding: '8px 16px', borderRadius: '12px', fontSize: '0.95rem', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <Droplets size={16} /> 對應 {currentSize} 尺寸規格
                   </div>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -454,10 +461,9 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <Wind size={24} />
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>內裝深層護理</h4>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
-                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>職人手作</div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#64748b' }}>
-                    洽詢報價
+                <div style={{ marginBottom: '20px' }}>
+                  <div style={{ background: '#f5f3ff', border: '1px solid #ddd6fe', color: '#5b21b6', padding: '8px 16px', borderRadius: '12px', fontSize: '0.95rem', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <Wind size={16} /> 對應 {currentSize} 尺寸規格
                   </div>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -474,10 +480,9 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <Sparkles size={24} />
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>車體小美容 / 拋光</h4>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
-                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>漆面還原</div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#64748b' }}>
-                    洽詢報價
+                <div style={{ marginBottom: '20px' }}>
+                  <div style={{ background: '#fffbeb', border: '1px solid #fde68a', color: '#b45309', padding: '8px 16px', borderRadius: '12px', fontSize: '0.95rem', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <Sparkles size={16} /> 對應 {currentSize} 尺寸規格
                   </div>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -493,10 +498,9 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                   <ShieldCheck size={24} />
                   <h4 style={{ margin: 0, fontSize: '1.25rem', fontWeight: '800' }}>極致大美容</h4>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '15px' }}>
-                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>全車修復</div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#64748b' }}>
-                    洽詢報價
+                <div style={{ marginBottom: '20px' }}>
+                  <div style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '8px 16px', borderRadius: '12px', fontSize: '0.95rem', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <ShieldCheck size={16} /> 對應 {currentSize} 尺寸規格
                   </div>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', color: '#475569', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -527,17 +531,25 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
                       </div>
                     </div>
                   </div>
-                  <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '4px' }}>建議售價起</div>
-                    <div style={{ fontSize: '2.5rem', fontWeight: '900', color: '#64748b', lineHeight: 1 }}>
-                      洽詢報價
+                  <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end' }}>
+                    <div style={{ background: '#f3e8ff', border: '1px solid #e9d5ff', color: '#6b21a8', padding: '8px 16px', borderRadius: '12px', fontSize: '0.95rem', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
+                      <Gem size={16} /> 對應 {currentSize} 尺寸規格
                     </div>
-                    <div style={{ marginTop: '10px', fontSize: '0.8rem', color: '#8b5cf6', fontWeight: 'bold' }}>
-                      * 視漆面狀況與鍍膜等級調整
+                    <div style={{ fontSize: '0.85rem', color: '#6b21a8', fontWeight: 'bold', opacity: 0.8 }}>
+                      * 實際施工價格與加購項目請洽現場人員
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* 溫馨提醒聲明 */}
+              <div className="glass-panel col-span-2" style={{ padding: '15px 20px', borderRadius: '16px', background: '#f8fafc', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '10px', gridColumn: 'span 2' }}>
+                <Info size={18} color="#0ea5e9" />
+                <span style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: '500' }}>
+                  💡 <strong>洗車美容報價說明：</strong>此頁面僅供對應車型之「美容/洗車尺寸級距」查詢。實際施工金額與工時評估，請洽門市技術人員或參閱店內實體價目表。
+                </span>
+              </div>
+
             </div>
           ) : (
             /* 貼膜服務報價內容 */

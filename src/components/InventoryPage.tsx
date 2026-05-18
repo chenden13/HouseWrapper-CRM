@@ -261,10 +261,16 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: `repeat(${Math.min(getSubGroups(activeZone)[activeSubGroupIndex]?.sections.length || 1, 3)}, minmax(0, 1fr))`, 
+                gap: '24px',
+                width: '100%',
+                alignItems: 'flex-start'
+              }}>
                 {(getSubGroups(activeZone)[activeSubGroupIndex]?.sections || [1]).map(sectionNum => (
-                  <div key={sectionNum} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <h3 style={{ margin: '8px 0 4px 0', color: '#1e293b', fontSize: '1.15rem', fontWeight: '800', borderLeft: '4px solid var(--primary)', paddingLeft: '8px' }}>
+                  <div key={sectionNum} style={{ display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ margin: '0 0 8px 0', color: '#1e293b', fontSize: '1.15rem', fontWeight: '800', borderLeft: '4px solid var(--primary)', paddingLeft: '8px' }}>
                       貨架編號：{activeZone}{sectionNum}
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -275,63 +281,63 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                             key={slotNum}
                             onClick={() => handleSlotClick(activeZone, sectionNum, slotNum)}
                             style={{
-                              display: 'flex', alignItems: 'center', gap: '16px', borderRadius: '10px', border: '1px solid',
+                              display: 'flex', alignItems: 'center', gap: '12px', borderRadius: '10px', border: '1px solid',
                               borderColor: item ? 'var(--primary)' : '#e2e8f0',
                               background: item ? '#eff6ff' : '#fff',
-                              padding: '12px 20px', cursor: 'pointer', transition: 'all 0.2s',
+                              padding: '10px 14px', cursor: 'pointer', transition: 'all 0.2s',
                               boxShadow: item ? '0 2px 4px rgba(59, 130, 246, 0.05)' : 'none',
                               position: 'relative'
                             }}
                           >
-                            <div style={{ width: '60px', fontWeight: '800', color: '#94a3b8', fontSize: '1rem' }}>
+                            <div style={{ width: '40px', fontWeight: '800', color: '#94a3b8', fontSize: '0.9rem' }}>
                               #{slotNum}
                             </div>
                             
                             {item ? (
-                              <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: '24px' }}>
-                                <div style={{ flex: 1 }}>
-                                  <div style={{ fontWeight: 'bold', fontSize: '1.05rem', color: '#1e293b' }}>{item.color}</div>
-                                  <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{item.brand}</div>
+                              <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: '12px', minWidth: 0 }}>
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                  <div style={{ fontWeight: 'bold', fontSize: '0.95rem', color: '#1e293b', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }} title={item.color}>{item.color}</div>
+                                  <div style={{ fontSize: '0.8rem', color: '#64748b', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{item.brand}</div>
                                 </div>
                                 
                                 {/* Meter adjustment controls */}
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#fff', padding: '4px 10px', borderRadius: '25px', border: '1px solid #e2e8f0' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#fff', padding: '3px 6px', borderRadius: '25px', border: '1px solid #e2e8f0', flexShrink: 0 }}>
                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                                      <button 
                                        onClick={(e) => handleAdjustMeters(item, -0.1, e)}
-                                       style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       style={{ width: '28px', height: '16px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.55rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                                        title="減少 10cm"
                                      >-0.1</button>
                                      <button 
                                        onClick={(e) => handleAdjustMeters(item, -1, e)}
-                                       style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fee2e2', color: '#dc2626', fontSize: '0.7rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       style={{ width: '28px', height: '16px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fee2e2', color: '#dc2626', fontSize: '0.6rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                                        title="減少 1M"
-                                     >-1M</button>
+                                     >-1</button>
                                    </div>
 
-                                   <div style={{ minWidth: '50px', textAlign: 'center' }}>
-                                     <div style={{ fontWeight: '800', color: 'var(--primary)', fontSize: '1rem' }}>{item.currentMeters || 0}</div>
-                                     <div style={{ fontSize: '0.6rem', color: '#94a3b8', marginTop: '-2px' }}>METERS</div>
+                                   <div style={{ minWidth: '40px', textAlign: 'center' }}>
+                                     <div style={{ fontWeight: '800', color: 'var(--primary)', fontSize: '0.9rem' }}>{item.currentMeters || 0}</div>
+                                     <div style={{ fontSize: '0.55rem', color: '#94a3b8', marginTop: '-2px' }}>METERS</div>
                                    </div>
 
                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                                      <button 
                                        onClick={(e) => handleAdjustMeters(item, 0.1, e)}
-                                       style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       style={{ width: '28px', height: '16px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.55rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                                        title="增加 10cm"
                                      >+0.1</button>
                                      <button 
                                        onClick={(e) => handleAdjustMeters(item, 1, e)}
-                                       style={{ width: '35px', height: '18px', borderRadius: '4px', border: '1px solid #e2e8f0', background: '#ecfdf5', color: '#059669', fontSize: '0.7rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       style={{ width: '28px', height: '16px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#ecfdf5', color: '#059669', fontSize: '0.6rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                                        title="增加 1M"
-                                     >+1M</button>
+                                     >+1</button>
                                    </div>
                                 </div>
                               </div>
                             ) : (
                               <div style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'space-between', color: '#cbd5e1' }}>
-                                <span style={{ fontSize: '0.9rem' }}>尚未存放膜料</span>
-                                <Plus size={18} />
+                                <span style={{ fontSize: '0.85rem' }}>尚未存放</span>
+                                <Plus size={16} />
                               </div>
                             )}
                           </div>
@@ -341,6 +347,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                   </div>
                 ))}
               </div>
+
 
             </main>
           </div>

@@ -33,13 +33,7 @@ try {
       if (brand && model) {
         const bStr = String(brand).trim();
         const mStr = String(model).trim();
-        let sStr = String(size || 'M').trim().toUpperCase();
-        
-        // 使用者特別指示強制修正：Audi A4 相關貼膜尺寸應為 M 尺寸
-        if (bStr.toUpperCase() === 'AUDI' && mStr.toUpperCase().includes('A4')) {
-          sStr = 'M';
-        }
-        
+        const sStr = String(size || 'M').trim().toUpperCase();
         const key = `${cleanKey(bStr)}_${cleanKey(mStr)}`;
         
         mergedMap.set(key, {
@@ -96,6 +90,17 @@ try {
   console.log(`- 成功與現有貼膜車型精確匹配並對齊尺寸：${mergedCount} 筆`);
   console.log(`- 洗車表獨有並新增至對照表的車型：${newWashCount} 筆`);
   console.log(`- 合併後最終車型聯集總數：${mergedMap.size} 筆。`);
+
+  // 2.5 執行黃金校正規則：Audi A4 / S4 / RS4 系列貼膜為 L，洗車為 M
+  for (let [key, v] of mergedMap.entries()) {
+    if (v.brand.toUpperCase() === 'AUDI') {
+      const modelUpper = v.model.toUpperCase();
+      if (modelUpper.includes('A4') || modelUpper.includes('S4') || modelUpper.includes('RS4')) {
+        v.size = 'L';
+        v.detailingSize = 'M';
+      }
+    }
+  }
 
   // 3. 轉成乾淨的 Array 並排序 (依 廠牌 字母升冪排序)
   const finalVehicles = Array.from(mergedMap.values()).sort((a, b) => {

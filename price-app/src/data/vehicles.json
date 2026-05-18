@@ -266,20 +266,20 @@
   {
     "brand": "AUDI",
     "model": "A4 / RS4 Avant",
-    "size": "M",
+    "size": "L",
     "detailingSize": "M"
   },
   {
     "brand": "AUDI",
     "model": "A4 / S4",
-    "size": "M",
+    "size": "L",
     "detailingSize": "M"
   },
   {
     "brand": "AUDI",
     "model": "A4 Avant",
     "size": "L",
-    "detailingSize": "L"
+    "detailingSize": "M"
   },
   {
     "brand": "AUDI",
@@ -416,7 +416,7 @@
   {
     "brand": "AUDI",
     "model": "RS3 / RS4 / RS5",
-    "size": "M",
+    "size": "L",
     "detailingSize": "M"
   },
   {

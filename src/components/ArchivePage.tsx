@@ -362,6 +362,93 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
     alone: '單獨前來', with_wife: '攜伴(另一半)', with_child: '攜帶小孩', with_family: '全家同行'
   };
 
+  const renderPagination = () => {
+    if (totalPages <= 1) return null;
+
+    const getPageNumbers = () => {
+      const delta = 2; // Show 2 pages before and after current
+      const range = [];
+      for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+        range.push(i);
+      }
+
+      if (currentPage - delta > 2) {
+        range.unshift('...');
+      }
+      if (currentPage + delta < totalPages - 1) {
+        range.push('...');
+      }
+
+      range.unshift(1);
+      if (totalPages > 1) {
+        range.push(totalPages);
+      }
+
+      return range;
+    };
+
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', margin: '24px 0', flexWrap: 'wrap' }}>
+        <button 
+          className="btn btn-outline" 
+          disabled={currentPage === 1}
+          style={{ padding: '6px 12px', fontSize: '0.85rem' }}
+          onClick={() => { setCurrentPage(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
+          最前頁
+        </button>
+        <button 
+          className="btn btn-outline" 
+          disabled={currentPage === 1}
+          style={{ padding: '6px 12px', fontSize: '0.85rem' }}
+          onClick={() => { setCurrentPage(prev => Math.max(1, prev - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
+          上一頁
+        </button>
+
+        {getPageNumbers().map((pageNum, idx) => (
+          pageNum === '...' ? (
+            <span key={`ellipsis-${idx}`} style={{ color: '#94a3b8', margin: '0 4px', fontWeight: 'bold' }}>...</span>
+          ) : (
+            <button
+              key={`page-${pageNum}`}
+              onClick={() => { setCurrentPage(pageNum as number); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              style={{
+                width: '34px', height: '34px', borderRadius: '8px',
+                border: currentPage === pageNum ? 'none' : '1px solid #e2e8f0',
+                background: currentPage === pageNum ? 'var(--primary)' : '#fff',
+                color: currentPage === pageNum ? '#fff' : '#64748b',
+                fontWeight: 'bold', fontSize: '0.9rem', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: currentPage === pageNum ? '0 2px 4px rgba(37, 99, 235, 0.2)' : 'none',
+                transition: 'all 0.2s'
+              }}
+            >
+              {pageNum}
+            </button>
+          )
+        ))}
+
+        <button 
+          className="btn btn-outline" 
+          disabled={currentPage === totalPages}
+          style={{ padding: '6px 12px', fontSize: '0.85rem' }}
+          onClick={() => { setCurrentPage(prev => Math.min(totalPages, prev + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
+          下一頁
+        </button>
+        <button 
+          className="btn btn-outline" 
+          disabled={currentPage === totalPages}
+          style={{ padding: '6px 12px', fontSize: '0.85rem' }}
+          onClick={() => { setCurrentPage(totalPages); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
+          最後頁
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
@@ -423,6 +510,8 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
         </div>
 
       </header>
+
+      {renderPagination()}
 
       {/* ── Table Header ── */}
       <div style={{ 
@@ -711,27 +800,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
         )}
       </div>
 
-      {totalPages > 0 && (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', marginTop: '32px' }}>
-          <button 
-            className="btn btn-outline" 
-            disabled={currentPage === 1}
-            onClick={() => { setCurrentPage(prev => Math.max(1, prev - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          >
-            上一頁
-          </button>
-          <span style={{ fontSize: '0.9rem', color: '#64748b', fontWeight: 'bold' }}>
-            第 {currentPage} 頁 / 共 {totalPages} 頁
-          </span>
-          <button 
-            className="btn btn-outline" 
-            disabled={currentPage === totalPages}
-            onClick={() => { setCurrentPage(prev => Math.min(totalPages, prev + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          >
-            下一頁
-          </button>
-        </div>
-      )}
+      {renderPagination()}
     </div>
   );
 };

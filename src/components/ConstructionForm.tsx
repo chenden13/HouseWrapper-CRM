@@ -17,7 +17,6 @@ interface ConstructionFormProps {
 
 export const ConstructionForm: React.FC<ConstructionFormProps> = ({ customer, onSubmit, onCancel, onSaveProgress }) => {
   const [formData, setFormData] = useState<Customer>(customer);
-  const [activeTab, setActiveTab] = useState<'progress' | 'editing'>('progress');
   const [damagePhotos, setDamagePhotos] = useState<CategorizedPhoto[]>(customer.damagePhotos || []);
   const [progressPhotos, setProgressPhotos] = useState<CategorizedPhoto[]>(customer.progressPhotos || []);
   const [selectedPart, setSelectedPart] = useState<string>('前保桿');
@@ -144,115 +143,90 @@ export const ConstructionForm: React.FC<ConstructionFormProps> = ({ customer, on
 
   return (
     <div className="form-grid" style={{ maxHeight: '85vh', overflowY: 'auto', padding: '4px' }}>
-      <div className="col-span-12" style={{ display: 'flex', gap: '4px', background: '#f1f5f9', padding: '4px', borderRadius: '12px', marginBottom: '16px' }}>
-         <button 
-           type="button"
-           onClick={() => setActiveTab('progress')}
-           style={{ flex: 1, padding: '10px', borderRadius: '8px', border: 'none', background: activeTab === 'progress' ? '#fff' : 'transparent', fontWeight: 'bold', cursor: 'pointer' }}
-         >
-           施工進度監控
-         </button>
-         <button 
-           type="button"
-           onClick={() => setActiveTab('editing')}
-           style={{ flex: 1, padding: '10px', borderRadius: '8px', border: 'none', background: activeTab === 'editing' ? '#fff' : 'transparent', fontWeight: 'bold', cursor: 'pointer' }}
-         >
-           項目與配件調整
-         </button>
+      <div className="col-span-12" style={{ background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+        <div style={{ padding: '10px', background: 'var(--primary)', color: '#fff', borderRadius: '8px' }}>
+          <Truck size={24} />
+        </div>
+        <div>
+          <h4 style={{ margin: 0, fontSize: '1.2rem', color: '#0f172a' }}>{formData.plateNumber || '尚未掛牌'} - {formData.brand} {formData.model}</h4>
+          <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '4px' }}>
+            項目：<span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{formData.mainService}</span>
+            {formData.windowTint && ` | 隔熱紙：${formData.windowTint}`}
+            {formData.electricMod && ` | 電改：${formData.electricMod}`}
+          </div>
+        </div>
       </div>
 
-      {activeTab === 'progress' ? (
-        <form onSubmit={handleSubmit} className="form-grid col-span-12">
-          <div className="col-span-12" style={{ background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div style={{ padding: '10px', background: 'var(--primary)', color: '#fff', borderRadius: '8px' }}>
-              <Truck size={24} />
-            </div>
-            <div>
-              <h4 style={{ margin: 0, fontSize: '1.2rem', color: '#0f172a' }}>{formData.plateNumber || '尚未掛牌'} - {formData.brand} {formData.model}</h4>
-              <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '4px' }}>
-                項目：<span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{formData.mainService}</span>
-                {formData.windowTint && ` | 隔熱紙：${formData.windowTint}`}
-                {formData.electricMod && ` | 電改：${formData.electricMod}`}
-              </div>
-            </div>
-          </div>
+      <h3 className="section-title"><CheckCircle size={18} /> 施工進度檢核表</h3>
+      <div className="col-span-12" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
+        {formData.constructionChecklist?.map(item => (
+          <label key={item.id} className="checkbox-wrap" style={{ background: item.checked ? '#f0fdf4' : '#fff', padding: '14px', border: `1px solid ${item.checked ? '#10b981' : '#e2e8f0'}`, borderRadius: '10px' }}>
+            <input type="checkbox" checked={item.checked} onChange={() => toggleCheck(item.id)} />
+            <span style={{ color: item.checked ? '#166534' : '#1e293b', textDecoration: item.checked ? 'line-through' : 'none' }}>{item.name}</span>
+          </label>
+        ))}
+      </div>
 
-          <h3 className="section-title"><CheckCircle size={18} /> 施工進度檢核表</h3>
-          <div className="col-span-12" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {formData.constructionChecklist?.map(item => (
-              <label key={item.id} className="checkbox-wrap" style={{ background: item.checked ? '#f0fdf4' : '#fff', padding: '14px', border: `1px solid ${item.checked ? '#10b981' : '#e2e8f0'}`, borderRadius: '10px' }}>
-                <input type="checkbox" checked={item.checked} onChange={() => toggleCheck(item.id)} />
-                <span style={{ color: item.checked ? '#166534' : '#1e293b', textDecoration: item.checked ? 'line-through' : 'none' }}>{item.name}</span>
+      <div className="col-span-12" style={{ marginBottom: '24px' }}>
+        <h3 className="section-title" style={{ color: '#0ea5e9' }}>照相記錄 (當前部位: {selectedPart})</h3>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
+          {CAR_PARTS.map(part => (
+            <button key={part} type="button" onClick={() => setSelectedPart(part)} style={{ padding: '4px 12px', borderRadius: '16px', border: '1px solid', borderColor: selectedPart === part ? 'var(--primary)' : '#cbd5e1', background: selectedPart === part ? 'var(--primary)' : '#fff', color: selectedPart === part ? '#fff' : '#64748b', fontSize: '0.75rem', cursor: 'pointer' }}>{part}</button>
+          ))}
+        </div>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div>
+            <div style={{ padding: '16px', border: '2px dashed #fbbf24', borderRadius: '12px', textAlign: 'center', background: '#fffbeb' }}>
+              <label style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', fontSize: '0.8rem' }}>
+                <Camera size={24} /> 上傳受損照
+                <input type="file" multiple accept="image/*" onChange={(e) => handleFileUpload(e, 'damage')} style={{ display: 'none' }} />
               </label>
-            ))}
+            </div>
           </div>
+          <div>
+            <div style={{ padding: '16px', border: '2px dashed #60a5fa', borderRadius: '12px', textAlign: 'center', background: '#eff6ff' }}>
+              <label style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', fontSize: '0.8rem' }}>
+                <ImageIcon size={24} /> 上傳完工照
+                <input type="file" multiple accept="image/*" onChange={(e) => handleFileUpload(e, 'progress')} style={{ display: 'none' }} />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          <div className="col-span-12" style={{ marginTop: '24px' }}>
-            <h3 className="section-title" style={{ color: '#0ea5e9' }}>照相記錄 (當前部位: {selectedPart})</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
-              {CAR_PARTS.map(part => (
-                <button key={part} type="button" onClick={() => setSelectedPart(part)} style={{ padding: '4px 12px', borderRadius: '16px', border: '1px solid', borderColor: selectedPart === part ? 'var(--primary)' : '#cbd5e1', background: selectedPart === part ? 'var(--primary)' : '#fff', color: selectedPart === part ? '#fff' : '#64748b', fontSize: '0.75rem', cursor: 'pointer' }}>{part}</button>
-              ))}
-            </div>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              <div>
-                <div style={{ padding: '16px', border: '2px dashed #fbbf24', borderRadius: '12px', textAlign: 'center', background: '#fffbeb' }}>
-                  <label style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', fontSize: '0.8rem' }}>
-                    <Camera size={24} /> 上傳受損照
-                    <input type="file" multiple accept="image/*" onChange={(e) => handleFileUpload(e, 'damage')} style={{ display: 'none' }} />
-                  </label>
-                </div>
-              </div>
-              <div>
-                <div style={{ padding: '16px', border: '2px dashed #60a5fa', borderRadius: '12px', textAlign: 'center', background: '#eff6ff' }}>
-                  <label style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', fontSize: '0.8rem' }}>
-                    <ImageIcon size={24} /> 上傳完工照
-                    <input type="file" multiple accept="image/*" onChange={(e) => handleFileUpload(e, 'progress')} style={{ display: 'none' }} />
-                  </label>
-                </div>
-              </div>
-            </div>
+      {formData.videoUrl && getYouTubeEmbedUrl(formData.videoUrl) && (
+        <div className="col-span-12" style={{ marginBottom: '24px', padding: '16px', background: '#fef2f2', borderRadius: '12px', border: '1px dashed #fca5a5' }}>
+          <h3 className="section-title" style={{ marginTop: 0, color: '#ef4444' }}><Camera size={18} /> 施工前巡車影片 (供技師對照)</h3>
+          <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '8px', border: '1px solid #e2e8f0', maxWidth: '100%' }}>
+            <iframe 
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+              src={getYouTubeEmbedUrl(formData.videoUrl)!} 
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
           </div>
-          {/* 巡車影片觀看 (如果有的話) */}
-          {formData.videoUrl && getYouTubeEmbedUrl(formData.videoUrl) && (
-            <div className="col-span-12" style={{ marginTop: '16px', padding: '16px', background: '#fef2f2', borderRadius: '12px', border: '1px dashed #fca5a5' }}>
-              <h3 className="section-title" style={{ marginTop: 0, color: '#ef4444' }}><Camera size={18} /> 施工前巡車影片 (供技師對照)</h3>
-              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '8px', border: '1px solid #e2e8f0', maxWidth: '100%' }}>
-                <iframe 
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
-                  src={getYouTubeEmbedUrl(formData.videoUrl)!} 
-                  title="YouTube video player" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          )}
-
-          <div className="form-actions col-span-12" style={{ marginTop: '20px' }}>
-            <button type="button" className="btn btn-outline" onClick={handleSaveProgress}><Save size={18} /> 儲存目前進度</button>
-            <div style={{ flex: 1 }}></div>
-            <button type="submit" className="btn btn-primary" style={{ background: '#10b981' }}>完工並結案 (交車)</button>
-          </div>
-        </form>
-      ) : (
-        <div className="col-span-12" style={{ marginTop: '16px' }}>
-          <PendingEditForm 
-            customer={formData}
-            onSubmit={(updatedCustomer) => {
-              setFormData(updatedCustomer);
-              if (onSaveProgress) {
-                onSaveProgress(updatedCustomer);
-              }
-              alert('客戶資料與報價已更新！請接續完成施工項目。');
-              setActiveTab('progress');
-            }}
-            onCancel={() => setActiveTab('progress')}
-          />
         </div>
       )}
+
+      <div className="col-span-12" style={{ borderTop: '2px dashed #e2e8f0', paddingTop: '24px', marginBottom: '24px' }}>
+        <h3 className="section-title" style={{ color: '#8b5cf6' }}><Settings size={18} /> 項目與配件調整</h3>
+        <PendingEditForm 
+          customer={customer} 
+          hideActions={true} 
+          onFormDataChange={(updated) => setFormData(prev => ({...updated, constructionChecklist: prev.constructionChecklist}))} 
+          onSubmit={() => {}}
+          onCancel={onCancel}
+        />
+      </div>
+
+      <div className="col-span-12" style={{ position: 'sticky', bottom: '-4px', background: 'rgba(255,255,255,0.95)', borderTop: '1px solid #e2e8f0', padding: '16px 0', zIndex: 20, display: 'flex', gap: '12px' }}>
+        <button type="button" className="btn btn-outline" onClick={handleSaveProgress}><Save size={18} /> 儲存目前進度</button>
+        <div style={{ flex: 1 }}></div>
+        <button type="button" onClick={handleSubmit} className="btn btn-primary" style={{ background: '#10b981' }}>完工並結案 (交車)</button>
+      </div>
     </div>
   );
 };

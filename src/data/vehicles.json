@@ -37,7 +37,13 @@
   },
   {
     "brand": "ACURA",
-    "model": "RL / RLX",
+    "model": "RL",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "ACURA",
+    "model": "RLX",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -67,7 +73,31 @@
   },
   {
     "brand": "ALFA ROMEO",
-    "model": "147 / 155 / 156",
+    "model": "145",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "ALFA ROMEO",
+    "model": "146",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "ALFA ROMEO",
+    "model": "147",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "ALFA ROMEO",
+    "model": "155",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "ALFA ROMEO",
+    "model": "156",
     "size": "M",
     "detailingSize": "M"
   },
@@ -79,7 +109,13 @@
   },
   {
     "brand": "ALFA ROMEO",
-    "model": "164 / 166",
+    "model": "164",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "ALFA ROMEO",
+    "model": "166",
     "size": "M",
     "detailingSize": "M"
   },
@@ -97,7 +133,7 @@
   },
   {
     "brand": "ALFA ROMEO",
-    "model": "75/145/146/147 / 155 / 156",
+    "model": "75",
     "size": "M",
     "detailingSize": "M"
   },
@@ -181,7 +217,7 @@
   },
   {
     "brand": "ASTON MARTIN",
-    "model": "DB11",
+    "model": "db11",
     "size": "M",
     "detailingSize": "M"
   },
@@ -199,13 +235,13 @@
   },
   {
     "brand": "ASTON MARTIN",
-    "model": "DBS",
+    "model": "dbs",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "ASTON MARTIN",
-    "model": "DBX",
+    "model": "dbx",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -217,7 +253,7 @@
   },
   {
     "brand": "ASTON MARTIN",
-    "model": "Rapide S",
+    "model": "rapide s",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -247,97 +283,61 @@
   },
   {
     "brand": "AUDI",
-    "model": "A1 / S1",
+    "model": "A1",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "AUDI",
-    "model": "A3 / S3",
+    "model": "A3",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "AUDI",
-    "model": "A3 / S3 / RS3",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A4 / RS4 Avant",
+    "model": "A4",
     "size": "L",
     "detailingSize": "M"
   },
   {
     "brand": "AUDI",
-    "model": "A4 / S4",
+    "model": "a4 avant",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "A5",
     "size": "L",
     "detailingSize": "M"
   },
   {
     "brand": "AUDI",
-    "model": "A4 Avant",
-    "size": "L",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A5 / RS5 Sportback",
+    "model": "a5 sportback",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "AUDI",
-    "model": "A5 / S5",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A5 / S5 / RS5 Coupe",
+    "model": "A6",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "AUDI",
-    "model": "A5 Sportback",
+    "model": "a6 avant",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "AUDI",
-    "model": "A6 / RS6 Avant",
+    "model": "A7",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "AUDI",
-    "model": "A6 / S6",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A6 Avant",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A7 / S7",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A7 / S7 / RS7",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "AUDI",
-    "model": "A8 / S8",
+    "model": "A8",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -415,25 +415,115 @@
   },
   {
     "brand": "AUDI",
-    "model": "RS3 / RS4 / RS5",
-    "size": "L",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "AUDI",
-    "model": "RS6 / RS7",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "AUDI",
-    "model": "TT",
+    "model": "RS3",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "AUDI",
-    "model": "TT/TTS/TTRS",
+    "model": "rs4",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "RS4 Avant",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "rs5",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "RS5 Coupe",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "RS5 Sportback",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "rs6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "RS6 Avant",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "RS7",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "S1",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "AUDI",
+    "model": "S3",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "S4",
+    "size": "L",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "S5",
+    "size": "L",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "S6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "S7",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "AUDI",
+    "model": "S8",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "AUDI",
+    "model": "TT",
+    "size": "S",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "AUDI",
+    "model": "TTRS",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "AUDI",
+    "model": "TTS",
     "size": "S",
     "detailingSize": "S"
   },
@@ -445,7 +535,7 @@
   },
   {
     "brand": "BENTLEY",
-    "model": "Bentayga",
+    "model": "bentayga",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -463,7 +553,7 @@
   },
   {
     "brand": "BENTLEY",
-    "model": "Continental GT",
+    "model": "continental gt",
     "size": "L",
     "detailingSize": "L"
   },
@@ -475,7 +565,7 @@
   },
   {
     "brand": "BENTLEY",
-    "model": "Flying Spur",
+    "model": "flying spur",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -511,7 +601,7 @@
   },
   {
     "brand": "BMW",
-    "model": "2 Series",
+    "model": "2 series",
     "size": "M",
     "detailingSize": "M"
   },
@@ -577,7 +667,7 @@
   },
   {
     "brand": "BMW",
-    "model": "5 Series",
+    "model": "5 series",
     "size": "L",
     "detailingSize": "L"
   },
@@ -601,7 +691,7 @@
   },
   {
     "brand": "BMW",
-    "model": "6 Series",
+    "model": "6 series",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -619,7 +709,13 @@
   },
   {
     "brand": "BMW",
-    "model": "8 Series / Gran Coupe",
+    "model": "8 Series",
+    "size": "XL",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "BMW",
+    "model": "Gran Coupe",
     "size": "XL",
     "detailingSize": "L"
   },
@@ -627,12 +723,6 @@
     "brand": "BMW",
     "model": "i3",
     "size": "S",
-    "detailingSize": "S"
-  },
-  {
-    "brand": "BMW",
-    "model": "i3 / i8",
-    "size": "M",
     "detailingSize": "M"
   },
   {
@@ -645,7 +735,7 @@
     "brand": "BMW",
     "model": "i8",
     "size": "L",
-    "detailingSize": "L"
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
@@ -655,13 +745,25 @@
   },
   {
     "brand": "BMW",
-    "model": "iX/iX M60",
+    "model": "iX M60",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "BMW",
-    "model": "iX3/X3 / X4",
+    "model": "iX1",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "BMW",
+    "model": "iX2",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "BMW",
+    "model": "iX3",
     "size": "L",
     "detailingSize": "L"
   },
@@ -679,15 +781,15 @@
   },
   {
     "brand": "BMW",
-    "model": "M3 / M4 (2021~)",
+    "model": "m3",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "BMW",
-    "model": "M3 / M4 (pre-2021)",
-    "size": "L",
-    "detailingSize": "L"
+    "model": "M3(新款G80)",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "BMW",
@@ -697,7 +799,19 @@
   },
   {
     "brand": "BMW",
-    "model": "M3(新款G80)",
+    "model": "m4 (2021~)",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "BMW",
+    "model": "m4 (pre-2021)",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "BMW",
+    "model": "M4(新款G82)",
     "size": "M",
     "detailingSize": "M"
   },
@@ -709,19 +823,13 @@
   },
   {
     "brand": "BMW",
-    "model": "M4(新款G82)",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "BMW",
     "model": "M5",
     "size": "L",
-    "detailingSize": "L"
+    "detailingSize": "XL"
   },
   {
     "brand": "BMW",
-    "model": "M5 / M6",
+    "model": "m6",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -733,25 +841,37 @@
   },
   {
     "brand": "BMW",
-    "model": "X1 / X2",
-    "size": "L",
+    "model": "X1",
+    "size": "M",
     "detailingSize": "L"
   },
   {
     "brand": "BMW",
-    "model": "X1 / X2 / iX1/iX2",
+    "model": "X2",
     "size": "M",
-    "detailingSize": "M"
+    "detailingSize": "L"
   },
   {
     "brand": "BMW",
-    "model": "X3 / X4 / X5 / X6",
+    "model": "X3",
+    "size": "L",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "BMW",
+    "model": "X4",
+    "size": "L",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "BMW",
+    "model": "X5",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "BMW",
-    "model": "X5 / X6",
+    "model": "X6",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -763,7 +883,13 @@
   },
   {
     "brand": "BMW",
-    "model": "Z3 / Z4",
+    "model": "Z3",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "BMW",
+    "model": "Z4",
     "size": "S",
     "detailingSize": "S"
   },
@@ -805,7 +931,7 @@
   },
   {
     "brand": "CADILLAC",
-    "model": "Escalade",
+    "model": "escalade",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -1009,7 +1135,7 @@
   },
   {
     "brand": "CHRYSLER",
-    "model": "300/300C",
+    "model": "300",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -1072,6 +1198,12 @@
     "model": "Voyager",
     "size": "2XL",
     "detailingSize": "2XL"
+  },
+  {
+    "brand": "CITROEN",
+    "model": "Berlingo",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "CITROEN",
@@ -1147,7 +1279,7 @@
   },
   {
     "brand": "CITROEN",
-    "model": "Grand C4 / Berlingo",
+    "model": "Grand C4",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -1159,9 +1291,9 @@
   },
   {
     "brand": "CMC",
-    "model": "Delica 廂車",
-    "size": "XL",
-    "detailingSize": "XL"
+    "model": "電動商車",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "CMC",
@@ -1171,7 +1303,13 @@
   },
   {
     "brand": "CMC",
-    "model": "ET35 / 電動商車",
+    "model": "Delica 廂車",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "CMC",
+    "model": "ET35",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -1201,13 +1339,13 @@
   },
   {
     "brand": "CMC",
-    "model": "Veryca（威利）廂車",
+    "model": "Veryca（威利）貨車",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "CMC",
-    "model": "Veryca（威利）貨車",
+    "model": "Veryca（威利）廂車",
     "size": "S",
     "detailingSize": "S"
   },
@@ -1399,49 +1537,85 @@
   },
   {
     "brand": "FERRARI",
-    "model": "348 / 355 / 360",
+    "model": "296 GTB",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "296GTS",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "348",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "FERRARI",
-    "model": "456 / 458 / 488",
+    "model": "355",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "360",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "456",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "FERRARI",
-    "model": "456 / 458 / 488 / F8",
+    "model": "458",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "FERRARI",
-    "model": "550 / 575",
+    "model": "488",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "FERRARI",
-    "model": "599 / 612 / 812 / GTC4 / F12",
+    "model": "550",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "FERRARI",
-    "model": "599 / 612 / GTC4",
-    "size": "L",
+    "model": "575",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "599",
+    "size": "M",
     "detailingSize": "L"
   },
   {
     "brand": "FERRARI",
-    "model": "812 / F8 / F12",
+    "model": "612",
+    "size": "M",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "812",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "FERRARI",
-    "model": "California / Portofino / Roma",
+    "model": "California",
     "size": "M",
     "detailingSize": "M"
   },
@@ -1453,15 +1627,27 @@
   },
   {
     "brand": "FERRARI",
-    "model": "F430 / 296 GTB",
+    "model": "F12",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "FERRARI",
-    "model": "F430 / 296 GTB / 296GTS",
+    "model": "F430",
     "size": "M",
     "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "F8",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "GTC4",
+    "size": "M",
+    "detailingSize": "L"
   },
   {
     "brand": "FERRARI",
@@ -1471,9 +1657,21 @@
   },
   {
     "brand": "FERRARI",
+    "model": "Portofino",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "FERRARI",
     "model": "Purosangue",
     "size": "XL",
     "detailingSize": "XL"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "Roma",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "FERRARI",
@@ -1483,7 +1681,13 @@
   },
   {
     "brand": "FERRARI",
-    "model": "SF90 Stradale / Spider",
+    "model": "SF90 Stradale",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FERRARI",
+    "model": "Spider",
     "size": "L",
     "detailingSize": "L"
   },
@@ -1496,12 +1700,6 @@
   {
     "brand": "FIAT",
     "model": "500",
-    "size": "S",
-    "detailingSize": "S"
-  },
-  {
-    "brand": "FIAT",
-    "model": "500 / Abarth 500",
     "size": "S",
     "detailingSize": "S"
   },
@@ -1531,7 +1729,13 @@
   },
   {
     "brand": "FIAT",
-    "model": "Abarth 124 Spider",
+    "model": "695",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "FIAT",
+    "model": "abarth 124 spider",
     "size": "S",
     "detailingSize": "S"
   },
@@ -1543,7 +1747,7 @@
   },
   {
     "brand": "FIAT",
-    "model": "Abarth 595 / 695",
+    "model": "Abarth 595",
     "size": "S",
     "detailingSize": "S"
   },
@@ -1580,12 +1784,6 @@
   {
     "brand": "FIAT",
     "model": "Panda",
-    "size": "S",
-    "detailingSize": "S"
-  },
-  {
-    "brand": "FIAT",
-    "model": "Panda / Punto",
     "size": "S",
     "detailingSize": "S"
   },
@@ -1651,7 +1849,7 @@
   },
   {
     "brand": "FORD",
-    "model": "Escape / Kuga",
+    "model": "Escape",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -1687,7 +1885,7 @@
   },
   {
     "brand": "FORD",
-    "model": "F-250 / Super Duty",
+    "model": "F-250",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -1699,7 +1897,7 @@
   },
   {
     "brand": "FORD",
-    "model": "Focus 5D",
+    "model": "focus 5d",
     "size": "M",
     "detailingSize": "M"
   },
@@ -1713,17 +1911,11 @@
     "brand": "FORD",
     "model": "Focus Sedan",
     "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "FORD",
-    "model": "Focus Sedan / Wagon",
-    "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "FORD",
-    "model": "Focus Wagon / ST Wagon",
+    "model": "Focus Wagon",
     "size": "L",
     "detailingSize": "L"
   },
@@ -1747,7 +1939,7 @@
   },
   {
     "brand": "FORD",
-    "model": "Kuga / Escape",
+    "model": "Kuga",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -1795,6 +1987,18 @@
   },
   {
     "brand": "FORD",
+    "model": "ST Wagon",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "FORD",
+    "model": "Super Duty",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
     "model": "Taurus",
     "size": "XL",
     "detailingSize": "XL"
@@ -1807,7 +2011,7 @@
   },
   {
     "brand": "FORD",
-    "model": "Tourneo",
+    "model": "tourneo",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -1822,6 +2026,12 @@
     "model": "Tourneo Custom",
     "size": "2XL",
     "detailingSize": "2XL"
+  },
+  {
+    "brand": "FORD",
+    "model": "wagon",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
     "brand": "FORMOSA",
@@ -1915,6 +2125,18 @@
   },
   {
     "brand": "GMC",
+    "model": "2500",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
+    "model": "3500",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "GMC",
     "model": "Acadia",
     "size": "2XL",
     "detailingSize": "2XL"
@@ -1951,7 +2173,7 @@
   },
   {
     "brand": "GMC",
-    "model": "Sierra HD / 2500 / 3500",
+    "model": "Sierra HD",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -1969,6 +2191,12 @@
   },
   {
     "brand": "HONDA",
+    "model": "新款）",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
     "model": "Accord",
     "size": "M",
     "detailingSize": "L"
@@ -1977,12 +2205,6 @@
     "brand": "HONDA",
     "model": "City",
     "size": "S",
-    "detailingSize": "S"
-  },
-  {
-    "brand": "HONDA",
-    "model": "City / Civic",
-    "size": "M",
     "detailingSize": "M"
   },
   {
@@ -1993,13 +2215,19 @@
   },
   {
     "brand": "HONDA",
+    "model": "civic",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "HONDA",
     "model": "Civic Type R",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "HONDA",
-    "model": "Civic（11代 / 新款）",
+    "model": "Civic（11代",
     "size": "M",
     "detailingSize": "M"
   },
@@ -2011,13 +2239,13 @@
   },
   {
     "brand": "HONDA",
-    "model": "CR-V (2017~)",
+    "model": "cr-v (2017~)",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "HONDA",
-    "model": "CR-V (pre-2017)",
+    "model": "cr-v (pre-2017)",
     "size": "L",
     "detailingSize": "L"
   },
@@ -2065,7 +2293,7 @@
   },
   {
     "brand": "HONDA",
-    "model": "HR-V",
+    "model": "hr-v",
     "size": "L",
     "detailingSize": "L"
   },
@@ -2113,19 +2341,13 @@
   },
   {
     "brand": "HONDA",
-    "model": "NSX / S2000",
-    "size": "S",
-    "detailingSize": "S"
-  },
-  {
-    "brand": "HONDA",
-    "model": "Odyssey (new)",
+    "model": "odyssey (new)",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "HONDA",
-    "model": "Odyssey (old)",
+    "model": "odyssey (old)",
     "size": "L",
     "detailingSize": "L"
   },
@@ -2227,6 +2449,12 @@
   },
   {
     "brand": "HYUNDAI",
+    "model": "Azera",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "HYUNDAI",
     "model": "Bayon",
     "size": "M",
     "detailingSize": "M"
@@ -2251,15 +2479,21 @@
   },
   {
     "brand": "HYUNDAI",
-    "model": "Grand Starex / H-1",
+    "model": "Grand Starex",
     "size": "2XL",
     "detailingSize": "2XL"
   },
   {
     "brand": "HYUNDAI",
-    "model": "Grandeur / Azera",
+    "model": "Grandeur",
     "size": "XL",
     "detailingSize": "XL"
+  },
+  {
+    "brand": "HYUNDAI",
+    "model": "H-1",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "HYUNDAI",
@@ -2371,19 +2605,43 @@
   },
   {
     "brand": "INFINITI",
-    "model": "EX35 / EX37",
+    "model": "EX35",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "INFINITI",
-    "model": "FX35 / FX37 / FX50",
+    "model": "EX37",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "FX35",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "INFINITI",
-    "model": "G25 / G35 / G37 Sedan",
+    "model": "FX37",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "FX50",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "G25",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "G35",
     "size": "L",
     "detailingSize": "L"
   },
@@ -2395,13 +2653,37 @@
   },
   {
     "brand": "INFINITI",
+    "model": "G37 Sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "INFINITI",
     "model": "IPL G Coupe",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "INFINITI",
-    "model": "Q30 / Q60",
+    "model": "M25",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "M37",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "M56",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "INFINITI",
+    "model": "q30",
     "size": "M",
     "detailingSize": "M"
   },
@@ -2419,21 +2701,15 @@
   },
   {
     "brand": "INFINITI",
-    "model": "Q50 / Q70",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "INFINITI",
     "model": "Q60",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "INFINITI",
-    "model": "Q70 / M25 / M37 / M56",
+    "model": "Q70",
     "size": "XL",
-    "detailingSize": "XL"
+    "detailingSize": "L"
   },
   {
     "brand": "INFINITI",
@@ -2449,12 +2725,6 @@
   },
   {
     "brand": "INFINITI",
-    "model": "QX50 / QX55 / QX60",
-    "size": "XL",
-    "detailingSize": "XL"
-  },
-  {
-    "brand": "INFINITI",
     "model": "QX55",
     "size": "XL",
     "detailingSize": "XL"
@@ -2463,7 +2733,7 @@
     "brand": "INFINITI",
     "model": "QX60",
     "size": "2XL",
-    "detailingSize": "2XL"
+    "detailingSize": "XL"
   },
   {
     "brand": "INFINITI",
@@ -2551,7 +2821,7 @@
   },
   {
     "brand": "JAGUAR",
-    "model": "F-Type",
+    "model": "f-type",
     "size": "M",
     "detailingSize": "M"
   },
@@ -2605,7 +2875,13 @@
   },
   {
     "brand": "JAGUAR",
-    "model": "XK / XKR",
+    "model": "XK",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "JAGUAR",
+    "model": "XKR",
     "size": "M",
     "detailingSize": "M"
   },
@@ -2695,7 +2971,7 @@
   },
   {
     "brand": "KIA",
-    "model": "Carnival",
+    "model": "carnival",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -2713,13 +2989,13 @@
   },
   {
     "brand": "KIA",
-    "model": "Ceed / Xceed",
+    "model": "Ceed",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "KIA",
-    "model": "Cerato / Forte / K3",
+    "model": "Cerato",
     "size": "M",
     "detailingSize": "M"
   },
@@ -2749,7 +3025,19 @@
   },
   {
     "brand": "KIA",
-    "model": "K5 / Optima",
+    "model": "Forte",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "KIA",
+    "model": "K3",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "KIA",
+    "model": "K5",
     "size": "L",
     "detailingSize": "L"
   },
@@ -2761,9 +3049,21 @@
   },
   {
     "brand": "KIA",
-    "model": "K9 / K900",
+    "model": "K9",
     "size": "2XL",
     "detailingSize": "2XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "K900",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "KIA",
+    "model": "Morning",
+    "size": "S",
+    "detailingSize": "S"
   },
   {
     "brand": "KIA",
@@ -2773,7 +3073,13 @@
   },
   {
     "brand": "KIA",
-    "model": "Picanto / Morning",
+    "model": "Optima",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "KIA",
+    "model": "Picanto",
     "size": "S",
     "detailingSize": "S"
   },
@@ -2803,13 +3109,13 @@
   },
   {
     "brand": "KIA",
-    "model": "Sportage (new)",
+    "model": "sportage (new)",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "KIA",
-    "model": "Sportage (old)",
+    "model": "sportage (old)",
     "size": "L",
     "detailingSize": "L"
   },
@@ -2844,6 +3150,12 @@
     "detailingSize": "2XL"
   },
   {
+    "brand": "KIA",
+    "model": "Xceed",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
     "brand": "LAMBORGHINI",
     "model": "Aventador",
     "size": "L",
@@ -2851,7 +3163,7 @@
   },
   {
     "brand": "LAMBORGHINI",
-    "model": "Aventador SV / SVJ",
+    "model": "Aventador SV",
     "size": "L",
     "detailingSize": "L"
   },
@@ -2887,13 +3199,13 @@
   },
   {
     "brand": "LAMBORGHINI",
-    "model": "Huracan",
+    "model": "Huracán",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "LAMBORGHINI",
-    "model": "Huracán",
+    "model": "huracan",
     "size": "M",
     "detailingSize": "M"
   },
@@ -2935,6 +3247,12 @@
   },
   {
     "brand": "LAMBORGHINI",
+    "model": "SVJ",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LAMBORGHINI",
     "model": "Urus",
     "size": "XL",
     "detailingSize": "XL"
@@ -2959,7 +3277,13 @@
   },
   {
     "brand": "LAND ROVER",
-    "model": "Defender (new)",
+    "model": "5",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "defender (new)",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -2983,13 +3307,13 @@
   },
   {
     "brand": "LAND ROVER",
-    "model": "Discovery",
+    "model": "discovery",
     "size": "2XL",
     "detailingSize": "2XL"
   },
   {
     "brand": "LAND ROVER",
-    "model": "Discovery 4 / 5",
+    "model": "Discovery 4",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -3001,7 +3325,7 @@
   },
   {
     "brand": "LAND ROVER",
-    "model": "Evoque",
+    "model": "evoque",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3013,7 +3337,7 @@
   },
   {
     "brand": "LAND ROVER",
-    "model": "Range Rover",
+    "model": "range rover",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -3037,7 +3361,7 @@
   },
   {
     "brand": "LAND ROVER",
-    "model": "Range Rover SV / SVAutobiography",
+    "model": "Range Rover SV",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -3055,13 +3379,25 @@
   },
   {
     "brand": "LAND ROVER",
-    "model": "Velar",
+    "model": "SVAutobiography",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LAND ROVER",
+    "model": "velar",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "LEXUS",
-    "model": "CT / IS",
+    "model": "七座）",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "ct",
     "size": "M",
     "detailingSize": "M"
   },
@@ -3074,12 +3410,6 @@
   {
     "brand": "LEXUS",
     "model": "ES",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "LEXUS",
-    "model": "ES / GS",
     "size": "L",
     "detailingSize": "L"
   },
@@ -3115,7 +3445,13 @@
   },
   {
     "brand": "LEXUS",
-    "model": "LC500 / LC500h",
+    "model": "LC500",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "LC500h",
     "size": "M",
     "detailingSize": "M"
   },
@@ -3127,19 +3463,19 @@
   },
   {
     "brand": "LEXUS",
-    "model": "LM / LX",
+    "model": "lm",
     "size": "3XL",
     "detailingSize": "3XL"
   },
   {
     "brand": "LEXUS",
-    "model": "LM（四座 / 七座）",
+    "model": "LM（四座",
     "size": "2XL",
     "detailingSize": "2XL"
   },
   {
     "brand": "LEXUS",
-    "model": "LS",
+    "model": "ls",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3159,11 +3495,11 @@
     "brand": "LEXUS",
     "model": "LX",
     "size": "2XL",
-    "detailingSize": "2XL"
+    "detailingSize": "3XL"
   },
   {
     "brand": "LEXUS",
-    "model": "NX / RX",
+    "model": "nx",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3190,6 +3526,12 @@
     "model": "RC F",
     "size": "M",
     "detailingSize": "M"
+  },
+  {
+    "brand": "LEXUS",
+    "model": "rx",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "LEXUS",
@@ -3291,7 +3633,7 @@
     "brand": "Lotus",
     "model": "Elise",
     "size": "S",
-    "detailingSize": "S"
+    "detailingSize": "XS"
   },
   {
     "brand": "Lotus",
@@ -3327,13 +3669,13 @@
     "brand": "Lotus",
     "model": "Exige",
     "size": "S",
-    "detailingSize": "S"
+    "detailingSize": "XS"
   },
   {
-    "brand": "LOTUS",
-    "model": "Elise / Exige",
-    "size": "XS",
-    "detailingSize": "XS"
+    "brand": "Luxgen",
+    "model": "LR+",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "Luxgen",
@@ -3349,7 +3691,13 @@
   },
   {
     "brand": "Luxgen",
-    "model": "n⁷ LR / LR+ / Performance",
+    "model": "n⁷ LR",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Luxgen",
+    "model": "Performance",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3367,13 +3715,43 @@
   },
   {
     "brand": "LUXGEN",
-    "model": "S3 / S5 / U5 / U6",
+    "model": "m7",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LUXGEN",
+    "model": "n7",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LUXGEN",
+    "model": "s5",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "LUXGEN",
-    "model": "U7 / M7 / URX / n7",
+    "model": "u5",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LUXGEN",
+    "model": "u6",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "LUXGEN",
+    "model": "u7",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "LUXGEN",
+    "model": "urx",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3451,19 +3829,13 @@
   },
   {
     "brand": "MAZDA",
-    "model": "CX-3 / CX-30",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "MAZDA",
     "model": "CX-30",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "MAZDA",
-    "model": "CX-5 / CX-60",
+    "model": "cx-5",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3511,12 +3883,6 @@
   },
   {
     "brand": "MAZDA",
-    "model": "CX-9 / CX-90",
-    "size": "2XL",
-    "detailingSize": "2XL"
-  },
-  {
-    "brand": "MAZDA",
     "model": "CX-90",
     "size": "2XL",
     "detailingSize": "2XL"
@@ -3529,19 +3895,19 @@
   },
   {
     "brand": "MAZDA",
-    "model": "Mazda 2",
+    "model": "mazda 2",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "MAZDA",
-    "model": "Mazda 3",
+    "model": "mazda 3",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "MAZDA",
-    "model": "Mazda 6",
+    "model": "mazda 6",
     "size": "L",
     "detailingSize": "L"
   },
@@ -3601,7 +3967,7 @@
   },
   {
     "brand": "MAZDA",
-    "model": "MX-5",
+    "model": "mx-5",
     "size": "XS",
     "detailingSize": "XS"
   },
@@ -3625,19 +3991,7 @@
   },
   {
     "brand": "McLAREN",
-    "model": "12C / 650S",
-    "size": "S",
-    "detailingSize": "S"
-  },
-  {
-    "brand": "McLAREN",
     "model": "540C",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "McLAREN",
-    "model": "570 / 720 / Artura",
     "size": "M",
     "detailingSize": "M"
   },
@@ -3663,7 +4017,7 @@
     "brand": "McLAREN",
     "model": "650S",
     "size": "M",
-    "detailingSize": "M"
+    "detailingSize": "S"
   },
   {
     "brand": "McLAREN",
@@ -3726,8 +4080,26 @@
     "detailingSize": "L"
   },
   {
+    "brand": "MCLAREN",
+    "model": "12c",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MCLAREN",
+    "model": "570",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MCLAREN",
+    "model": "720",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
     "brand": "MERCEDES-BENZ",
-    "model": "A / B / CLA",
+    "model": "a",
     "size": "M",
     "detailingSize": "M"
   },
@@ -3745,7 +4117,13 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "A35 / A45 AMG",
+    "model": "A35",
+    "size": "A",
+    "detailingSize": "A"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "A45 AMG",
     "size": "A",
     "detailingSize": "A"
   },
@@ -3763,13 +4141,19 @@
   },
   {
     "brand": "MERCEDES-BENZ",
+    "model": "b",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
     "model": "B-Class",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "C-Class (new)",
+    "model": "c-class (new)",
     "size": "L",
     "detailingSize": "L"
   },
@@ -3793,7 +4177,19 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "C43 / C63 AMG",
+    "model": "C43",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "C63 AMG",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "cla",
     "size": "M",
     "detailingSize": "M"
   },
@@ -3823,7 +4219,7 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "E-Class",
+    "model": "e-class",
     "size": "L",
     "detailingSize": "L"
   },
@@ -3859,7 +4255,7 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "EQE",
+    "model": "eqe",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3877,7 +4273,7 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "EQS",
+    "model": "eqs",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -3895,6 +4291,12 @@
   },
   {
     "brand": "MERCEDES-BENZ",
+    "model": "g-class",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
     "model": "G-Class（G Wagon）",
     "size": "2XL",
     "detailingSize": "2XL"
@@ -3907,7 +4309,7 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "GLA (new)",
+    "model": "gla (new)",
     "size": "L",
     "detailingSize": "L"
   },
@@ -3915,11 +4317,11 @@
     "brand": "MERCEDES-BENZ",
     "model": "GLB",
     "size": "M",
-    "detailingSize": "M"
+    "detailingSize": "XL"
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "GLB / GLC / GLE",
+    "model": "glc",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3955,12 +4357,6 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "GLS / G-Class / V-Class",
-    "size": "2XL",
-    "detailingSize": "2XL"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
     "model": "Maybach EQS SUV",
     "size": "2XL",
     "detailingSize": "2XL"
@@ -3973,7 +4369,7 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "S-Class",
+    "model": "s-class",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -3997,7 +4393,13 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "SLK / SLC",
+    "model": "SLC",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MERCEDES-BENZ",
+    "model": "SLK",
     "size": "S",
     "detailingSize": "S"
   },
@@ -4099,19 +4501,31 @@
   },
   {
     "brand": "MINI",
-    "model": "Clubman / Countryman",
+    "model": "clubman",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "MINI",
-    "model": "Cooper",
+    "model": "cooper",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "MINI",
-    "model": "Countryman (new)",
+    "model": "Cooper EV",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "MINI",
+    "model": "countryman",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MINI",
+    "model": "countryman (new)",
     "size": "L",
     "detailingSize": "L"
   },
@@ -4171,7 +4585,7 @@
   },
   {
     "brand": "MINI",
-    "model": "MINI Electric / Cooper EV",
+    "model": "MINI Electric",
     "size": "S",
     "detailingSize": "S"
   },
@@ -4207,13 +4621,7 @@
   },
   {
     "brand": "MITSUBISHI",
-    "model": "Colt Plus / Lancer",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "MITSUBISHI",
-    "model": "Delica",
+    "model": "delica",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -4243,6 +4651,12 @@
   },
   {
     "brand": "MITSUBISHI",
+    "model": "lancer",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "MITSUBISHI",
     "model": "Lancer Evolution（EVO）",
     "size": "M",
     "detailingSize": "M"
@@ -4261,7 +4675,13 @@
   },
   {
     "brand": "MITSUBISHI",
-    "model": "Outlander / Zinger",
+    "model": "Montero",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "MITSUBISHI",
+    "model": "outlander",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -4279,7 +4699,7 @@
   },
   {
     "brand": "MITSUBISHI",
-    "model": "Pajero / Montero",
+    "model": "Pajero",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -4315,19 +4735,13 @@
   },
   {
     "brand": "NISSAN",
-    "model": "400Z / Z Proto",
+    "model": "400Z",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "NISSAN",
     "model": "Altima",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "NISSAN",
-    "model": "Altima / Teana",
     "size": "L",
     "detailingSize": "L"
   },
@@ -4345,7 +4759,7 @@
   },
   {
     "brand": "NISSAN",
-    "model": "Frontier / Navara（單廂）",
+    "model": "Frontier",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -4411,6 +4825,12 @@
   },
   {
     "brand": "NISSAN",
+    "model": "Navara（單廂）",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "NISSAN",
     "model": "Navara（雙廂）",
     "size": "2XL",
     "detailingSize": "2XL"
@@ -4447,7 +4867,7 @@
   },
   {
     "brand": "NISSAN",
-    "model": "Sentra",
+    "model": "sentra",
     "size": "M",
     "detailingSize": "M"
   },
@@ -4495,7 +4915,7 @@
   },
   {
     "brand": "NISSAN",
-    "model": "X-Trail / Murano",
+    "model": "x-trail",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -4512,32 +4932,38 @@
     "detailingSize": "XL"
   },
   {
-    "brand": "OPEL",
-    "model": "Astra",
+    "brand": "NISSAN",
+    "model": "Z Proto",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "OPEL",
-    "model": "Astra Sportwagon",
+    "model": "astra",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "OPEL",
+    "model": "astra sportwagon",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "OPEL",
-    "model": "Corsa",
+    "model": "corsa",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "OPEL",
-    "model": "Insignia",
+    "model": "insignia",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "OPEL",
-    "model": "Zafira",
+    "model": "zafira",
     "size": "L",
     "detailingSize": "L"
   },
@@ -4545,11 +4971,17 @@
     "brand": "Peugeot",
     "model": "106",
     "size": "S",
-    "detailingSize": "S"
+    "detailingSize": "XS"
   },
   {
     "brand": "Peugeot",
-    "model": "107 / 108",
+    "model": "107",
+    "size": "S",
+    "detailingSize": "XS"
+  },
+  {
+    "brand": "Peugeot",
+    "model": "108",
     "size": "S",
     "detailingSize": "S"
   },
@@ -4705,19 +5137,13 @@
   },
   {
     "brand": "PEUGEOT",
-    "model": "106 / 107",
-    "size": "XS",
-    "detailingSize": "XS"
-  },
-  {
-    "brand": "PEUGEOT",
-    "model": "206 / 207 / 208",
+    "model": "208",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "PEUGEOT",
-    "model": "3008 / 408",
+    "model": "3008",
     "size": "L",
     "detailingSize": "L"
   },
@@ -4729,13 +5155,19 @@
   },
   {
     "brand": "PEUGEOT",
+    "model": "408",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "PEUGEOT",
     "model": "5008 (new)",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "Porsche",
-    "model": "911 Carrera / Carrera S",
+    "model": "911 Carrera",
     "size": "M",
     "detailingSize": "M"
   },
@@ -4747,13 +5179,13 @@
   },
   {
     "brand": "Porsche",
-    "model": "911 GT3 / GT3 RS",
+    "model": "911 GT3",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "Porsche",
-    "model": "911 Turbo / Turbo S",
+    "model": "911 Turbo",
     "size": "M",
     "detailingSize": "M"
   },
@@ -4772,6 +5204,12 @@
   {
     "brand": "Porsche",
     "model": "Carrera GT",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "Porsche",
+    "model": "Carrera S",
     "size": "M",
     "detailingSize": "M"
   },
@@ -4798,6 +5236,12 @@
     "model": "Cayman（718 Cayman）",
     "size": "S",
     "detailingSize": "S"
+  },
+  {
+    "brand": "Porsche",
+    "model": "GT3 RS",
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "Porsche",
@@ -4842,6 +5286,12 @@
     "detailingSize": "L"
   },
   {
+    "brand": "Porsche",
+    "model": "Turbo S",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
     "brand": "PORSCHE",
     "model": "911",
     "size": "M",
@@ -4849,31 +5299,55 @@
   },
   {
     "brand": "PORSCHE",
-    "model": "Boxster / Cayman",
+    "model": "boxster",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "PORSCHE",
-    "model": "Macan / Cayenne",
+    "model": "cayenne",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "PORSCHE",
-    "model": "Taycan / Panamera",
+    "model": "cayman",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "PORSCHE",
+    "model": "macan",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "PORSCHE",
+    "model": "panamera",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "PORSCHE",
+    "model": "taycan",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "PROTON",
-    "model": "Gen2 / Persona",
+    "model": "gen2",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "PROTON",
-    "model": "Savvy",
+    "model": "persona",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "PROTON",
+    "model": "savvy",
     "size": "S",
     "detailingSize": "S"
   },
@@ -5083,13 +5557,13 @@
   },
   {
     "brand": "RENAULT",
-    "model": "Megane",
+    "model": "megane",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "RENAULT",
-    "model": "Scenic",
+    "model": "scenic",
     "size": "L",
     "detailingSize": "L"
   },
@@ -5167,85 +5641,115 @@
   },
   {
     "brand": "SAAB",
-    "model": "9-3 Sedan / Convertible",
+    "model": "9-3 sedan",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "SAAB",
-    "model": "9-3 SportCombi",
+    "model": "9-3 sportcombi",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "SAAB",
-    "model": "9-5 Sedan / SportCombi",
+    "model": "9-5 sedan",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SAAB",
+    "model": "convertible",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SAAB",
+    "model": "sportcombi",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "SKODA",
-    "model": "Citigo",
+    "model": "citigo",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "SKODA",
-    "model": "Fabia",
+    "model": "fabia",
     "size": "S",
     "detailingSize": "S"
   },
   {
     "brand": "SKODA",
-    "model": "Fabia Combi",
+    "model": "fabia combi",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "SKODA",
-    "model": "Kamiq",
+    "model": "kamiq",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "SKODA",
-    "model": "Karoq",
+    "model": "karoq",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "SKODA",
-    "model": "Kodiaq",
+    "model": "kodiaq",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "SKODA",
-    "model": "Octavia / Octavia Combi",
+    "model": "octavia",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "SKODA",
-    "model": "Rapid / Rapid Spaceback",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "SKODA",
-    "model": "Scala",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "SKODA",
-    "model": "Superb / Superb Combi",
+    "model": "octavia combi",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "SKODA",
-    "model": "Yeti",
+    "model": "rapid",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SKODA",
+    "model": "rapid spaceback",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SKODA",
+    "model": "scala",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "SKODA",
+    "model": "superb",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SKODA",
+    "model": "superb combi",
+    "size": "L",
+    "detailingSize": "L"
+  },
+  {
+    "brand": "SKODA",
+    "model": "yeti",
     "size": "L",
     "detailingSize": "L"
   },
@@ -5395,7 +5899,7 @@
   },
   {
     "brand": "SMART",
-    "model": "ForTwo",
+    "model": "fortwo",
     "size": "XS",
     "detailingSize": "XS"
   },
@@ -5521,25 +6025,25 @@
   },
   {
     "brand": "SUBARU",
-    "model": "Forester (new)",
+    "model": "forester (new)",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "SUBARU",
-    "model": "Impreza",
+    "model": "impreza",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "SUBARU",
-    "model": "Outback (new)",
+    "model": "outback (new)",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "SUBARU",
-    "model": "XV",
+    "model": "xv",
     "size": "L",
     "detailingSize": "L"
   },
@@ -5587,7 +6091,7 @@
   },
   {
     "brand": "SUZUKI",
-    "model": "Escudo 2.4",
+    "model": "escudo 2.4",
     "size": "L",
     "detailingSize": "L"
   },
@@ -5611,7 +6115,7 @@
   },
   {
     "brand": "SUZUKI",
-    "model": "Ignis / Jimny",
+    "model": "jimny",
     "size": "S",
     "detailingSize": "S"
   },
@@ -5635,13 +6139,19 @@
   },
   {
     "brand": "SUZUKI",
+    "model": "solio",
+    "size": "S",
+    "detailingSize": "S"
+  },
+  {
+    "brand": "SUZUKI",
     "model": "Spacia",
     "size": "XS",
     "detailingSize": "XS"
   },
   {
     "brand": "SUZUKI",
-    "model": "Swift / Solio",
+    "model": "swift",
     "size": "S",
     "detailingSize": "S"
   },
@@ -5665,7 +6175,7 @@
   },
   {
     "brand": "SUZUKI",
-    "model": "SX4 / Vitara",
+    "model": "sx4",
     "size": "M",
     "detailingSize": "M"
   },
@@ -5685,7 +6195,7 @@
     "brand": "SUZUKI",
     "model": "Vitara",
     "size": "L",
-    "detailingSize": "L"
+    "detailingSize": "M"
   },
   {
     "brand": "SUZUKI",
@@ -5701,7 +6211,7 @@
   },
   {
     "brand": "TESLA",
-    "model": "Model 3",
+    "model": "model 3",
     "size": "S",
     "detailingSize": "S"
   },
@@ -5719,7 +6229,7 @@
   },
   {
     "brand": "TESLA",
-    "model": "Model S",
+    "model": "model s",
     "size": "M",
     "detailingSize": "M"
   },
@@ -5737,7 +6247,7 @@
   },
   {
     "brand": "TESLA",
-    "model": "Model X",
+    "model": "model x",
     "size": "L",
     "detailingSize": "L"
   },
@@ -5755,7 +6265,7 @@
   },
   {
     "brand": "TESLA",
-    "model": "Model Y",
+    "model": "model y",
     "size": "S",
     "detailingSize": "S"
   },
@@ -5770,6 +6280,12 @@
     "model": "Model Y（舊款）",
     "size": "S",
     "detailingSize": "S"
+  },
+  {
+    "brand": "Toyota",
+    "model": "300",
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "Toyota",
@@ -5845,7 +6361,7 @@
   },
   {
     "brand": "Toyota",
-    "model": "Crown Crossover / Sport / Sedan",
+    "model": "Crown Crossover",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -5905,7 +6421,7 @@
   },
   {
     "brand": "Toyota",
-    "model": "Land Cruiser 200 / 300",
+    "model": "Land Cruiser 200",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -5929,7 +6445,7 @@
   },
   {
     "brand": "Toyota",
-    "model": "Noah / Voxy",
+    "model": "Noah",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -5977,6 +6493,12 @@
   },
   {
     "brand": "Toyota",
+    "model": "Sedan",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
     "model": "Sequoia",
     "size": "2XL",
     "detailingSize": "2XL"
@@ -5986,6 +6508,12 @@
     "model": "Sienta",
     "size": "L",
     "detailingSize": "L"
+  },
+  {
+    "brand": "Toyota",
+    "model": "Sport",
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "Toyota",
@@ -6019,6 +6547,12 @@
   },
   {
     "brand": "Toyota",
+    "model": "Voxy",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "Toyota",
     "model": "Wish",
     "size": "L",
     "detailingSize": "L"
@@ -6037,43 +6571,43 @@
   },
   {
     "brand": "TOYOTA",
-    "model": "Alphard (new)",
+    "model": "alphard (new)",
     "size": "3XL",
     "detailingSize": "3XL"
   },
   {
     "brand": "TOYOTA",
-    "model": "Alphard (old)",
+    "model": "alphard (old)",
     "size": "2XL",
     "detailingSize": "2XL"
   },
   {
     "brand": "TOYOTA",
-    "model": "Camry",
+    "model": "camry",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "TOYOTA",
-    "model": "Corolla Altis",
+    "model": "corolla altis",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "TOYOTA",
-    "model": "Land Cruiser",
+    "model": "land cruiser",
     "size": "2XL",
     "detailingSize": "2XL"
   },
   {
     "brand": "TOYOTA",
-    "model": "RAV4 (new)",
+    "model": "rav4 (new)",
     "size": "XL",
     "detailingSize": "XL"
   },
   {
     "brand": "TOYOTA",
-    "model": "Yaris",
+    "model": "yaris",
     "size": "S",
     "detailingSize": "S"
   },
@@ -6085,7 +6619,7 @@
   },
   {
     "brand": "VOLKSWAGEN",
-    "model": "Atlas / Teramont",
+    "model": "Atlas",
     "size": "2XL",
     "detailingSize": "2XL"
   },
@@ -6127,7 +6661,7 @@
   },
   {
     "brand": "VOLKSWAGEN",
-    "model": "Golf",
+    "model": "golf",
     "size": "M",
     "detailingSize": "M"
   },
@@ -6146,12 +6680,6 @@
   {
     "brand": "VOLKSWAGEN",
     "model": "Golf Variant",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "VOLKSWAGEN",
-    "model": "Golf Variant / Passat",
     "size": "L",
     "detailingSize": "L"
   },
@@ -6205,9 +6733,15 @@
   },
   {
     "brand": "VOLKSWAGEN",
-    "model": "Multivan / ID.Buzz",
-    "size": "2XL",
-    "detailingSize": "2XL"
+    "model": "Nivus",
+    "size": "M",
+    "detailingSize": "M"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "passat",
+    "size": "L",
+    "detailingSize": "L"
   },
   {
     "brand": "VOLKSWAGEN",
@@ -6223,7 +6757,7 @@
   },
   {
     "brand": "VOLKSWAGEN",
-    "model": "Polo",
+    "model": "polo",
     "size": "S",
     "detailingSize": "S"
   },
@@ -6253,7 +6787,7 @@
   },
   {
     "brand": "VOLKSWAGEN",
-    "model": "T-Roc",
+    "model": "t-roc",
     "size": "L",
     "detailingSize": "L"
   },
@@ -6271,13 +6805,19 @@
   },
   {
     "brand": "VOLKSWAGEN",
-    "model": "Taigo / Nivus",
+    "model": "Taigo",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "VOLKSWAGEN",
-    "model": "Tiguan (new)",
+    "model": "Teramont",
+    "size": "2XL",
+    "detailingSize": "2XL"
+  },
+  {
+    "brand": "VOLKSWAGEN",
+    "model": "tiguan (new)",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -6301,7 +6841,7 @@
   },
   {
     "brand": "VOLKSWAGEN",
-    "model": "Touareg",
+    "model": "touareg",
     "size": "XL",
     "detailingSize": "XL"
   },
@@ -6351,7 +6891,7 @@
     "brand": "Volvo",
     "model": "EX30",
     "size": "L",
-    "detailingSize": "L"
+    "detailingSize": "M"
   },
   {
     "brand": "Volvo",
@@ -6393,13 +6933,13 @@
     "brand": "Volvo",
     "model": "S90",
     "size": "2XL",
-    "detailingSize": "2XL"
+    "detailingSize": "L"
   },
   {
     "brand": "Volvo",
     "model": "V40",
     "size": "S",
-    "detailingSize": "S"
+    "detailingSize": "M"
   },
   {
     "brand": "Volvo",
@@ -6481,31 +7021,31 @@
   },
   {
     "brand": "VOLVO",
-    "model": "S60",
+    "model": "s60",
     "size": "M",
     "detailingSize": "M"
   },
   {
     "brand": "VOLVO",
-    "model": "S90 / V60",
+    "model": "v60",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "VOLVO",
-    "model": "V40 / EX30",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "VOLVO",
-    "model": "XC40",
+    "model": "xc40",
     "size": "L",
     "detailingSize": "L"
   },
   {
     "brand": "VOLVO",
-    "model": "XC60 / XC90",
+    "model": "xc60",
+    "size": "XL",
+    "detailingSize": "XL"
+  },
+  {
+    "brand": "VOLVO",
+    "model": "xc90",
     "size": "XL",
     "detailingSize": "XL"
   }

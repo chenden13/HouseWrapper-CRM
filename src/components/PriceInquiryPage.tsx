@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Tag, CheckSquare, ShieldCheck, Zap, Info, ArrowRight, Palette, Sun, LayoutPanelTop, MonitorPlay, Video, Car, Droplets, Sparkles, Gem, Wind, Waves } from 'lucide-react';
+import { Search, Tag, CheckSquare, ShieldCheck, Zap, Info, ArrowRight, Palette, Sun, LayoutPanelTop, MonitorPlay, Video, Car, Droplets, Sparkles, Gem, Wind, Waves, Upload } from 'lucide-react';
 import vehiclesData from '../data/vehicles.json';
 
 interface Vehicle {
@@ -147,62 +147,15 @@ const calculateWrapPrice = (basePrice: number, size: string) => {
   return basePrice + (SIZE_OFFSET[size] || 0);
 };
 
-export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaster, onBack, initialMode }) => {
+export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ onBack, initialMode }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [activeCategory, setActiveCategory] = useState<'detailing' | 'film'>(initialMode || 'detailing');
 
-  // 合併內建與雲端資料
+  // 直接使用內建資料
   const fullMaster = useMemo(() => {
-    const list = Array.isArray(vehicleMaster) ? vehicleMaster : [];
-    
-    // 建立資料庫尺寸對照表 (用於美容)
-    const dbSizeMap = new Map();
-    list.forEach(v => {
-      const b = String(v.brand || '').trim();
-      const m = String(v.model || '').trim();
-      if (!b && !m) return;
-      const key = `${b}_${m}`.toLowerCase();
-      // 如果有多筆，保留第一筆看到的 (通常是舊資料)
-      if (!dbSizeMap.has(key)) dbSizeMap.set(key, v.size);
-    });
-
-    // 以新資料 (JSON) 為主體，但保留舊資料尺寸
-    const unique = new Map();
-    
-    // 1. 處理新版尺寸表 (用於貼膜)
-    vehiclesData.forEach(v => {
-      const b = String(v.brand || '').trim();
-      const m = String(v.model || '').trim();
-      const key = `${b}_${m}`.toLowerCase();
-      
-      const dbSize = dbSizeMap.get(key);
-      unique.set(key, {
-        brand: b,
-        model: m,
-        size: v.size || 'M', // 貼膜用的新尺寸
-        detailingSize: dbSize || v.size || 'M' // 美容用的舊尺寸 (若無則用新尺寸)
-      });
-    });
-
-    // 2. 補上資料庫中有但新表沒有的車型
-    list.forEach(v => {
-      const b = String(v.brand || '').trim();
-      const m = String(v.model || '').trim();
-      const key = `${b}_${m}`.toLowerCase();
-      
-      if (!unique.has(key)) {
-        unique.set(key, {
-          brand: b,
-          model: m,
-          size: v.size || 'M',
-          detailingSize: v.size || 'M'
-        });
-      }
-    });
-
-    return Array.from(unique.values());
-  }, [vehicleMaster]);
+    return vehiclesData as any[];
+  }, []);
 
   const filteredVehicles = useMemo(() => {
     const term = (searchTerm || '').trim().toLowerCase();
@@ -235,7 +188,7 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ vehicleMaste
           ← 返回首頁
         </button>
       )}
-      <header style={{ marginBottom: '30px', textAlign: 'center', paddingTop: onBack ? '10px' : '20px' }}>
+      <header style={{ marginBottom: '30px', textAlign: 'center', paddingTop: onBack ? '10px' : '20px', position: 'relative' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: '900', color: 'var(--primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
           {activeCategory === 'detailing' ? (
             <><Sparkles size={32} color="#0ea5e9" /> 汽車美容報價查詢</>

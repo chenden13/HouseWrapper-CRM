@@ -5,7 +5,6 @@ interface VehicleAutocompleteProps {
   brand: string;
   model: string;
   vehicleSize: string;
-  vehicleMaster: any[];
   onSelect: (data: { brand: string; model: string; vehicleSize: string }) => void;
 }
 
@@ -13,25 +12,12 @@ interface VehicleAutocompleteProps {
 const BUILTIN_VEHICLES: any[] = [];
 
 export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
-  brand, model, vehicleSize, vehicleMaster, onSelect
+  brand, model, vehicleSize, onSelect
 }) => {
-  // 合併雲端母檔與新版 JSON (JSON 優先以確保貼膜尺寸準確)
+  // 直接使用內建 JSON 資料
   const fullMaster = React.useMemo(() => {
-    const unique = new Map();
-    // 1. 先放 JSON (新規則)
-    vehiclesData.forEach(v => {
-      const key = `${v.brand}_${v.model}`.toLowerCase();
-      unique.set(key, { ...v, id: key });
-    });
-    // 2. 補上資料庫中有的 (若 JSON 已有則不覆蓋)
-    vehicleMaster.forEach(v => {
-      const key = `${v.brand}_${v.model}`.toLowerCase();
-      if (!unique.has(key)) {
-        unique.set(key, { ...v, id: key });
-      }
-    });
-    return Array.from(unique.values()) as any[];
-  }, [vehicleMaster]);
+    return vehiclesData.map(v => ({ ...v, id: `${v.brand}_${v.model}`.toLowerCase() }));
+  }, []);
 
   // 品牌清單 (去重)
   const brands = Array.from(new Set(fullMaster.map(v => v.brand))).sort();

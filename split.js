@@ -1,0 +1,1 @@
+const fs = require('fs'); const data = JSON.parse(fs.readFileSync('src/data/vehicles.json', 'utf8')); const result = []; data.forEach(v = const models = v.model.split(/\s*[\/¡B,]\s*/); models.forEach(m = if (m) result.push({ ...v, model: m }); }); }); fs.writeFileSync('src/data/vehicles.json', JSON.stringify(result, null, 2));  

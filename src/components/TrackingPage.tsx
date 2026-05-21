@@ -282,9 +282,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ customers, onUpdateC
                     </div>
                   </td>
                   <td style={{ padding: '12px' }}>
-                    <div style={{ fontWeight: '700', color: '#334155', fontSize: '0.8rem' }}>
-                      {normalizeDate(customer.deliveryDate || customer.constructionStartDate || customer.expectedEndDate || customer.expectedStartDate) || '—'}
-                    </div>
+                    <input type="date" value={normalizeDate(customer.deliveryDate || customer.constructionStartDate || customer.expectedEndDate || customer.expectedStartDate) || ''} onChange={(e) => onUpdateCustomer({...customer, deliveryDate: e.target.value})} style={{ fontWeight: '700', color: '#334155', fontSize: '0.8rem', padding: '4px', border: '1px solid transparent', borderRadius: '6px', background: 'transparent', cursor: 'pointer', outline: 'none', width: '120px' }} onFocus={(e) => { e.target.style.border = '1px solid #e2e8f0'; e.target.style.background = '#fff'; }} onBlur={(e) => { e.target.style.border = '1px solid transparent'; e.target.style.background = 'transparent'; }} />
                   </td>
                   <td style={{ padding: '12px' }}>
                     <input 

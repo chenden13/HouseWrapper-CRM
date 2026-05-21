@@ -589,13 +589,21 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                 <div style={{ fontSize: '0.82rem', color: '#64748b' }}>{customer.expectedStartDate || '—'}</div>
                 
                 {/* 5. 施工期間 */}
-                <div style={{ fontSize: '0.82rem', color: '#166534', fontWeight: '700' }}>
-                  {customer.constructionStartDate || customer.expectedEndDate || '—'}
-                  {customer.constructionEndDate ? ` ~ ${customer.constructionEndDate.slice(5)}` : ''}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }} onClick={(e) => e.stopPropagation()}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>起</span>
+                    <input type="date" value={customer.constructionStartDate || ''} onChange={(e) => onUpdate({...customer, constructionStartDate: e.target.value})} style={{ fontSize: '0.75rem', padding: '2px 4px', border: '1px solid transparent', borderRadius: '4px', color: '#166534', fontWeight: '700', background: 'transparent', cursor: 'pointer', outline: 'none' }} onFocus={(e) => { e.target.style.border = '1px solid #e2e8f0'; e.target.style.background = '#fff'; }} onBlur={(e) => { e.target.style.border = '1px solid transparent'; e.target.style.background = 'transparent'; }} />
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>迄</span>
+                    <input type="date" value={customer.constructionEndDate || ''} onChange={(e) => onUpdate({...customer, constructionEndDate: e.target.value})} style={{ fontSize: '0.75rem', padding: '2px 4px', border: '1px solid transparent', borderRadius: '4px', color: '#166534', fontWeight: '700', background: 'transparent', cursor: 'pointer', outline: 'none' }} onFocus={(e) => { e.target.style.border = '1px solid #e2e8f0'; e.target.style.background = '#fff'; }} onBlur={(e) => { e.target.style.border = '1px solid transparent'; e.target.style.background = 'transparent'; }} />
+                  </div>
                 </div>
 
                 {/* 6. 實際完工日期 */}
-                <div style={{ fontSize: '0.85rem', color: '#ec4899', fontWeight: '800' }}>{customer.deliveryDate || '—'}</div>
+                <div onClick={(e) => e.stopPropagation()}>
+                  <input type="date" value={customer.deliveryDate || ''} onChange={(e) => onUpdate({...customer, deliveryDate: e.target.value})} style={{ fontSize: '0.85rem', padding: '4px 6px', border: '1px solid transparent', borderRadius: '6px', color: '#ec4899', fontWeight: '800', background: 'transparent', cursor: 'pointer', outline: 'none' }} onFocus={(e) => { e.target.style.border = '1px solid #fbcfe8'; e.target.style.background = '#fdf2f8'; }} onBlur={(e) => { e.target.style.border = '1px solid transparent'; e.target.style.background = 'transparent'; }} />
+                </div>
 
                 {/* 7. 施工項目與備註 */}
                 <div style={{ paddingRight: '20px' }}>

@@ -73,6 +73,12 @@ export interface Customer {
   hasSunroof?: boolean;
   windowTintScheduledTime?: string;
   windowTintDate?: string;
+  windowTintVendor?: string;
+  tintDepthFrontWind?: string;
+  tintDepthFrontSeat?: string;
+  tintDepthRearSeat?: string;
+  tintDepthRearWind?: string;
+  tintDepthSunroof?: string;
   digitalMirror?: string;
   digitalMirrorBrand?: string;
   digitalMirrorPrice?: number;

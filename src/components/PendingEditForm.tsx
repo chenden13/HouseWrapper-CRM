@@ -131,14 +131,15 @@ const PROMOTIONS = [
 interface PendingEditFormProps {
   customer?: Customer; 
   onSuggestId?: string;
-  vehicleMaster?: any[];
   userRole?: Role;
   onSubmit: (updatedCustomer: Customer, moveToConstruction: boolean, originalId?: string) => void;
   onCancel: () => void;
+  hideActions?: boolean;
+  onFormDataChange?: (data: Partial<Customer>) => void;
 }
 
 export const PendingEditForm: React.FC<PendingEditFormProps> = ({ 
-  customer, onSuggestId, vehicleMaster = [], userRole, onSubmit, onCancel 
+  customer, onSuggestId, userRole, onSubmit, onCancel, hideActions, onFormDataChange 
 }) => {
   const [formData, setFormData] = useState<Partial<Customer>>(() => {
     if (customer) {
@@ -165,6 +166,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUploading, setIsUploading] = useState(false);
+
+  useEffect(() => {
+    if (onFormDataChange) {
+      onFormDataChange(formData);
+    }
+  }, [formData, onFormDataChange]);
 
   const CAR_PARTS = ['前保桿', '引擎蓋', '車頂', '左前葉', '右前葉', '左前門', '右前門', '左後門', '右後門', '左後葉', '右後葉', '尾箱上', '尾箱下', '後保桿', '鋼琴烤漆', '其他'];
   
@@ -682,7 +689,6 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
         brand={formData.brand || ''}
         model={formData.model || ''}
         vehicleSize={formData.vehicleSize || ''}
-        vehicleMaster={vehicleMaster || []}
         onSelect={(data) => setFormData(prev => ({ ...prev, ...data }))}
       />
 
@@ -879,9 +885,53 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
                   <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計進場日期</label>
                   <input type="date" name="windowTintDate" className="form-control" value={formData.windowTintDate || ''} onChange={handleChange} />
                 </div>
+                <div style={{ flex: '0 0 140px' }}>
+                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計時段</label>
+                  <select name="windowTintScheduledTime" className="form-control" value={formData.windowTintScheduledTime || ''} onChange={handleChange}>
+                    <option value="">選擇時段</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                  </select>
+                </div>
+                <div style={{ flex: '0 0 140px' }}>
+                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工廠商</label>
+                  <select name="windowTintVendor" className="form-control" value={formData.windowTintVendor || ''} onChange={handleChange}>
+                    <option value="">選擇廠商</option>
+                    <option value="麟光">麟光</option>
+                    <option value="昆哥">昆哥</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>
                 <div style={{ flex: 1 }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>備註時段/詳細</label>
-                  <input type="text" name="windowTintScheduledTime" className="form-control" value={formData.windowTintScheduledTime || ''} onChange={handleChange} placeholder="e.g. 13:30 前擋+身" />
+                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>前擋</label>
+                  <input type="number" name="tintDepthFrontWind" className="form-control" value={formData.tintDepthFrontWind || ''} onChange={handleChange} placeholder="深度數字" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>前座</label>
+                  <input type="number" name="tintDepthFrontSeat" className="form-control" value={formData.tintDepthFrontSeat || ''} onChange={handleChange} placeholder="深度數字" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>後座</label>
+                  <input type="number" name="tintDepthRearSeat" className="form-control" value={formData.tintDepthRearSeat || ''} onChange={handleChange} placeholder="深度數字" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>後擋</label>
+                  <input type="number" name="tintDepthRearWind" className="form-control" value={formData.tintDepthRearWind || ''} onChange={handleChange} placeholder="深度數字" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>天窗</label>
+                  <input type="number" name="tintDepthSunroof" className="form-control" value={formData.tintDepthSunroof || ''} onChange={handleChange} placeholder="深度數字" />
                 </div>
               </div>
             </div>
@@ -908,6 +958,9 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
                       {Object.keys(DASHCAM_REC_LIST).map(m => <option key={m} value={m}>{m}</option>)}
                       <option value="電動尾門">電動尾門</option>
                       <option value="電動前開">電動前開</option>
+                      <option value="電吸前箱">電吸前箱</option>
+                      <option value="電動遮陽簾">電動遮陽簾</option>
+                      <option value="旋轉螢幕">旋轉螢幕</option>
                       <option value="其他">其他 (手動輸入於規格)</option>
                     </select>
                   ) : (
@@ -1236,35 +1289,37 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
       </div>
 
       {/* ── 底部操作按鈕 ── */}
-      <div className="col-span-12 form-actions" style={{ position: 'sticky', bottom: '-10px', padding: '16px 0', background: 'rgba(255,255,255,0.95)', borderTop: '1px solid #e2e8f0', marginTop: '16px', display: 'flex', gap: '12px' }}>
-        <button type="button" className="btn btn-outline" onClick={onCancel} style={{ padding: '10px 24px' }} disabled={isUploading}>取消</button>
-        <div style={{ flex: 1 }}></div>
-        
-        {formData.status === 'new' ? (
-          <>
+      {!hideActions && (
+        <div className="col-span-12 form-actions" style={{ position: 'sticky', bottom: '-10px', padding: '16px 0', background: 'rgba(255,255,255,0.95)', borderTop: '1px solid #e2e8f0', marginTop: '16px', display: 'flex', gap: '12px', zIndex: 10 }}>
+          <button type="button" className="btn btn-outline" onClick={onCancel} style={{ padding: '10px 24px' }} disabled={isUploading}>取消</button>
+          <div style={{ flex: 1 }}></div>
+          
+          {formData.status === 'new' ? (
+            <>
+              <button type="button" className="btn" onClick={handleSave} style={{ background: '#3b82f6', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>
+                {isUploading ? <Loader2 className="spinner" size={18} /> : '儲存諮詢內容'}
+              </button>
+              <button type="button" className="btn" onClick={handleConvert} style={{ background: '#f59e0b', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>
+                轉為正式下定 →
+              </button>
+            </>
+          ) : (
             <button type="button" className="btn" onClick={handleSave} style={{ background: '#3b82f6', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>
-              {isUploading ? <Loader2 className="spinner" size={18} /> : '儲存諮詢內容'}
+              {isUploading ? <Loader2 className="spinner" size={18} /> : '儲存表單 (保持排程)'}
             </button>
-            <button type="button" className="btn" onClick={handleConvert} style={{ background: '#f59e0b', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>
-              轉為正式下定 →
+          )}
+
+          {formData.status !== 'new' && (
+            <button type="button" className="btn" onClick={handleRevertToInquiry} style={{ background: '#64748b', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>
+              退回諮詢區
             </button>
-          </>
-        ) : (
-          <button type="button" className="btn" onClick={handleSave} style={{ background: '#3b82f6', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>
-            {isUploading ? <Loader2 className="spinner" size={18} /> : '儲存表單 (保持排程)'}
-          </button>
-        )}
+          )}
 
-        {formData.status !== 'new' && (
-          <button type="button" className="btn" onClick={handleRevertToInquiry} style={{ background: '#64748b', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>
-            退回諮詢區
-          </button>
-        )}
-
-        {formData.status !== 'new' && customer && (
-          <button type="button" className="btn" onClick={handleMoveToConstruction} style={{ background: '#10b981', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>確認並轉入現場施工 →</button>
-        )}
-      </div>
+          {formData.status !== 'new' && customer && (
+            <button type="button" className="btn" onClick={handleMoveToConstruction} style={{ background: '#10b981', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>確認並轉入現場施工 →</button>
+          )}
+        </div>
+      )}
 
     </form>
   );

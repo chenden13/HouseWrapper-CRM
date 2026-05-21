@@ -25,7 +25,6 @@ import { FinancePage } from './components/FinancePage';
 import { PriceInquiryPage } from './components/PriceInquiryPage';
 import { TrackingPage } from './components/TrackingPage';
 import { PreparationPage } from './components/PreparationPage';
-import { VehicleMasterImport } from './components/VehicleMasterImport';
 import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList, Sparkles, Palette, RefreshCcw } from 'lucide-react';
 
 import { useIsMobile } from './hooks/useIsMobile';
@@ -67,14 +66,13 @@ function App() {
     setIsLoading(true);
     console.log('正在重新同步雲端資料...');
     try {
-      const [cloudCustomers, cloudInventory, cloudLogs, cloudPurchases, cloudFinance, cloudSettlements, cloudVehicleMaster] = await Promise.all([
+      const [cloudCustomers, cloudInventory, cloudLogs, cloudPurchases, cloudFinance, cloudSettlements] = await Promise.all([
         api.getCustomers().catch(e => { console.error('客戶讀取失敗', e); return []; }),
         api.getInventory().catch(e => { console.error('庫存讀取失敗', e); return []; }),
         api.getInventoryLogs().catch(e => { console.error('日誌讀取失敗', e); return []; }),
         api.getPurchaseRecords().catch(e => { console.error('叫貨紀錄讀取失敗', e); return []; }),
         api.getFinanceRecords().catch(e => { console.error('財務紀錄讀取失敗', e); return []; }),
-        api.getFinanceSettlements().catch(e => { console.error('結算紀錄讀取失敗', e); return []; }),
-        api.getVehicleMaster().catch(e => { console.error('車型母檔讀取失敗', e); return []; })
+        api.getFinanceSettlements().catch(e => { console.error('結算紀錄讀取失敗', e); return []; })
       ]);
       
       setCustomers(cloudCustomers);
@@ -83,7 +81,6 @@ function App() {
       setPurchaseRecords(cloudPurchases);
       setFinanceRecords(cloudFinance);
       setSettlements(cloudSettlements);
-      setVehicleMaster(cloudVehicleMaster);
     } catch (err: any) {
       console.error('重新讀取失敗:', err);
       alert(`❌ 重新讀取失敗：\n${err.message}`);
@@ -98,11 +95,6 @@ function App() {
       if (isMobile) setView('dashboard');
     }
   }, [currentUser, isMobile]);
-
-  const refreshVehicleMaster = async () => {
-    const data = await api.getVehicleMaster();
-    setVehicleMaster(data || []);
-  };
 
 
 
@@ -685,9 +677,9 @@ function App() {
           onBack={() => setView('pending')}
         />
 
-      ) : view === 'price_detailing' ? (
+      ) : view === 'detailingPricing' ? (
         <PriceInquiryPage key="detailing" vehicleMaster={vehicleMaster} initialMode="detailing" />
-      ) : view === 'price_film' ? (
+      ) : view === 'filmPricing' ? (
         <PriceInquiryPage key="film" vehicleMaster={vehicleMaster} initialMode="film" />
 
       ) : view === 'tracking' ? (
@@ -725,7 +717,6 @@ function App() {
       <Modal isOpen={isIntakeModalOpen} onClose={() => setIsIntakeModalOpen(false)} title="新增客戶資料表單">
         <IntakeForm 
           onSuggestId={generateCustomerId()}
-          vehicleMaster={vehicleMaster}
           onSubmit={(newCustomer) => {
             handleAddOrUpdateCustomer(newCustomer);
           }}
@@ -738,7 +729,6 @@ function App() {
         <PendingEditForm 
           customer={selectedCustomer} 
           onSuggestId={generateCustomerId()}
-          vehicleMaster={vehicleMaster}
           userRole={currentUser.role}
           onSubmit={(updatedCustomer, moveToConstruction, originalId) => {
              handleAddOrUpdateCustomer(updatedCustomer, moveToConstruction, originalId);
@@ -802,16 +792,6 @@ function App() {
         <PendingExcelImport 
           onImport={handleImport} 
           onCancel={() => setIsPendingImportModalOpen(false)} 
-        />
-      </Modal>
-
-      <Modal isOpen={isVehicleImportModalOpen} onClose={() => setIsVehicleImportModalOpen(false)} title="車型母檔匯入">
-        <VehicleMasterImport 
-          onCancel={() => setIsVehicleImportModalOpen(false)}
-          onSuccess={() => {
-            setIsVehicleImportModalOpen(false);
-            refreshVehicleMaster();
-          }}
         />
       </Modal>
 

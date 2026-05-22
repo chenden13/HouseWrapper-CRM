@@ -23,7 +23,7 @@ const ZONE_CONFIG = {
   A: { sections: 3, slots: 20, name: '牆面 (A1~A3)' },
   B: { sections: 2, slots: 20, name: '靠牆兩層架 (B1~B2)' },
   C: { sections: 6, slots: 12, name: '倒V型貨架 (C1~C6)' },
-  D: { sections: 5, slots: 30, name: '直立層架1 (D1~D5)' },
+  D: { sections: 6, slots: 30, name: '直立層架1 (D1~D6)' },
   E: { sections: 5, slots: 30, name: '直立層架2 (E1~E5)' },
   F: { sections: 5, slots: 30, name: '直立層架3 (F1~F5)' },
   G: { sections: 1, slots: 30, name: '未拆區域 (全新)' }

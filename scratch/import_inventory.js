@@ -53,6 +53,10 @@ function parseSizeAndNotes(sizeVal) {
     return { meters: 15, notes: '全新完整一捲' };
   }
   
+  if (clean === '260x75' || clean === '保桿' || clean === '新y保' || clean === '後保') {
+    return { meters: 2.6, notes: '保桿' };
+  }
+  
   // 檢查是否為純數字
   const num = Number(clean);
   if (!isNaN(num) && clean !== '') {
@@ -71,7 +75,7 @@ function parseSizeAndNotes(sizeVal) {
 }
 
 // 4. 定位儲位（與 ZONE_CONFIG 一致）
-function parseLocation(currentTitle, col0Val, sequentialSlotCounter) {
+function parseLocation(currentTitle, col0Val, sequentialSlotCounter, blockIndex) {
   let zone = 'A';
   let section = 1;
   let slot = sequentialSlotCounter;
@@ -82,7 +86,7 @@ function parseLocation(currentTitle, col0Val, sequentialSlotCounter) {
   if (titleClean.includes('A1')) { zone = 'A'; section = 1; }
   else if (titleClean.includes('A2')) { zone = 'A'; section = 2; }
   else if (titleClean.includes('A3')) { zone = 'A'; section = 3; }
-  else if (titleClean.includes('A4')) { zone = 'G'; section = 1; } // A4 映射至未拆區域 G1
+  else if (titleClean.includes('A4') || titleClean.includes('A5')) { zone = 'G'; section = 1; } // A4 & A5 映射至未拆區域 G1
   
   else if (titleClean.includes('B1')) { zone = 'B'; section = 1; }
   else if (titleClean.includes('B2')) { zone = 'B'; section = 2; }
@@ -91,24 +95,36 @@ function parseLocation(currentTitle, col0Val, sequentialSlotCounter) {
   else if (titleClean.includes('D2')) { zone = 'C'; section = 2; }
   else if (titleClean.includes('D3')) { zone = 'C'; section = 3; }
   else if (titleClean.includes('D4')) { zone = 'C'; section = 4; }
+  else if (titleClean.includes('D5')) { zone = 'C'; section = 5; }
+  else if (titleClean.includes('D6')) { zone = 'C'; section = 6; }
   
   else if (titleClean.includes('C1-1')) { zone = 'D'; section = 1; }
   else if (titleClean.includes('C1-2')) { zone = 'D'; section = 2; }
   else if (titleClean.includes('C1-3')) { zone = 'D'; section = 3; }
   else if (titleClean.includes('C1-4')) { zone = 'D'; section = 4; }
+  else if (titleClean.includes('C1-5')) {
+    zone = 'D';
+    if (blockIndex === 4) {
+      section = 5;
+    } else if (blockIndex === 5) {
+      section = 6;
+    }
+  }
   
   else if (titleClean.includes('C2-1')) { zone = 'E'; section = 1; }
   else if (titleClean.includes('C2-2')) { zone = 'E'; section = 2; }
   else if (titleClean.includes('C2-3')) { zone = 'E'; section = 3; }
   else if (titleClean.includes('C2-4')) { zone = 'E'; section = 4; }
+  else if (titleClean.includes('C2-5')) { zone = 'E'; section = 5; }
   
   else if (titleClean.includes('C3-1')) { zone = 'F'; section = 1; }
   else if (titleClean.includes('C3-2')) { zone = 'F'; section = 2; }
   else if (titleClean.includes('C3-3')) { zone = 'F'; section = 3; }
   else if (titleClean.includes('C3-4')) { zone = 'F'; section = 4; }
+  else if (titleClean.includes('C3-5')) { zone = 'F'; section = 5; }
 
   // 判斷孔位編號
-  const isSequentialSlot = titleClean.includes('層架') || titleClean.includes('A4');
+  const isSequentialSlot = titleClean.includes('層架') || titleClean.includes('A4') || titleClean.includes('A5');
   if (!isSequentialSlot && col0Val && col0Val.includes('-')) {
     const parts = col0Val.split('-');
     const parsedSlot = parseInt(parts[parts.length - 1], 10);
@@ -145,16 +161,19 @@ async function main() {
       { name: 'A-C', cols: [0, 1, 2], currentTitle: '', sequentialSlot: 0 },
       { name: 'E-G', cols: [4, 5, 6], currentTitle: '', sequentialSlot: 0 },
       { name: 'I-K', cols: [8, 9, 10], currentTitle: '', sequentialSlot: 0 },
-      { name: 'M-O', cols: [12, 13, 14], currentTitle: '', sequentialSlot: 0 }
+      { name: 'M-O', cols: [12, 13, 14], currentTitle: '', sequentialSlot: 0 },
+      { name: 'Q-S', cols: [16, 17, 18], currentTitle: '', sequentialSlot: 0 },
+      { name: 'U-W', cols: [20, 21, 22], currentTitle: '', sequentialSlot: 0 }
     ];
 
+    let zoneGSlotCounter = 0;
     const parsedItems = [];
 
     // C. 雙重迴圈解析
     for (let r = 0; r < rawGrid.length; r++) {
       const row = rawGrid[r] || [];
       
-      colBlocks.forEach(block => {
+      colBlocks.forEach((block, blockIndex) => {
         const col0Val = String(row[block.cols[0]] || '').trim();
         const col1Val = String(row[block.cols[1]] || '').trim();
         const col2Val = String(row[block.cols[2]] || '').trim();
@@ -163,10 +182,10 @@ async function main() {
         let isTitle = false;
         let titleText = '';
         
-        if (col0Val && (col0Val.includes('（') || col0Val.includes('(') || col0Val.includes('層架') || col0Val.includes('倒V') || col0Val === 'A4')) {
+        if (col0Val && (col0Val.includes('（') || col0Val.includes('(') || col0Val.includes('層架') || col0Val.includes('倒V') || col0Val === 'A4' || col0Val === 'A5')) {
           isTitle = true;
           titleText = col0Val;
-        } else if (col1Val && (col1Val === 'A4' || col1Val.includes('A4')) && !col0Val && !col2Val) {
+        } else if (col1Val && (col1Val === 'A4' || col1Val === 'A5' || col1Val.includes('A4') || col1Val.includes('A5')) && !col0Val && !col2Val) {
           isTitle = true;
           titleText = col1Val;
         }
@@ -188,12 +207,14 @@ async function main() {
           
           const { brand, color } = extractBrandAndColor(col1Val);
           let { meters, notes } = parseSizeAndNotes(col2Val);
-          const { zone, section, slot } = parseLocation(block.currentTitle, col0Val, block.sequentialSlot);
+          let { zone, section, slot } = parseLocation(block.currentTitle, col0Val, block.sequentialSlot, blockIndex);
           
           // 如果是未拆區域的膜料，強制設定為 15 米，且自動標註備註
           if (zone === 'G') {
             meters = 15;
             if (!notes) notes = '全新未拆膜料';
+            zoneGSlotCounter++;
+            slot = zoneGSlotCounter;
           }
           
           // 生成唯一 ID 避免重複插入

@@ -110,7 +110,9 @@ export const MobileArchive: React.FC<MobileArchiveProps> = ({ customers, onEdit,
               </div>
               <div>
                 <div style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>膜料顏色</div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#6366f1' }}>{customer.filmColor || '-'}</div>
+                <div style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#6366f1' }}>
+                  {customer.mainServiceBrand ? `${customer.mainServiceBrand} ` : ''}{customer.filmColor || '-'}
+                </div>
               </div>
             </div>
             

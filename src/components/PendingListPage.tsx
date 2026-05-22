@@ -194,7 +194,9 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
                     <div style={{ fontWeight: '800', color: '#0f172a' }}>
                       {customer.mainService}
                     </div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '2px' }}>{customer.filmColor}</div>
+                    <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '2px' }}>
+                      {customer.mainServiceBrand ? `${customer.mainServiceBrand} ` : ''}{customer.filmColor}
+                    </div>
                   </div>
 
                   {/* 4. 預計留車時間 */}

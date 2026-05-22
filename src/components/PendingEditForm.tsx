@@ -67,7 +67,7 @@ const PPF_PRICING: Record<string, Record<string, number>> = {
     '100g (亮面)': 110000,
     '150g (亮面)': 125000,
     '200g (亮面)': 135000,
-    '200g (消光)': 145000
+    '200m (消光)': 145000
   },
   'Stek': {
     'Lite (亮面)': 130000,
@@ -348,6 +348,16 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
       setPrices(prev => ({ ...prev, hoodPpfPrice: 0 }));
     }
   }, [formData.hasHoodPpf, formData.mainService]);
+
+  // 犀牛皮自動將規格/系列填入膜料顏色
+  React.useEffect(() => {
+    if (formData.mainService === '全車犀牛皮') {
+      const spec = formData.mainServiceSeries || '';
+      if (formData.filmColor !== spec) {
+        setFormData(prev => ({ ...prev, filmColor: spec }));
+      }
+    }
+  }, [formData.mainService, formData.mainServiceSeries]);
 
   // 電子後視鏡價格邏輯
   React.useEffect(() => {
@@ -804,7 +814,16 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
 
           <div className="form-group col-span-2">
             <label className="form-label">膜料顏色</label>
-            <input type="text" name="filmColor" className="form-control" placeholder="顏色細項" value={formData.filmColor || ''} onChange={handleChange} />
+            <input 
+              type="text" 
+              name="filmColor" 
+              className="form-control" 
+              placeholder={formData.mainService === '全車犀牛皮' ? '無須填寫' : '顏色細項'} 
+              value={formData.filmColor || ''} 
+              onChange={handleChange} 
+              disabled={formData.mainService === '全車犀牛皮'}
+              style={formData.mainService === '全車犀牛皮' ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
+            />
           </div>
           <div className={`form-group ${formData.mainService === '全車改色膜' && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') ? 'col-span-2' : 'col-span-4'}`}>
             <label className="form-label">施工價格 ($)</label>

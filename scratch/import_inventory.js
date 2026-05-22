@@ -47,31 +47,40 @@ function extractBrandAndColor(name) {
 // 3. 智慧解析米數與備註
 function parseSizeAndNotes(sizeVal) {
   const clean = String(sizeVal || '').trim();
-  if (!clean) return { meters: 0, notes: '' };
+  if (!clean) return { meters: 0, size: '1.52m x 15m', notes: '' };
   
   if (clean === '全新') {
-    return { meters: 15, notes: '全新完整一捲' };
+    return { meters: 15, size: '1.52m x 15m', notes: '全新完整一捲' };
   }
   
-  if (clean === '260x75' || clean === '保桿' || clean === '新y保' || clean === '後保') {
-    return { meters: 2.6, notes: '保桿' };
+  // 檢查是否為長x寬規格 (例如 260x75, 230X80, 185X130)
+  const matchCustom = clean.match(/^(\d+)[xX](\d+)$/);
+  if (matchCustom) {
+    const lengthCm = parseInt(matchCustom[1], 10);
+    const widthCm = parseInt(matchCustom[2], 10);
+    const meters = lengthCm / 100;
+    const widthM = widthCm / 100;
+    const size = `${widthM}m x ${meters}m`;
+    const isBumper = (clean === '260x75');
+    return {
+      meters: meters,
+      size: size,
+      notes: isBumper ? '保桿' : `規格: ${clean}`
+    };
   }
   
-  // 檢查是否為純數字
+  if (clean === '保桿' || clean === '新y保' || clean === '後保') {
+    return { meters: 2.6, size: '0.75m x 2.6m', notes: '保桿' };
+  }
+  
+  // 檢查是否為純數字 (代表標準寬度 1.52m，只剩下指定公分長度)
   const num = Number(clean);
   if (!isNaN(num) && clean !== '') {
-    return { meters: num / 100, notes: '' };
+    return { meters: num / 100, size: '1.52m x 15m', notes: '' };
   }
   
-  // 檢查是否為 230X80 等規格
-  const matchX = clean.match(/^(\d+)[xX]/);
-  if (matchX) {
-    const cm = parseInt(matchX[1], 10);
-    return { meters: cm / 100, notes: `規格: ${clean}` };
-  }
-  
-  // 其他情況（如 "保桿"）
-  return { meters: 0, notes: `庫存備註: ${clean}` };
+  // 其他特殊情況的 fallback
+  return { meters: 0, size: '1.52m x 15m', notes: `庫存備註: ${clean}` };
 }
 
 // 4. 定位儲位（與 ZONE_CONFIG 一致）
@@ -206,12 +215,11 @@ async function main() {
           block.sequentialSlot++; // 自動遞增孔位
           
           const { brand, color } = extractBrandAndColor(col1Val);
-          let { meters, notes } = parseSizeAndNotes(col2Val);
+          let { meters, size, notes } = parseSizeAndNotes(col2Val);
           let { zone, section, slot } = parseLocation(block.currentTitle, col0Val, block.sequentialSlot, blockIndex);
           
-          // 如果是未拆區域的膜料，強制設定為 15 米，且自動標註備註
+          // 如果是未拆區域的膜料，且自動標註備註
           if (zone === 'G') {
-            meters = 15;
             if (!notes) notes = '全新未拆膜料';
             zoneGSlotCounter++;
             slot = zoneGSlotCounter;
@@ -224,7 +232,7 @@ async function main() {
             id: uniqueId,
             brand: brand,
             color: color,
-            size: '1.52m x 15m', // 標準膜捲尺寸規格
+            size: size, // 使用動態解析的規格尺寸
             location: {
               zone: zone,
               section: section,

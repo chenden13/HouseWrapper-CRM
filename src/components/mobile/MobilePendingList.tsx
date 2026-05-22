@@ -125,7 +125,9 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
               </div>
               <div>
                 <div style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>膜料顏色</div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 'bold', color: 'var(--primary)' }}>{customer.filmColor || '未填'}</div>
+                <div style={{ fontSize: '0.9rem', fontWeight: 'bold', color: 'var(--primary)' }}>
+                  {customer.mainServiceBrand ? `${customer.mainServiceBrand} ` : ''}{customer.filmColor || '未填'}
+                </div>
               </div>
             </div>
             

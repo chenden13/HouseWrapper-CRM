@@ -80,7 +80,7 @@ export const IntakeForm: React.FC<IntakeFormProps> = ({ onSuggestId, vehicleMast
         brand={formData.brand || ''}
         model={formData.model || ''}
         vehicleSize={formData.vehicleSize || ''}
-        vehicleMaster={vehicleMaster}
+        detailingSize={formData.detailingSize || ''}
         onSelect={(data) => setFormData(prev => ({ ...prev, ...data }))}
       />
 

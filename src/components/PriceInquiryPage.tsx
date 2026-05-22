@@ -152,7 +152,6 @@ export const PriceInquiryPage: React.FC<PriceInquiryPageProps> = ({ onBack, init
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [activeCategory, setActiveCategory] = useState<'detailing' | 'film'>(initialMode || 'detailing');
 
-  // 直接使用內建資料
   const fullMaster = useMemo(() => {
     return vehiclesData as any[];
   }, []);

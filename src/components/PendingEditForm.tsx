@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Customer, Accessory, StatusType } from '../types';
 import { 
   Plus, Trash2, Calendar, FileText, Settings, Gift, Package, 
@@ -689,6 +689,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
         brand={formData.brand || ''}
         model={formData.model || ''}
         vehicleSize={formData.vehicleSize || ''}
+        detailingSize={formData.detailingSize || ''}
         onSelect={(data) => setFormData(prev => ({ ...prev, ...data }))}
       />
 

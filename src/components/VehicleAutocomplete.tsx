@@ -5,14 +5,12 @@ interface VehicleAutocompleteProps {
   brand: string;
   model: string;
   vehicleSize: string;
-  onSelect: (data: { brand: string; model: string; vehicleSize: string }) => void;
+  detailingSize?: string;
+  onSelect: (data: { brand: string; model: string; vehicleSize: string; detailingSize?: string }) => void;
 }
 
-// 已經移至 vehicles.json，這裡可以移除或作為極少數備份
-const BUILTIN_VEHICLES: any[] = [];
-
 export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
-  brand, model, vehicleSize, onSelect
+  brand, model, vehicleSize, detailingSize, onSelect
 }) => {
   // 直接使用內建 JSON 資料
   const fullMaster = React.useMemo(() => {
@@ -29,7 +27,7 @@ export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
 
   const handleBrandChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
-    onSelect({ brand: val, model: '', vehicleSize: '' });
+    onSelect({ brand: val, model: '', vehicleSize: '', detailingSize: '' });
   };
 
   const handleModelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,9 +35,9 @@ export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
     // 檢查是否選中了清單中的車型
     const match = filteredModels.find(v => v.model === val);
     if (match) {
-      onSelect({ brand, model: val, vehicleSize: match.size });
+      onSelect({ brand, model: val, vehicleSize: match.size, detailingSize: (match as any).detailingSize });
     } else {
-      onSelect({ brand, model: val, vehicleSize: '' });
+      onSelect({ brand, model: val, vehicleSize: '', detailingSize: '' });
     }
   };
 
@@ -73,7 +71,7 @@ export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
         <datalist id="model-list">
           {filteredModels.map(m => (
             <option key={m.id} value={m.model}>
-              {m.size ? `規格: ${m.size}` : ''}
+              {m.size ? `貼膜:${m.size} 洗車:${(m as any).detailingSize || m.size}` : ''}
             </option>
           ))}
         </datalist>
@@ -83,9 +81,14 @@ export const VehicleAutocomplete: React.FC<VehicleAutocompleteProps> = ({
         <label className="form-label">車型大小 (尺寸)</label>
         <div
           className="form-control"
-          style={{ background: '#f1f5f9', display: 'flex', alignItems: 'center', fontWeight: 'bold', color: '#1e293b' }}
+          style={{ background: '#f1f5f9', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold', color: '#1e293b' }}
         >
-          {vehicleSize || '未設定'}
+          {vehicleSize ? (
+            <>
+              <span style={{ background: '#e0e7ff', color: '#4f46e5', padding: '2px 6px', borderRadius: '4px', fontSize: '0.85rem' }}>貼膜: {vehicleSize}</span>
+              <span style={{ background: '#e0f2fe', color: '#0ea5e9', padding: '2px 6px', borderRadius: '4px', fontSize: '0.85rem' }}>美容: {detailingSize || vehicleSize}</span>
+            </>
+          ) : '未設定'}
         </div>
       </div>
     </>

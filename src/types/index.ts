@@ -23,8 +23,8 @@ export interface Customer {
   plateNumber: string;
   brand?: string;
   model?: string;
-  vehicleSize?: string; // S, M, L, XL, etc.
-  
+  vehicleSize?: string; // S, M, L, XL, etc. (貼膜尺寸)
+  detailingSize?: string; // 美容尺寸
   // 客戶特徵
   convenientTime?: 'weekday' | 'weekend';
   companion?: 'alone' | 'with_child' | 'with_family' | 'with_wife';

@@ -132,6 +132,7 @@ interface PendingEditFormProps {
   customer?: Customer; 
   onSuggestId?: string;
   userRole?: Role;
+  defaultStatus?: 'new' | 'scheduled'; // 新增: 決定新增客戶時的預設狀態
   onSubmit: (updatedCustomer: Customer, moveToConstruction: boolean, originalId?: string) => void;
   onCancel: () => void;
   hideActions?: boolean;
@@ -139,7 +140,7 @@ interface PendingEditFormProps {
 }
 
 export const PendingEditForm: React.FC<PendingEditFormProps> = ({ 
-  customer, onSuggestId, userRole, onSubmit, onCancel, hideActions, onFormDataChange 
+  customer, onSuggestId, userRole, defaultStatus, onSubmit, onCancel, hideActions, onFormDataChange 
 }) => {
   const [formData, setFormData] = useState<Partial<Customer>>(() => {
     if (customer) {
@@ -152,7 +153,8 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
         customAccessories: customer.customAccessories || [] 
       };
     }
-    return { id: onSuggestId, status: 'scheduled', customAccessories: [] };
+    // defaultStatus 由呼叫端決定：待施工區新增用 'scheduled'，諮詢區新增用 'new'
+    return { id: onSuggestId, status: defaultStatus || 'scheduled', customAccessories: [] };
   });
   const [originalId] = useState(customer?.id);
   
@@ -495,7 +497,9 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    const status = (formData.status === 'new') ? 'scheduled' : (formData.status as StatusType);
+    // 【重要】儲存諮詢內容時，保持原本的 status，不自動升級到 scheduled
+    // 只有按「轉為正式下定」才會改變 status
+    const status = (formData.status as StatusType) || 'new';
     onSubmit(prepareSubmitData(status), false, originalId);
   };
 

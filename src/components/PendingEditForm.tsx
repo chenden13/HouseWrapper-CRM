@@ -81,6 +81,13 @@ const FRONT_PPF_PRICING: Record<string, number> = {
   '3M 200g': 55000
 };
 
+// 迎風面犀牛皮價格 (XS~L 基本價，XL+5000，2XL+10000)
+const WIND_PPF_PRICING: Record<string, number> = {
+  'Pixel8bit': 35000,
+  '3M 150g': 45000,
+  '3M 200g': 55000
+};
+
 const REAR_COATING_PRICING: Record<string, number> = {
   'Servfaces (一年期)': 12000,
   'CarPro (兩年期)': 18000
@@ -314,6 +321,15 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
       if (targetPrice > 0 && prices.mainServicePrice !== targetPrice) {
         setPrices(prev => ({ ...prev, mainServicePrice: targetPrice }));
       }
+    } else if (service === '迎風面犀牛皮' && brand && WIND_PPF_PRICING[brand]) {
+      const base = WIND_PPF_PRICING[brand];
+      let targetPrice = base;
+      if (size === 'XL') targetPrice += 5000;
+      else if (size === '2XL') targetPrice += 10000;
+      
+      if (targetPrice > 0 && prices.mainServicePrice !== targetPrice) {
+        setPrices(prev => ({ ...prev, mainServicePrice: targetPrice }));
+      }
     }
   }, [formData.mainService, formData.mainServiceBrand, formData.mainServiceSeries, formData.vehicleSize]);
 
@@ -351,12 +367,17 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     }
   }, [formData.hasHoodPpf, formData.mainService]);
 
-  // 犀牛皮自動將規格/系列填入膜料顏色
+  // 犀牛皮自動將規格/系列填入膜料顏色 (迎風面犀牛皮則清空顏色)
   React.useEffect(() => {
     if (formData.mainService === '全車犀牛皮') {
       const spec = formData.mainServiceSeries || '';
       if (formData.filmColor !== spec) {
         setFormData(prev => ({ ...prev, filmColor: spec }));
+      }
+    } else if (formData.mainService === '迎風面犀牛皮') {
+      // 迎風面犀牛皮無顏色，清空 filmColor
+      if (formData.filmColor) {
+        setFormData(prev => ({ ...prev, filmColor: '' }));
       }
     }
   }, [formData.mainService, formData.mainServiceSeries]);
@@ -775,6 +796,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               <option value="">請選擇</option>
               <option value="全車改色膜">全車改色膜</option>
               <option value="全車犀牛皮">全車犀牛皮</option>
+              <option value="迎風面犀牛皮">迎風面犀牛皮</option>
               <option value="局部保護/改色">局部保護/改色</option>
             </select>
           </div>
@@ -787,11 +809,13 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               <option value="">選擇品牌</option>
               {((formData.mainService || '').includes('改色') 
                 ? ['AX', '3M', 'CYS', 'TeckWrap'] 
-                : (formData.mainService || '').includes('犀牛皮')
+                : formData.mainService === '全車犀牛皮'
                   ? ['AX', 'Pixel8bot', '3M', 'Stek']
-                  : (formData.mainService === '局部保護/改色')
+                  : formData.mainService === '迎風面犀牛皮'
                     ? ['Pixel8bit', '3M 150g', '3M 200g']
-                    : ['3M', 'Michelin', 'Atarap', 'Stek']
+                    : (formData.mainService === '局部保護/改色')
+                      ? ['Pixel8bit', '3M 150g', '3M 200g']
+                      : ['3M', 'Michelin', 'Atarap', 'Stek']
               ).map(brand => <option key={brand} value={brand}>{brand}</option>)}
             </select>
           </div>
@@ -822,11 +846,11 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               type="text" 
               name="filmColor" 
               className="form-control" 
-              placeholder={formData.mainService === '全車犀牛皮' ? '無須填寫' : '顏色細項'} 
+              placeholder={(formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面犀牛皮') ? '無須填寫' : '顏色細項'} 
               value={formData.filmColor || ''} 
               onChange={handleChange} 
-              disabled={formData.mainService === '全車犀牛皮'}
-              style={formData.mainService === '全車犀牛皮' ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
+              disabled={formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面犀牛皮'}
+              style={(formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面犀牛皮') ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
             />
           </div>
           <div className={`form-group ${formData.mainService === '全車改色膜' && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') ? 'col-span-2' : 'col-span-4'}`}>

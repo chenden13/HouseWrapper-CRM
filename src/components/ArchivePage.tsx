@@ -72,7 +72,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 200;
 
-  const completedCustomers = customers.filter(c => c.status === 'completed');
+  const completedCustomers = customers.filter(c => c.status === 'completed' || c.status === 'construction');
   const filteredCustomers = completedCustomers
     .filter(c => {
       const name = String(c.name || '').toLowerCase();
@@ -172,7 +172,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
     // 1. 按照施工日期由「最早」到「最晚」排序
     // 1. 獲取所有完工、定金、預約的客戶，並套用目前的搜尋過濾
     const exportTargets = customers
-      .filter(c => ['completed', 'deposit', 'scheduled'].includes(c.status))
+      .filter(c => ['completed', 'deposit', 'scheduled', 'construction'].includes(c.status))
       .filter(c => {
         const lowerSearch = searchTerm.toLowerCase();
         return (
@@ -253,7 +253,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
         '汽車品牌': brand,
         '車型': model,
         '完工/交車日期': c.deliveryDate || c.expectedEndDate || '',
-        '目前狀態': c.status === 'completed' ? '已完工' : c.status === 'deposit' ? '已付定金' : '已預約',
+        '目前狀態': c.status === 'completed' ? '已完工' : c.status === 'deposit' ? '已付定金' : c.status === 'construction' ? '施工中' : '已預約',
         '交車時間': c.expectedDeliveryTime || '',
         '主施工項目': c.mainService || '',
         '膜料品牌': c.mainServiceBrand || '',
@@ -351,7 +351,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
     
     // 檔名加上日期
     const dateStr = new Date().toISOString().split('T')[0];
-    XLSX.writeFile(wb, `CRM_綜合資料匯出(完工+待施工)_${dateStr}.xlsx`);
+    XLSX.writeFile(wb, `crm客戶資料 ${dateStr}.xlsx`);
   };
 
   const toggle = (customer: Customer, field: keyof Customer) => {
@@ -457,7 +457,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
             ← 返回看板
           </button>
           <h1 style={{ margin: 0, fontSize: '2rem' }}>完工案件存檔庫</h1>
-          <p style={{ color: '#64748b', margin: '4px 0 0 0' }}>查詢與管理所有已結案的服務紀錄・共 {completedCustomers.length} 筆</p>
+          <p style={{ color: '#64748b', margin: '4px 0 0 0' }}>查詢與管理所有完工與施工中服務紀錄・共 {completedCustomers.length} 筆</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           {userRole === 'admin' && (
@@ -516,7 +516,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
       {/* ── Table Header ── */}
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: '70px 180px 180px 110px 110px 110px 1.5fr 50px', 
+        gridTemplateColumns: '70px 180px 180px 110px 110px 1.5fr 100px', 
         padding: '0 16px 12px', 
         gap: '12px', 
         borderBottom: '1px solid #e2e8f0',
@@ -539,8 +539,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
         <div>客戶資訊</div>
         <div>車輛資訊</div>
         <div>1.留車進場</div>
-        <div>2.施工期間</div>
-        <div>3.交車完工</div>
+        <div>2.交車完工</div>
         <div>膜料品牌與備註項目</div>
         <div style={{ textAlign: 'right' }}>操作</div>
       </div>
@@ -557,7 +556,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                 className="list-row"
                 style={{ 
                   display: 'grid', 
-                  gridTemplateColumns: '70px 180px 180px 110px 110px 110px 1.5fr 100px',
+                  gridTemplateColumns: '70px 180px 180px 110px 110px 1.5fr 100px',
                   alignItems: 'center',
                   padding: '16px',
                   gap: '12px',
@@ -575,7 +574,22 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                 
                 {/* 2. 客戶資訊 */}
                 <div>
-                  <div style={{ fontWeight: '700', color: '#1e293b' }}>{customer.name}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontWeight: '700', color: '#1e293b' }}>{customer.name}</span>
+                    {customer.status === 'construction' && (
+                      <span style={{ 
+                        padding: '2px 6px', 
+                        borderRadius: '4px', 
+                        fontSize: '0.7rem', 
+                        fontWeight: 'bold', 
+                        background: '#fef3c7', 
+                        color: '#d97706',
+                        border: '1.5px solid #fde68a'
+                      }}>
+                        正在施工中
+                      </span>
+                    )}
+                  </div>
                   <div style={{ fontSize: '0.78rem', color: '#64748b' }}>{customer.phone}</div>
                 </div>
 
@@ -587,18 +601,6 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
 
                 {/* 4. 原本預約日期 (留車) */}
                 <div style={{ fontSize: '0.82rem', color: '#64748b' }}>{customer.expectedStartDate || '—'}</div>
-                
-                {/* 5. 施工期間 */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }} onClick={(e) => e.stopPropagation()}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>起</span>
-                    <input type="date" value={customer.constructionStartDate || ''} onChange={(e) => onUpdate({...customer, constructionStartDate: e.target.value})} style={{ fontSize: '0.75rem', padding: '2px 4px', border: '1px solid transparent', borderRadius: '4px', color: '#166534', fontWeight: '700', background: 'transparent', cursor: 'pointer', outline: 'none' }} onFocus={(e) => { e.target.style.border = '1px solid #e2e8f0'; e.target.style.background = '#fff'; }} onBlur={(e) => { e.target.style.border = '1px solid transparent'; e.target.style.background = 'transparent'; }} />
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>迄</span>
-                    <input type="date" value={customer.constructionEndDate || ''} onChange={(e) => onUpdate({...customer, constructionEndDate: e.target.value})} style={{ fontSize: '0.75rem', padding: '2px 4px', border: '1px solid transparent', borderRadius: '4px', color: '#166534', fontWeight: '700', background: 'transparent', cursor: 'pointer', outline: 'none' }} onFocus={(e) => { e.target.style.border = '1px solid #e2e8f0'; e.target.style.background = '#fff'; }} onBlur={(e) => { e.target.style.border = '1px solid transparent'; e.target.style.background = 'transparent'; }} />
-                  </div>
-                </div>
 
                 {/* 6. 實際完工日期 */}
                 <div onClick={(e) => e.stopPropagation()}>
@@ -781,6 +783,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                       <div style={{ background: '#fff', padding: '20px', borderRadius: '16px', border: '1px solid #f1f5f9' }}>
                         <Section icon={<Calendar size={18} />} title="關鍵日期紀錄" color="#3b82f6">
                           <InfoRow label="完工交車日期" value={customer.deliveryDate} />
+                          <InfoRow label="實際施工期間" value={customer.constructionStartDate && customer.constructionEndDate ? `${customer.constructionStartDate} ~ ${customer.constructionEndDate}` : customer.constructionStartDate || customer.constructionEndDate || ''} />
                           <InfoRow label="下次檢查/回廠" value={customer.checkupDate} />
                           <InfoRow label="原本施工日期" value={customer.expectedStartDate} />
                         </Section>

@@ -13,7 +13,7 @@ export const MobileArchive: React.FC<MobileArchiveProps> = ({ customers, onEdit,
   const [searchTerm, setSearchTerm] = useState('');
   
   const archiveCustomers = customers.filter(c => {
-    if (c.status !== 'completed') return false;
+    if (c.status !== 'completed' && c.status !== 'construction') return false;
 
     const name = String(c.name || '').toLowerCase();
     const plate = String(c.plateNumber || '').toLowerCase();
@@ -97,7 +97,22 @@ export const MobileArchive: React.FC<MobileArchiveProps> = ({ customers, onEdit,
               <Trash2 size={18} />
             </button>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <div style={{ fontWeight: '900', color: '#1e293b', fontSize: '1.1rem' }}>{customer.plateNumber}</div>
+              <div style={{ fontWeight: '900', color: '#1e293b', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                {customer.plateNumber}
+                {customer.status === 'construction' && (
+                  <span style={{ 
+                    padding: '2px 6px', 
+                    borderRadius: '4px', 
+                    fontSize: '0.65rem', 
+                    fontWeight: 'bold', 
+                    background: '#fef3c7', 
+                    color: '#d97706',
+                    border: '1px solid #fde68a'
+                  }}>
+                    正在施工中
+                  </span>
+                )}
+              </div>
               <div style={{ fontSize: '0.8rem', color: '#6366f1', fontWeight: 'bold' }}>POS: {customer.posId || '-'}</div>
             </div>
             

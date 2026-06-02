@@ -649,7 +649,7 @@ function App() {
         <ArchivePage 
           customers={customers} 
           onBack={() => setView('pending')} 
-          onUpdate={(c) => setCustomers(prev => prev.map(x => x.id === c.id ? c : x))}
+          onUpdate={handleUpdateCustomer}
           onEdit={(c) => {
             setSelectedCustomer(c);
             setIsArchiveEditModalOpen(true);

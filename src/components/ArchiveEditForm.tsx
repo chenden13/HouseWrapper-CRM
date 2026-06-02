@@ -245,6 +245,7 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
           <option value="">請選擇</option>
           <option value="全車改色膜">全車改色膜</option>
           <option value="全車犀牛皮">全車犀牛皮</option>
+          <option value="迎風面犀牛皮">迎風面犀牛皮</option>
           <option value="局部保護/改色">局部保護/改色</option>
         </select>
       </div>

@@ -20,7 +20,7 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
   customers, onEditCustomer, onUpdateCustomer, onDeleteCustomer, userRole, onImportClick, onAddNew 
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortKey, setSortKey] = useState<keyof Customer>('constructionStartDate');
+  const [sortKey, setSortKey] = useState<keyof Customer>('expectedStartDate');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   
 
@@ -131,6 +131,83 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
           </div>
         </div>
       </header>
+
+      {/* 排序按鈕組 */}
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', alignItems: 'center', background: '#f8fafc', padding: '8px 16px', borderRadius: '12px', border: '1px solid #e2e8f0', width: 'fit-content' }}>
+        <span style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 'bold' }}>排序方式：</span>
+        <button 
+          onClick={() => toggleSort('expectedStartDate')} 
+          style={{ 
+            background: sortKey === 'expectedStartDate' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'expectedStartDate' ? '#fff' : '#475569', 
+            border: `1px solid ${sortKey === 'expectedStartDate' ? 'var(--primary)' : '#cbd5e1'}`, 
+            padding: '6px 12px', 
+            borderRadius: '8px', 
+            fontSize: '0.8rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px'
+          }}
+        >
+          📅 預計留車時間 {sortKey === 'expectedStartDate' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button 
+          onClick={() => toggleSort('id')} 
+          style={{ 
+            background: sortKey === 'id' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'id' ? '#fff' : '#475569', 
+            border: `1px solid ${sortKey === 'id' ? 'var(--primary)' : '#cbd5e1'}`, 
+            padding: '6px 12px', 
+            borderRadius: '8px', 
+            fontSize: '0.8rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px'
+          }}
+        >
+          # 車主編號 {sortKey === 'id' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button 
+          onClick={() => toggleSort('constructionStartDate')} 
+          style={{ 
+            background: sortKey === 'constructionStartDate' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'constructionStartDate' ? '#fff' : '#475569', 
+            border: `1px solid ${sortKey === 'constructionStartDate' ? 'var(--primary)' : '#cbd5e1'}`, 
+            padding: '6px 12px', 
+            borderRadius: '8px', 
+            fontSize: '0.8rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px'
+          }}
+        >
+          🛠️ 預計施工時間 {sortKey === 'constructionStartDate' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button 
+          onClick={() => toggleSort('expectedEndDate')} 
+          style={{ 
+            background: sortKey === 'expectedEndDate' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'expectedEndDate' ? '#fff' : '#475569', 
+            border: `1px solid ${sortKey === 'expectedEndDate' ? 'var(--primary)' : '#cbd5e1'}`, 
+            padding: '6px 12px', 
+            borderRadius: '8px', 
+            fontSize: '0.8rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px'
+          }}
+        >
+          🏁 預計交車時間 {sortKey === 'expectedEndDate' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+      </div>
 
       <div className="glass-panel" style={{ borderRadius: '20px', overflowX: 'auto', border: '1px solid #e2e8f0', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
         <div style={{ minWidth: '1750px' }}>

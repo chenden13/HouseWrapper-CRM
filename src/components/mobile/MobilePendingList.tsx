@@ -12,6 +12,17 @@ interface MobilePendingListProps {
 
 export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers, onEditCustomer, onDeleteCustomer, onAddNew, onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortKey, setSortKey] = useState<keyof Customer>('expectedStartDate');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+
+  const toggleSort = (key: keyof Customer) => {
+    if (sortKey === key) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortKey(key);
+      setSortOrder('asc');
+    }
+  };
   
   const pendingCustomers = customers.filter(c => {
     if (!['deposit', 'scheduled'].includes(c.status)) return false;
@@ -37,11 +48,41 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
       film.includes(term)
     );
   }).sort((a, b) => {
-    const valA = a.constructionStartDate || a.expectedEndDate || a.expectedStartDate || '';
-    const valB = b.constructionStartDate || b.expectedEndDate || b.expectedStartDate || '';
+    const normalizeDate = (d: string) => {
+      if (!d) return '';
+      const firstPart = d.split('.')[0].trim();
+      const parts = firstPart.split(/[-/]/);
+      if (parts.length < 3) return firstPart;
+      const y = parts[0];
+      const m = String(parts[1]).padStart(2, '0');
+      const day = String(parts[2]).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    };
+
+    const getSortValue = (cust: Customer) => {
+      if (sortKey === 'constructionStartDate') {
+        return normalizeDate(cust.constructionStartDate || cust.expectedEndDate || cust.expectedStartDate || '');
+      }
+      if (sortKey === 'expectedEndDate') {
+        return normalizeDate(cust.expectedEndDate || cust.expectedStartDate || '');
+      }
+      if (sortKey === 'expectedStartDate') {
+        return normalizeDate(cust.expectedStartDate || cust.constructionStartDate || '');
+      }
+      if (sortKey === 'id') {
+        return String(cust.id || '').replace(/[^0-9]/g, '').padStart(10, '0');
+      }
+      return String(cust[sortKey as keyof Customer] || '');
+    };
+
+    let valA = getSortValue(a);
+    let valB = getSortValue(b);
+
     if (!valA && valB) return 1;
     if (valA && !valB) return -1;
-    return valA.localeCompare(valB);
+    if (!valA && !valB) return 0;
+
+    return sortOrder === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
   });
 
   return (
@@ -87,6 +128,86 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ width: '100%', padding: '12px 12px 12px 40px', borderRadius: '12px', border: '1px solid #e2e8f0', fontSize: '0.95rem', outline: 'none', background: '#fff' }}
         />
+      </div>
+
+      {/* 排序按鈕組 (手機版) */}
+      <div style={{ display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '8px', marginBottom: '12px', WebkitOverflowScrolling: 'touch' }}>
+        <button 
+          onClick={() => toggleSort('expectedStartDate')} 
+          style={{ 
+            flexShrink: 0,
+            background: sortKey === 'expectedStartDate' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'expectedStartDate' ? '#fff' : '#64748b', 
+            border: `1px solid ${sortKey === 'expectedStartDate' ? 'var(--primary)' : '#e2e8f0'}`, 
+            padding: '6px 10px', 
+            borderRadius: '8px', 
+            fontSize: '0.75rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '2px'
+          }}
+        >
+          留車時間 {sortKey === 'expectedStartDate' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button 
+          onClick={() => toggleSort('id')} 
+          style={{ 
+            flexShrink: 0,
+            background: sortKey === 'id' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'id' ? '#fff' : '#64748b', 
+            border: `1px solid ${sortKey === 'id' ? 'var(--primary)' : '#e2e8f0'}`, 
+            padding: '6px 10px', 
+            borderRadius: '8px', 
+            fontSize: '0.75rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '2px'
+          }}
+        >
+          編號 {sortKey === 'id' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button 
+          onClick={() => toggleSort('constructionStartDate')} 
+          style={{ 
+            flexShrink: 0,
+            background: sortKey === 'constructionStartDate' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'constructionStartDate' ? '#fff' : '#64748b', 
+            border: `1px solid ${sortKey === 'constructionStartDate' ? 'var(--primary)' : '#e2e8f0'}`, 
+            padding: '6px 10px', 
+            borderRadius: '8px', 
+            fontSize: '0.75rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '2px'
+          }}
+        >
+          施工時間 {sortKey === 'constructionStartDate' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button 
+          onClick={() => toggleSort('expectedEndDate')} 
+          style={{ 
+            flexShrink: 0,
+            background: sortKey === 'expectedEndDate' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'expectedEndDate' ? '#fff' : '#64748b', 
+            border: `1px solid ${sortKey === 'expectedEndDate' ? 'var(--primary)' : '#e2e8f0'}`, 
+            padding: '6px 10px', 
+            borderRadius: '8px', 
+            fontSize: '0.75rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '2px'
+          }}
+        >
+          交車時間 {sortKey === 'expectedEndDate' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

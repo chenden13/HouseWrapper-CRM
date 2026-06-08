@@ -25,7 +25,9 @@ import { FinancePage } from './components/FinancePage';
 import { PriceInquiryPage } from './components/PriceInquiryPage';
 import { TrackingPage } from './components/TrackingPage';
 import { PreparationPage } from './components/PreparationPage';
-import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList, Sparkles, Palette, RefreshCcw } from 'lucide-react';
+import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList, Sparkles, Palette, RefreshCcw, Calendar } from 'lucide-react';
+import { CalendarPage } from './components/CalendarPage';
+import { MobileCalendar } from './components/mobile/MobileCalendar';
 
 import { useIsMobile } from './hooks/useIsMobile';
 import { MobileDashboard } from './components/mobile/MobileDashboard';
@@ -45,7 +47,7 @@ function App() {
   const [financeRecords, setFinanceRecords] = useState<FinanceRecord[]>([]);
   const [settlements, setSettlements] = useState<any[]>([]);
   const isMobile = useIsMobile();
-  const [view, setView] = useState<'dashboard' | 'inquiry' | 'pending' | 'archive' | 'monitor' | 'inventory' | 'finance' | 'price_detailing' | 'price_film' | 'tracking' | 'preparation'>(isMobile ? 'dashboard' : 'pending');
+  const [view, setView] = useState<'dashboard' | 'inquiry' | 'pending' | 'archive' | 'monitor' | 'inventory' | 'finance' | 'price_detailing' | 'price_film' | 'tracking' | 'preparation' | 'calendar'>(isMobile ? 'dashboard' : 'pending');
   const [isLoading, setIsLoading] = useState(true);
   const [importProgress, setImportProgress] = useState<{current: number, total: number} | null>(null);
 
@@ -467,6 +469,14 @@ function App() {
           <MobileInventory onBack={() => setView('dashboard')} />
         ) : view === 'finance' ? (
           <MobileFinance onBack={() => setView('dashboard')} />
+        ) : view === 'calendar' ? (
+          <MobileCalendar 
+            customers={customers} 
+            onEditCustomer={handleEditCustomer} 
+            onUpdateCustomer={handleUpdateCustomer}
+            onDeleteCustomer={handleDeleteCustomer}
+            onBack={() => setView('dashboard')} 
+          />
         ) : null}
 
         {/* Reuse Modals for both Mobile and Desktop */}
@@ -552,12 +562,17 @@ function App() {
             <button className={`nav-tab ${view === 'pending' ? 'active' : ''}`} onClick={() => setView('pending')}>
               <Clock size={17} /> 待施工區
             </button>
+            <button className={`nav-tab ${view === 'calendar' ? 'active' : ''}`} onClick={() => setView('calendar')}>
+              <Calendar size={17} /> 施工行事曆
+            </button>
             <button className={`nav-tab ${view === 'preparation' ? 'active' : ''}`} onClick={() => setView('preparation')}>
               <ClipboardList size={17} /> 事前準備
             </button>
+            {/* 現場監控暫時隱藏
             <button className={`nav-tab ${view === 'monitor' ? 'active' : ''}`} onClick={() => setView('monitor')}>
               <Hammer size={17} /> 現場監控
             </button>
+            */}
             <button className={`nav-tab ${view === 'inventory' ? 'active' : ''}`} onClick={() => setView('inventory')}>
               <Box size={17} /> 膜料庫存
             </button>
@@ -569,7 +584,7 @@ function App() {
             </button>
             {/* 價目查詢暫時隱藏，已轉移至獨立公開版 
             <div className="nav-dropdown">
-              <button className={`nav-tab ${(view === 'price_detailing' || view === 'price_film') ? 'active-parent' : ''}`}>
+              <button className={`nav-tab ${(view === 'price_detailing' || view === 'price_film' ? 'active-parent' : '')}`}>
                 <Tag size={17} /> 價目查詢 <ChevronDown size={14} style={{ marginLeft: '4px' }} />
               </button>
               <div className="nav-dropdown-content">
@@ -588,11 +603,13 @@ function App() {
               </div>
             </div>
             */}
+            {/* 收支記帳暫時隱藏
             {currentUser.role === 'admin' && (
               <button className={`nav-tab ${view === 'finance' ? 'active' : ''}`} onClick={() => setView('finance')}>
                 <Wallet size={17} /> 收支記帳
               </button>
             )}
+            */}
           </div>
 
           <div style={{ width: '1px', height: '24px', background: '#e2e8f0', margin: '0 8px' }}></div>
@@ -695,6 +712,14 @@ function App() {
           onAddRecord={handleAddFinanceRecord}
           onDeleteRecord={handleDeleteFinanceRecord}
           onSettle={handleSettleBook}
+        />
+      ) : view === 'calendar' ? (
+        <CalendarPage 
+          customers={customers}
+          onEditCustomer={handleEditCustomer}
+          onUpdateCustomer={handleUpdateCustomer}
+          onDeleteCustomer={handleDeleteCustomer}
+          userRole={currentUser.role}
         />
       ) : (
 

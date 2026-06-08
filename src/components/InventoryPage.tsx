@@ -3,7 +3,7 @@ import type { FilmInventory, InventoryLog, Role, PurchaseRecord } from '../types
 import { 
   Plus, MapPin, Trash2, 
   Box, Warehouse, Clock, History as HistoryIcon,
-  ArrowUpRight, ArrowDownRight, RefreshCw, ShoppingCart
+  ArrowUpRight, ArrowDownRight, RefreshCw, ShoppingCart, Search
 } from 'lucide-react';
 
 interface InventoryPageProps {
@@ -63,6 +63,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
   const [activeSubGroupIndex, setActiveSubGroupIndex] = useState(0);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<Partial<FilmInventory> | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // New states for purchase form
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
@@ -207,6 +208,68 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
           </div>
 
       </header>
+
+      {/* 搜尋條 */}
+      <div style={{ position: 'relative', marginBottom: '20px', maxWidth: '500px' }}>
+        <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} size={18} />
+        <input
+          type="text"
+          placeholder="搜尋膜料廠牌或顏色..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{ width: '100%', padding: '10px 12px 10px 40px', borderRadius: '10px', border: '1px solid #e2e8f0', fontSize: '0.9rem', outline: 'none', background: '#fff' }}
+        />
+        {searchQuery && (
+          <button 
+            onClick={() => setSearchQuery('')}
+            style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 'bold' }}
+          >
+            清除
+          </button>
+        )}
+      </div>
+
+      {/* 搜尋結果 */}
+      {searchQuery.trim() && (() => {
+        const searchResults = inventory.filter(item => 
+          (item.brand || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (item.color || '').toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        return (
+          <div className="glass-panel" style={{ padding: '20px', borderRadius: '16px', marginBottom: '24px' }}>
+            <h3 style={{ margin: '0 0 16px 0', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)' }}>
+              <Search size={18} /> 搜尋結果 ({searchResults.length} 筆)
+            </h3>
+            {searchResults.length > 0 ? (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
+                {searchResults.map(item => (
+                  <div 
+                    key={item.id}
+                    onClick={() => handleSlotClick(item.location.zone as ZoneKey, item.location.section, item.location.slot)}
+                    style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '14px', cursor: 'pointer', transition: 'all 0.2s', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.transform = 'none'; }}
+                  >
+                    <div>
+                      <div style={{ fontWeight: '800', fontSize: '0.95rem', color: '#1e293b' }}>{item.color}</div>
+                      <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>{item.brand} ({item.size})</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 'bold', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <MapPin size={12} /> {item.location.zone}區 - {item.location.zone}{item.location.section}貨架 - #{item.location.slot}儲位
+                      </div>
+                    </div>
+                    <div style={{ textAlign: 'right', flexShrink: 0, paddingLeft: '12px' }}>
+                      <div style={{ fontWeight: '900', color: 'var(--primary)', fontSize: '1.2rem' }}>{item.currentMeters}</div>
+                      <div style={{ fontSize: '0.6rem', color: '#94a3b8' }}>METERS</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div style={{ color: '#64748b', fontSize: '0.9rem', padding: '10px 0' }}>無符合該名稱或廠牌的膜料項目。</div>
+            )}
+          </div>
+        );
+      })()}
 
       <div style={{ position: 'relative' }}>
         {activeTab === 'storage' && (

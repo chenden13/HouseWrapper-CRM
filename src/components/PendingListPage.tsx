@@ -162,175 +162,224 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
 
           {/* Table Body */}
           <div style={{ maxHeight: 'calc(100vh - 280px)', overflowY: 'auto' }}>
-            {sortedScheduled.length > 0 ? sortedScheduled.map((customer, idx) => {
-              return (
-                <div 
-                  key={customer.id} 
-                  className="list-row"
-                  style={{ 
-                    display: 'grid', 
-                    gridTemplateColumns: '60px 180px 1.2fr 130px 280px 130px 110px 115px 115px 105px 105px 85px',
-                    alignItems: 'center',
-                    padding: '22px 25px',
-                    borderBottom: '1px solid #f1f5f9',
-                    background: idx % 2 === 0 ? '#fff' : '#fcfcfc',
-                    fontSize: '0.92rem',
-                    transition: 'background 0.2s'
-                  }}
-                >
-                  {/* 1. 編號 */}
-                  <div style={{ fontWeight: '600', color: '#64748b', fontSize: '0.8rem' }}>
-                    {String(customer.id).includes('無編號') || (String(customer.id).startsWith('c_') && String(customer.id).length > 10) ? '—' : (customer.id?.slice(-4) || '—')}
-                  </div>
+            {(() => {
+              const getTodayStr = () => {
+                const d = new Date();
+                const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+                const twTime = new Date(utc + (3600000 * 8));
+                const y = twTime.getFullYear();
+                const m = String(twTime.getMonth() + 1).padStart(2, '0');
+                const day = String(twTime.getDate()).padStart(2, '0');
+                return `${y}-${m}-${day}`;
+              };
+              const todayStr = getTodayStr();
 
-                  {/* 2. 客戶與車牌 */}
-                  <div style={{ display: 'flex', flexDirection: 'column', paddingRight: '15px' }}>
-                    <div style={{ fontWeight: '900', color: '#1e293b' }}>{customer.name}</div>
-                    <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>{customer.plateNumber} | {customer.model}</div>
-                  </div>
+              return sortedScheduled.length > 0 ? sortedScheduled.map((customer, idx) => {
+                const isCarInShop = customer.expectedStartDate && customer.expectedStartDate <= todayStr;
+                
+                const alerts: string[] = [];
+                if (customer.expectedStartDate === todayStr) {
+                  alerts.push('今日進場留車');
+                }
+                if (customer.expectedEndDate === todayStr) {
+                  alerts.push('今日預計交車');
+                }
+                if (customer.windowTintDate === todayStr) {
+                  alerts.push(`今日隔熱紙施工 (${customer.windowTint || ''})`);
+                }
+                if (customer.digitalMirrorDate === todayStr) {
+                  alerts.push(`今日電子後視鏡安裝 (${customer.digitalMirror || ''})`);
+                }
+                if (customer.electricModDate === todayStr) {
+                  alerts.push(`今日電動改裝 (${customer.electricMod || ''})`);
+                }
 
-                  {/* 3. 施工項目 */}
-                  <div style={{ paddingRight: '20px' }}>
-                    <div style={{ fontWeight: '800', color: '#0f172a' }}>
-                      {customer.mainService}
+                return (
+                  <div 
+                    key={customer.id} 
+                    className="list-row"
+                    style={{ 
+                      display: 'grid', 
+                      gridTemplateColumns: '60px 180px 1.2fr 130px 280px 130px 110px 115px 115px 105px 105px 85px',
+                      alignItems: 'center',
+                      padding: '22px 25px',
+                      borderBottom: '1px solid #f1f5f9',
+                      background: isCarInShop ? '#f0fdf4' : (idx % 2 === 0 ? '#fff' : '#fcfcfc'),
+                      borderLeft: isCarInShop ? '5px solid #10b981' : '5px solid transparent',
+                      fontSize: '0.92rem',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    {/* 1. 編號 */}
+                    <div style={{ fontWeight: '600', color: '#64748b', fontSize: '0.8rem' }}>
+                      {String(customer.id).includes('無編號') || (String(customer.id).startsWith('c_') && String(customer.id).length > 10) ? '—' : (customer.id?.slice(-4) || '—')}
                     </div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '2px' }}>
-                      {customer.mainServiceBrand ? `${customer.mainServiceBrand} ` : ''}{customer.filmColor}
+
+                    {/* 2. 客戶與車牌 */}
+                    <div style={{ display: 'flex', flexDirection: 'column', paddingRight: '15px' }}>
+                      <div style={{ fontWeight: '900', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                        <span>{customer.name}</span>
+                        {isCarInShop && (
+                          <span style={{ fontSize: '0.68rem', background: '#10b981', color: '#fff', padding: '1px 6px', borderRadius: '4px', fontWeight: 'bold' }}>
+                            🚗 現場已留車
+                          </span>
+                        )}
+                      </div>
+                      <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>{customer.plateNumber} | {customer.model}</div>
+                      {alerts.length > 0 && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginTop: '4px' }}>
+                          {alerts.map((al, alIdx) => (
+                            <span key={alIdx} style={{ fontSize: '0.68rem', background: '#fffbeb', color: '#d97706', border: '1px solid #fef3c7', padding: '1px 6px', borderRadius: '4px', fontWeight: 'bold', width: 'fit-content' }}>
+                              ⚠️ {al}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* 3. 施工項目 */}
+                    <div style={{ paddingRight: '20px' }}>
+                      <div style={{ fontWeight: '800', color: '#0f172a' }}>
+                        {customer.mainService}
+                      </div>
+                      <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '2px' }}>
+                        {customer.mainServiceBrand ? `${customer.mainServiceBrand} ` : ''}{customer.filmColor}
+                      </div>
+                    </div>
+
+                    {/* 4. 預計留車時間 */}
+                    <div style={{ textAlign: 'center' }}>
+                      <input type="date" value={customer.expectedStartDate || ''} onChange={(e) => onUpdateCustomer({ ...customer, expectedStartDate: e.target.value })} style={{ fontSize: '0.85rem', padding: '5px', border: '1px solid #e2e8f0', borderRadius: '6px', width: '120px', fontWeight: '700', color: '#0369a1' }} />
+                    </div>
+
+                    {/* 5. 預計施工時間 */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <span style={{ fontSize: '0.65rem', color: '#94a3b8', marginBottom: '3px' }}>開始</span>
+                        <input 
+                          type="date" 
+                          value={customer.constructionStartDate || ''} 
+                          onChange={(e) => onUpdateCustomer({ ...customer, constructionStartDate: e.target.value })} 
+                          style={{ fontSize: '0.85rem', padding: '5px', border: '1px solid #e2e8f0', borderRadius: '6px', width: '115px', fontWeight: '700', color: '#166534' }} 
+                        />
+                      </div>
+                      <span style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '15px' }}>至</span>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <span style={{ fontSize: '0.65rem', color: '#94a3b8', marginBottom: '3px' }}>結束</span>
+                        <input 
+                          type="date" 
+                          value={customer.constructionEndDate || ''} 
+                          onChange={(e) => onUpdateCustomer({ ...customer, constructionEndDate: e.target.value })} 
+                          style={{ fontSize: '0.85rem', padding: '5px', border: '1px solid #e2e8f0', borderRadius: '6px', width: '115px', fontWeight: '700', color: '#166534' }} 
+                        />
+                      </div>
+                    </div>
+
+                    {/* 6. 預計交車時間 */}
+                    <div style={{ textAlign: 'center' }}>
+                      <input type="date" value={customer.expectedEndDate || ''} onChange={(e) => onUpdateCustomer({ ...customer, expectedEndDate: e.target.value })} style={{ fontSize: '0.85rem', padding: '5px', border: '1px solid #e2e8f0', borderRadius: '6px', width: '120px', fontWeight: '700', color: '#be185d' }} />
+                    </div>
+
+                    {/* 7. 行事曆 */}
+                    <div style={{ padding: '0 6px' }}>
+                      <div 
+                        onClick={() => onUpdateCustomer({ ...customer, inCalendar: !customer.inCalendar })}
+                        style={{ 
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                          padding: '10px 4px', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
+                          background: customer.inCalendar ? '#ecfdf5' : '#fff',
+                          border: `1px solid ${customer.inCalendar ? '#10b981' : '#e2e8f0'}`,
+                          color: customer.inCalendar ? '#065f46' : '#64748b',
+                          boxShadow: customer.inCalendar ? '0 2px 5px rgba(16, 185, 129, 0.1)' : 'none'
+                        }}
+                      >
+                        <CalendarCheck size={15} style={{ marginRight: '5px' }} /> 行事曆
+                      </div>
+                    </div>
+
+                    {/* 8. 施工行程 */}
+                    <div style={{ padding: '0 6px' }}>
+                      <div 
+                        onClick={() => onUpdateCustomer({ ...customer, inConstructionSchedule: !customer.inConstructionSchedule })}
+                        style={{ 
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                          padding: '10px 4px', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
+                          background: customer.inConstructionSchedule ? '#fdf4ff' : '#fff',
+                          border: `1px solid ${customer.inConstructionSchedule ? '#a855f7' : '#e2e8f0'}`,
+                          color: customer.inConstructionSchedule ? '#7e22ce' : '#64748b',
+                          boxShadow: customer.inConstructionSchedule ? '0 2px 5px rgba(168, 85, 247, 0.1)' : 'none'
+                        }}
+                      >
+                        <Hammer size={15} style={{ marginRight: '5px' }} /> 施工行程
+                      </div>
+                    </div>
+
+                    {/* 9. 洗車安排 */}
+                    <div style={{ padding: '0 6px' }}>
+                      <div 
+                        onClick={() => onUpdateCustomer({ ...customer, inWashSchedule: !customer.inWashSchedule })}
+                        style={{ 
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                          padding: '10px 4px', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
+                          background: customer.inWashSchedule ? '#f0fdfa' : '#fff',
+                          border: `1px solid ${customer.inWashSchedule ? '#14b8a6' : '#e2e8f0'}`,
+                          color: customer.inWashSchedule ? '#0d9488' : '#64748b',
+                          boxShadow: customer.inWashSchedule ? '0 2px 5px rgba(20, 184, 166, 0.1)' : 'none'
+                        }}
+                      >
+                        <Droplets size={15} style={{ marginRight: '5px' }} /> 洗車安排
+                      </div>
+                    </div>
+
+                    {/* 10. 報價單 */}
+                    <div style={{ padding: '0 6px' }}>
+                      <div 
+                        onClick={() => onUpdateCustomer({ ...customer, quoteCreated: !customer.quoteCreated })}
+                        style={{ 
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                          padding: '10px 0', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
+                          background: customer.quoteCreated ? '#eff6ff' : '#fff',
+                          border: `1px solid ${customer.quoteCreated ? '#3b82f6' : '#e2e8f0'}`,
+                          color: customer.quoteCreated ? '#1e40af' : '#64748b'
+                        }}
+                      >
+                        <FileText size={15} style={{ marginRight: '5px' }} /> 報價單
+                      </div>
+                    </div>
+
+                    {/* 11. 已叫料 */}
+                    <div style={{ padding: '0 6px' }}>
+                      <div 
+                        onClick={() => onUpdateCustomer({ ...customer, materialOrdered: !customer.materialOrdered })}
+                        style={{ 
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                          padding: '10px 0', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
+                          background: customer.materialOrdered ? '#fff7ed' : '#fff',
+                          border: `1px solid ${customer.materialOrdered ? '#f59e0b' : '#e2e8f0'}`,
+                          color: customer.materialOrdered ? '#9a3412' : '#64748b'
+                        }}
+                      >
+                        <PackageCheck size={15} style={{ marginRight: '5px' }} /> 已叫料
+                      </div>
+                    </div>
+
+                    {/* 12. 操作 */}
+                    <div style={{ textAlign: 'center', display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                      <button onClick={() => onEditCustomer(customer)} style={{ background: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: '10px', width: '36px', height: '36px', cursor: 'pointer', color: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <ChevronRight size={20} />
+                      </button>
+                      <button onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }} style={{ background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '10px', width: '36px', height: '36px', cursor: 'pointer', color: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Trash2 size={18} />
+                      </button>
                     </div>
                   </div>
-
-                  {/* 4. 預計留車時間 */}
-                  <div style={{ textAlign: 'center' }}>
-                    <input type="date" value={customer.expectedStartDate || ''} onChange={(e) => onUpdateCustomer({ ...customer, expectedStartDate: e.target.value })} style={{ fontSize: '0.85rem', padding: '5px', border: '1px solid #e2e8f0', borderRadius: '6px', width: '120px', fontWeight: '700', color: '#0369a1' }} />
-                  </div>
-
-                  {/* 5. 預計施工時間 */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.65rem', color: '#94a3b8', marginBottom: '3px' }}>開始</span>
-                      <input 
-                        type="date" 
-                        value={customer.constructionStartDate || ''} 
-                        onChange={(e) => onUpdateCustomer({ ...customer, constructionStartDate: e.target.value })} 
-                        style={{ fontSize: '0.85rem', padding: '5px', border: '1px solid #e2e8f0', borderRadius: '6px', width: '115px', fontWeight: '700', color: '#166534' }} 
-                      />
-                    </div>
-                    <span style={{ fontSize: '0.9rem', color: '#94a3b8', marginTop: '15px' }}>至</span>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.65rem', color: '#94a3b8', marginBottom: '3px' }}>結束</span>
-                      <input 
-                        type="date" 
-                        value={customer.constructionEndDate || ''} 
-                        onChange={(e) => onUpdateCustomer({ ...customer, constructionEndDate: e.target.value })} 
-                        style={{ fontSize: '0.85rem', padding: '5px', border: '1px solid #e2e8f0', borderRadius: '6px', width: '115px', fontWeight: '700', color: '#166534' }} 
-                      />
-                    </div>
-                  </div>
-
-                  {/* 6. 預計交車時間 */}
-                  <div style={{ textAlign: 'center' }}>
-                    <input type="date" value={customer.expectedEndDate || ''} onChange={(e) => onUpdateCustomer({ ...customer, expectedEndDate: e.target.value })} style={{ fontSize: '0.85rem', padding: '5px', border: '1px solid #e2e8f0', borderRadius: '6px', width: '120px', fontWeight: '700', color: '#be185d' }} />
-                  </div>
-
-                  {/* 7. 行事曆 */}
-                  <div style={{ padding: '0 6px' }}>
-                    <div 
-                      onClick={() => onUpdateCustomer({ ...customer, inCalendar: !customer.inCalendar })}
-                      style={{ 
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                        padding: '10px 4px', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
-                        background: customer.inCalendar ? '#ecfdf5' : '#fff',
-                        border: `1px solid ${customer.inCalendar ? '#10b981' : '#e2e8f0'}`,
-                        color: customer.inCalendar ? '#065f46' : '#64748b',
-                        boxShadow: customer.inCalendar ? '0 2px 5px rgba(16, 185, 129, 0.1)' : 'none'
-                      }}
-                    >
-                      <CalendarCheck size={15} style={{ marginRight: '5px' }} /> 行事曆
-                    </div>
-                  </div>
-
-                  {/* 8. 施工行程 */}
-                  <div style={{ padding: '0 6px' }}>
-                    <div 
-                      onClick={() => onUpdateCustomer({ ...customer, inConstructionSchedule: !customer.inConstructionSchedule })}
-                      style={{ 
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                        padding: '10px 4px', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
-                        background: customer.inConstructionSchedule ? '#fdf4ff' : '#fff',
-                        border: `1px solid ${customer.inConstructionSchedule ? '#a855f7' : '#e2e8f0'}`,
-                        color: customer.inConstructionSchedule ? '#7e22ce' : '#64748b',
-                        boxShadow: customer.inConstructionSchedule ? '0 2px 5px rgba(168, 85, 247, 0.1)' : 'none'
-                      }}
-                    >
-                      <Hammer size={15} style={{ marginRight: '5px' }} /> 施工行程
-                    </div>
-                  </div>
-
-                  {/* 9. 洗車安排 */}
-                  <div style={{ padding: '0 6px' }}>
-                    <div 
-                      onClick={() => onUpdateCustomer({ ...customer, inWashSchedule: !customer.inWashSchedule })}
-                      style={{ 
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                        padding: '10px 4px', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
-                        background: customer.inWashSchedule ? '#f0fdfa' : '#fff',
-                        border: `1px solid ${customer.inWashSchedule ? '#14b8a6' : '#e2e8f0'}`,
-                        color: customer.inWashSchedule ? '#0d9488' : '#64748b',
-                        boxShadow: customer.inWashSchedule ? '0 2px 5px rgba(20, 184, 166, 0.1)' : 'none'
-                      }}
-                    >
-                      <Droplets size={15} style={{ marginRight: '5px' }} /> 洗車安排
-                    </div>
-                  </div>
-
-                  {/* 10. 報價單 */}
-                  <div style={{ padding: '0 6px' }}>
-                    <div 
-                      onClick={() => onUpdateCustomer({ ...customer, quoteCreated: !customer.quoteCreated })}
-                      style={{ 
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                        padding: '10px 0', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
-                        background: customer.quoteCreated ? '#eff6ff' : '#fff',
-                        border: `1px solid ${customer.quoteCreated ? '#3b82f6' : '#e2e8f0'}`,
-                        color: customer.quoteCreated ? '#1e40af' : '#64748b'
-                      }}
-                    >
-                      <FileText size={15} style={{ marginRight: '5px' }} /> 報價單
-                    </div>
-                  </div>
-
-                  {/* 11. 已叫料 */}
-                  <div style={{ padding: '0 6px' }}>
-                    <div 
-                      onClick={() => onUpdateCustomer({ ...customer, materialOrdered: !customer.materialOrdered })}
-                      style={{ 
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                        padding: '10px 0', borderRadius: '10px', fontSize: '0.8rem', fontWeight: '900',
-                        background: customer.materialOrdered ? '#fff7ed' : '#fff',
-                        border: `1px solid ${customer.materialOrdered ? '#f59e0b' : '#e2e8f0'}`,
-                        color: customer.materialOrdered ? '#9a3412' : '#64748b'
-                      }}
-                    >
-                      <PackageCheck size={15} style={{ marginRight: '5px' }} /> 已叫料
-                    </div>
-                  </div>
-
-                  {/* 12. 操作 */}
-                  <div style={{ textAlign: 'center', display: 'flex', gap: '8px', justifyContent: 'center' }}>
-                    <button onClick={() => onEditCustomer(customer)} style={{ background: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: '10px', width: '36px', height: '36px', cursor: 'pointer', color: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <ChevronRight size={20} />
-                    </button>
-                    <button onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }} style={{ background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '10px', width: '36px', height: '36px', cursor: 'pointer', color: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Trash2 size={18} />
-                    </button>
-                  </div>
+                );
+              }) : (
+                <div style={{ padding: '80px', textAlign: 'center', color: '#94a3b8' }}>
+                  目前的範圍內沒有待施工的案件資料。
                 </div>
               );
-            }) : (
-              <div style={{ padding: '80px', textAlign: 'center', color: '#94a3b8' }}>
-                目前的範圍內沒有待施工的案件資料。
-              </div>
-            )}
+            })()}
           </div>
         </div>
       </div>

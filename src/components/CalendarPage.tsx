@@ -49,7 +49,8 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#e0f2fe', // Cyan for partial construction
+        bg: '#f0f9ff', // Soft sky blue/cyan
+        stayBorder: '#bae6fd',
         border: '#0ea5e9',
         text: '#0369a1',
         constructionBg: '#7dd3fc',
@@ -60,31 +61,35 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     const service = item.mainService || '';
     if (service.includes('全車犀牛皮')) {
       return {
-        bg: '#d1fae5', // Light green
+        bg: '#f0fdf4', // Soft emerald green
+        stayBorder: '#a7f3d0',
         border: '#10b981',
         text: '#065f46',
-        constructionBg: '#6ee7b7', // Brighter green for construction
+        constructionBg: '#6ee7b7',
         badge: '犀牛皮'
       };
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
-        bg: '#fee2e2', // Light red
+        bg: '#fff5f5', // Soft coral red
+        stayBorder: '#fecaca',
         border: '#ef4444',
         text: '#991b1b',
-        constructionBg: '#fca5a5', // Brighter red
+        constructionBg: '#fca5a5',
         badge: '改色膜'
       };
     } else if (service.includes('迎風面')) {
       return {
-        bg: '#dbeafe', // Light blue
+        bg: '#eff6ff', // Soft royal blue
+        stayBorder: '#bfdbfe',
         border: '#3b82f6',
         text: '#1e40af',
-        constructionBg: '#93c5fd', // Brighter blue
+        constructionBg: '#93c5fd',
         badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
-        bg: '#e0f2fe', // Cyan
+        bg: '#f0f9ff', // Soft sky blue/cyan
+        stayBorder: '#bae6fd',
         border: '#0ea5e9',
         text: '#0369a1',
         constructionBg: '#7dd3fc',
@@ -92,10 +97,11 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
       };
     } else {
       return {
-        bg: '#f3e8ff', // Purple
+        bg: '#faf5ff', // Soft purple
+        stayBorder: '#e9d5ff',
         border: '#8b5cf6',
         text: '#5b21b6',
-        constructionBg: '#c084fc',
+        constructionBg: '#d8b4fe',
         badge: '其他'
       };
     }
@@ -668,22 +674,28 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                     let constructionWidth = '0%';
                     
                     if (item.constructionStartDate && item.expectedStartDate && item.expectedEndDate) {
-                      const totalMs = new Date(item.expectedEndDate).getTime() - new Date(item.expectedStartDate).getTime();
-                      if (totalMs > 0) {
-                        const constructStart = Math.max(new Date(item.constructionStartDate).getTime(), new Date(item.expectedStartDate).getTime());
-                        const constructEnd = Math.min(new Date(item.constructionEndDate || item.constructionStartDate).getTime(), new Date(item.expectedEndDate).getTime());
-                        
-                        if (constructEnd >= constructStart) {
-                          const leftOffsetMs = constructStart - new Date(item.expectedStartDate).getTime();
-                          const widthMs = constructEnd - constructStart + 86400000; // include full day
-                          
-                          const leftPct = (leftOffsetMs / (totalMs + 86400000)) * 100;
-                          const widthPct = (widthMs / (totalMs + 86400000)) * 100;
-                          
-                          constructionLeft = `${Math.max(0, Math.min(100, leftPct))}%`;
-                          constructionWidth = `${Math.max(5, Math.min(100, widthPct))}%`;
-                          hasConstructionOverlay = true;
-                        }
+                      const cStart = item.constructionStartDate;
+                      const cEnd = item.constructionEndDate || cStart;
+                      const visibleStartStr = formatDateString(weekDays[startIdx]);
+                      const visibleEndStr = formatDateString(weekDays[endIdx]);
+
+                      // Check if construction overlaps with the visible week portion
+                      if (cEnd >= visibleStartStr && cStart <= visibleEndStr) {
+                        const startStr = cStart < visibleStartStr ? visibleStartStr : cStart;
+                        const endStr = cEnd > visibleEndStr ? visibleEndStr : cEnd;
+
+                        const diffStartMs = new Date(startStr).getTime() - new Date(visibleStartStr).getTime();
+                        const diffStartDays = Math.round(diffStartMs / 86400000);
+
+                        const diffDurationMs = new Date(endStr).getTime() - new Date(startStr).getTime();
+                        const diffDurationDays = Math.round(diffDurationMs / 86400000) + 1;
+
+                        const leftPct = (diffStartDays / duration) * 100;
+                        const widthPct = (diffDurationDays / duration) * 100;
+
+                        constructionLeft = `${Math.max(0, Math.min(100, leftPct))}%`;
+                        constructionWidth = `${Math.max(1, Math.min(100, widthPct))}%`;
+                        hasConstructionOverlay = true;
                       }
                     }
 
@@ -698,7 +710,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                           top: `${rowIndex * 46 + 10}px`,
                           height: '38px',
                           background: colors.bg,
-                          border: `1px solid ${isSelected ? 'var(--primary)' : colors.border}`,
+                          border: `1px solid ${isSelected ? 'var(--primary)' : colors.stayBorder}`,
                           boxShadow: isSelected ? '0 0 0 2px rgba(79, 70, 229, 0.3)' : '0 2px 4px rgba(0,0,0,0.02)',
                           borderRadius: '8px',
                           cursor: 'pointer',
@@ -722,11 +734,12 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                               left: constructionLeft,
                               width: constructionWidth,
                               height: '100%',
-                              background: `repeating-linear-gradient(45deg, ${colors.constructionBg}40, ${colors.constructionBg}40 6px, ${colors.constructionBg}80 6px, ${colors.constructionBg}80 12px)`,
-                              borderLeft: `2px dashed ${colors.border}`,
-                              borderRight: `2px dashed ${colors.border}`,
+                              background: colors.constructionBg,
+                              borderLeft: `1px solid ${colors.border}`,
+                              borderRight: `1px solid ${colors.border}`,
                               top: 0,
-                              zIndex: 1
+                              zIndex: 1,
+                              opacity: 0.95
                             }}
                           />
                         )}

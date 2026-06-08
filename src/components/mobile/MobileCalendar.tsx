@@ -40,7 +40,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     if (item.id.startsWith('EVENT-')) {
       return {
         bg: '#0ea5e9', // Cyan for partial construction
-        lightBg: '#e0f2fe',
+        lightBg: '#f0f9ff',
         text: '#0369a1',
         border: '#0ea5e9',
         darkText: '#0369a1',
@@ -52,7 +52,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     if (service.includes('全車犀牛皮')) {
       return {
         bg: '#10b981', // Green
-        lightBg: '#d1fae5',
+        lightBg: '#f0fdf4',
         text: '#065f46',
         border: '#10b981',
         darkText: '#065f46',
@@ -61,7 +61,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
         bg: '#ef4444', // Red
-        lightBg: '#fee2e2',
+        lightBg: '#fff5f5',
         text: '#991b1b',
         border: '#ef4444',
         darkText: '#991b1b',
@@ -70,7 +70,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     } else if (service.includes('迎風面')) {
       return {
         bg: '#3b82f6', // Blue
-        lightBg: '#dbeafe',
+        lightBg: '#eff6ff',
         text: '#1e40af',
         border: '#3b82f6',
         darkText: '#1e40af',
@@ -79,7 +79,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     } else if (service.includes('局部')) {
       return {
         bg: '#0ea5e9', // Cyan
-        lightBg: '#e0f2fe',
+        lightBg: '#f0f9ff',
         text: '#0369a1',
         border: '#0ea5e9',
         darkText: '#0369a1',
@@ -88,7 +88,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     } else {
       return {
         bg: '#8b5cf6', // Purple
-        lightBg: '#f3e8ff',
+        lightBg: '#faf5ff',
         text: '#5b21b6',
         border: '#8b5cf6',
         darkText: '#5b21b6',

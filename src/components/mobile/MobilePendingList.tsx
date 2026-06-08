@@ -121,6 +121,9 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
             if (customer.electricModDate === todayStr) {
               alerts.push(`今日電動改裝 (${customer.electricMod || ''})`);
             }
+            if (customer.expectedEndDate && customer.expectedEndDate < todayStr) {
+              alerts.push('已超出交車時間，請補齊資料轉進完工檔案');
+            }
 
             return (
               <div 

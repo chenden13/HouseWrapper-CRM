@@ -20,6 +20,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   const [eventForm, setEventForm] = useState({
     title: '',
+    constructionTime: '',
     notes: ''
   });
 
@@ -38,12 +39,12 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#374151', // Dark Gray
-        lightBg: '#f3f4f6',
-        text: '#f3f4f6',
-        border: '#4b5563',
-        darkText: '#1f2937',
-        badge: '備忘'
+        bg: '#0ea5e9', // Cyan for partial construction
+        lightBg: '#e0f2fe',
+        text: '#0369a1',
+        border: '#0ea5e9',
+        darkText: '#0369a1',
+        badge: '局部'
       };
     }
 
@@ -173,9 +174,10 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
       phone: '',
       plateNumber: '',
       status: 'scheduled',
-      mainService: '店內備註/休假',
+      mainService: '局部施工',
       expectedStartDate: selectedDateStr,
       expectedEndDate: selectedDateStr,
+      constructionTime: eventForm.constructionTime,
       notes: eventForm.notes,
       inCalendar: true
     };
@@ -183,14 +185,14 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     try {
       await onUpdateCustomer(newEvent);
       setIsEventModalOpen(false);
-      setEventForm({ title: '', notes: '' });
+      setEventForm({ title: '', constructionTime: '', notes: '' });
     } catch (err) {
       console.error(err);
     }
   };
 
   const handleDeleteEvent = async (id: string) => {
-    if (window.confirm('確定要刪除此店內備忘/事件嗎？')) {
+    if (window.confirm('確定要刪除此局部施工項目嗎？')) {
       try {
         await onDeleteCustomer(id);
       } catch (err) {
@@ -218,7 +220,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
             onClick={() => setIsEventModalOpen(true)}
             style={{ background: 'var(--primary)', color: '#fff', border: 'none', borderRadius: '10px', padding: '6px 12px', fontSize: '0.8rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}
           >
-            <Plus size={16} /> 新增備忘
+            <Plus size={16} /> 新增局部施工
           </button>
         </div>
       </header>
@@ -330,112 +332,152 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
           {selectedDateLabel}
         </h3>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          {selectedDayEvents.length > 0 ? (
-            selectedDayEvents.map(item => {
-              const colors = getItemColors(item);
-              const isCustom = item.id.startsWith('EVENT-');
-              
-              return (
-                <div
-                  key={item.id}
-                  onClick={() => !isCustom && onEditCustomer(item)}
-                  style={{
-                    background: '#111827',
-                    borderRadius: '12px',
-                    padding: '12px',
-                    border: '1px solid #374151',
-                    borderLeft: `4px solid ${colors.bg}`,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '6px',
-                    position: 'relative'
-                  }}
-                >
-                  {/* Delete button for custom events */}
-                  {isCustom && (
-                    <button
-                      onClick={(e) => { e.stopPropagation(); handleDeleteEvent(item.id); }}
-                      style={{ position: 'absolute', top: '10px', right: '10px', background: '#374151', border: 'none', borderRadius: '50%', width: '26px', height: '26px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444' }}
-                    >
-                      <Trash2 size={13} />
-                    </button>
-                  )}
-
-                  {/* Header row */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingRight: isCustom ? '30px' : '0' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span style={{ fontSize: '0.65rem', padding: '1px 5px', borderRadius: '4px', background: colors.bg, color: '#fff', fontWeight: 'bold' }}>
-                        {colors.badge}
-                      </span>
-                      <strong style={{ fontSize: '0.9rem', color: '#f3f4f6' }}>
-                        {isCustom ? item.name : `${item.id}. ${item.name}`}
-                      </strong>
+        {/* 現場留車車輛 */}
+        <div style={{ marginBottom: '20px' }}>
+          <h4 style={{ fontSize: '0.85rem', color: '#9ca3af', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            🚗 現場留車 ({selectedDayEvents.filter(e => !e.id.startsWith('EVENT-') && (e.expectedStartDate || '') <= selectedDateStr && (e.expectedEndDate || e.expectedStartDate || '') >= selectedDateStr).length})
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {(() => {
+              const inShop = selectedDayEvents.filter(e => !e.id.startsWith('EVENT-') && (e.expectedStartDate || '') <= selectedDateStr && (e.expectedEndDate || e.expectedStartDate || '') >= selectedDateStr);
+              return inShop.length > 0 ? inShop.map(item => {
+                const colors = getItemColors(item);
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => onEditCustomer(item)}
+                    style={{
+                      background: '#111827',
+                      borderRadius: '12px',
+                      padding: '12px',
+                      border: '1px solid #374151',
+                      borderLeft: `4px solid ${colors.bg}`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '6px'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span style={{ fontSize: '0.65rem', padding: '1px 5px', borderRadius: '4px', background: colors.bg, color: '#fff', fontWeight: 'bold' }}>
+                          {colors.badge}
+                        </span>
+                        <strong style={{ fontSize: '0.9rem', color: '#f3f4f6' }}>{item.name}</strong>
+                      </div>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{item.plateNumber}</span>
                     </div>
-                    {!isCustom && (
-                      <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>
-                        {item.plateNumber}
-                      </span>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af' }}>
+                      {item.model && <span>{item.model}</span>}
+                      {item.filmColor && <span style={{ color: '#ef4444' }}>● {item.filmColor}</span>}
+                    </div>
+                    <div style={{ fontSize: '0.7rem', color: '#6b7280' }}>
+                      留車期間: {item.expectedStartDate} ~ {item.expectedEndDate || '未定'}
+                    </div>
+                  </div>
+                );
+              }) : (
+                <div style={{ padding: '15px 0', textAlign: 'center', color: '#6b7280', fontSize: '0.75rem', background: '#111827', borderRadius: '12px', border: '1px dashed #374151' }}>無現場留車車輛</div>
+              );
+            })()}
+          </div>
+        </div>
+
+        {/* 今日施工車輛 */}
+        <div>
+          <h4 style={{ fontSize: '0.85rem', color: '#9ca3af', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            🛠️ 今日施工 ({selectedDayEvents.filter(e => {
+              if (e.id.startsWith('EVENT-')) return e.expectedStartDate === selectedDateStr;
+              return e.constructionStartDate && e.constructionStartDate <= selectedDateStr && (e.constructionEndDate || e.constructionStartDate) >= selectedDateStr;
+            }).length})
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {(() => {
+              const constructing = selectedDayEvents.filter(e => {
+                if (e.id.startsWith('EVENT-')) return e.expectedStartDate === selectedDateStr;
+                return e.constructionStartDate && e.constructionStartDate <= selectedDateStr && (e.constructionEndDate || e.constructionStartDate) >= selectedDateStr;
+              });
+              return constructing.length > 0 ? constructing.map(item => {
+                const colors = getItemColors(item);
+                const isCustom = item.id.startsWith('EVENT-');
+                const isSpanningTwoDays = !isCustom && 
+                  item.constructionStartDate && 
+                  item.constructionEndDate && 
+                  item.constructionStartDate !== item.constructionEndDate;
+
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => !isCustom && onEditCustomer(item)}
+                    style={{
+                      background: '#111827',
+                      borderRadius: '12px',
+                      padding: '12px',
+                      border: '1px solid #374151',
+                      borderLeft: `4px solid ${isCustom ? '#0ea5e9' : colors.bg}`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '6px',
+                      position: 'relative'
+                    }}
+                  >
+                    {isCustom && (
+                      <button
+                        onClick={(e) => { e.stopPropagation(); handleDeleteEvent(item.id); }}
+                        style={{ position: 'absolute', top: '10px', right: '10px', background: '#374151', border: 'none', borderRadius: '50%', width: '26px', height: '26px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444' }}
+                      >
+                        <Trash2 size={13} />
+                      </button>
+                    )}
+
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingRight: isCustom ? '30px' : '0' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: '0.65rem', padding: '1px 5px', borderRadius: '4px', background: isCustom ? '#0ea5e9' : colors.bg, color: '#fff', fontWeight: 'bold' }}>
+                          {isCustom ? '局部施工' : colors.badge}
+                        </span>
+                        <strong style={{ fontSize: '0.9rem', color: '#f3f4f6' }}>{item.name}</strong>
+                        
+                        {isSpanningTwoDays && (
+                          <span style={{ fontSize: '0.6rem', padding: '1px 4px', background: '#fffbeb', color: '#b45309', borderRadius: '3px', border: '1px solid #fef3c7', fontWeight: 'bold' }}>
+                            施工半台
+                          </span>
+                        )}
+                      </div>
+                      {!isCustom && (
+                        <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{item.plateNumber}</span>
+                      )}
+                    </div>
+
+                    {!isCustom ? (
+                      <>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af' }}>
+                          {item.model && <span>{item.model}</span>}
+                          {item.filmColor && <span style={{ color: '#ef4444' }}>● {item.filmColor}</span>}
+                        </div>
+                        <div style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 'bold' }}>
+                          施工: {item.constructionStartDate} ~ {item.constructionEndDate || '未定'}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        {item.constructionTime && (
+                          <div style={{ fontSize: '0.78rem', color: '#38bdf8', fontWeight: 'bold' }}>
+                            留車時間: {item.constructionTime}
+                          </div>
+                        )}
+                        {item.notes && (
+                          <div style={{ fontSize: '0.78rem', color: '#9ca3af', background: '#1f2937', padding: '6px 10px', borderRadius: '6px', marginTop: '2px' }}>
+                            {item.notes}
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
-
-                  {/* Details subtext */}
-                  {!isCustom ? (
-                    <>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af' }}>
-                        {item.model && <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}><Car size={12} /> {item.model}</span>}
-                        {item.filmColor && <span style={{ color: '#ef4444', fontWeight: 'bold' }}>● {item.filmColor}</span>}
-                        {item.phone && <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}><Phone size={12} /> {item.phone}</span>}
-                      </div>
-
-                      {/* Accessories */}
-                      {item.customAccessories && item.customAccessories.length > 0 && (
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '2px' }}>
-                          {item.customAccessories.map((acc, aIdx) => (
-                            <span key={aIdx} style={{ fontSize: '0.68rem', padding: '1px 5px', background: '#1f2937', color: '#9ca3af', borderRadius: '4px', border: '1px solid #374151' }}>
-                              {acc.name}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Construction period */}
-                      {(item.constructionStartDate || item.constructionEndDate) && (
-                        <div style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          <Clock size={11} /> 🛠️ 施工: {item.constructionStartDate || '未定'} ~ {item.constructionEndDate?.slice(5) || '未定'}
-                        </div>
-                      )}
-
-                      {/* Stay period */}
-                      <div style={{ fontSize: '0.7rem', color: '#6b7280' }}>
-                        進場: {item.expectedStartDate} / 交車: {item.expectedEndDate || '未定'}
-                      </div>
-                    </>
-                  ) : (
-                    /* Shop notes notes */
-                    item.notes && (
-                      <div style={{ fontSize: '0.78rem', color: '#9ca3af', background: '#1f2937', padding: '6px 10px', borderRadius: '6px', marginTop: '4px' }}>
-                        {item.notes}
-                      </div>
-                    )
-                  )}
-
-                  {!isCustom && (
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '4px' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--primary)', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '2px' }}>
-                        <Edit size={12} /> 點擊編輯
-                      </span>
-                    </div>
-                  )}
-
-                </div>
+                );
+              }) : (
+                <div style={{ padding: '15px 0', textAlign: 'center', color: '#6b7280', fontSize: '0.75rem', background: '#111827', borderRadius: '12px', border: '1px dashed #374151' }}>無施工進度</div>
               );
-            })
-          ) : (
-            <div style={{ padding: '30px 10px', textAlign: 'center', color: '#9ca3af', fontSize: '0.85rem' }}>
-              當日無排程車輛或備忘事項
-            </div>
-          )}
+            })()}
+          </div>
         </div>
       </div>
 
@@ -444,7 +486,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999, padding: '20px' }}>
           <div style={{ background: '#1f2937', width: '100%', maxWidth: '340px', borderRadius: '16px', border: '1px solid #374151', overflow: 'hidden' }}>
             <div style={{ padding: '14px 16px', borderBottom: '1px solid #374151', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <h3 style={{ margin: 0, fontSize: '0.95rem', fontWeight: 'bold', color: '#f3f4f6' }}>新增備忘 ({selectedDateLabel})</h3>
+              <h3 style={{ margin: 0, fontSize: '0.95rem', fontWeight: 'bold', color: '#f3f4f6' }}>新增局部施工</h3>
               <button onClick={() => setIsEventModalOpen(false)} style={{ border: 'none', background: 'transparent', color: '#9ca3af', cursor: 'pointer' }}>
                 <X size={18} />
               </button>
@@ -452,11 +494,11 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
             
             <form onSubmit={handleSaveCustomEvent} style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <label style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#9ca3af' }}>事件名稱 / 標題*</label>
+                <label style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#9ca3af' }}>車型 / 項目名稱*</label>
                 <input 
                   type="text" 
                   required 
-                  placeholder="例如: 子麒休、阿嬤休、16:00調" 
+                  placeholder="例如: 特斯拉 Model Y 引擎蓋貼膜" 
                   value={eventForm.title} 
                   onChange={(e) => setEventForm(prev => ({ ...prev, title: e.target.value }))}
                   style={{ width: '100%', padding: '8px 12px', border: '1px solid #374151', borderRadius: '8px', background: '#111827', color: '#f3f4f6', outline: 'none' }}
@@ -464,10 +506,21 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <label style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#9ca3af' }}>詳細說明/備註</label>
+                <label style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#9ca3af' }}>留車時間 (幾點留車)</label>
+                <input 
+                  type="text" 
+                  placeholder="例如: 14:00" 
+                  value={eventForm.constructionTime} 
+                  onChange={(e) => setEventForm(prev => ({ ...prev, constructionTime: e.target.value }))}
+                  style={{ width: '100%', padding: '8px 12px', border: '1px solid #374151', borderRadius: '8px', background: '#111827', color: '#f3f4f6', outline: 'none' }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <label style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#9ca3af' }}>詳細備註</label>
                 <textarea 
                   rows={3} 
-                  placeholder="選填備註說明..." 
+                  placeholder="請填寫局部施工細節..." 
                   value={eventForm.notes} 
                   onChange={(e) => setEventForm(prev => ({ ...prev, notes: e.target.value }))}
                   style={{ width: '100%', padding: '8px 12px', border: '1px solid #374151', borderRadius: '8px', background: '#111827', color: '#f3f4f6', outline: 'none', fontFamily: 'inherit', resize: 'none' }}

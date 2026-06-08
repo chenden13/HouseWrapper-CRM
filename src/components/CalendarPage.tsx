@@ -18,7 +18,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   customers, onEditCustomer, onUpdateCustomer, onDeleteCustomer, userRole 
 }) => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date(2026, 5, 8)); // Default to June 8th, 2026 (matching system date)
-  const [viewMode, setViewMode] = useState<'week' | 'month'>('week');
+  const [viewMode, setViewMode] = useState<'day' | 'week' | 'month'>('week');
   const [selectedEvent, setSelectedEvent] = useState<Customer | null>(null);
   
   // Custom event modal state
@@ -26,7 +26,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   const [eventForm, setEventForm] = useState({
     title: '',
     startDate: '',
-    endDate: '',
+    constructionTime: '',
     notes: ''
   });
 
@@ -49,11 +49,11 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#f3f4f6',
-        border: '#cbd5e1',
-        text: '#1f2937',
-        constructionBg: '#e2e8f0',
-        badge: '店內備忘'
+        bg: '#e0f2fe', // Cyan for partial construction
+        border: '#0ea5e9',
+        text: '#0369a1',
+        constructionBg: '#7dd3fc',
+        badge: '局部施工'
       };
     }
 
@@ -112,7 +112,9 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   // Navigate dates
   const handlePrev = () => {
     const newDate = new Date(currentDate);
-    if (viewMode === 'week') {
+    if (viewMode === 'day') {
+      newDate.setDate(currentDate.getDate() - 1);
+    } else if (viewMode === 'week') {
       newDate.setDate(currentDate.getDate() - 7);
     } else {
       newDate.setMonth(currentDate.getMonth() - 1);
@@ -122,7 +124,9 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
 
   const handleNext = () => {
     const newDate = new Date(currentDate);
-    if (viewMode === 'week') {
+    if (viewMode === 'day') {
+      newDate.setDate(currentDate.getDate() + 1);
+    } else if (viewMode === 'week') {
       newDate.setDate(currentDate.getDate() + 7);
     } else {
       newDate.setMonth(currentDate.getMonth() + 1);
@@ -139,7 +143,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     setEventForm({
       title: '',
       startDate: dateStr || formatDateString(currentDate),
-      endDate: dateStr || formatDateString(currentDate),
+      constructionTime: '',
       notes: ''
     });
     setIsEventModalOpen(true);
@@ -156,9 +160,10 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
       phone: '',
       plateNumber: '',
       status: 'scheduled',
-      mainService: '店內備註/休假',
+      mainService: '局部施工',
       expectedStartDate: eventForm.startDate,
-      expectedEndDate: eventForm.endDate || eventForm.startDate,
+      expectedEndDate: eventForm.startDate,
+      constructionTime: eventForm.constructionTime,
       notes: eventForm.notes,
       inCalendar: true
     };
@@ -172,7 +177,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   };
 
   const handleDeleteEvent = async (id: string) => {
-    if (window.confirm('確定要刪除此店內備忘/事件嗎？')) {
+    if (window.confirm('確定要刪除此局部施工項目嗎？')) {
       try {
         await onDeleteCustomer(id);
         if (selectedEvent?.id === id) {
@@ -376,6 +381,31 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     return weeks;
   }, [monthDays, calendarItems]);
 
+  const inShopCustomers = useMemo(() => {
+    const todayStr = formatDateString(currentDate);
+    return calendarItems.filter(item => {
+      if (item.id.startsWith('EVENT-')) return false;
+      const start = item.expectedStartDate || '';
+      const end = item.expectedEndDate || start;
+      return start <= todayStr && end >= todayStr;
+    });
+  }, [currentDate, calendarItems]);
+
+  const constructingCustomers = useMemo(() => {
+    const todayStr = formatDateString(currentDate);
+    return calendarItems.filter(item => {
+      if (item.id.startsWith('EVENT-')) {
+        return item.expectedStartDate === todayStr;
+      }
+      const start = item.constructionStartDate || '';
+      const end = item.constructionEndDate || start;
+      if (item.constructionStartDate) {
+        return start <= todayStr && end >= todayStr;
+      }
+      return false;
+    });
+  }, [currentDate, calendarItems]);
+
   // Today marker check
   const isToday = (date: Date) => {
     const today = new Date(2026, 5, 8); // Jun 8, 2026
@@ -394,7 +424,9 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
             <h2 style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--primary)', margin: 0 }}>
-              {viewMode === 'week' ? weekRangeText : `${currentDate.getFullYear()}年 ${currentDate.getMonth() + 1}月`}
+              {viewMode === 'day' 
+                ? `${currentDate.getFullYear()}年${currentDate.getMonth() + 1}月${currentDate.getDate()}日 (當日排程)`
+                : viewMode === 'week' ? weekRangeText : `${currentDate.getFullYear()}年 ${currentDate.getMonth() + 1}月`}
             </h2>
             <div style={{ display: 'flex', gap: '4px', background: '#f1f5f9', padding: '4px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
               <button 
@@ -408,6 +440,12 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                 style={{ border: 'none', background: viewMode === 'week' ? '#fff' : 'transparent', color: viewMode === 'week' ? 'var(--primary)' : '#64748b', fontWeight: 'bold', fontSize: '0.8rem', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', boxShadow: viewMode === 'week' ? '0 2px 4px rgba(0,0,0,0.05)' : 'none', transition: 'all 0.2s' }}
               >
                 週
+              </button>
+              <button 
+                onClick={() => setViewMode('day')} 
+                style={{ border: 'none', background: viewMode === 'day' ? '#fff' : 'transparent', color: viewMode === 'day' ? 'var(--primary)' : '#64748b', fontWeight: 'bold', fontSize: '0.8rem', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', boxShadow: viewMode === 'day' ? '0 2px 4px rgba(0,0,0,0.05)' : 'none', transition: 'all 0.2s' }}
+              >
+                天
               </button>
             </div>
           </div>
@@ -427,15 +465,162 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
               className="btn btn-primary" 
               style={{ padding: '8px 16px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '6px' }}
             >
-              <Plus size={16} /> 新增備忘
+              <Plus size={16} /> 新增局部施工
             </button>
           </div>
         </div>
 
         {/* View Grid rendering */}
         <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
-          
-          {viewMode === 'week' ? (
+          {viewMode === 'day' ? (
+            /* --- DAY VIEW GRID --- */
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', height: '100%', minHeight: '400px', overflow: 'hidden' }}>
+              
+              {/* Left Column: 現場留車車輛 */}
+              <div style={{ display: 'flex', flexDirection: 'column', background: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '16px', overflow: 'hidden' }}>
+                <h3 style={{ margin: '0 0 16px 0', fontSize: '1.05rem', fontWeight: '900', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ display: 'inline-block', width: '8px', height: '18px', background: '#3b82f6', borderRadius: '4px' }}></span>
+                  🚗 現場留車車輛 ({inShopCustomers.length} 輛)
+                </h3>
+                <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '4px' }}>
+                  {inShopCustomers.length > 0 ? (
+                    inShopCustomers.map(item => {
+                      const colors = getItemColors(item);
+                      const isSelected = selectedEvent?.id === item.id;
+                      return (
+                        <div
+                          key={item.id}
+                          onClick={() => setSelectedEvent(item)}
+                          style={{
+                            background: '#fff',
+                            border: `1px solid ${isSelected ? 'var(--primary)' : '#e2e8f0'}`,
+                            borderRadius: '12px',
+                            padding: '14px',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s',
+                            boxShadow: isSelected ? '0 4px 12px rgba(79,70,229,0.1)' : '0 2px 4px rgba(0,0,0,0.02)',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                          }}
+                        >
+                          <div>
+                            <div style={{ fontWeight: '900', fontSize: '0.95rem', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                              <span>{item.name}</span>
+                              <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: colors.bg, color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>
+                                {colors.badge}
+                              </span>
+                            </div>
+                            <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '4px' }}>
+                              {item.brand} {item.model} | {item.plateNumber}
+                            </div>
+                            <div style={{ fontSize: '0.75rem', color: '#0284c7', fontWeight: 'bold', marginTop: '6px' }}>
+                              📅 留車期間: {item.expectedStartDate} ~ {item.expectedEndDate || '未定'}
+                            </div>
+                          </div>
+                          <ChevronRight size={18} color="#cbd5e1" />
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8', fontSize: '0.85rem' }}>
+                      當日無現場留車車輛
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Right Column: 今日施工車輛 */}
+              <div style={{ display: 'flex', flexDirection: 'column', background: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '16px', overflow: 'hidden' }}>
+                <h3 style={{ margin: '0 0 16px 0', fontSize: '1.05rem', fontWeight: '900', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ display: 'inline-block', width: '8px', height: '18px', background: '#10b981', borderRadius: '4px' }}></span>
+                  🛠️ 今日施工進度 ({constructingCustomers.length} 輛)
+                </h3>
+                <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '4px' }}>
+                  {constructingCustomers.length > 0 ? (
+                    constructingCustomers.map(item => {
+                      const colors = getItemColors(item);
+                      const isSelected = selectedEvent?.id === item.id;
+                      const isCustom = item.id.startsWith('EVENT-');
+                      
+                      const isSpanningTwoDays = !isCustom && 
+                        item.constructionStartDate && 
+                        item.constructionEndDate && 
+                        item.constructionStartDate !== item.constructionEndDate;
+
+                      return (
+                        <div
+                          key={item.id}
+                          onClick={() => setSelectedEvent(item)}
+                          style={{
+                            background: '#fff',
+                            border: `1px solid ${isSelected ? 'var(--primary)' : '#e2e8f0'}`,
+                            borderRadius: '12px',
+                            padding: '14px',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s',
+                            boxShadow: isSelected ? '0 4px 12px rgba(79,70,229,0.1)' : '0 2px 4px rgba(0,0,0,0.02)',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                          }}
+                        >
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontWeight: '900', fontSize: '0.95rem', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                              <span>{item.name}</span>
+                              <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: colors.bg, color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>
+                                {isCustom ? '局部施工' : colors.badge}
+                              </span>
+                              
+                              {isSpanningTwoDays ? (
+                                <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#fffbeb', color: '#b45309', borderRadius: '4px', border: '1px solid #fef3c7', fontWeight: 'bold' }}>
+                                  ⚠️ 施工半台 (分兩天)
+                                </span>
+                              ) : !isCustom ? (
+                                <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#f0fdf4', color: '#166534', borderRadius: '4px', border: '1px solid #dcfce7', fontWeight: 'bold' }}>
+                                  ✅ 施工全台
+                                </span>
+                              ) : null}
+                            </div>
+                            
+                            {!isCustom ? (
+                              <>
+                                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '4px' }}>
+                                  {item.brand} {item.model} | {item.plateNumber}
+                                </div>
+                                <div style={{ fontSize: '0.75rem', color: '#059669', fontWeight: 'bold', marginTop: '6px' }}>
+                                  🛠️ 施工期間: {item.constructionStartDate} ~ {item.constructionEndDate || '未定'}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                {item.constructionTime && (
+                                  <div style={{ fontSize: '0.8rem', color: '#0284c7', fontWeight: 'bold', marginTop: '4px' }}>
+                                    ⏰ 留車時間: {item.constructionTime}
+                                  </div>
+                                )}
+                                {item.notes && (
+                                  <div style={{ fontSize: '0.75rem', color: '#64748b', background: '#f8fafc', padding: '6px 10px', borderRadius: '6px', marginTop: '6px', border: '1px solid #f1f5f9' }}>
+                                    {item.notes}
+                                  </div>
+                                )}
+                              </>
+                            )}
+                          </div>
+                          <ChevronRight size={18} color="#cbd5e1" />
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8', fontSize: '0.85rem' }}>
+                      當日無施工車輛
+                    </div>
+                  )}
+                </div>
+              </div>
+
+            </div>
+          ) : viewMode === 'week' ? (
             /* --- WEEK VIEW GRID --- */
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: '400px' }}>
               {/* Header Days */}
@@ -453,7 +638,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                         height: '32px', 
                         display: 'flex', 
                         alignItems: 'center', 
-                        justify: 'center', 
+                        justifyContent: 'center', 
                         borderRadius: '50%', 
                         background: active ? 'var(--primary)' : 'transparent', 
                         color: active ? '#fff' : '#0f172a', 
@@ -826,9 +1011,17 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
               ) : (
                 /* Custom Shop Notes / Off day */
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  {selectedEvent.constructionTime && (
+                    <div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#94a3b8', marginBottom: '4px' }}>留車時間</div>
+                      <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#0369a1' }}>
+                        {selectedEvent.constructionTime}
+                      </div>
+                    </div>
+                  )}
                   {selectedEvent.notes && (
                     <div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#94a3b8', marginBottom: '4px' }}>備忘詳情</div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#94a3b8', marginBottom: '4px' }}>局部施工說明</div>
                       <div style={{ fontSize: '0.85rem', color: '#475569', whiteSpace: 'pre-wrap', background: '#f8fafc', padding: '12px', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
                         {selectedEvent.notes}
                       </div>
@@ -839,7 +1032,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                     className="btn btn-outline" 
                     style={{ color: '#ef4444', borderColor: '#fca5a5', width: '100%', fontSize: '0.8rem', padding: '8px' }}
                   >
-                    <Trash2 size={14} /> 刪除此事件
+                    <Trash2 size={14} /> 刪除此項目
                   </button>
                 </div>
               )}
@@ -874,7 +1067,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(15,23,42,0.4)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }}>
           <div style={{ background: '#fff', width: '400px', borderRadius: '16px', border: '1px solid #e2e8f0', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
             <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 'bold' }}>新增店內備忘 / 事件</h3>
+              <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 'bold' }}>新增局部施工</h3>
               <button onClick={() => setIsEventModalOpen(false)} style={{ border: 'none', background: 'transparent', color: '#64748b', cursor: 'pointer' }}>
                 <X size={18} />
               </button>
@@ -882,11 +1075,11 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
             
             <form onSubmit={handleSaveCustomEvent} style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>事件名稱 / 標題*</label>
+                <label style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>車型 / 項目名稱*</label>
                 <input 
                   type="text" 
                   required 
-                  placeholder="例如: 子麒休、阿嬤休、16:00調" 
+                  placeholder="例如: 特斯拉 Model Y 引擎蓋貼膜" 
                   value={eventForm.title} 
                   onChange={(e) => setEventForm(prev => ({ ...prev, title: e.target.value }))}
                   style={{ width: '100%', padding: '8px 12px', border: '1px solid #e2e8f0', borderRadius: '8px' }}
@@ -895,7 +1088,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
 
               <div style={{ display: 'flex', gap: '10px' }}>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>開始日期*</label>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>施工日期*</label>
                   <input 
                     type="date" 
                     required 
@@ -905,21 +1098,22 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                   />
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>結束日期</label>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>留車時間 (幾點留車)</label>
                   <input 
-                    type="date" 
-                    value={eventForm.endDate} 
-                    onChange={(e) => setEventForm(prev => ({ ...prev, endDate: e.target.value }))}
+                    type="text" 
+                    placeholder="例如: 14:00" 
+                    value={eventForm.constructionTime} 
+                    onChange={(e) => setEventForm(prev => ({ ...prev, constructionTime: e.target.value }))}
                     style={{ width: '100%', padding: '8px 12px', border: '1px solid #e2e8f0', borderRadius: '8px' }}
                   />
                 </div>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>詳細說明/備註</label>
+                <label style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>詳細備註</label>
                 <textarea 
                   rows={3} 
-                  placeholder="選填備註說明..." 
+                  placeholder="請填寫局部施工細節..." 
                   value={eventForm.notes} 
                   onChange={(e) => setEventForm(prev => ({ ...prev, notes: e.target.value }))}
                   style={{ width: '100%', padding: '8px 12px', border: '1px solid #e2e8f0', borderRadius: '8px', fontFamily: 'inherit', resize: 'none' }}

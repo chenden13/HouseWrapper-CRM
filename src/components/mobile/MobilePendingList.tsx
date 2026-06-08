@@ -208,6 +208,44 @@ export const MobilePendingList: React.FC<MobilePendingListProps> = ({ customers,
         >
           交車時間 {sortKey === 'expectedEndDate' && (sortOrder === 'asc' ? '▲' : '▼')}
         </button>
+        <button 
+          onClick={() => toggleSort('plateNumber')} 
+          style={{ 
+            flexShrink: 0,
+            background: sortKey === 'plateNumber' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'plateNumber' ? '#fff' : '#64748b', 
+            border: `1px solid ${sortKey === 'plateNumber' ? 'var(--primary)' : '#e2e8f0'}`, 
+            padding: '6px 10px', 
+            borderRadius: '8px', 
+            fontSize: '0.75rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '2px'
+          }}
+        >
+          車牌 {sortKey === 'plateNumber' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button 
+          onClick={() => toggleSort('name')} 
+          style={{ 
+            flexShrink: 0,
+            background: sortKey === 'name' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'name' ? '#fff' : '#64748b', 
+            border: `1px solid ${sortKey === 'name' ? 'var(--primary)' : '#e2e8f0'}`, 
+            padding: '6px 10px', 
+            borderRadius: '8px', 
+            fontSize: '0.75rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '2px'
+          }}
+        >
+          姓名 {sortKey === 'name' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

@@ -133,7 +133,7 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
       </header>
 
       {/* 排序按鈕組 */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', alignItems: 'center', background: '#f8fafc', padding: '8px 16px', borderRadius: '12px', border: '1px solid #e2e8f0', width: 'fit-content' }}>
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', alignItems: 'center', background: '#f8fafc', padding: '8px 16px', borderRadius: '12px', border: '1px solid #e2e8f0', width: 'fit-content', flexWrap: 'wrap' }}>
         <span style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 'bold' }}>排序方式：</span>
         <button 
           onClick={() => toggleSort('expectedStartDate')} 
@@ -207,6 +207,42 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
         >
           🏁 預計交車時間 {sortKey === 'expectedEndDate' && (sortOrder === 'asc' ? '▲' : '▼')}
         </button>
+        <button 
+          onClick={() => toggleSort('plateNumber')} 
+          style={{ 
+            background: sortKey === 'plateNumber' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'plateNumber' ? '#fff' : '#475569', 
+            border: `1px solid ${sortKey === 'plateNumber' ? 'var(--primary)' : '#cbd5e1'}`, 
+            padding: '6px 12px', 
+            borderRadius: '8px', 
+            fontSize: '0.8rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px'
+          }}
+        >
+          🚗 車牌號碼 {sortKey === 'plateNumber' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button 
+          onClick={() => toggleSort('name')} 
+          style={{ 
+            background: sortKey === 'name' ? 'var(--primary)' : '#fff', 
+            color: sortKey === 'name' ? '#fff' : '#475569', 
+            border: `1px solid ${sortKey === 'name' ? 'var(--primary)' : '#cbd5e1'}`, 
+            padding: '6px 12px', 
+            borderRadius: '8px', 
+            fontSize: '0.8rem', 
+            fontWeight: 'bold', 
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px'
+          }}
+        >
+          👤 客戶姓名 {sortKey === 'name' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
       </div>
 
       <div className="glass-panel" style={{ borderRadius: '20px', overflowX: 'auto', border: '1px solid #e2e8f0', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
@@ -224,11 +260,11 @@ export const PendingListPage: React.FC<PendingListPageProps> = ({
             textAlign: 'center'
           }}>
             <div onClick={() => toggleSort('id')} style={{ textAlign: 'left', cursor: 'pointer' }}>編號</div>
-            <div style={{ textAlign: 'left' }}>客戶與車輛</div>
+            <div onClick={() => toggleSort('name')} style={{ textAlign: 'left', cursor: 'pointer' }}>客戶與車輛 {sortKey === 'name' && (sortOrder === 'asc' ? '▲' : '▼')}</div>
             <div style={{ textAlign: 'left' }}>施工項目</div>
-            <div onClick={() => toggleSort('expectedStartDate')} style={{ cursor: 'pointer' }}>預計留車時間</div>
-            <div onClick={() => toggleSort('constructionStartDate')} style={{ cursor: 'pointer' }}>預計施工時間(起~迄)</div>
-            <div onClick={() => toggleSort('expectedEndDate')} style={{ cursor: 'pointer' }}>預計交車時間</div>
+            <div onClick={() => toggleSort('expectedStartDate')} style={{ cursor: 'pointer' }}>預計留車時間 {sortKey === 'expectedStartDate' && (sortOrder === 'asc' ? '▲' : '▼')}</div>
+            <div onClick={() => toggleSort('constructionStartDate')} style={{ cursor: 'pointer' }}>預計施工時間(起~迄) {sortKey === 'constructionStartDate' && (sortOrder === 'asc' ? '▲' : '▼')}</div>
+            <div onClick={() => toggleSort('expectedEndDate')} style={{ cursor: 'pointer' }}>預計交車時間 {sortKey === 'expectedEndDate' && (sortOrder === 'asc' ? '▲' : '▼')}</div>
             <div>行事曆</div>
             <div>施工行程</div>
             <div>洗車安排</div>

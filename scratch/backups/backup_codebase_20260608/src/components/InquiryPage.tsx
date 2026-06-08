@@ -1,0 +1,213 @@
+import React, { useState } from 'react';
+import { Search, UserPlus, Calendar, ChevronRight, Plus, Trash2, ArrowUp, ArrowDown, Hash } from 'lucide-react';
+import type { Customer, Role } from '../types';
+
+interface InquiryPageProps {
+  customers: Customer[];
+  onEditCustomer: (customer: Customer) => void;
+  onDeleteCustomer: (id: string) => void;
+  userRole?: Role;
+  onAddNew?: () => void;
+}
+
+export const InquiryPage: React.FC<InquiryPageProps> = ({ customers, onEditCustomer, onDeleteCustomer, userRole, onAddNew }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState<'id' | 'date'>('id');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  
+  const inquiries = customers
+    .filter(c => 
+      c.status === 'new' && 
+      (
+        String(c.name || '').toLowerCase().includes(searchTerm.toLowerCase()) || 
+        String(c.phone || '').toLowerCase().includes(searchTerm.toLowerCase()) || 
+        String(c.plateNumber || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(c.model || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(c.brand || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(c.id || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        String(c.data?.notes || '').toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    )
+    .sort((a, b) => {
+      if (sortBy === 'id') {
+        const idA = String(a.id || '');
+        const idB = String(b.id || '');
+        const cmp = idA.localeCompare(idB, undefined, { numeric: true });
+        return sortOrder === 'asc' ? cmp : -cmp;
+      } else {
+        const dateA = a.expectedStartDate || '';
+        const dateB = b.expectedStartDate || '';
+        if (!dateA) return 1;
+        if (!dateB) return -1;
+        const cmp = dateA.localeCompare(dateB);
+        return sortOrder === 'asc' ? cmp : -cmp;
+      }
+    });
+
+  return (
+    <div style={{ padding: '0 20px 40px 20px', maxWidth: '1400px', margin: '0 auto' }}>
+      <header style={{ marginBottom: '25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
+        <div>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#1e293b', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <UserPlus className="text-primary" size={24} /> 未下定諮詢區
+          </h2>
+          <p style={{ color: '#64748b', fontSize: '0.9rem' }}>追蹤初步諮詢、尚未收訂的潛在客戶資料</p>
+        </div>
+
+        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '8px', background: '#f1f5f9', padding: '4px', borderRadius: '12px' }}>
+            <button 
+              className={`btn ${sortBy === 'id' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                if (sortBy === 'id') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+                else { setSortBy('id'); setSortOrder('desc'); }
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '6px 12px' }}
+            >
+              <Hash size={15} /> 編號 {sortBy === 'id' && (sortOrder === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />)}
+            </button>
+            <button 
+              className={`btn ${sortBy === 'date' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                if (sortBy === 'date') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+                else { setSortBy('date'); setSortOrder('desc'); }
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '6px 12px' }}
+            >
+              <Calendar size={15} /> 諮詢日期 {sortBy === 'date' && (sortOrder === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />)}
+            </button>
+          </div>
+          <button className="btn btn-primary" style={{ padding: '8px 20px', fontSize: '0.85rem', borderRadius: '10px' }} onClick={onAddNew}>
+            <Plus size={16} /> 新增諮詢客戶
+          </button>
+          <div style={{ position: 'relative' }}>
+            <Search style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} size={18} />
+            <input
+              type="text"
+              placeholder="搜尋全部資訊..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="glass-panel"
+              style={{
+                padding: '10px 15px 10px 40px',
+                borderRadius: '12px',
+                width: '240px',
+                fontSize: '0.9rem',
+                outline: 'none'
+              }}
+            />
+          </div>
+        </div>
+      </header>
+
+      <div className="glass-panel" style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
+        {/* Table Header */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '80px 120px 180px 180px 1.5fr 1.5fr 100px',
+          padding: '15px 20px',
+          background: '#f8fafc',
+          borderBottom: '1px solid #e2e8f0',
+          fontWeight: 'bold',
+          color: '#475569',
+          fontSize: '0.85rem'
+        }}>
+          <div 
+            onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')} 
+            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
+          >
+            編號
+          </div>
+          <div>諮詢日期</div>
+          <div>車主 / 電話</div>
+          <div>車牌 / 車型</div>
+          <div>主要興趣膜料</div>
+          <div>配件感興趣項目</div>
+          <div style={{ textAlign: 'center' }}>操作</div>
+        </div>
+
+        {/* Table Body */}
+        <div style={{ maxHeight: 'calc(100vh - 280px)', overflowY: 'auto' }}>
+          {inquiries.length > 0 ? inquiries.map((customer, idx) => (
+            <div 
+              key={customer.id} 
+              className="list-row"
+              onClick={() => onEditCustomer(customer)}
+              style={{ 
+                display: 'grid', 
+                gridTemplateColumns: '80px 120px 180px 180px 1.5fr 1.5fr 100px',
+                alignItems: 'center',
+                padding: '18px 20px',
+                borderBottom: '1px solid #f1f5f9',
+                fontSize: '0.88rem',
+                background: idx % 2 === 0 ? '#fff' : '#fafafa',
+                cursor: 'pointer'
+              }}
+            >
+              <div style={{ fontWeight: '600', color: '#64748b', fontSize: '0.75rem' }}>
+                {customer.id}
+              </div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Calendar size={14} style={{ color: '#94a3b8' }} />
+                <span>{customer.consultationDate || '未記錄'}</span>
+              </div>
+
+              <div>
+                <div style={{ fontWeight: '700', color: '#1e293b' }}>{customer.name}</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{customer.phone}</div>
+              </div>
+
+              <div>
+                <div style={{ fontWeight: '700', color: '#1e293b' }}>{customer.plateNumber}</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{customer.brand} {customer.model}</div>
+              </div>
+
+              <div style={{ paddingRight: '15px' }}>
+                <div style={{ fontWeight: '700', color: 'var(--primary)' }}>{customer.mainService || '-'}</div>
+                {customer.filmColor && <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{customer.filmColor}</div>}
+              </div>
+
+              <div style={{ paddingRight: '15px' }}>
+                <div style={{ color: '#334155', fontWeight: '500' }}>{customer.interestedAccessories || '-'}</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '4px' }}>
+                  {customer.detailOriented && <span style={{ fontSize: '0.65rem', background: '#ffe4e6', color: '#e11d48', padding: '1px 6px', borderRadius: '4px' }}>細節</span>}
+                  {customer.easyGoing && <span style={{ fontSize: '0.65rem', background: '#dcfce7', color: '#166534', padding: '1px 6px', borderRadius: '4px' }}>隨和</span>}
+                  {customer.location && <span style={{ fontSize: '0.65rem', background: '#eff6ff', color: '#3b82f6', padding: '1px 6px', borderRadius: '4px' }}>{customer.location}</span>}
+                </div>
+              </div>
+
+              <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); onDeleteCustomer(customer.id); }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ef4444', padding: '5px' }}
+                  title="刪除資料"
+                >
+                  <Trash2 size={18} />
+                </button>
+                <button 
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#cbd5e1', padding: '5px' }}
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            </div>
+          )) : (
+            <div style={{ padding: '80px', textAlign: 'center', color: '#94a3b8' }}>
+              目前的範圍內沒有諮詢中的案件資料。
+            </div>
+          )}
+        </div>
+      </div>
+
+      <style>{`
+        .list-row {
+          transition: background 0.2s;
+        }
+        .list-row:hover {
+          background: #f1f5f9 !important;
+        }
+      `}</style>
+    </div>
+  );
+};

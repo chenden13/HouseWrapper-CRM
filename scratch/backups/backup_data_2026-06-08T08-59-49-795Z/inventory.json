@@ -1,0 +1,3488 @@
+[
+  {
+    "id": "INV-G-1-10",
+    "brand": "3M",
+    "color": "200g",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 150
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-1",
+    "brand": "通用",
+    "color": "超啞灰藍(1431)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 4.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-1",
+    "brand": "通用",
+    "color": "啞灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-2",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 4.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-2",
+    "brand": "通用",
+    "color": "超啞灰藍(1631020)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-2",
+    "brand": "通用",
+    "color": "啞灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 4.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-1",
+    "brand": "AX",
+    "color": "液態金屬星翰銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-2",
+    "brand": "AX",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "G",
+      "notes": "全新未拆膜料",
+      "section": 1,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-3",
+    "brand": "AWF",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 4.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-3",
+    "brand": "通用",
+    "color": "超啞灰藍(1631001)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-3",
+    "brand": "通用",
+    "color": "啞灰MI",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 4.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-3",
+    "brand": "AX",
+    "color": "蒙札灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-4",
+    "brand": "通用",
+    "color": "啞灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-4",
+    "brand": "通用",
+    "color": "蒙札灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-4",
+    "brand": "通用",
+    "color": "超啞灰藍(1631019)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-4",
+    "brand": "通用",
+    "color": "啞灰MI",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 4.7
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-5",
+    "brand": "AX",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-6",
+    "brand": "通用",
+    "color": "煙雨藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-5",
+    "brand": "通用",
+    "color": "電光金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-5",
+    "brand": "通用",
+    "color": "超啞灰藍(1631012)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-5",
+    "brand": "通用",
+    "color": "布魯克林灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-7",
+    "brand": "AX",
+    "color": "羅莉塔粉",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-8",
+    "brand": "AX",
+    "color": "液態金屬銀 補料",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-6",
+    "brand": "通用",
+    "color": "啞面電鍍金屬鎢鋼",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-6",
+    "brand": "通用",
+    "color": "競賽藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-6",
+    "brand": "通用",
+    "color": "布魯克林灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-9",
+    "brand": "通用",
+    "color": "8bit 消光",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-7",
+    "brand": "通用",
+    "color": "電光金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-7",
+    "brand": "通用",
+    "color": "競賽藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-7",
+    "brand": "通用",
+    "color": "高量納多灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-8",
+    "brand": "通用",
+    "color": "電光金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 5.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-8",
+    "brand": "通用",
+    "color": "亞歷山大銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-8",
+    "brand": "通用",
+    "color": "電光金屬鈦銀灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-9",
+    "brand": "通用",
+    "color": "電光金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-9",
+    "brand": "通用",
+    "color": "超啞墨綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-9",
+    "brand": "通用",
+    "color": "緞面尚格煙",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-10",
+    "brand": "通用",
+    "color": "亞歷山大銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-10",
+    "brand": "通用",
+    "color": "超啞灰綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-10",
+    "brand": "通用",
+    "color": "緞面尚格煙",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-11",
+    "brand": "3M",
+    "color": "200m",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-G-1-12",
+    "brand": "3M",
+    "color": "150g",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "G",
+      "notes": "全新完整一捲",
+      "section": 1,
+      "currentMeters": 18
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-11",
+    "brand": "通用",
+    "color": "亞歷山大銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-11",
+    "brand": "通用",
+    "color": "超啞灰綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-11",
+    "brand": "通用",
+    "color": "蒙札灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-12",
+    "brand": "SMT",
+    "color": "02",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-12",
+    "brand": "通用",
+    "color": "綢緞銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-12",
+    "brand": "通用",
+    "color": "啞面3D炫彩灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 4.7
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-13",
+    "brand": "通用",
+    "color": "液態金屬星翰銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 13,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-13",
+    "brand": "通用",
+    "color": "山灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 13,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-14",
+    "brand": "通用",
+    "color": "GT銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 14,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-3-14",
+    "brand": "通用",
+    "color": "山灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 14,
+      "zone": "A",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-1-15",
+    "brand": "通用",
+    "color": "啞面電鍍金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 15,
+      "zone": "A",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 7.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-A-2-15",
+    "brand": "通用",
+    "color": "GT銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 15,
+      "zone": "A",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 11.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-1",
+    "brand": "通用",
+    "color": "rwf 啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-1",
+    "brand": "通用",
+    "color": "艾利 牛油果綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 16
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-2",
+    "brand": "通用",
+    "color": "rwf 黑幻藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.7
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-2",
+    "brand": "通用",
+    "color": "艾利 金霜sw900-615",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-3",
+    "brand": "通用",
+    "color": "hdxs 墨綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 8.9
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-3",
+    "brand": "通用",
+    "color": "hdxs hx20236s",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 6.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-4",
+    "brand": "通用",
+    "color": "hdxs 假山灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 7.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-4",
+    "brand": "3M",
+    "color": "g336",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-5",
+    "brand": "通用",
+    "color": "inostek 假瑪瑙深灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-5",
+    "brand": "3M",
+    "color": "m27",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 7.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-6",
+    "brand": "通用",
+    "color": "hdxk 金色",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-6",
+    "brand": "3M",
+    "color": "sp280",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-7",
+    "brand": "通用",
+    "color": "dk 假阿瓦隆綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-7",
+    "brand": "3M",
+    "color": "m229",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-8",
+    "brand": "通用",
+    "color": "dinostek 牛油果綠sg012",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-8",
+    "brand": "3M",
+    "color": "s271",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 4.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-9",
+    "brand": "通用",
+    "color": "歐瑞克 紫",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 4.12
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-9",
+    "brand": "3M",
+    "color": "s57",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-10",
+    "brand": "通用",
+    "color": "艾利 sw900-821",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-10",
+    "brand": "3M",
+    "color": "hg31",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-1-11",
+    "brand": "通用",
+    "color": "艾利 bwm金屬霜藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "B",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-11",
+    "brand": "3M",
+    "color": "hg31",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-12",
+    "brand": "3M",
+    "color": "g336",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-13",
+    "brand": "AX",
+    "color": "瑪瑙灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 13,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-14",
+    "brand": "通用",
+    "color": "hexis 淺藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 14,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 10
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-15",
+    "brand": "通用",
+    "color": "hexis 深灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 15,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-B-2-16",
+    "brand": "3M",
+    "color": "sp240",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 16,
+      "zone": "B",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-1",
+    "brand": "通用",
+    "color": "深邃灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-1",
+    "brand": "通用",
+    "color": "讚德福特藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-1",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-1",
+    "brand": "通用",
+    "color": "液態金屬鎢鋼",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 4.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-2",
+    "brand": "通用",
+    "color": "深邃灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-2",
+    "brand": "通用",
+    "color": "讚德福特藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 5.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-2",
+    "brand": "通用",
+    "color": "賽車紅",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-2",
+    "brand": "通用",
+    "color": "啞液態金屬gt銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 4.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-3",
+    "brand": "通用",
+    "color": "阿瓦隆綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 5.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-3",
+    "brand": "通用",
+    "color": "緞面冰川藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-3",
+    "brand": "通用",
+    "color": "羅曼尼紅",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-3",
+    "brand": "通用",
+    "color": "蒙札灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-4",
+    "brand": "通用",
+    "color": "雷射閃灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-4",
+    "brand": "通用",
+    "color": "冰川藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-4",
+    "brand": "通用",
+    "color": "啞光黑(85007)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.25
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-4",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-5",
+    "brand": "通用",
+    "color": "墓碣羅蘭",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-5",
+    "brand": "通用",
+    "color": "迷霧藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 4.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-5",
+    "brand": "通用",
+    "color": "競賽藍(69034)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-5",
+    "brand": "通用",
+    "color": "緞面藍魅金",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 3.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-6",
+    "brand": "通用",
+    "color": "瑪瑙深灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-6",
+    "brand": "通用",
+    "color": "緞面藍魅綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-6",
+    "brand": "通用",
+    "color": "啞面鐳射閃白",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-6",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-7",
+    "brand": "通用",
+    "color": "啞面鑽石藍銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-7",
+    "brand": "通用",
+    "color": "緞面藍魅金",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-7",
+    "brand": "通用",
+    "color": "超啞夢幻火山灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-7",
+    "brand": "通用",
+    "color": "br230",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-8",
+    "brand": "通用",
+    "color": "索馬托藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-8",
+    "brand": "通用",
+    "color": "玫琳凱粉",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 5.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-8",
+    "brand": "通用",
+    "color": "蝦光紫",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 1.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-8",
+    "brand": "通用",
+    "color": "電光白變紫",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-9",
+    "brand": "通用",
+    "color": "冰梅粉",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 5.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-9",
+    "brand": "通用",
+    "color": "羅莉塔粉",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 5.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-9",
+    "brand": "通用",
+    "color": "CG22(頂流星藍404)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-9",
+    "brand": "通用",
+    "color": "珍珠白",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-10",
+    "brand": "通用",
+    "color": "超啞星黛紫",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-3-10",
+    "brand": "通用",
+    "color": "亞歷山大銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "C",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-4-10",
+    "brand": "通用",
+    "color": "亞歷山大銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "C",
+      "notes": "",
+      "section": 4,
+      "currentMeters": 4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-11",
+    "brand": "通用",
+    "color": "夢幻火山灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-11",
+    "brand": "通用",
+    "color": "迷霧灰紫",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-1-12",
+    "brand": "通用",
+    "color": "綢緞軍綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "C",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-C-2-12",
+    "brand": "通用",
+    "color": "猛男粉",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "C",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-1",
+    "brand": "通用",
+    "color": "電光金屬戰鬥灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-1",
+    "brand": "通用",
+    "color": "超啞灰藍(1130)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-1",
+    "brand": "通用",
+    "color": "S120",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 1.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-1",
+    "brand": "通用",
+    "color": "山灰",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 1,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-1",
+    "brand": "通用",
+    "color": "莫奈紫",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 1,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-6-1",
+    "brand": "通用",
+    "color": "隱密黑",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 1,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 6,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-2",
+    "brand": "AX",
+    "color": "卡普里灰紫",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-2",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.7
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-2",
+    "brand": "通用",
+    "color": "M261",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 2,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-2",
+    "brand": "通用",
+    "color": "VCH410",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 2,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-2",
+    "brand": "通用",
+    "color": "祖母石綠",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 2,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-6-2",
+    "brand": "通用",
+    "color": "冰川藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 2,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 6,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-3",
+    "brand": "通用",
+    "color": "緞面黑變紫",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-3",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-3",
+    "brand": "通用",
+    "color": "HM07",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 3,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-3",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 3,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-3",
+    "brand": "通用",
+    "color": "HM15",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 3,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-6-3",
+    "brand": "通用",
+    "color": "黑櫻桃酒紅",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 3,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 6,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-4",
+    "brand": "通用",
+    "color": "啞面電鍍金屬鎢鋼",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-4",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-4",
+    "brand": "通用",
+    "color": "TC01",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 4,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-4",
+    "brand": "通用",
+    "color": "競賽藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 4,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-4",
+    "brand": "通用",
+    "color": "米其林亮面",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 4,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-6-4",
+    "brand": "通用",
+    "color": "迷霧紫灰",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 4,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 6,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-5",
+    "brand": "通用",
+    "color": "綢緞銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-5",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 5,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1.1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-5",
+    "brand": "3M",
+    "color": "卡夢",
+    "size": "0.8m x 2.3m",
+    "location": {
+      "slot": 5,
+      "zone": "D",
+      "notes": "規格: 230X80",
+      "section": 3,
+      "currentMeters": 2.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-5",
+    "brand": "通用",
+    "color": "藍魅金",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 5,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-5",
+    "brand": "通用",
+    "color": "消光白變金",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 5,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-6-5",
+    "brand": "通用",
+    "color": "米其林亮面",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 5,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 6,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-6",
+    "brand": "通用",
+    "color": "隕石灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-6",
+    "brand": "通用",
+    "color": "超啞灰藍(03)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-6",
+    "brand": "通用",
+    "color": "M211",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 6,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 1.75
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-6",
+    "brand": "通用",
+    "color": "戰鬥灰",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 6,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-6",
+    "brand": "通用",
+    "color": "RCH03",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 6,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-6-6",
+    "brand": "通用",
+    "color": "CG43",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 6,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 6,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-7",
+    "brand": "通用",
+    "color": "深空灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-7",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-7",
+    "brand": "通用",
+    "color": "M212",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 7,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 1.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-7",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 7,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-7",
+    "brand": "通用",
+    "color": "M261",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 7,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-6-7",
+    "brand": "通用",
+    "color": "電光金屬銀",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 7,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 6,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-8",
+    "brand": "通用",
+    "color": "電光金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-8",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-8",
+    "brand": "通用",
+    "color": "MT01",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 8,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-8",
+    "brand": "通用",
+    "color": "超啞灰藍 怪人",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 8,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-8",
+    "brand": "通用",
+    "color": "電光金屬泰銀灰",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 8,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-6-8",
+    "brand": "通用",
+    "color": "米其林消光",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 8,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 6,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-9",
+    "brand": "通用",
+    "color": "綢緞銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-9",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-9",
+    "brand": "SMT",
+    "color": "04",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 9,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 1.85
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-9",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 9,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-9",
+    "brand": "通用",
+    "color": "尚格煙",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 9,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-10",
+    "brand": "通用",
+    "color": "電光金屬鈦銀灰",
+    "size": "1.3m x 1.85m",
+    "location": {
+      "slot": 10,
+      "zone": "D",
+      "notes": "規格: 185X130",
+      "section": 1,
+      "currentMeters": 1.85
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-10",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-10",
+    "brand": "SMT",
+    "color": "04",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 10,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-10",
+    "brand": "通用",
+    "color": "斷面尚格煙",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 10,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-10",
+    "brand": "通用",
+    "color": "電度金屬銀",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 10,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-11",
+    "brand": "通用",
+    "color": "隱密黑",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.15
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-11",
+    "brand": "通用",
+    "color": "CYS 陶瓷藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-11",
+    "brand": "通用",
+    "color": "M217",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 11,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-11",
+    "brand": "通用",
+    "color": "競賽藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 11,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-11",
+    "brand": "通用",
+    "color": "200m",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 11,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-12",
+    "brand": "通用",
+    "color": "卡普里灰紫",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-12",
+    "brand": "通用",
+    "color": "溢彩藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-12",
+    "brand": "通用",
+    "color": "M206",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 12,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 1.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-12",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 12,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-12",
+    "brand": "通用",
+    "color": "神秘綠",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 12,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-13",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 13,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-13",
+    "brand": "通用",
+    "color": "緞面冰川藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 13,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-13",
+    "brand": "SMT",
+    "color": "06",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 13,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-13",
+    "brand": "通用",
+    "color": "VCH410S",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 13,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-13",
+    "brand": "通用",
+    "color": "S261",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 13,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-14",
+    "brand": "通用",
+    "color": "尚格煙",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 14,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-14",
+    "brand": "通用",
+    "color": "溢彩藍(5315)",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 14,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 3.1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-3-14",
+    "brand": "通用",
+    "color": "SCM47",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 14,
+      "zone": "D",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-14",
+    "brand": "通用",
+    "color": "斷面玫瑰金",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 14,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-14",
+    "brand": "通用",
+    "color": "瑪瑙灰",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 14,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-15",
+    "brand": "通用",
+    "color": "顛光金屬太灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 15,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-15",
+    "brand": "通用",
+    "color": "墓碣羅蘭",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 15,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-15",
+    "brand": "通用",
+    "color": "ATARAPA亮面",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 15,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-15",
+    "brand": "通用",
+    "color": "ATARAPA消光",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 15,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-16",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 16,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-16",
+    "brand": "通用",
+    "color": "緞面藍妹金",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 16,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-16",
+    "brand": "通用",
+    "color": "M212",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 16,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-16",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 16,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-17",
+    "brand": "通用",
+    "color": "深邃灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 17,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.65
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-17",
+    "brand": "通用",
+    "color": "競賽藍",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 17,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 2.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-17",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 17,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-17",
+    "brand": "通用",
+    "color": "莫奈紫",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 17,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-18",
+    "brand": "通用",
+    "color": "電光金屬黑",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 18,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-2-18",
+    "brand": "通用",
+    "color": "緞面藍妹金",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 18,
+      "zone": "D",
+      "notes": "",
+      "section": 2,
+      "currentMeters": 1.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-18",
+    "brand": "通用",
+    "color": "艾利 牛油果綠",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 18,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-18",
+    "brand": "通用",
+    "color": "200G",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 18,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-19",
+    "brand": "通用",
+    "color": "超啞墨綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 19,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-19",
+    "brand": "通用",
+    "color": "超啞墨綠",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 19,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-19",
+    "brand": "通用",
+    "color": "啞灰",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 19,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-20",
+    "brand": "通用",
+    "color": "緞面玫瑰金",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 20,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-20",
+    "brand": "通用",
+    "color": "SCM47",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 20,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-20",
+    "brand": "通用",
+    "color": "米其林亮",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 20,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-21",
+    "brand": "通用",
+    "color": "電光金屬戰鬥灰RWF",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 21,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.4
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-21",
+    "brand": "通用",
+    "color": "超啞灰藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 21,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-21",
+    "brand": "通用",
+    "color": "GAL26",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 21,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-22",
+    "brand": "通用",
+    "color": "亞歷山大銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 22,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-22",
+    "brand": "通用",
+    "color": "黑換紫",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 22,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-22",
+    "brand": "通用",
+    "color": "G31",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 22,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-23",
+    "brand": "通用",
+    "color": "超啞灰綠",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 23,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 2.2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-23",
+    "brand": "通用",
+    "color": "身空灰",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 23,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-23",
+    "brand": "通用",
+    "color": "G336綠",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 23,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-24",
+    "brand": "通用",
+    "color": "山灰",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 24,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 5.3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-24",
+    "brand": "通用",
+    "color": "S120",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 24,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-24",
+    "brand": "通用",
+    "color": "索馬托藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 24,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-25",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 25,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.45
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-25",
+    "brand": "通用",
+    "color": "黑換紫",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 25,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-25",
+    "brand": "通用",
+    "color": "WF消光",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 25,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-26",
+    "brand": "通用",
+    "color": "雲石灰100",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 26,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-4-26",
+    "brand": "通用",
+    "color": "HEXIS深藍",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 26,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 4,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-26",
+    "brand": "通用",
+    "color": "綢緞銀",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 26,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-27",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 27,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-27",
+    "brand": "通用",
+    "color": "啞灰",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 27,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-28",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 28,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-28",
+    "brand": "通用",
+    "color": "米其林亮面",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 28,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-29",
+    "brand": "通用",
+    "color": "亞歷山大銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 29,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 1.8
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-5-29",
+    "brand": "通用",
+    "color": "GT銀",
+    "size": "0.75m x 2.6m",
+    "location": {
+      "slot": 29,
+      "zone": "D",
+      "notes": "保桿",
+      "section": 5,
+      "currentMeters": 2.6
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-D-1-30",
+    "brand": "通用",
+    "color": "啞液態金屬銀",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 30,
+      "zone": "D",
+      "notes": "",
+      "section": 1,
+      "currentMeters": 3.5
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  },
+  {
+    "id": "INV-E-3-1",
+    "brand": "通用",
+    "color": "星空黑妹紅",
+    "size": "1.52m x 15m",
+    "location": {
+      "slot": 1,
+      "zone": "E",
+      "notes": "",
+      "section": 3,
+      "currentMeters": 2
+    },
+    "last_updated": "2026-05-22T00:00:00+00:00"
+  }
+]

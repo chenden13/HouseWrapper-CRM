@@ -1,0 +1,154 @@
+[
+  {
+    "id": "LOG-1779179038620",
+    "action": "remove",
+    "details": "移除項目 通用 超啞灰藍 (G1-1)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:23:59.184418+00:00",
+    "item_id": "INV-G-1-1"
+  },
+  {
+    "id": "LOG-1779179042331",
+    "action": "remove",
+    "details": "移除項目 通用 羅莉塔粉 (G1-2)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:24:02.471054+00:00",
+    "item_id": "INV-G-1-2"
+  },
+  {
+    "id": "LOG-1779179044347",
+    "action": "remove",
+    "details": "移除項目 通用 祖母石綠 (G1-3)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:24:04.471472+00:00",
+    "item_id": "INV-G-1-3"
+  },
+  {
+    "id": "LOG-1779179047768",
+    "action": "update",
+    "details": "更新 通用 啞灰 (G1-4)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:24:07.877546+00:00",
+    "item_id": "INV-G-1-4"
+  },
+  {
+    "id": "LOG-1779179049866",
+    "action": "remove",
+    "details": "移除項目 通用 200G (G1-5)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:24:10.033173+00:00",
+    "item_id": "INV-G-1-5"
+  },
+  {
+    "id": "LOG-1779179068260",
+    "action": "add",
+    "details": "新增 ax 液態金屬星翰銀 於 G1-1",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:24:28.428083+00:00",
+    "item_id": "INV-1779179052804"
+  },
+  {
+    "id": "LOG-1779179077797",
+    "action": "add",
+    "details": "新增 ax 啞液態金屬銀 於 G1-2",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:24:37.918133+00:00",
+    "item_id": "INV-1779179069714"
+  },
+  {
+    "id": "LOG-1779179100631",
+    "action": "add",
+    "details": "新增 ax 蒙札灰 於 G1-3",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:25:00.827008+00:00",
+    "item_id": "INV-1779179083175"
+  },
+  {
+    "id": "LOG-1779179137966",
+    "action": "add",
+    "details": "新增 ax 超啞灰藍 於 G1-5",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:25:38.586886+00:00",
+    "item_id": "INV-1779179130600"
+  },
+  {
+    "id": "LOG-1779179148005",
+    "action": "add",
+    "details": "新增 ax 羅莉塔粉 於 G1-7",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:25:48.159045+00:00",
+    "item_id": "INV-1779179140208"
+  },
+  {
+    "id": "LOG-1779179238528",
+    "action": "add",
+    "details": "新增 ax 液態金屬銀 補料 於 G1-8",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:27:18.829334+00:00",
+    "item_id": "INV-1779179156162"
+  },
+  {
+    "id": "LOG-1779180026288",
+    "action": "add",
+    "details": "新增 8bit  消光 於 G1-9",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:40:26.964767+00:00",
+    "item_id": "INV-1779180010974"
+  },
+  {
+    "id": "LOG-1779180131877",
+    "action": "add",
+    "details": "新增 3m 200g 於 G1-10",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:42:12.929936+00:00",
+    "item_id": "INV-1779180113288"
+  },
+  {
+    "id": "LOG-1779180144536",
+    "action": "add",
+    "details": "新增 3m 200m 於 G1-11",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:42:24.668461+00:00",
+    "item_id": "INV-1779180134704"
+  },
+  {
+    "id": "LOG-1779180152330",
+    "action": "add",
+    "details": "新增 3m 150g 於 G1-12",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-19T08:42:32.565283+00:00",
+    "item_id": "INV-1779180146527"
+  },
+  {
+    "id": "LOG-1779439002079",
+    "action": "update",
+    "details": "更新 AX 啞液態金屬銀 (G1-2)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-22T08:36:42.324628+00:00",
+    "item_id": "INV-G-1-2"
+  },
+  {
+    "id": "LOG-1779439671719",
+    "action": "update",
+    "details": "更新 3M 200g (G1-10)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-22T08:47:51.836421+00:00",
+    "item_id": "INV-G-1-10"
+  },
+  {
+    "id": "LOG-1779439675000",
+    "action": "update",
+    "details": "更新 3M 200m (G1-11)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-22T08:47:55.119519+00:00",
+    "item_id": "INV-G-1-11"
+  },
+  {
+    "id": "LOG-1779439680173",
+    "action": "update",
+    "details": "更新 3M 150g (G1-12)",
+    "operator": "店長管理者",
+    "timestamp": "2026-05-22T08:48:00.296292+00:00",
+    "item_id": "INV-G-1-12"
+  }
+]

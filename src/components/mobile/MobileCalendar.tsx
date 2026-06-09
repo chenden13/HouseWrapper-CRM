@@ -39,11 +39,11 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#0ea5e9', // Cyan for partial construction
-        lightBg: '#f0f9ff',
-        text: '#0369a1',
-        border: '#0ea5e9',
-        darkText: '#0369a1',
+        bg: '#706b64', // Muted sand grey primary
+        lightBg: '#f4f3f0', // Soft background
+        text: '#3c3833',
+        border: '#706b64',
+        darkText: '#3c3833',
         badge: '局部'
       };
     }
@@ -51,47 +51,47 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     const service = item.mainService || '';
     if (service.includes('全車犀牛皮')) {
       return {
-        bg: '#10b981', // Green
-        lightBg: '#f0fdf4',
-        text: '#065f46',
-        border: '#10b981',
-        darkText: '#065f46',
+        bg: '#5a6e5d', // Muted sage green primary
+        lightBg: '#f1f3f1', // Soft background
+        text: '#2d3b2f',
+        border: '#5a6e5d',
+        darkText: '#2d3b2f',
         badge: '犀牛皮'
       };
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
-        bg: '#ef4444', // Red
-        lightBg: '#fff5f5',
-        text: '#991b1b',
-        border: '#ef4444',
-        darkText: '#991b1b',
+        bg: '#8c6b6b', // Muted clay rose primary
+        lightBg: '#f5f1f1', // Soft background
+        text: '#4f3838',
+        border: '#8c6b6b',
+        darkText: '#4f3838',
         badge: '改色膜'
       };
     } else if (service.includes('迎風面')) {
       return {
-        bg: '#3b82f6', // Blue
-        lightBg: '#eff6ff',
-        text: '#1e40af',
-        border: '#3b82f6',
-        darkText: '#1e40af',
+        bg: '#566573', // Muted steel blue primary
+        lightBg: '#f0f2f5', // Soft background
+        text: '#2e4053',
+        border: '#566573',
+        darkText: '#2e4053',
         badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
-        bg: '#0ea5e9', // Cyan
-        lightBg: '#f0f9ff',
-        text: '#0369a1',
-        border: '#0ea5e9',
-        darkText: '#0369a1',
+        bg: '#706b64', // Muted sand grey primary
+        lightBg: '#f4f3f0', // Soft background
+        text: '#3c3833',
+        border: '#706b64',
+        darkText: '#3c3833',
         badge: '局部'
       };
     } else {
       return {
-        bg: '#8b5cf6', // Purple
-        lightBg: '#faf5ff',
-        text: '#5b21b6',
-        border: '#8b5cf6',
-        darkText: '#5b21b6',
+        bg: '#6c5d7a', // Muted dusty plum primary
+        lightBg: '#f3f1f5', // Soft background
+        text: '#3c3147',
+        border: '#6c5d7a',
+        darkText: '#3c3147',
         badge: '其他'
       };
     }
@@ -147,6 +147,20 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   // Active items for currently selected day
   const selectedDayEvents = useMemo(() => {
     return getEventsForDate(selectedDateStr);
+  }, [selectedDateStr, calendarItems]);
+
+  const todayDropOffCustomers = useMemo(() => {
+    return calendarItems.filter(item => {
+      if (item.id.startsWith('EVENT-')) return false;
+      return item.expectedStartDate === selectedDateStr;
+    });
+  }, [selectedDateStr, calendarItems]);
+
+  const todayDeliveryCustomers = useMemo(() => {
+    return calendarItems.filter(item => {
+      if (item.id.startsWith('EVENT-')) return false;
+      return item.expectedEndDate === selectedDateStr;
+    });
   }, [selectedDateStr, calendarItems]);
 
   const selectedDateLabel = useMemo(() => {
@@ -477,6 +491,88 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
                 <div style={{ padding: '15px 0', textAlign: 'center', color: '#6b7280', fontSize: '0.75rem', background: '#111827', borderRadius: '12px', border: '1px dashed #374151' }}>無施工進度</div>
               );
             })()}
+          </div>
+        </div>
+
+        {/* 今日預計進場留車 */}
+        <div style={{ marginTop: '20px' }}>
+          <h4 style={{ fontSize: '0.85rem', color: '#9ca3af', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            📥 今日預計留車 ({todayDropOffCustomers.length})
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {todayDropOffCustomers.length > 0 ? todayDropOffCustomers.map(item => {
+              const colors = getItemColors(item);
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => onEditCustomer(item)}
+                  style={{
+                    background: '#111827',
+                    borderRadius: '12px',
+                    padding: '12px',
+                    border: '1px solid #374151',
+                    borderLeft: `4px solid ${colors.bg}`,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '6px'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span style={{ fontSize: '0.65rem', padding: '1px 5px', borderRadius: '4px', background: colors.bg, color: '#fff', fontWeight: 'bold' }}>
+                        {colors.badge}
+                      </span>
+                      <strong style={{ fontSize: '0.9rem', color: '#f3f4f6' }}>{item.name}</strong>
+                    </div>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{item.plateNumber}</span>
+                  </div>
+                  <div style={{ fontSize: '0.78rem', color: '#9ca3af' }}>{item.model}</div>
+                </div>
+              );
+            }) : (
+              <div style={{ padding: '15px 0', textAlign: 'center', color: '#6b7280', fontSize: '0.75rem', background: '#111827', borderRadius: '12px', border: '1px dashed #374151' }}>無預計留車車輛</div>
+            )}
+          </div>
+        </div>
+
+        {/* 今日預計完工交車 */}
+        <div style={{ marginTop: '20px' }}>
+          <h4 style={{ fontSize: '0.85rem', color: '#9ca3af', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            📤 今日預計交車 ({todayDeliveryCustomers.length})
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {todayDeliveryCustomers.length > 0 ? todayDeliveryCustomers.map(item => {
+              const colors = getItemColors(item);
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => onEditCustomer(item)}
+                  style={{
+                    background: '#111827',
+                    borderRadius: '12px',
+                    padding: '12px',
+                    border: '1px solid #374151',
+                    borderLeft: `4px solid ${colors.bg}`,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '6px'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span style={{ fontSize: '0.65rem', padding: '1px 5px', borderRadius: '4px', background: colors.bg, color: '#fff', fontWeight: 'bold' }}>
+                        {colors.badge}
+                      </span>
+                      <strong style={{ fontSize: '0.9rem', color: '#f3f4f6' }}>{item.name}</strong>
+                    </div>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{item.plateNumber}</span>
+                  </div>
+                  <div style={{ fontSize: '0.78rem', color: '#9ca3af' }}>{item.model}</div>
+                </div>
+              );
+            }) : (
+              <div style={{ padding: '15px 0', textAlign: 'center', color: '#6b7280', fontSize: '0.75rem', background: '#111827', borderRadius: '12px', border: '1px dashed #374151' }}>無預計交車車輛</div>
+            )}
           </div>
         </div>
       </div>

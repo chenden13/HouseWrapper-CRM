@@ -45,15 +45,14 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     });
   }, [customers]);
 
-  // Color helper based on main service type
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#f0f9ff', // Soft sky blue/cyan
-        stayBorder: '#bae6fd',
-        border: '#0ea5e9',
-        text: '#0369a1',
-        constructionBg: '#7dd3fc',
+        bg: '#f4f3f0', // Muted sand grey
+        stayBorder: '#d5d2cc',
+        border: '#706b64',
+        text: '#3c3833',
+        constructionBg: '#bbb7b0',
         badge: '局部施工'
       };
     }
@@ -61,47 +60,47 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     const service = item.mainService || '';
     if (service.includes('全車犀牛皮')) {
       return {
-        bg: '#f0fdf4', // Soft emerald green
-        stayBorder: '#a7f3d0',
-        border: '#10b981',
-        text: '#065f46',
-        constructionBg: '#6ee7b7',
+        bg: '#f1f3f1', // Muted sage green
+        stayBorder: '#cbd2cb',
+        border: '#5a6e5d',
+        text: '#2d3b2f',
+        constructionBg: '#a3b5a7',
         badge: '犀牛皮'
       };
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
-        bg: '#fff5f5', // Soft coral red
-        stayBorder: '#fecaca',
-        border: '#ef4444',
-        text: '#991b1b',
-        constructionBg: '#fca5a5',
+        bg: '#f5f1f1', // Muted rose / clay
+        stayBorder: '#d6c8c8',
+        border: '#8c6b6b',
+        text: '#4f3838',
+        constructionBg: '#cfaeae',
         badge: '改色膜'
       };
     } else if (service.includes('迎風面')) {
       return {
-        bg: '#eff6ff', // Soft royal blue
-        stayBorder: '#bfdbfe',
-        border: '#3b82f6',
-        text: '#1e40af',
-        constructionBg: '#93c5fd',
+        bg: '#f0f2f5', // Muted steel blue
+        stayBorder: '#c7cbd1',
+        border: '#566573',
+        text: '#2e4053',
+        constructionBg: '#a6b4c2',
         badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
-        bg: '#f0f9ff', // Soft sky blue/cyan
-        stayBorder: '#bae6fd',
-        border: '#0ea5e9',
-        text: '#0369a1',
-        constructionBg: '#7dd3fc',
+        bg: '#f4f3f0', // Muted sand grey
+        stayBorder: '#d5d2cc',
+        border: '#706b64',
+        text: '#3c3833',
+        constructionBg: '#bbb7b0',
         badge: '局部'
       };
     } else {
       return {
-        bg: '#faf5ff', // Soft purple
-        stayBorder: '#e9d5ff',
-        border: '#8b5cf6',
-        text: '#5b21b6',
-        constructionBg: '#d8b4fe',
+        bg: '#f3f1f5', // Muted dusty plum
+        stayBorder: '#cdc8d6',
+        border: '#6c5d7a',
+        text: '#3c3147',
+        constructionBg: '#bcaec4',
         badge: '其他'
       };
     }
@@ -228,8 +227,31 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
       return start <= endOfWeekStr && end >= startOfWeekStr;
     });
 
-    // Sort by duration desc, then start date asc
+    const todayStr = formatDateString(currentDate);
+
+    // Sort by:
+    // 1. Is constructing on the currently selected day (todayStr) -> score 2
+    // 2. Is drop-off or delivery on the currently selected day -> score 1
+    // 3. Others -> score 0
+    // Then duration desc, then expectedStartDate asc
     const sorted = [...weekItems].sort((a, b) => {
+      const isCustomA = a.id.startsWith('EVENT-');
+      const isCustomB = b.id.startsWith('EVENT-');
+
+      const isA_constructing = !isCustomA && a.constructionStartDate && a.constructionStartDate <= todayStr && (a.constructionEndDate || a.constructionStartDate) >= todayStr;
+      const isB_constructing = !isCustomB && b.constructionStartDate && b.constructionStartDate <= todayStr && (b.constructionEndDate || b.constructionStartDate) >= todayStr;
+
+      const isA_todayEvent = a.expectedStartDate === todayStr || a.expectedEndDate === todayStr;
+      const isB_todayEvent = b.expectedStartDate === todayStr || b.expectedEndDate === todayStr;
+
+      const scoreA = isA_constructing ? 2 : (isA_todayEvent ? 1 : 0);
+      const scoreB = isB_constructing ? 2 : (isB_todayEvent ? 1 : 0);
+
+      if (scoreB !== scoreA) {
+        return scoreB - scoreA; // Higher score (constructing today) comes first
+      }
+
+      // Sort by duration desc, then start date asc
       const durationA = new Date(a.expectedEndDate || a.expectedStartDate || '').getTime() - new Date(a.expectedStartDate || '').getTime();
       const durationB = new Date(b.expectedEndDate || b.expectedStartDate || '').getTime() - new Date(b.expectedStartDate || '').getTime();
       if (durationB !== durationA) return durationB - durationA;
@@ -284,7 +306,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     });
 
     return { layouts, maxRows: rows.length };
-  }, [weekDays, calendarItems]);
+  }, [weekDays, calendarItems, currentDate]);
 
 
   // --- Month View Grid Math ---
@@ -412,6 +434,22 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     });
   }, [currentDate, calendarItems]);
 
+  const todayDropOffCustomers = useMemo(() => {
+    const todayStr = formatDateString(currentDate);
+    return calendarItems.filter(item => {
+      if (item.id.startsWith('EVENT-')) return false;
+      return item.expectedStartDate === todayStr;
+    });
+  }, [currentDate, calendarItems]);
+
+  const todayDeliveryCustomers = useMemo(() => {
+    const todayStr = formatDateString(currentDate);
+    return calendarItems.filter(item => {
+      if (item.id.startsWith('EVENT-')) return false;
+      return item.expectedEndDate === todayStr;
+    });
+  }, [currentDate, calendarItems]);
+
   // Today marker check
   const isToday = (date: Date) => {
     const today = new Date(2026, 5, 8); // Jun 8, 2026
@@ -536,92 +574,179 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                 </div>
               </div>
 
-              {/* Right Column: 今日施工車輛 */}
-              <div style={{ display: 'flex', flexDirection: 'column', background: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '16px', overflow: 'hidden' }}>
-                <h3 style={{ margin: '0 0 16px 0', fontSize: '1.05rem', fontWeight: '900', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ display: 'inline-block', width: '8px', height: '18px', background: '#10b981', borderRadius: '4px' }}></span>
-                  🛠️ 今日施工進度 ({constructingCustomers.length} 輛)
-                </h3>
-                <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '4px' }}>
-                  {constructingCustomers.length > 0 ? (
-                    constructingCustomers.map(item => {
-                      const colors = getItemColors(item);
-                      const isSelected = selectedEvent?.id === item.id;
-                      const isCustom = item.id.startsWith('EVENT-');
-                      
-                      const isSpanningTwoDays = !isCustom && 
-                        item.constructionStartDate && 
-                        item.constructionEndDate && 
-                        item.constructionStartDate !== item.constructionEndDate;
+              {/* Right Column: 今日施工車輛 + 今日進出安排 */}
+              <div style={{ display: 'flex', flexDirection: 'column', background: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', padding: '16px', overflow: 'hidden', gap: '16px' }}>
+                
+                {/* Top block: 今日施工進度 */}
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
+                  <h3 style={{ margin: '0 0 12px 0', fontSize: '1.05rem', fontWeight: '900', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ display: 'inline-block', width: '8px', height: '18px', background: '#5a6e5d', borderRadius: '4px' }}></span>
+                    🛠️ 今日施工進度 ({constructingCustomers.length} 輛)
+                  </h3>
+                  <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px', paddingRight: '4px' }}>
+                    {constructingCustomers.length > 0 ? (
+                      constructingCustomers.map(item => {
+                        const colors = getItemColors(item);
+                        const isSelected = selectedEvent?.id === item.id;
+                        const isCustom = item.id.startsWith('EVENT-');
+                        
+                        const isSpanningTwoDays = !isCustom && 
+                          item.constructionStartDate && 
+                          item.constructionEndDate && 
+                          item.constructionStartDate !== item.constructionEndDate;
 
-                      return (
-                        <div
-                          key={item.id}
-                          onClick={() => setSelectedEvent(item)}
-                          style={{
-                            background: '#fff',
-                            border: `1px solid ${isSelected ? 'var(--primary)' : '#e2e8f0'}`,
-                            borderRadius: '12px',
-                            padding: '14px',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s',
-                            boxShadow: isSelected ? '0 4px 12px rgba(79,70,229,0.1)' : '0 2px 4px rgba(0,0,0,0.02)',
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center'
-                          }}
-                        >
-                          <div style={{ flex: 1 }}>
-                            <div style={{ fontWeight: '900', fontSize: '0.95rem', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                              <span>{item.name}</span>
-                              <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: colors.bg, color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>
-                                {isCustom ? '局部施工' : colors.badge}
-                              </span>
+                        return (
+                          <div
+                            key={item.id}
+                            onClick={() => setSelectedEvent(item)}
+                            style={{
+                              background: '#fff',
+                              border: `1px solid ${isSelected ? 'var(--primary)' : '#e2e8f0'}`,
+                              borderRadius: '12px',
+                              padding: '12px',
+                              cursor: 'pointer',
+                              transition: 'all 0.2s',
+                              boxShadow: isSelected ? '0 4px 12px rgba(79,70,229,0.1)' : '0 2px 4px rgba(0,0,0,0.02)',
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center'
+                            }}
+                          >
+                            <div style={{ flex: 1 }}>
+                              <div style={{ fontWeight: '900', fontSize: '0.95rem', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                                <span>{item.name}</span>
+                                <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: colors.bg, color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>
+                                  {isCustom ? '局部施工' : colors.badge}
+                                </span>
+                                
+                                {isSpanningTwoDays ? (
+                                  <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#f5f1f1', color: '#8c6b6b', borderRadius: '4px', border: '1px solid #d6c8c8', fontWeight: 'bold' }}>
+                                    ⚠️ 施工半台 (分兩天)
+                                  </span>
+                                ) : !isCustom ? (
+                                  <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#f1f3f1', color: '#5a6e5d', borderRadius: '4px', border: '1px solid #cbd2cb', fontWeight: 'bold' }}>
+                                    ✅ 施工全台
+                                  </span>
+                                ) : null}
+                              </div>
                               
-                              {isSpanningTwoDays ? (
-                                <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#fffbeb', color: '#b45309', borderRadius: '4px', border: '1px solid #fef3c7', fontWeight: 'bold' }}>
-                                  ⚠️ 施工半台 (分兩天)
-                                </span>
-                              ) : !isCustom ? (
-                                <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#f0fdf4', color: '#166534', borderRadius: '4px', border: '1px solid #dcfce7', fontWeight: 'bold' }}>
-                                  ✅ 施工全台
-                                </span>
-                              ) : null}
+                              {!isCustom ? (
+                                <>
+                                  <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '4px' }}>
+                                    {item.brand} {item.model} | {item.plateNumber}
+                                  </div>
+                                  <div style={{ fontSize: '0.75rem', color: '#5a6e5d', fontWeight: 'bold', marginTop: '6px' }}>
+                                    🛠️ 施工期間: {item.constructionStartDate} ~ {item.constructionEndDate || '未定'}
+                                  </div>
+                                </>
+                              ) : (
+                                <>
+                                  {item.constructionTime && (
+                                    <div style={{ fontSize: '0.8rem', color: '#566573', fontWeight: 'bold', marginTop: '4px' }}>
+                                      ⏰ 留車時間: {item.constructionTime}
+                                    </div>
+                                  )}
+                                  {item.notes && (
+                                    <div style={{ fontSize: '0.75rem', color: '#64748b', background: '#f8fafc', padding: '6px 10px', borderRadius: '6px', marginTop: '6px', border: '1px solid #f1f5f9' }}>
+                                      {item.notes}
+                                    </div>
+                                  )}
+                                </>
+                              )}
                             </div>
-                            
-                            {!isCustom ? (
-                              <>
-                                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '4px' }}>
-                                  {item.brand} {item.model} | {item.plateNumber}
-                                </div>
-                                <div style={{ fontSize: '0.75rem', color: '#059669', fontWeight: 'bold', marginTop: '6px' }}>
-                                  🛠️ 施工期間: {item.constructionStartDate} ~ {item.constructionEndDate || '未定'}
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                {item.constructionTime && (
-                                  <div style={{ fontSize: '0.8rem', color: '#0284c7', fontWeight: 'bold', marginTop: '4px' }}>
-                                    ⏰ 留車時間: {item.constructionTime}
-                                  </div>
-                                )}
-                                {item.notes && (
-                                  <div style={{ fontSize: '0.75rem', color: '#64748b', background: '#f8fafc', padding: '6px 10px', borderRadius: '6px', marginTop: '6px', border: '1px solid #f1f5f9' }}>
-                                    {item.notes}
-                                  </div>
-                                )}
-                              </>
-                            )}
+                            <ChevronRight size={18} color="#cbd5e1" />
                           </div>
-                          <ChevronRight size={18} color="#cbd5e1" />
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8', fontSize: '0.85rem' }}>
-                      當日無施工車輛
+                        );
+                      })
+                    ) : (
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8', fontSize: '0.85rem' }}>
+                        當日無施工車輛
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Bottom block: 今日進出安排 */}
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden', borderTop: '1px solid #e2e8f0', paddingTop: '16px' }}>
+                  <h3 style={{ margin: '0 0 12px 0', fontSize: '1.05rem', fontWeight: '900', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ display: 'inline-block', width: '8px', height: '18px', background: '#566573', borderRadius: '4px' }}></span>
+                    🔄 今日進出安排 (留車與交車)
+                  </h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', flex: 1, overflow: 'hidden' }}>
+                    {/* Left sub-column: 今日須留車 */}
+                    <div style={{ display: 'flex', flexDirection: 'column', background: '#fff', borderRadius: '12px', border: '1px solid #f1f5f9', padding: '12px', overflow: 'hidden' }}>
+                      <h4 style={{ margin: '0 0 10px 0', fontSize: '0.85rem', fontWeight: 'bold', color: '#2e4053', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        📥 今日須留車 ({todayDropOffCustomers.length})
+                      </h4>
+                      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        {todayDropOffCustomers.length > 0 ? (
+                          todayDropOffCustomers.map(item => {
+                            const colors = getItemColors(item);
+                            const isSelected = selectedEvent?.id === item.id;
+                            return (
+                              <div
+                                key={item.id}
+                                onClick={() => setSelectedEvent(item)}
+                                style={{
+                                  padding: '8px 10px',
+                                  background: '#f8fafc',
+                                  border: `1px solid ${isSelected ? 'var(--primary)' : '#e2e8f0'}`,
+                                  borderRadius: '8px',
+                                  cursor: 'pointer',
+                                  fontSize: '0.8rem'
+                                }}
+                              >
+                                <div style={{ fontWeight: 'bold', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap' }}>
+                                  <span>{item.name}</span>
+                                  <span style={{ fontSize: '0.65rem', padding: '1px 4px', background: colors.bg, color: colors.text, borderRadius: '4px' }}>{colors.badge}</span>
+                                </div>
+                                <div style={{ color: '#64748b', fontSize: '0.75rem', marginTop: '2px' }}>{item.plateNumber} | {item.model}</div>
+                              </div>
+                            );
+                          })
+                        ) : (
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#cbd5e1', fontSize: '0.75rem' }}>無今日須留車</div>
+                        )}
+                      </div>
                     </div>
-                  )}
+
+                    {/* Right sub-column: 今日須交車 */}
+                    <div style={{ display: 'flex', flexDirection: 'column', background: '#fff', borderRadius: '12px', border: '1px solid #f1f5f9', padding: '12px', overflow: 'hidden' }}>
+                      <h4 style={{ margin: '0 0 10px 0', fontSize: '0.85rem', fontWeight: 'bold', color: '#8c6b6b', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        📤 今日須交車 ({todayDeliveryCustomers.length})
+                      </h4>
+                      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        {todayDeliveryCustomers.length > 0 ? (
+                          todayDeliveryCustomers.map(item => {
+                            const colors = getItemColors(item);
+                            const isSelected = selectedEvent?.id === item.id;
+                            return (
+                              <div
+                                key={item.id}
+                                onClick={() => setSelectedEvent(item)}
+                                style={{
+                                  padding: '8px 10px',
+                                  background: '#f8fafc',
+                                  border: `1px solid ${isSelected ? 'var(--primary)' : '#e2e8f0'}`,
+                                  borderRadius: '8px',
+                                  cursor: 'pointer',
+                                  fontSize: '0.8rem'
+                                }}
+                              >
+                                <div style={{ fontWeight: 'bold', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '4px', flexWrap: 'wrap' }}>
+                                  <span>{item.name}</span>
+                                  <span style={{ fontSize: '0.65rem', padding: '1px 4px', background: colors.bg, color: colors.text, borderRadius: '4px' }}>{colors.badge}</span>
+                                </div>
+                                <div style={{ color: '#64748b', fontSize: '0.75rem', marginTop: '2px' }}>{item.plateNumber} | {item.model}</div>
+                              </div>
+                            );
+                          })
+                        ) : (
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#cbd5e1', fontSize: '0.75rem' }}>無今日須交車</div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

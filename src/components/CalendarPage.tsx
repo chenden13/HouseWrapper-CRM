@@ -48,11 +48,11 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#eae8e4', // Muted soft sand
-        stayBorder: '#e2e0db',
-        border: '#b0ac9d',
-        text: '#57544a',
-        constructionBg: '#cfcbc4',
+        bg: '#f8f6f0', // Fresh light cream/sand
+        stayBorder: '#f2efe5',
+        border: '#dacfbe',
+        text: '#5c523e',
+        constructionBg: '#ede7d7',
         badge: '局部施工'
       };
     }
@@ -60,47 +60,47 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     const service = item.mainService || '';
     if (service.includes('全車犀牛皮')) {
       return {
-        bg: '#e6ebe6', // Muted soft sage green
-        stayBorder: '#dbe2db',
-        border: '#9db09e',
-        text: '#4a574b',
-        constructionBg: '#c5d0c6',
+        bg: '#f0f7f0', // Fresh light Sage Green
+        stayBorder: '#e0efe1',
+        border: '#b6dcb9',
+        text: '#3b5a3e',
+        constructionBg: '#d5ebd6',
         badge: '犀牛皮'
       };
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
-        bg: '#ebe6e6', // Muted soft clay rose
-        stayBorder: '#e2dbdb',
-        border: '#b09d9d',
-        text: '#574747',
-        constructionBg: '#d0c2c2',
+        bg: '#fbf3f3', // Fresh light Rose/Coral
+        stayBorder: '#f5e5e5',
+        border: '#e8bcbc',
+        text: '#6b4343',
+        constructionBg: '#f3dbdb',
         badge: '改色膜'
       };
     } else if (service.includes('迎風面')) {
       return {
-        bg: '#e5e9ee', // Muted soft steel blue
-        stayBorder: '#dbe1e8',
-        border: '#9ca9b8',
-        text: '#424e5c',
-        constructionBg: '#c2cbd6',
+        bg: '#f1f6fc', // Fresh light Sky Blue
+        stayBorder: '#e2edf9',
+        border: '#b3cff1',
+        text: '#354e6b',
+        constructionBg: '#d7e6f8',
         badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
-        bg: '#eae8e4', // Muted soft sand
-        stayBorder: '#e2e0db',
-        border: '#b0ac9d',
-        text: '#57544a',
-        constructionBg: '#cfcbc4',
+        bg: '#f8f6f0', // Fresh light cream/sand
+        stayBorder: '#f2efe5',
+        border: '#dacfbe',
+        text: '#5c523e',
+        constructionBg: '#ede7d7',
         badge: '局部'
       };
     } else {
       return {
-        bg: '#eae6ee', // Muted soft dusty plum
-        stayBorder: '#e2dbe8',
-        border: '#b09db8',
-        text: '#52455c',
-        constructionBg: '#cfc2d6',
+        bg: '#f6f2f9', // Fresh light Lavender
+        stayBorder: '#f0e7f5',
+        border: '#d7bee5',
+        text: '#593c6b',
+        constructionBg: '#ebdcf5',
         badge: '其他'
       };
     }

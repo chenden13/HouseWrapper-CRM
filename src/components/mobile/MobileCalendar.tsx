@@ -380,9 +380,13 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
                       </div>
                       <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{item.plateNumber}</span>
                     </div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af', alignItems: 'center' }}>
                       {item.model && <span>{item.model}</span>}
-                      {item.filmColor && <span style={{ color: '#ef4444' }}>● {item.filmColor}</span>}
+                      {item.filmColor && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>🎨 {item.filmColor}</span>}
+                      {item.windowTint && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>☀️ {item.windowTint}</span>}
+                    </div>
+                    <div style={{ fontSize: '0.78rem', color: '#f59e0b', fontWeight: 'bold', marginTop: '2px' }}>
+                      🏁 預計交車: {item.expectedEndDate || '未定'} {item.expectedDeliveryTime || ''}
                     </div>
                     <div style={{ fontSize: '0.7rem', color: '#6b7280' }}>
                       留車期間: {item.expectedStartDate} ~ {item.expectedEndDate || '未定'}
@@ -427,7 +431,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
                       borderRadius: '12px',
                       padding: '12px',
                       border: '1px solid #374151',
-                      borderLeft: `4px solid ${isCustom ? '#0ea5e9' : colors.bg}`,
+                      borderLeft: `4px solid ${isCustom ? '#ede7d7' : colors.bg}`,
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '6px',
@@ -445,13 +449,13 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingRight: isCustom ? '30px' : '0' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '0.65rem', padding: '1px 5px', borderRadius: '4px', background: isCustom ? '#0ea5e9' : colors.bg, color: '#fff', fontWeight: 'bold' }}>
+                        <span style={{ fontSize: '0.65rem', padding: '1px 5px', borderRadius: '4px', background: isCustom ? '#ede7d7' : colors.bg, color: isCustom ? '#5c523e' : '#fff', fontWeight: 'bold' }}>
                           {isCustom ? '局部施工' : colors.badge}
                         </span>
                         <strong style={{ fontSize: '0.9rem', color: '#f3f4f6' }}>{item.name}</strong>
                         
                         {isSpanningTwoDays && (
-                          <span style={{ fontSize: '0.6rem', padding: '1px 4px', background: '#fffbeb', color: '#b45309', borderRadius: '3px', border: '1px solid #fef3c7', fontWeight: 'bold' }}>
+                          <span style={{ fontSize: '0.6rem', padding: '1px 4px', background: '#fbf3f3', color: '#6b4343', borderRadius: '3px', border: '1px solid #e8bcbc', fontWeight: 'bold' }}>
                             施工半台
                           </span>
                         )}
@@ -463,12 +467,16 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
 
                     {!isCustom ? (
                       <>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af' }}>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af', alignItems: 'center' }}>
                           {item.model && <span>{item.model}</span>}
-                          {item.filmColor && <span style={{ color: '#ef4444' }}>● {item.filmColor}</span>}
+                          {item.filmColor && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>🎨 {item.filmColor}</span>}
+                          {item.windowTint && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>☀️ {item.windowTint}</span>}
                         </div>
-                        <div style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 'bold' }}>
-                          施工: {item.constructionStartDate} ~ {item.constructionEndDate || '未定'}
+                        <div style={{ fontSize: '0.78rem', color: '#f59e0b', fontWeight: 'bold', marginTop: '2px' }}>
+                          🏁 預計交車: {item.expectedEndDate || '未定'} {item.expectedDeliveryTime || ''}
+                        </div>
+                        <div style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 'bold', marginTop: '2px' }}>
+                          🛠️ 施工: {item.constructionStartDate} ~ {item.constructionEndDate || '未定'}
                         </div>
                       </>
                     ) : (
@@ -526,7 +534,14 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
                     </div>
                     <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{item.plateNumber}</span>
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: '#9ca3af' }}>{item.model}</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af', alignItems: 'center' }}>
+                    {item.model && <span>{item.model}</span>}
+                    {item.filmColor && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>🎨 {item.filmColor}</span>}
+                    {item.windowTint && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>☀️ {item.windowTint}</span>}
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 'bold', marginTop: '2px' }}>
+                    📥 預計進場: {item.constructionTime || '時間未定'}
+                  </div>
                 </div>
               );
             }) : (
@@ -567,7 +582,14 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
                     </div>
                     <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{item.plateNumber}</span>
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: '#9ca3af' }}>{item.model}</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.78rem', color: '#9ca3af', alignItems: 'center' }}>
+                    {item.model && <span>{item.model}</span>}
+                    {item.filmColor && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>🎨 {item.filmColor}</span>}
+                    {item.windowTint && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>☀️ {item.windowTint}</span>}
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: '#f59e0b', fontWeight: 'bold', marginTop: '2px' }}>
+                    🏁 預計交車: {item.expectedDeliveryTime || '時間未定'}
+                  </div>
                 </div>
               );
             }) : (

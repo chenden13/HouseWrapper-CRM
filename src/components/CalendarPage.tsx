@@ -48,11 +48,11 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#dad7cf', // Muted sand grey
-        stayBorder: '#b8b3a8',
-        border: '#706b64',
-        text: '#3c3833',
-        constructionBg: '#b5b0a5',
+        bg: '#eae8e4', // Muted soft sand
+        stayBorder: '#e2e0db',
+        border: '#b0ac9d',
+        text: '#57544a',
+        constructionBg: '#cfcbc4',
         badge: '局部施工'
       };
     }
@@ -60,47 +60,47 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     const service = item.mainService || '';
     if (service.includes('全車犀牛皮')) {
       return {
-        bg: '#ccd5cd', // Muted sage green
-        stayBorder: '#a2b0a3',
-        border: '#5a6e5d',
-        text: '#2d3b2f',
-        constructionBg: '#8ea391',
+        bg: '#e6ebe6', // Muted soft sage green
+        stayBorder: '#dbe2db',
+        border: '#9db09e',
+        text: '#4a574b',
+        constructionBg: '#c5d0c6',
         badge: '犀牛皮'
       };
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
-        bg: '#dcd0d0', // Muted clay rose
-        stayBorder: '#bfaeae',
-        border: '#8c6b6b',
-        text: '#4f3838',
-        constructionBg: '#b89f9f',
+        bg: '#ebe6e6', // Muted soft clay rose
+        stayBorder: '#e2dbdb',
+        border: '#b09d9d',
+        text: '#574747',
+        constructionBg: '#d0c2c2',
         badge: '改色膜'
       };
     } else if (service.includes('迎風面')) {
       return {
-        bg: '#cbd3dc', // Muted steel blue
-        stayBorder: '#a2b0be',
-        border: '#566573',
-        text: '#2e4053',
-        constructionBg: '#95a7b8',
+        bg: '#e5e9ee', // Muted soft steel blue
+        stayBorder: '#dbe1e8',
+        border: '#9ca9b8',
+        text: '#424e5c',
+        constructionBg: '#c2cbd6',
         badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
-        bg: '#dad7cf', // Muted sand grey
-        stayBorder: '#b8b3a8',
-        border: '#706b64',
-        text: '#3c3833',
-        constructionBg: '#b5b0a5',
+        bg: '#eae8e4', // Muted soft sand
+        stayBorder: '#e2e0db',
+        border: '#b0ac9d',
+        text: '#57544a',
+        constructionBg: '#cfcbc4',
         badge: '局部'
       };
     } else {
       return {
-        bg: '#d8d2dc', // Muted dusty plum
-        stayBorder: '#b8adca',
-        border: '#6c5d7a',
-        text: '#3c3147',
-        constructionBg: '#b2a5ba',
+        bg: '#eae6ee', // Muted soft dusty plum
+        stayBorder: '#e2dbe8',
+        border: '#b09db8',
+        text: '#52455c',
+        constructionBg: '#cfc2d6',
         badge: '其他'
       };
     }

@@ -39,11 +39,11 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#b5b0a5', // Muted sand grey primary
-        lightBg: '#dad7cf', // Soft background
-        text: '#3c3833',
-        border: '#706b64',
-        darkText: '#3c3833',
+        bg: '#cfcbc4', // Muted soft sand
+        lightBg: '#eae8e4', // Soft background
+        text: '#57544a',
+        border: '#b0ac9d',
+        darkText: '#57544a',
         badge: '局部'
       };
     }
@@ -51,47 +51,47 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     const service = item.mainService || '';
     if (service.includes('全車犀牛皮')) {
       return {
-        bg: '#8ea391', // Muted sage green primary
-        lightBg: '#ccd5cd', // Soft background
-        text: '#2d3b2f',
-        border: '#5a6e5d',
-        darkText: '#2d3b2f',
+        bg: '#c5d0c6', // Muted soft sage green
+        lightBg: '#e6ebe6', // Soft background
+        text: '#4a574b',
+        border: '#9db09e',
+        darkText: '#4a574b',
         badge: '犀牛皮'
       };
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
-        bg: '#b89f9f', // Muted clay rose primary
-        lightBg: '#dcd0d0', // Soft background
-        text: '#4f3838',
-        border: '#8c6b6b',
-        darkText: '#4f3838',
+        bg: '#d0c2c2', // Muted soft clay rose
+        lightBg: '#ebe6e6', // Soft background
+        text: '#574747',
+        border: '#b09d9d',
+        darkText: '#574747',
         badge: '改色膜'
       };
     } else if (service.includes('迎風面')) {
       return {
-        bg: '#95a7b8', // Muted steel blue primary
-        lightBg: '#cbd3dc', // Soft background
-        text: '#2e4053',
-        border: '#566573',
-        darkText: '#2e4053',
+        bg: '#c2cbd6', // Muted soft steel blue
+        lightBg: '#e5e9ee', // Soft background
+        text: '#424e5c',
+        border: '#9ca9b8',
+        darkText: '#424e5c',
         badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
-        bg: '#b5b0a5', // Muted sand grey primary
-        lightBg: '#dad7cf', // Soft background
-        text: '#3c3833',
-        border: '#706b64',
-        darkText: '#3c3833',
+        bg: '#cfcbc4', // Muted soft sand
+        lightBg: '#eae8e4', // Soft background
+        text: '#57544a',
+        border: '#b0ac9d',
+        darkText: '#57544a',
         badge: '局部'
       };
     } else {
       return {
-        bg: '#b2a5ba', // Muted dusty plum primary
-        lightBg: '#d8d2dc', // Soft background
-        text: '#3c3147',
-        border: '#6c5d7a',
-        darkText: '#3c3147',
+        bg: '#cfc2d6', // Muted soft dusty plum
+        lightBg: '#eae6ee', // Soft background
+        text: '#52455c',
+        border: '#b09db8',
+        darkText: '#52455c',
         badge: '其他'
       };
     }

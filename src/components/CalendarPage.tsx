@@ -48,11 +48,11 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#f4f3f0', // Muted sand grey
-        stayBorder: '#d5d2cc',
+        bg: '#dad7cf', // Muted sand grey
+        stayBorder: '#b8b3a8',
         border: '#706b64',
         text: '#3c3833',
-        constructionBg: '#bbb7b0',
+        constructionBg: '#b5b0a5',
         badge: '局部施工'
       };
     }
@@ -60,47 +60,47 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     const service = item.mainService || '';
     if (service.includes('全車犀牛皮')) {
       return {
-        bg: '#f1f3f1', // Muted sage green
-        stayBorder: '#cbd2cb',
+        bg: '#ccd5cd', // Muted sage green
+        stayBorder: '#a2b0a3',
         border: '#5a6e5d',
         text: '#2d3b2f',
-        constructionBg: '#a3b5a7',
+        constructionBg: '#8ea391',
         badge: '犀牛皮'
       };
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
-        bg: '#f5f1f1', // Muted rose / clay
-        stayBorder: '#d6c8c8',
+        bg: '#dcd0d0', // Muted clay rose
+        stayBorder: '#bfaeae',
         border: '#8c6b6b',
         text: '#4f3838',
-        constructionBg: '#cfaeae',
+        constructionBg: '#b89f9f',
         badge: '改色膜'
       };
     } else if (service.includes('迎風面')) {
       return {
-        bg: '#f0f2f5', // Muted steel blue
-        stayBorder: '#c7cbd1',
+        bg: '#cbd3dc', // Muted steel blue
+        stayBorder: '#a2b0be',
         border: '#566573',
         text: '#2e4053',
-        constructionBg: '#a6b4c2',
+        constructionBg: '#95a7b8',
         badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
-        bg: '#f4f3f0', // Muted sand grey
-        stayBorder: '#d5d2cc',
+        bg: '#dad7cf', // Muted sand grey
+        stayBorder: '#b8b3a8',
         border: '#706b64',
         text: '#3c3833',
-        constructionBg: '#bbb7b0',
+        constructionBg: '#b5b0a5',
         badge: '局部'
       };
     } else {
       return {
-        bg: '#f3f1f5', // Muted dusty plum
-        stayBorder: '#cdc8d6',
+        bg: '#d8d2dc', // Muted dusty plum
+        stayBorder: '#b8adca',
         border: '#6c5d7a',
         text: '#3c3147',
-        constructionBg: '#bcaec4',
+        constructionBg: '#b2a5ba',
         badge: '其他'
       };
     }
@@ -238,11 +238,15 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
       const isCustomA = a.id.startsWith('EVENT-');
       const isCustomB = b.id.startsWith('EVENT-');
 
-      const isA_constructing = !isCustomA && a.constructionStartDate && a.constructionStartDate <= todayStr && (a.constructionEndDate || a.constructionStartDate) >= todayStr;
-      const isB_constructing = !isCustomB && b.constructionStartDate && b.constructionStartDate <= todayStr && (b.constructionEndDate || b.constructionStartDate) >= todayStr;
+      const isA_constructing = isCustomA 
+        ? (a.expectedStartDate === todayStr)
+        : !!(a.constructionStartDate && a.constructionStartDate <= todayStr && (a.constructionEndDate || a.constructionStartDate) >= todayStr);
+      const isB_constructing = isCustomB 
+        ? (b.expectedStartDate === todayStr)
+        : !!(b.constructionStartDate && b.constructionStartDate <= todayStr && (b.constructionEndDate || b.constructionStartDate) >= todayStr);
 
-      const isA_todayEvent = a.expectedStartDate === todayStr || a.expectedEndDate === todayStr;
-      const isB_todayEvent = b.expectedStartDate === todayStr || b.expectedEndDate === todayStr;
+      const isA_todayEvent = !isCustomA && (a.expectedStartDate === todayStr || a.expectedEndDate === todayStr);
+      const isB_todayEvent = !isCustomB && (b.expectedStartDate === todayStr || b.expectedEndDate === todayStr);
 
       const scoreA = isA_constructing ? 2 : (isA_todayEvent ? 1 : 0);
       const scoreB = isB_constructing ? 2 : (isB_todayEvent ? 1 : 0);

@@ -39,8 +39,8 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   const getItemColors = (item: Customer) => {
     if (item.id.startsWith('EVENT-')) {
       return {
-        bg: '#706b64', // Muted sand grey primary
-        lightBg: '#f4f3f0', // Soft background
+        bg: '#b5b0a5', // Muted sand grey primary
+        lightBg: '#dad7cf', // Soft background
         text: '#3c3833',
         border: '#706b64',
         darkText: '#3c3833',
@@ -51,8 +51,8 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     const service = item.mainService || '';
     if (service.includes('全車犀牛皮')) {
       return {
-        bg: '#5a6e5d', // Muted sage green primary
-        lightBg: '#f1f3f1', // Soft background
+        bg: '#8ea391', // Muted sage green primary
+        lightBg: '#ccd5cd', // Soft background
         text: '#2d3b2f',
         border: '#5a6e5d',
         darkText: '#2d3b2f',
@@ -60,8 +60,8 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
       };
     } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
       return {
-        bg: '#8c6b6b', // Muted clay rose primary
-        lightBg: '#f5f1f1', // Soft background
+        bg: '#b89f9f', // Muted clay rose primary
+        lightBg: '#dcd0d0', // Soft background
         text: '#4f3838',
         border: '#8c6b6b',
         darkText: '#4f3838',
@@ -69,8 +69,8 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
       };
     } else if (service.includes('迎風面')) {
       return {
-        bg: '#566573', // Muted steel blue primary
-        lightBg: '#f0f2f5', // Soft background
+        bg: '#95a7b8', // Muted steel blue primary
+        lightBg: '#cbd3dc', // Soft background
         text: '#2e4053',
         border: '#566573',
         darkText: '#2e4053',
@@ -78,8 +78,8 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
       };
     } else if (service.includes('局部')) {
       return {
-        bg: '#706b64', // Muted sand grey primary
-        lightBg: '#f4f3f0', // Soft background
+        bg: '#b5b0a5', // Muted sand grey primary
+        lightBg: '#dad7cf', // Soft background
         text: '#3c3833',
         border: '#706b64',
         darkText: '#3c3833',
@@ -87,8 +87,8 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
       };
     } else {
       return {
-        bg: '#6c5d7a', // Muted dusty plum primary
-        lightBg: '#f3f1f5', // Soft background
+        bg: '#b2a5ba', // Muted dusty plum primary
+        lightBg: '#d8d2dc', // Soft background
         text: '#3c3147',
         border: '#6c5d7a',
         darkText: '#3c3147',

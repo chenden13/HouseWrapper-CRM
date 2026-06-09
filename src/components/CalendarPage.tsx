@@ -106,6 +106,98 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     }
   };
 
+  const getDayColors = (item: Customer) => {
+    const service = item.mainService || '';
+    const isCustom = item.id.startsWith('EVENT-');
+    if (isCustom) {
+      return {
+        bg: '#dcd9d0', // Deeper sand/warm grey
+        border: '#b0ac9d',
+        text: '#3c3830',
+        badge: '局部施工'
+      };
+    }
+    if (service.includes('全車犀牛皮')) {
+      return {
+        bg: '#d2dfd3', // Deeper sage green
+        border: '#9db09e',
+        text: '#2d3b2e',
+        badge: '犀牛皮'
+      };
+    } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
+      return {
+        bg: '#e2d2d2', // Deeper rose/clay
+        border: '#b09d9d',
+        text: '#4a3838',
+        badge: '改色膜'
+      };
+    } else if (service.includes('迎風面')) {
+      return {
+        bg: '#d2dce6', // Deeper steel blue
+        border: '#9ca9b8',
+        text: '#253545',
+        badge: '迎風面'
+      };
+    } else if (service.includes('局部')) {
+      return {
+        bg: '#dcd9d0', // Deeper sand/warm grey
+        border: '#b0ac9d',
+        text: '#3c3830',
+        badge: '局部'
+      };
+    } else {
+      return {
+        bg: '#dcd2e2', // Deeper dusty plum
+        border: '#b09db8',
+        text: '#3a2d45',
+        badge: '其他'
+      };
+    }
+  };
+
+  const getDayConstructionColors = (item: Customer) => {
+    const service = item.mainService || '';
+    const isCustom = item.id.startsWith('EVENT-');
+    if (isCustom) {
+      return {
+        bg: '#c5c0b4',
+        border: '#9c978c',
+        text: '#2d2922'
+      };
+    }
+    if (service.includes('全車犀牛皮')) {
+      return {
+        bg: '#b8cbb9',
+        border: '#7a8c7c',
+        text: '#1e2b20'
+      };
+    } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
+      return {
+        bg: '#cca7a7',
+        border: '#a58c8c',
+        text: '#3f2424'
+      };
+    } else if (service.includes('迎風面')) {
+      return {
+        bg: '#b3c3d4',
+        border: '#889bb0',
+        text: '#1a2633'
+      };
+    } else if (service.includes('局部')) {
+      return {
+        bg: '#c5c0b4',
+        border: '#9c978c',
+        text: '#2d2922'
+      };
+    } else {
+      return {
+        bg: '#cbb4dc',
+        border: '#9a8ca5',
+        text: '#291e33'
+      };
+    }
+  };
+
   // Helper: Normalize date string to YYYY-MM-DD
   const formatDateString = (date: Date) => {
     const y = date.getFullYear();
@@ -533,7 +625,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                 <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '4px' }}>
                   {inShopCustomers.length > 0 ? (
                     inShopCustomers.map(item => {
-                      const colors = getItemColors(item);
+                      const colors = getDayColors(item);
                       const isSelected = selectedEvent?.id === item.id;
                       return (
                         <div
@@ -541,45 +633,40 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                           onClick={() => setSelectedEvent(item)}
                           style={{
                             background: colors.bg,
-                            border: `1px solid ${isSelected ? 'var(--primary)' : colors.stayBorder}`,
-                            borderRadius: '12px',
-                            padding: '14px',
+                            border: `1px solid ${isSelected ? 'var(--primary)' : colors.border}`,
+                            borderRadius: '10px',
+                            padding: '8px 12px',
                             cursor: 'pointer',
                             transition: 'all 0.2s',
-                            boxShadow: isSelected ? '0 4px 12px rgba(79,70,229,0.15)' : '0 2px 4px rgba(0,0,0,0.02)',
+                            boxShadow: isSelected ? '0 4px 10px rgba(79,70,229,0.12)' : '0 1px 3px rgba(0,0,0,0.02)',
                             display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center'
+                            flexDirection: 'column',
+                            gap: '4px'
                           }}
                         >
-                          <div>
-                            <div style={{ fontWeight: '900', fontSize: '0.95rem', color: colors.text, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div style={{ fontWeight: '800', fontSize: '0.9rem', color: colors.text, display: 'flex', alignItems: 'center', gap: '6px' }}>
                               <span>{item.name}</span>
-                              <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#fff', color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>
+                              <span style={{ fontSize: '0.65rem', padding: '1px 5px', background: '#fff', color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>
                                 {colors.badge}
                               </span>
                             </div>
-                            <div style={{ fontSize: '0.8rem', color: colors.text, opacity: 0.9, marginTop: '4px' }}>
+                            <div style={{ fontSize: '0.75rem', color: colors.text, opacity: 0.85 }}>
                               {item.brand} {item.model} | {item.plateNumber}
                             </div>
+                          </div>
 
-                            {/* Film Color & Service Detail */}
-                            {(item.filmColor || item.windowTint || item.mainServiceBrand) && (
-                              <div style={{ fontSize: '0.8rem', color: colors.text, fontWeight: 'bold', marginTop: '6px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                                {item.filmColor && <span style={{ background: 'rgba(255,255,255,0.6)', padding: '2px 6px', borderRadius: '4px', border: `1px solid ${colors.border}` }}>🎨 膜料: {item.filmColor}</span>}
-                                {item.windowTint && <span style={{ background: 'rgba(255,255,255,0.6)', padding: '2px 6px', borderRadius: '4px', border: `1px solid ${colors.border}` }}>☀️ 隔熱紙: {item.windowTint}</span>}
-                                {item.mainServiceBrand && <span style={{ opacity: 0.8 }}>({item.mainServiceBrand})</span>}
-                              </div>
-                            )}
-
-                            <div style={{ fontSize: '0.78rem', color: '#b45309', fontWeight: 'bold', marginTop: '8px' }}>
-                              🏁 預計交車: {item.expectedEndDate || '未定'} {item.expectedDeliveryTime || ''}
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px', flexWrap: 'wrap', gap: '4px' }}>
+                            {/* Left: Film & Tint */}
+                            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                              {item.filmColor && <span style={{ background: 'rgba(255,255,255,0.7)', padding: '1px 4px', borderRadius: '3px', fontSize: '0.72rem', color: colors.text, border: `1px solid ${colors.border}` }}>🎨 {item.filmColor}</span>}
+                              {item.windowTint && <span style={{ background: 'rgba(255,255,255,0.7)', padding: '1px 4px', borderRadius: '3px', fontSize: '0.72rem', color: colors.text, border: `1px solid ${colors.border}` }}>☀️ 隔熱</span>}
                             </div>
-                            <div style={{ fontSize: '0.72rem', color: colors.text, opacity: 0.7, marginTop: '2px' }}>
-                              📅 留車期間: {item.expectedStartDate} 至 {item.expectedEndDate || '未定'}
+                            {/* Right: Delivery Time */}
+                            <div style={{ fontSize: '0.75rem', color: '#b45309', fontWeight: 'bold' }}>
+                              🏁 交車: {item.expectedEndDate ? item.expectedEndDate.substring(5) : '未定'} {item.expectedDeliveryTime || ''}
                             </div>
                           </div>
-                          <ChevronRight size={18} color={colors.text} style={{ opacity: 0.5 }} />
                         </div>
                       );
                     })
@@ -603,7 +690,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                   <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px', paddingRight: '4px' }}>
                     {constructingCustomers.length > 0 ? (
                       constructingCustomers.map(item => {
-                        const colors = getItemColors(item);
+                        const colors = getDayConstructionColors(item);
                         const isSelected = selectedEvent?.id === item.id;
                         const isCustom = item.id.startsWith('EVENT-');
                         
@@ -617,74 +704,65 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                             key={item.id}
                             onClick={() => setSelectedEvent(item)}
                             style={{
-                              background: colors.constructionBg,
+                              background: colors.bg,
                               border: `1px solid ${isSelected ? 'var(--primary)' : colors.border}`,
-                              borderRadius: '12px',
-                              padding: '12px',
+                              borderRadius: '10px',
+                              padding: '10px 12px',
                               cursor: 'pointer',
                               transition: 'all 0.2s',
-                              boxShadow: isSelected ? '0 4px 12px rgba(79,70,229,0.15)' : '0 2px 4px rgba(0,0,0,0.02)',
+                              boxShadow: isSelected ? '0 4px 10px rgba(79,70,229,0.12)' : '0 1px 3px rgba(0,0,0,0.02)',
                               display: 'flex',
-                              justifyContent: 'space-between',
-                              alignItems: 'center'
+                              flexDirection: 'column',
+                              gap: '4px'
                             }}
                           >
-                            <div style={{ flex: 1 }}>
-                              <div style={{ fontWeight: '900', fontSize: '0.95rem', color: colors.text, display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <div style={{ fontWeight: '800', fontSize: '0.9rem', color: colors.text, display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                                 <span>{item.name}</span>
-                                <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#fff', color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>
+                                <span style={{ fontSize: '0.65rem', padding: '1px 5px', background: '#fff', color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>
                                   {isCustom ? '局部施工' : colors.badge}
                                 </span>
-                                
                                 {isSpanningTwoDays ? (
-                                  <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#fbf3f3', color: '#6b4343', borderRadius: '4px', border: '1px solid #e8bcbc', fontWeight: 'bold' }}>
-                                    ⚠️ 施工半台 (分兩天)
+                                  <span style={{ fontSize: '0.65rem', padding: '1px 4px', background: '#fbf3f3', color: '#6b4343', borderRadius: '4px', border: '1px solid #e8bcbc', fontWeight: 'bold' }}>
+                                    半台
                                   </span>
                                 ) : !isCustom ? (
-                                  <span style={{ fontSize: '0.65rem', padding: '2px 6px', background: '#f0f7f0', color: '#3b5a3e', borderRadius: '4px', border: '1px solid #b6dcb9', fontWeight: 'bold' }}>
-                                    ✅ 施工全台
+                                  <span style={{ fontSize: '0.65rem', padding: '1px 4px', background: '#f0f7f0', color: '#3b5a3e', borderRadius: '4px', border: '1px solid #b6dcb9', fontWeight: 'bold' }}>
+                                    全台
                                   </span>
                                 ) : null}
                               </div>
-                              
-                              {!isCustom ? (
-                                <>
-                                  <div style={{ fontSize: '0.8rem', color: colors.text, opacity: 0.9, marginTop: '4px' }}>
-                                    {item.brand} {item.model} | {item.plateNumber}
-                                  </div>
-
-                                  {/* Film Color & Service Detail */}
-                                  {(item.filmColor || item.windowTint || item.mainServiceBrand) && (
-                                    <div style={{ fontSize: '0.8rem', color: colors.text, fontWeight: 'bold', marginTop: '6px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                                      {item.filmColor && <span style={{ background: 'rgba(255,255,255,0.6)', padding: '2px 6px', borderRadius: '4px', border: `1px solid ${colors.border}` }}>🎨 膜料: {item.filmColor}</span>}
-                                      {item.windowTint && <span style={{ background: 'rgba(255,255,255,0.6)', padding: '2px 6px', borderRadius: '4px', border: `1px solid ${colors.border}` }}>☀️ 隔熱紙: {item.windowTint}</span>}
-                                      {item.mainServiceBrand && <span style={{ opacity: 0.8 }}>({item.mainServiceBrand})</span>}
-                                    </div>
-                                  )}
-
-                                  <div style={{ fontSize: '0.78rem', color: '#b45309', fontWeight: 'bold', marginTop: '8px' }}>
-                                    🏁 預計交車: {item.expectedEndDate || '未定'} {item.expectedDeliveryTime || ''}
-                                  </div>
-                                  <div style={{ fontSize: '0.72rem', color: colors.text, opacity: 0.7, marginTop: '2px' }}>
-                                    🛠️ 施工期間: {item.constructionStartDate} ~ {item.constructionEndDate || '未定'}
-                                  </div>
-                                </>
-                              ) : (
-                                <>
-                                  {item.constructionTime && (
-                                    <div style={{ fontSize: '0.8rem', color: colors.text, fontWeight: 'bold', marginTop: '4px' }}>
-                                      ⏰ 留車時間: {item.constructionTime}
-                                    </div>
-                                  )}
-                                  {item.notes && (
-                                    <div style={{ fontSize: '0.75rem', color: colors.text, background: 'rgba(255,255,255,0.4)', padding: '6px 10px', borderRadius: '6px', marginTop: '6px', border: `1px solid ${colors.border}` }}>
-                                      {item.notes}
-                                    </div>
-                                  )}
-                                </>
+                              {!isCustom && (
+                                <div style={{ fontSize: '0.75rem', color: colors.text, opacity: 0.85 }}>
+                                  {item.brand} {item.model} | {item.plateNumber}
+                                </div>
                               )}
                             </div>
-                            <ChevronRight size={18} color={colors.text} style={{ opacity: 0.5 }} />
+
+                            {!isCustom ? (
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px', flexWrap: 'wrap', gap: '4px' }}>
+                                {/* Left: Film & Tint */}
+                                <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                                  {item.filmColor && <span style={{ background: 'rgba(255,255,255,0.7)', padding: '1px 4px', borderRadius: '3px', fontSize: '0.72rem', color: colors.text, border: `1px solid ${colors.border}` }}>🎨 {item.filmColor}</span>}
+                                  {item.windowTint && <span style={{ background: 'rgba(255,255,255,0.7)', padding: '1px 4px', borderRadius: '3px', fontSize: '0.72rem', color: colors.text, border: `1px solid ${colors.border}` }}>☀️ 隔熱</span>}
+                                </div>
+                                {/* Right: Delivery Time */}
+                                <div style={{ fontSize: '0.75rem', color: '#b45309', fontWeight: 'bold' }}>
+                                  🏁 交車: {item.expectedEndDate ? item.expectedEndDate.substring(5) : '未定'} {item.expectedDeliveryTime || ''}
+                                </div>
+                              </div>
+                            ) : (
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px' }}>
+                                <div style={{ fontSize: '0.75rem', color: colors.text, opacity: 0.9, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', maxWidth: '70%' }}>
+                                  {item.notes || '無備註'}
+                                </div>
+                                {item.constructionTime && (
+                                  <div style={{ fontSize: '0.75rem', color: colors.text, fontWeight: 'bold' }}>
+                                    ⏰ {item.constructionTime}
+                                  </div>
+                                )}
+                              </div>
+                            )}
                           </div>
                         );
                       })
@@ -711,17 +789,17 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                       <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {todayDropOffCustomers.length > 0 ? (
                           todayDropOffCustomers.map(item => {
-                            const colors = getItemColors(item);
+                            const colors = getDayColors(item);
                             const isSelected = selectedEvent?.id === item.id;
                             return (
                               <div
                                 key={item.id}
                                 onClick={() => setSelectedEvent(item)}
                                 style={{
-                                  padding: '10px 12px',
+                                  padding: '8px 10px',
                                   background: colors.bg,
-                                  border: `1px solid ${isSelected ? 'var(--primary)' : colors.stayBorder}`,
-                                  borderRadius: '10px',
+                                  border: `1px solid ${isSelected ? 'var(--primary)' : colors.border}`,
+                                  borderRadius: '8px',
                                   cursor: 'pointer',
                                   fontSize: '0.8rem',
                                   color: colors.text
@@ -731,18 +809,9 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                                   <span>{item.name}</span>
                                   <span style={{ fontSize: '0.65rem', padding: '1px 4px', background: '#fff', color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>{colors.badge}</span>
                                 </div>
-                                <div style={{ opacity: 0.9, fontSize: '0.75rem', marginTop: '2px' }}>{item.plateNumber} | {item.model}</div>
-
-                                {/* Film / Service */}
-                                {(item.filmColor || item.windowTint) && (
-                                  <div style={{ fontSize: '0.75rem', fontWeight: 'bold', marginTop: '4px', display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                                    {item.filmColor && <span style={{ background: 'rgba(255,255,255,0.6)', padding: '1px 4px', borderRadius: '3px' }}>🎨 {item.filmColor}</span>}
-                                    {item.windowTint && <span style={{ background: 'rgba(255,255,255,0.6)', padding: '1px 4px', borderRadius: '3px' }}>☀️ 隔熱紙</span>}
-                                  </div>
-                                )}
-
-                                <div style={{ color: '#0284c7', fontWeight: 'bold', fontSize: '0.75rem', marginTop: '6px' }}>
-                                  📥 預計進場: {item.constructionTime || '時間未定'}
+                                <div style={{ opacity: 0.9, fontSize: '0.75rem', marginTop: '2px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                  <span>{item.plateNumber} | {item.model}</span>
+                                  {item.filmColor && <span style={{ background: 'rgba(255,255,255,0.7)', padding: '1px 4px', borderRadius: '3px', fontSize: '0.72rem', border: `1px solid ${colors.border}` }}>🎨 {item.filmColor}</span>}
                                 </div>
                               </div>
                             );
@@ -761,17 +830,17 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                       <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {todayDeliveryCustomers.length > 0 ? (
                           todayDeliveryCustomers.map(item => {
-                            const colors = getItemColors(item);
+                            const colors = getDayColors(item);
                             const isSelected = selectedEvent?.id === item.id;
                             return (
                               <div
                                 key={item.id}
                                 onClick={() => setSelectedEvent(item)}
                                 style={{
-                                  padding: '10px 12px',
+                                  padding: '8px 10px',
                                   background: colors.bg,
-                                  border: `1px solid ${isSelected ? 'var(--primary)' : colors.stayBorder}`,
-                                  borderRadius: '10px',
+                                  border: `1px solid ${isSelected ? 'var(--primary)' : colors.border}`,
+                                  borderRadius: '8px',
                                   cursor: 'pointer',
                                   fontSize: '0.8rem',
                                   color: colors.text
@@ -781,18 +850,9 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
                                   <span>{item.name}</span>
                                   <span style={{ fontSize: '0.65rem', padding: '1px 4px', background: '#fff', color: colors.text, borderRadius: '4px', border: `1px solid ${colors.border}` }}>{colors.badge}</span>
                                 </div>
-                                <div style={{ opacity: 0.9, fontSize: '0.75rem', marginTop: '2px' }}>{item.plateNumber} | {item.model}</div>
-
-                                {/* Film / Service */}
-                                {(item.filmColor || item.windowTint) && (
-                                  <div style={{ fontSize: '0.75rem', fontWeight: 'bold', marginTop: '4px', display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                                    {item.filmColor && <span style={{ background: 'rgba(255,255,255,0.6)', padding: '1px 4px', borderRadius: '3px' }}>🎨 {item.filmColor}</span>}
-                                    {item.windowTint && <span style={{ background: 'rgba(255,255,255,0.6)', padding: '1px 4px', borderRadius: '3px' }}>☀️ {item.windowTint}</span>}
-                                  </div>
-                                )}
-
-                                <div style={{ color: '#b45309', fontWeight: 'bold', fontSize: '0.75rem', marginTop: '6px' }}>
-                                  🏁 預計交車: {item.expectedDeliveryTime || '時間未定'}
+                                <div style={{ opacity: 0.9, fontSize: '0.75rem', marginTop: '2px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                  <span>{item.plateNumber} | {item.model}</span>
+                                  {item.filmColor && <span style={{ background: 'rgba(255,255,255,0.7)', padding: '1px 4px', borderRadius: '3px', fontSize: '0.72rem', border: `1px solid ${colors.border}` }}>🎨 {item.filmColor}</span>}
                                 </div>
                               </div>
                             );

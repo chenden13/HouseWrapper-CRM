@@ -539,9 +539,6 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
                     {item.filmColor && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>🎨 {item.filmColor}</span>}
                     {item.windowTint && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>☀️ {item.windowTint}</span>}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 'bold', marginTop: '2px' }}>
-                    📥 預計進場: {item.constructionTime || '時間未定'}
-                  </div>
                 </div>
               );
             }) : (
@@ -586,9 +583,6 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
                     {item.model && <span>{item.model}</span>}
                     {item.filmColor && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>🎨 {item.filmColor}</span>}
                     {item.windowTint && <span style={{ background: '#374151', padding: '2px 6px', borderRadius: '4px', fontSize: '0.72rem', color: '#fff', border: `1px solid ${colors.bg}` }}>☀️ {item.windowTint}</span>}
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: '#f59e0b', fontWeight: 'bold', marginTop: '2px' }}>
-                    🏁 預計交車: {item.expectedDeliveryTime || '時間未定'}
                   </div>
                 </div>
               );

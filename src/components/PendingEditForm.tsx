@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import type { Customer, Accessory, StatusType } from '../types';
 import { 
-  Plus, Trash2, Calendar, FileText, Settings, Gift, Package, 
-  CalendarCheck, User, Star, ChevronDown, ChevronUp, Clock,
-  Camera, Car, Loader2, AlertCircle
+  Plus, Trash2, Calendar, FileText, Settings, Package, 
+  CalendarCheck, User, Star, ChevronDown, ChevronUp,
+  Camera, Loader2, AlertCircle
 } from 'lucide-react';
 import { VehicleAutocomplete } from './VehicleAutocomplete';
 import { taiwanCounties } from '../data/counties';
@@ -147,7 +147,7 @@ interface PendingEditFormProps {
 }
 
 export const PendingEditForm: React.FC<PendingEditFormProps> = ({ 
-  customer, onSuggestId, userRole, defaultStatus, onSubmit, onCancel, hideActions, onFormDataChange 
+  customer, onSuggestId, defaultStatus, onSubmit, onCancel, hideActions, onFormDataChange 
 }) => {
   const [formData, setFormData] = useState<Partial<Customer>>(() => {
     if (customer) {
@@ -170,10 +170,11 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
   const [tintCategory, setTintCategory] = useState<string>(() => {
     // 試圖從現有規格反推分類
     const currentSpec = customer?.windowTintBrand || '';
-    const found = Object.entries(TINT_GROUPS).find(([_, specs]) => specs.includes(currentSpec));
-    return found ? found[0] : '';
+    const found = Object.entries(TINT_GROUPS).find(([, specs]) => specs.includes(currentSpec));
+    if (found) return found[0];
+    if (currentSpec || customer?.windowTint) return '其他 (手動自訂)';
+    return '';
   });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
@@ -290,7 +291,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     const series = formData.mainServiceSeries || '';
     const size = formData.vehicleSize || '';
     
-    if (service === '全車改色膜' && (brand === 'AX' || brand === '3M') && series) {
+    if ((service === '改色' || service === '全車改色膜') && (brand === 'AX' || brand === '3M') && series) {
       const basePrices = COLOR_WRAP_SERIES[brand];
       if (basePrices && basePrices[series]) {
         const basePrice = basePrices[series];
@@ -301,7 +302,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
           setPrices(prev => ({ ...prev, mainServicePrice: targetPrice }));
         }
       }
-    } else if (service === '全車犀牛皮' && brand && series) {
+    } else if ((service === '犀牛皮' || service === '全車犀牛皮') && brand && series) {
       const basePrices = PPF_PRICING[brand];
       if (basePrices && basePrices[series]) {
         const basePrice = basePrices[series];
@@ -321,7 +322,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
       if (targetPrice > 0 && prices.mainServicePrice !== targetPrice) {
         setPrices(prev => ({ ...prev, mainServicePrice: targetPrice }));
       }
-    } else if (service === '迎風面犀牛皮' && brand && WIND_PPF_PRICING[brand]) {
+    } else if ((service === '迎風面' || service === '迎風面犀牛皮') && brand && WIND_PPF_PRICING[brand]) {
       const base = WIND_PPF_PRICING[brand];
       let targetPrice = base;
       if (size === 'XL') targetPrice += 5000;
@@ -358,7 +359,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     const hasHoodPpf = formData.hasHoodPpf;
     const service = formData.mainService || '';
     
-    if (service === '全車改色膜' && hasHoodPpf) {
+    if ((service === '改色' || service === '全車改色膜') && hasHoodPpf) {
       if (prices.hoodPpfPrice !== 18000) {
         setPrices(prev => ({ ...prev, hoodPpfPrice: 18000 }));
       }
@@ -369,12 +370,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
 
   // 犀牛皮自動將規格/系列填入膜料顏色 (迎風面犀牛皮則清空顏色)
   React.useEffect(() => {
-    if (formData.mainService === '全車犀牛皮') {
+    if (formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮') {
       const spec = formData.mainServiceSeries || '';
       if (formData.filmColor !== spec) {
         setFormData(prev => ({ ...prev, filmColor: spec }));
       }
-    } else if (formData.mainService === '迎風面犀牛皮') {
+    } else if (formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮') {
       // 迎風面犀牛皮無顏色，清空 filmColor
       if (formData.filmColor) {
         setFormData(prev => ({ ...prev, filmColor: '' }));
@@ -500,14 +501,21 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
       }
     });
 
+    const finalWindowTint = tintCategory === '其他 (手動自訂)'
+      ? formData.windowTint
+      : tintCategory;
+
     return {
       ...(formData as Customer),
+      windowTint: finalWindowTint,
       notes: finalNotes,
       status,
       totalAmount: totalPrice,
       revenue: profit,
       appliedDiscountName: appliedNames.join(', '),
       discountAmount: discountAmount,
+      mainServicePrice: prices.mainServicePrice,
+      windowTintPrice: prices.windowTintPrice,
       digitalMirrorPrice: prices.digitalMirrorPrice,
       electricModPrice: prices.electricModPrice,
       rearCoatingPrice: prices.rearCoatingPrice,
@@ -555,6 +563,24 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     }
 
     onSubmit(updatedData, true, originalId);
+  };
+
+  const handleMoveToCompleted = (e: React.FormEvent) => {
+    e.preventDefault();
+    const isConfirm = window.confirm('確定要將此案件設為「已完工」嗎？此案件將進入已完工存檔區。');
+    if (!isConfirm) return;
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkup = new Date();
+    checkup.setMonth(checkup.getMonth() + 1);
+
+    const updatedData = {
+      ...prepareSubmitData('completed'),
+      deliveryDate: today,
+      checkupDate: checkup.toISOString().split('T')[0]
+    };
+
+    onSubmit(updatedData, false, originalId);
   };
 
   const handleConvert = () => {
@@ -794,9 +820,9 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
             <label className="form-label">主施工項目</label>
             <select name="mainService" className="form-control" value={formData.mainService || ''} onChange={handleChange}>
               <option value="">請選擇</option>
-              <option value="全車改色膜">全車改色膜</option>
-              <option value="全車犀牛皮">全車犀牛皮</option>
-              <option value="迎風面犀牛皮">迎風面犀牛皮</option>
+              <option value="改色">改色</option>
+              <option value="犀牛皮">犀牛皮</option>
+              <option value="迎風面">迎風面</option>
               <option value="局部保護/改色">局部保護/改色</option>
             </select>
           </div>
@@ -809,9 +835,9 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               <option value="">選擇品牌</option>
               {((formData.mainService || '').includes('改色') 
                 ? ['AX', '3M', 'CYS', 'TeckWrap'] 
-                : formData.mainService === '全車犀牛皮'
+                : (formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮')
                   ? ['AX', 'Pixel8bot', '3M', 'Stek']
-                  : formData.mainService === '迎風面犀牛皮'
+                  : (formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮')
                     ? ['Pixel8bit', '3M 150g', '3M 200g']
                     : (formData.mainService === '局部保護/改色')
                       ? ['Pixel8bit', '3M 150g', '3M 200g']
@@ -820,7 +846,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
             </select>
           </div>
 
-          {formData.mainService === '全車改色膜' && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') && (
+          {(formData.mainService === '改色' || formData.mainService === '全車改色膜') && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') && (
             <div className="form-group col-span-2">
               <label className="form-label" style={{ color: '#2563eb', fontWeight: 'bold' }}>等級/系列</label>
               <select name="mainServiceSeries" className="form-control" value={formData.mainServiceSeries || ''} onChange={handleChange} style={{ borderColor: '#3b82f6', background: '#eff6ff' }}>
@@ -830,7 +856,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
             </div>
           )}
 
-          {formData.mainService === '全車犀牛皮' && formData.mainServiceBrand && (
+          {(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮') && formData.mainServiceBrand && (
             <div className="form-group col-span-2">
               <label className="form-label" style={{ color: '#059669', fontWeight: 'bold' }}>規格/系列</label>
               <select name="mainServiceSeries" className="form-control" value={formData.mainServiceSeries || ''} onChange={handleChange} style={{ borderColor: '#10b981', background: '#f0fdf4' }}>
@@ -846,19 +872,19 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               type="text" 
               name="filmColor" 
               className="form-control" 
-              placeholder={(formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面犀牛皮') ? '無須填寫' : '顏色細項'} 
+              placeholder={(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮') ? '無須填寫' : '顏色細項'} 
               value={formData.filmColor || ''} 
               onChange={handleChange} 
-              disabled={formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面犀牛皮'}
-              style={(formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面犀牛皮') ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
+              disabled={formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮'}
+              style={(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮') ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
             />
           </div>
-          <div className={`form-group ${formData.mainService === '全車改色膜' && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') ? 'col-span-2' : 'col-span-4'}`}>
+          <div className={`form-group ${(formData.mainService === '改色' || formData.mainService === '全車改色膜') && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') ? 'col-span-2' : 'col-span-4'}`}>
             <label className="form-label">施工價格 ($)</label>
             <input type="number" name="mainServicePrice" className="form-control" value={prices.mainServicePrice || ''} onChange={handlePriceChange} placeholder="0" />
           </div>
 
-          {formData.mainService === '全車改色膜' && (
+          {(formData.mainService === '改色' || formData.mainService === '全車改色膜') && (
             <div className="col-span-12" style={{ marginTop: '8px', background: '#f5f3ff', padding: '16px', borderRadius: '12px', border: '1px solid #ddd6fe' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                 <label className="checkbox-wrap" style={{ fontWeight: 'bold', color: '#5b21b6', fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -901,22 +927,59 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
                     className="form-control" 
                     value={tintCategory} 
                     onChange={(e) => {
-                      setTintCategory(e.target.value);
-                      setFormData(prev => ({ ...prev, windowTintBrand: '' }));
+                      const newCategory = e.target.value;
+                      setTintCategory(newCategory);
+                      if (newCategory === '其他 (手動自訂)') {
+                        setFormData(prev => ({ 
+                          ...prev, 
+                          windowTint: prev.windowTint || '', 
+                          windowTintBrand: prev.windowTintBrand || '' 
+                        }));
+                      } else {
+                        setFormData(prev => ({ ...prev, windowTintBrand: '' }));
+                      }
                     }}
                   >
                     <option value="">請選擇品牌</option>
                     {Object.keys(TINT_GROUPS).map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                    <option value="其他 (手動自訂)">其他 (手動自訂)</option>
                   </select>
                 </div>
-                <div className="col-span-5">
-                  <label className="form-label" style={{ fontWeight: 'bold' }}>具體規格/型號</label>
-                  <select name="windowTintBrand" className="form-control" value={formData.windowTintBrand || ''} onChange={handleChange}>
-                    <option value="">選擇規格 (點選自動報價)</option>
-                    {(TINT_GROUPS[tintCategory] || []).map(b => <option key={b} value={b}>{b}</option>)}
-                  </select>
-                </div>
-                <div className="col-span-3" style={{ paddingBottom: '10px' }}>
+                {tintCategory === '其他 (手動自訂)' ? (
+                  <>
+                    <div className="col-span-3">
+                      <label className="form-label" style={{ fontWeight: 'bold' }}>自訂品牌名稱</label>
+                      <input 
+                        type="text" 
+                        name="windowTint" 
+                        className="form-control" 
+                        placeholder="例如: V-Kool" 
+                        value={formData.windowTint || ''} 
+                        onChange={handleChange} 
+                      />
+                    </div>
+                    <div className="col-span-3">
+                      <label className="form-label" style={{ fontWeight: 'bold' }}>自訂規格/型號</label>
+                      <input 
+                        type="text" 
+                        name="windowTintBrand" 
+                        className="form-control" 
+                        placeholder="例如: V55" 
+                        value={formData.windowTintBrand || ''} 
+                        onChange={handleChange} 
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <div className="col-span-5">
+                    <label className="form-label" style={{ fontWeight: 'bold' }}>具體規格/型號</label>
+                    <select name="windowTintBrand" className="form-control" value={formData.windowTintBrand || ''} onChange={handleChange}>
+                      <option value="">選擇規格 (點選自動報價)</option>
+                      {(TINT_GROUPS[tintCategory] || []).map(b => <option key={b} value={b}>{b}</option>)}
+                    </select>
+                  </div>
+                )}
+                <div className={tintCategory === '其他 (手動自訂)' ? 'col-span-2' : 'col-span-3'} style={{ paddingBottom: '10px' }}>
                   <label style={{ fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '8px', color: '#0369a1', cursor: 'pointer', fontWeight: '600' }}>
                     <input type="checkbox" name="hasSunroof" checked={formData.hasSunroof || false} onChange={handleChange} /> 
                     包含天窗施工
@@ -1028,7 +1091,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               <div style={{ display: 'flex', gap: '12px', marginTop: '12px', alignItems: 'center' }}>
                 <div style={{ flex: '0 0 140px' }}>
                    <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
-                   <input type="number" name={row.priceField} className="form-control" value={(prices as any)[row.priceField] || ''} onChange={handlePriceChange} placeholder="$" />
+                   <input type="number" name={row.priceField} className="form-control" value={(prices as Record<string, number>)[row.priceField] || ''} onChange={handlePriceChange} placeholder="$" />
                 </div>
                 <div style={{ flex: '0 0 160px' }}>
                    <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計日期</label>
@@ -1363,8 +1426,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
             </button>
           )}
 
-          {formData.status !== 'new' && customer && (
-            <button type="button" className="btn" onClick={handleMoveToConstruction} style={{ background: '#10b981', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>確認並轉入現場施工 →</button>
+          {formData.status === 'construction' ? (
+            <button type="button" className="btn" onClick={handleMoveToCompleted} style={{ background: '#10b981', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>確認完工並移入完工存檔區 →</button>
+          ) : (
+            formData.status !== 'new' && customer && (
+              <button type="button" className="btn" onClick={handleMoveToConstruction} style={{ background: '#10b981', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>確認並轉入現場施工 →</button>
+            )
           )}
         </div>
       )}

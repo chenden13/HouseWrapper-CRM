@@ -13,8 +13,14 @@ interface MobileCalendarProps {
 export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   customers, onEditCustomer, onUpdateCustomer, onDeleteCustomer, onBack
 }) => {
-  const [currentDate, setCurrentDate] = useState<Date>(new Date(2026, 5, 8)); // June 8th, 2026
-  const [selectedDateStr, setSelectedDateStr] = useState<string>('2026-06-08');
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
+  const [selectedDateStr, setSelectedDateStr] = useState<string>(() => {
+    const today = new Date();
+    const y = today.getFullYear();
+    const m = String(today.getMonth() + 1).padStart(2, '0');
+    const d = String(today.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  });
   
   // Custom event modal state
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
@@ -49,7 +55,16 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
     }
 
     const service = item.mainService || '';
-    if (service.includes('全車犀牛皮')) {
+    if (service.includes('迎風面')) {
+      return {
+        bg: '#d7e6f8', // Fresh light Sky Blue primary
+        lightBg: '#f1f6fc', // Soft background
+        text: '#354e6b',
+        border: '#b3cff1',
+        darkText: '#354e6b',
+        badge: '迎風面'
+      };
+    } else if (service.includes('犀牛皮')) {
       return {
         bg: '#d5ebd6', // Fresh light Sage Green primary
         lightBg: '#f0f7f0', // Soft background
@@ -58,7 +73,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
         darkText: '#3b5a3e',
         badge: '犀牛皮'
       };
-    } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
+    } else if (service.includes('改色')) {
       return {
         bg: '#f3dbdb', // Fresh light Rose/Coral primary
         lightBg: '#fbf3f3', // Soft background
@@ -66,15 +81,6 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
         border: '#e8bcbc',
         darkText: '#6b4343',
         badge: '改色膜'
-      };
-    } else if (service.includes('迎風面')) {
-      return {
-        bg: '#d7e6f8', // Fresh light Sky Blue primary
-        lightBg: '#f1f6fc', // Soft background
-        text: '#354e6b',
-        border: '#b3cff1',
-        darkText: '#354e6b',
-        badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
@@ -171,7 +177,7 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   }, [selectedDateStr]);
 
   const isToday = (date: Date) => {
-    const today = new Date(2026, 5, 8); // Jun 8, 2026
+    const today = new Date();
     return date.getFullYear() === today.getFullYear() &&
            date.getMonth() === today.getMonth() &&
            date.getDate() === today.getDate();
@@ -206,12 +212,10 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
   };
 
   const handleDeleteEvent = async (id: string) => {
-    if (window.confirm('確定要刪除此局部施工項目嗎？')) {
-      try {
-        await onDeleteCustomer(id);
-      } catch (err) {
-        console.error(err);
-      }
+    try {
+      await onDeleteCustomer(id);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -248,7 +252,11 @@ export const MobileCalendar: React.FC<MobileCalendarProps> = ({
           <button onClick={handlePrevMonth} style={{ border: 'none', background: 'transparent', padding: '6px', color: '#9ca3af', cursor: 'pointer' }}>
             <ChevronLeft size={16} />
           </button>
-          <button onClick={() => setCurrentDate(new Date(2026, 5, 8))} style={{ border: 'none', background: 'transparent', padding: '6px', color: '#9ca3af', fontSize: '0.75rem', fontWeight: 'bold' }}>
+          <button onClick={() => {
+            const today = new Date();
+            setCurrentDate(today);
+            setSelectedDateStr(formatDateString(today));
+          }} style={{ border: 'none', background: 'transparent', padding: '6px', color: '#9ca3af', fontSize: '0.75rem', fontWeight: 'bold' }}>
             今
           </button>
           <button onClick={handleNextMonth} style={{ border: 'none', background: 'transparent', padding: '6px', color: '#9ca3af', cursor: 'pointer' }}>

@@ -131,9 +131,9 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ customer, onSubmit, onCanc
         <label className="form-label">主施工項目</label>
         <select name="mainService" className="form-control" value={formData.mainService || ''} onChange={handleChange}>
           <option value="">請選擇</option>
-          <option value="全車改色">全車改色</option>
-          <option value="全車犀牛皮">全車犀牛皮</option>
-          <option value="迎風面犀牛皮">迎風面犀牛皮</option>
+          <option value="改色">改色</option>
+          <option value="犀牛皮">犀牛皮</option>
+          <option value="迎風面">迎風面</option>
         </select>
       </div>
 
@@ -141,7 +141,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ customer, onSubmit, onCanc
         <label className="form-label">品牌</label>
         <select name="mainServiceBrand" className="form-control" value={formData.mainServiceBrand || ''} onChange={handleChange}>
           <option value="">請選擇</option>
-          {(formData.mainService === '全車改色' 
+          {((formData.mainService === '改色' || formData.mainService === '全車改色') 
             ? ['AX', '3M', 'CYS', 'TeckWrap'] 
             : ['3M', 'Michelin', 'Atarap', 'Stek']
           ).map(brand => (

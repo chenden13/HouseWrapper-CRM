@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import type { Customer, Accessory, Role } from '../types';
 
 import { 
   Save, Trash2, Car, User, DollarSign, Shield, Calendar, RotateCcw, 
   Camera, Image as ImageIcon, X, Plus, ChevronRight, FileText,
-  AlertTriangle
+  AlertTriangle, CheckCircle2
 } from 'lucide-react';
 import { api } from '../lib/api';
 import { getYouTubeEmbedUrl } from '../lib/utils';
@@ -57,8 +57,10 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
 
   const [tintCategory, setTintCategory] = useState<string>(() => {
     const currentSpec = formData.windowTintBrand || '';
-    const found = Object.entries(TINT_GROUPS).find(([_, specs]) => specs.includes(currentSpec));
-    return found ? found[0] : '';
+    const found = Object.entries(TINT_GROUPS).find(([, specs]) => specs.includes(currentSpec));
+    if (found) return found[0];
+    if (currentSpec || formData.windowTint) return '其他 (手動自訂)';
+    return '';
   });
 
   // 自動計算利潤 (僅針對管理員)
@@ -141,8 +143,24 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const finalWindowTint = tintCategory === '其他 (手動自訂)' 
+      ? formData.windowTint 
+      : tintCategory;
+
+    const today = new Date().toISOString().split('T')[0];
+    const checkup = new Date();
+    checkup.setMonth(checkup.getMonth() + 1);
+
+    const updatedStatus = formData.status === 'construction' ? 'completed' : formData.status;
+    const updatedDeliveryDate = formData.status === 'construction' && !formData.deliveryDate ? today : formData.deliveryDate;
+    const updatedCheckupDate = formData.status === 'construction' && !formData.checkupDate ? checkup.toISOString().split('T')[0] : formData.checkupDate;
+
     onSubmit({
       ...formData,
+      windowTint: finalWindowTint,
+      status: updatedStatus,
+      deliveryDate: updatedDeliveryDate,
+      checkupDate: updatedCheckupDate,
       damagePhotos,
       progressPhotos
     }, originalId);
@@ -243,9 +261,9 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
         <label className="form-label">主施工項目</label>
         <select name="mainService" className="form-control" value={formData.mainService || ''} onChange={handleChange}>
           <option value="">請選擇</option>
-          <option value="全車改色膜">全車改色膜</option>
-          <option value="全車犀牛皮">全車犀牛皮</option>
-          <option value="迎風面犀牛皮">迎風面犀牛皮</option>
+          <option value="改色">改色</option>
+          <option value="犀牛皮">犀牛皮</option>
+          <option value="迎風面">迎風面</option>
           <option value="局部保護/改色">局部保護/改色</option>
         </select>
       </div>
@@ -270,27 +288,64 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
           className="form-control" 
           value={tintCategory} 
           onChange={(e) => {
-            setTintCategory(e.target.value);
-            setFormData(prev => ({ ...prev, windowTintBrand: '' }));
+            const newCategory = e.target.value;
+            setTintCategory(newCategory);
+            if (newCategory === '其他 (手動自訂)') {
+              setFormData(prev => ({ 
+                ...prev, 
+                windowTint: prev.windowTint || '', 
+                windowTintBrand: prev.windowTintBrand || '' 
+              }));
+            } else {
+              setFormData(prev => ({ ...prev, windowTintBrand: '' }));
+            }
           }}
         >
           <option value="">選擇品項</option>
           {Object.keys(TINT_GROUPS).map(cat => <option key={cat} value={cat}>{cat}</option>)}
+          <option value="其他 (手動自訂)">其他 (手動自訂)</option>
         </select>
       </div>
-      <div className="form-group col-span-3">
-        <label className="form-label">具體規格選擇</label>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <select name="windowTintBrand" className="form-control" value={formData.windowTintBrand || ''} onChange={handleChange}>
-            <option value="">選擇規格</option>
-            {(TINT_GROUPS[tintCategory] || []).map(b => <option key={b} value={b}>{b}</option>)}
-          </select>
-          <label style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', color: '#0369a1', cursor: 'pointer' }}>
-            <input type="checkbox" name="hasSunroof" checked={formData.hasSunroof || false} onChange={handleChange} /> 
-            包含天窗施工
-          </label>
+      {tintCategory === '其他 (手動自訂)' ? (
+        <>
+          <div className="form-group col-span-3">
+            <label className="form-label">自訂品牌</label>
+            <input 
+              type="text" 
+              name="windowTint" 
+              className="form-control" 
+              placeholder="例如: V-Kool" 
+              value={formData.windowTint || ''} 
+              onChange={handleChange} 
+            />
+          </div>
+          <div className="form-group col-span-3">
+            <label className="form-label">自訂規格/型號</label>
+            <input 
+              type="text" 
+              name="windowTintBrand" 
+              className="form-control" 
+              placeholder="例如: V55" 
+              value={formData.windowTintBrand || ''} 
+              onChange={handleChange} 
+            />
+          </div>
+        </>
+      ) : (
+        <div className="form-group col-span-3">
+          <label className="form-label">具體規格選擇</label>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <select name="windowTintBrand" className="form-control" value={formData.windowTintBrand || ''} onChange={handleChange}>
+              <option value="">選擇規格</option>
+              {(TINT_GROUPS[tintCategory] || []).map(b => <option key={b} value={b}>{b}</option>)}
+            </select>
+            <label style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', color: '#0369a1', cursor: 'pointer' }}>
+              <input type="checkbox" name="hasSunroof" checked={formData.hasSunroof || false} onChange={handleChange} /> 
+              包含天窗施工
+            </label>
+          </div>
         </div>
-      </div>
+      )}
       
       <div className="form-group col-span-3">
         <label className="form-label">電子後視鏡</label>
@@ -400,18 +455,43 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
       <div className="form-actions col-span-12" style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
         <button type="button" className="btn btn-outline" onClick={onCancel}>取消返回</button>
         
-        <button 
-          type="button" 
-          className="btn" 
-          onClick={() => {
-            if (window.confirm('確定要將此案件退回「施工中」狀態嗎？')) {
-              onSubmit({ ...formData, status: 'construction' });
-            }
-          }}
-          style={{ background: '#f59e0b', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 20px' }}
-        >
-          <RotateCcw size={18} /> 返回施工中
-        </button>
+        {formData.status === 'completed' ? (
+          <button 
+            type="button" 
+            className="btn" 
+            onClick={() => {
+              if (window.confirm('確定要將此案件退回「施工中」狀態嗎？')) {
+                onSubmit({ ...formData, status: 'construction' });
+              }
+            }}
+            style={{ background: '#f59e0b', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 20px' }}
+          >
+            <RotateCcw size={18} /> 返回施工中
+          </button>
+        ) : (
+          formData.status === 'construction' && (
+            <button 
+              type="button" 
+              className="btn" 
+              onClick={() => {
+                if (window.confirm('確定要將此案件直接設為「已完工」嗎？此案件將移至施工完成區。')) {
+                  const today = new Date().toISOString().split('T')[0];
+                  const checkup = new Date();
+                  checkup.setMonth(checkup.getMonth() + 1);
+                  onSubmit({ 
+                    ...formData, 
+                    status: 'completed',
+                    deliveryDate: formData.deliveryDate || today,
+                    checkupDate: formData.checkupDate || checkup.toISOString().split('T')[0]
+                  });
+                }
+              }}
+              style={{ background: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 20px' }}
+            >
+              <CheckCircle2 size={18} /> 設為已完工
+            </button>
+          )
+        )}
 
         <div style={{ flex: 1 }}></div>
 

@@ -17,7 +17,7 @@ interface CalendarPageProps {
 export const CalendarPage: React.FC<CalendarPageProps> = ({ 
   customers, onEditCustomer, onUpdateCustomer, onDeleteCustomer, userRole 
 }) => {
-  const [currentDate, setCurrentDate] = useState<Date>(new Date(2026, 5, 8)); // Default to June 8th, 2026 (matching system date)
+  const [currentDate, setCurrentDate] = useState<Date>(new Date()); // Default to current system date
   const [viewMode, setViewMode] = useState<'day' | 'week' | 'month'>('week');
   const [selectedEvent, setSelectedEvent] = useState<Customer | null>(null);
   
@@ -58,7 +58,16 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
     }
 
     const service = item.mainService || '';
-    if (service.includes('全車犀牛皮')) {
+    if (service.includes('迎風面')) {
+      return {
+        bg: '#f1f6fc', // Fresh light Sky Blue
+        stayBorder: '#e2edf9',
+        border: '#b3cff1',
+        text: '#354e6b',
+        constructionBg: '#d7e6f8',
+        badge: '迎風面'
+      };
+    } else if (service.includes('犀牛皮')) {
       return {
         bg: '#f0f7f0', // Fresh light Sage Green
         stayBorder: '#e0efe1',
@@ -67,7 +76,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
         constructionBg: '#d5ebd6',
         badge: '犀牛皮'
       };
-    } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
+    } else if (service.includes('改色')) {
       return {
         bg: '#fbf3f3', // Fresh light Rose/Coral
         stayBorder: '#f5e5e5',
@@ -75,15 +84,6 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
         text: '#6b4343',
         constructionBg: '#f3dbdb',
         badge: '改色膜'
-      };
-    } else if (service.includes('迎風面')) {
-      return {
-        bg: '#f1f6fc', // Fresh light Sky Blue
-        stayBorder: '#e2edf9',
-        border: '#b3cff1',
-        text: '#354e6b',
-        constructionBg: '#d7e6f8',
-        badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
@@ -117,26 +117,26 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
         badge: '局部施工'
       };
     }
-    if (service.includes('全車犀牛皮')) {
+    if (service.includes('迎風面')) {
+      return {
+        bg: '#ecf3f7', // Very light pastel sky blue
+        border: '#c3d5e5',
+        text: '#25384a',
+        badge: '迎風面'
+      };
+    } else if (service.includes('犀牛皮')) {
       return {
         bg: '#edf6ee', // Very light pastel sage green
         border: '#c2dec4',
         text: '#2e3d2f',
         badge: '犀牛皮'
       };
-    } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
+    } else if (service.includes('改色')) {
       return {
         bg: '#faf0f0', // Very light pastel rose
         border: '#e8caca',
         text: '#5c3d3d',
         badge: '改色膜'
-      };
-    } else if (service.includes('迎風面')) {
-      return {
-        bg: '#ecf3f7', // Very light pastel sky blue
-        border: '#c3d5e5',
-        text: '#25384a',
-        badge: '迎風面'
       };
     } else if (service.includes('局部')) {
       return {
@@ -165,23 +165,23 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
         text: '#3c3527'
       };
     }
-    if (service.includes('全車犀牛皮')) {
+    if (service.includes('迎風面')) {
+      return {
+        bg: '#dae6f2', // Soft light pastel sky blue
+        border: '#b1c8df',
+        text: '#1c2f42'
+      };
+    } else if (service.includes('犀牛皮')) {
       return {
         bg: '#dceddd', // Soft light pastel sage green
         border: '#aac7ad',
         text: '#203323'
       };
-    } else if (service.includes('全車改色膜') || service.includes('全車改色')) {
+    } else if (service.includes('改色')) {
       return {
         bg: '#f4dede', // Soft light pastel rose
         border: '#dfb8b8',
         text: '#522b2b'
-      };
-    } else if (service.includes('迎風面')) {
-      return {
-        bg: '#dae6f2', // Soft light pastel sky blue
-        border: '#b1c8df',
-        text: '#1c2f42'
       };
     } else if (service.includes('局部')) {
       return {
@@ -232,7 +232,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   };
 
   const handleToday = () => {
-    setCurrentDate(new Date(2026, 5, 8)); // System date June 8, 2026
+    setCurrentDate(new Date()); // Dynamic current date
   };
 
   // Open custom event modal
@@ -274,15 +274,13 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
   };
 
   const handleDeleteEvent = async (id: string) => {
-    if (window.confirm('確定要刪除此局部施工項目嗎？')) {
-      try {
-        await onDeleteCustomer(id);
-        if (selectedEvent?.id === id) {
-          setSelectedEvent(null);
-        }
-      } catch (err) {
-        console.error(err);
+    try {
+      await onDeleteCustomer(id);
+      if (selectedEvent?.id === id) {
+        setSelectedEvent(null);
       }
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -548,7 +546,7 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
 
   // Today marker check
   const isToday = (date: Date) => {
-    const today = new Date(2026, 5, 8); // Jun 8, 2026
+    const today = new Date(); // Dynamic current date
     return date.getFullYear() === today.getFullYear() &&
            date.getMonth() === today.getMonth() &&
            date.getDate() === today.getDate();

@@ -577,17 +577,37 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span style={{ fontWeight: '700', color: '#1e293b' }}>{customer.name}</span>
                     {customer.status === 'construction' && (
-                      <span style={{ 
-                        padding: '2px 6px', 
-                        borderRadius: '4px', 
-                        fontSize: '0.7rem', 
-                        fontWeight: 'bold', 
-                        background: '#fef3c7', 
-                        color: '#d97706',
-                        border: '1.5px solid #fde68a'
-                      }}>
-                        正在施工中
-                      </span>
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (window.confirm(`確定要將車主「${customer.name}」設為「已完工」並移入完工區嗎？`)) {
+                            const today = new Date().toISOString().split('T')[0];
+                            const checkup = new Date();
+                            checkup.setMonth(checkup.getMonth() + 1);
+                            onUpdate({
+                              ...customer,
+                              status: 'completed',
+                              deliveryDate: customer.deliveryDate || today,
+                              checkupDate: customer.checkupDate || checkup.toISOString().split('T')[0]
+                            });
+                          }
+                        }}
+                        style={{ 
+                          padding: '2px 6px', 
+                          borderRadius: '4px', 
+                          fontSize: '0.7rem', 
+                          fontWeight: 'bold', 
+                          background: '#fef3c7', 
+                          color: '#d97706',
+                          border: '1.5px solid #fde68a',
+                          cursor: 'pointer',
+                          display: 'inline-flex',
+                          alignItems: 'center'
+                        }}
+                        title="點擊直接設為已完工"
+                      >
+                        正在施工中 (點擊完工)
+                      </button>
                     )}
                   </div>
                   <div style={{ fontSize: '0.78rem', color: '#64748b' }}>{customer.phone}</div>

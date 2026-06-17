@@ -90,9 +90,9 @@ export const IntakeForm: React.FC<IntakeFormProps> = ({ onSuggestId, vehicleMast
         <label className="form-label">主要施工意向</label>
         <select name="mainService" className="form-control" value={formData.mainService || ''} onChange={handleChange}>
           <option value="">請選擇</option>
-          <option value="全車犀牛皮">全車犀牛皮</option>
-          <option value="全車改色膜">全車改色膜</option>
-          <option value="迎風面犀牛皮">迎風面犀牛皮</option>
+          <option value="改色">改色</option>
+          <option value="犀牛皮">犀牛皮</option>
+          <option value="迎風面">迎風面</option>
           <option value="局部保護/改色">局部保護/改色</option>
         </select>
       </div>

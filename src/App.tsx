@@ -19,15 +19,17 @@ import { PendingExcelImport } from './components/PendingExcelImport';
 import { ArchiveEditForm } from './components/ArchiveEditForm';
 import { PendingListPage } from './components/PendingListPage';
 import { InventoryPage } from './components/InventoryPage';
+import { AccessoriesPage } from './components/AccessoriesPage';
 import { LoginPage } from './components/LoginPage';
 import { ActiveConstructionPage } from './components/ActiveConstructionPage';
 import { FinancePage } from './components/FinancePage';
 import { PriceInquiryPage } from './components/PriceInquiryPage';
 import { TrackingPage } from './components/TrackingPage';
 import { PreparationPage } from './components/PreparationPage';
-import { History, Box, LogOut, Clock, Hammer, UserPlus, Wallet, Save, Car, Tag, LayoutPanelTop, ChevronDown, Bell, ClipboardList, Sparkles, Palette, RefreshCcw, Calendar } from 'lucide-react';
+import { History, Box, LogOut, Clock, UserPlus, Bell, ClipboardList, RefreshCcw, Calendar, Settings } from 'lucide-react';
 import { CalendarPage } from './components/CalendarPage';
 import { MobileCalendar } from './components/mobile/MobileCalendar';
+import { triggerWebhook } from './lib/webhook';
 
 import { useIsMobile } from './hooks/useIsMobile';
 import { MobileDashboard } from './components/mobile/MobileDashboard';
@@ -47,7 +49,7 @@ function App() {
   const [financeRecords, setFinanceRecords] = useState<FinanceRecord[]>([]);
   const [settlements, setSettlements] = useState<any[]>([]);
   const isMobile = useIsMobile();
-  const [view, setView] = useState<'dashboard' | 'inquiry' | 'pending' | 'archive' | 'monitor' | 'inventory' | 'finance' | 'price_detailing' | 'price_film' | 'tracking' | 'preparation' | 'calendar'>(isMobile ? 'dashboard' : 'pending');
+  const [view, setView] = useState<'dashboard' | 'inquiry' | 'pending' | 'accessories' | 'archive' | 'monitor' | 'inventory' | 'finance' | 'price_detailing' | 'price_film' | 'tracking' | 'preparation' | 'calendar'>(isMobile ? 'dashboard' : 'pending');
   const [isLoading, setIsLoading] = useState(true);
   const [importProgress, setImportProgress] = useState<{current: number, total: number} | null>(null);
 
@@ -62,6 +64,12 @@ function App() {
   
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const [vehicleMaster, setVehicleMaster] = useState<any[]>([]);
+
+  // Webhook settings & sync states
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [webhookUrl, setWebhookUrl] = useState(() => localStorage.getItem('crm_webhook_url') || '');
+  const [isSyncingWebhook, setIsSyncingWebhook] = useState(false);
+  const [syncProgress, setSyncProgress] = useState<{ current: number; total: number } | null>(null);
 
   const loadData = async () => {
     if (!currentUser) return;
@@ -134,6 +142,7 @@ function App() {
       if (originalId && originalId !== target.id) {
         await api.deleteCustomer(originalId);
         setCustomers(prev => prev.filter(c => c.id !== originalId));
+        triggerWebhook('delete', { id: originalId } as Customer);
       }
 
       await api.upsertCustomer(target);
@@ -142,6 +151,7 @@ function App() {
         if (exists) return prev.map(c => c.id === target.id ? target : c);
         return [...prev, target];
       });
+      triggerWebhook('upsert', target);
     } catch (err) {
       console.error('儲存失敗:', err);
       alert('資料同步失敗，請檢查網路連線');
@@ -155,7 +165,15 @@ function App() {
   const handleUpdateCustomer = async (updatedCustomer: Customer) => {
     try {
       await api.upsertCustomer(updatedCustomer);
-      setCustomers(prev => prev.map(c => c.id === updatedCustomer.id ? updatedCustomer : c));
+      setCustomers(prev => {
+        const exists = prev.some(c => c.id === updatedCustomer.id);
+        if (exists) {
+          return prev.map(c => c.id === updatedCustomer.id ? updatedCustomer : c);
+        } else {
+          return [...prev, updatedCustomer];
+        }
+      });
+      triggerWebhook('upsert', updatedCustomer);
     } catch (err) {
       console.error('背景更新失敗:', err);
     }
@@ -167,10 +185,12 @@ function App() {
       if (originalId && originalId !== updatedCustomer.id) {
         await api.deleteCustomer(originalId);
         setCustomers(prev => prev.filter(c => c.id !== originalId));
+        triggerWebhook('delete', { id: originalId } as Customer);
       }
 
       await api.upsertCustomer(updatedCustomer);
       setCustomers(prev => prev.map(c => c.id === updatedCustomer.id ? updatedCustomer : c));
+      triggerWebhook('upsert', updatedCustomer);
     } catch (err) {
       console.error('更新失敗:', err);
     }
@@ -181,13 +201,69 @@ function App() {
   };
 
   const handleDeleteCustomer = async (id: string) => {
-    if (!window.confirm('確定要永久刪除此客戶資料嗎？此動作無法復原。')) return;
+    const isCustomEvent = id.startsWith('EVENT-');
+    const msg = isCustomEvent 
+      ? '確定要刪除此局部施工項目嗎？' 
+      : '確定要永久刪除此客戶資料嗎？此動作無法復原。';
+    if (!window.confirm(msg)) return;
     try {
+      const customerToDelete = customers.find(c => c.id === id);
       await api.deleteCustomer(id);
       setCustomers(prev => prev.filter(c => c.id !== id));
+      if (customerToDelete) {
+        triggerWebhook('delete', customerToDelete);
+      } else {
+        triggerWebhook('delete', { id } as Customer);
+      }
     } catch (err) {
       console.error('刪除失敗:', err);
       alert('刪除失敗，請檢查網路連線');
+    }
+  };
+
+  const handleSaveWebhookSettings = (url: string) => {
+    localStorage.setItem('crm_webhook_url', url);
+    setWebhookUrl(url);
+    alert('Webhook 設定已儲存！');
+  };
+
+  const handleBatchSyncWebhook = async () => {
+    if (!webhookUrl) {
+      alert('請先輸入 Make.com Webhook 網址並點擊儲存！');
+      return;
+    }
+
+    // Filter active events for synchronization
+    const activeCustomers = customers.filter(c => {
+      if (c.id.startsWith('EVENT-')) return true;
+      return ['deposit', 'scheduled', 'construction'].includes(c.status);
+    });
+
+    if (activeCustomers.length === 0) {
+      alert('目前無任何待施工、收訂或施工中的行程資料。');
+      return;
+    }
+
+    if (!window.confirm(`確定要同步這 ${activeCustomers.length} 筆預約/施工行程至 Google 日曆嗎？`)) {
+      return;
+    }
+
+    setIsSyncingWebhook(true);
+    setSyncProgress({ current: 0, total: activeCustomers.length });
+
+    try {
+      for (let i = 0; i < activeCustomers.length; i++) {
+        await triggerWebhook('upsert', activeCustomers[i]);
+        setSyncProgress({ current: i + 1, total: activeCustomers.length });
+        await new Promise(resolve => setTimeout(resolve, 150)); // Gentle rate-limiting delay
+      }
+      alert(`已成功將 ${activeCustomers.length} 筆項目同步至日曆！`);
+    } catch (err) {
+      console.error('Batch Sync Failed:', err);
+      alert('批次同步發生部分錯誤，請確認網路連線。');
+    } finally {
+      setIsSyncingWebhook(false);
+      setSyncProgress(null);
     }
   };
 
@@ -246,8 +322,12 @@ function App() {
     try {
       setImportProgress({ current: 0, total: processedCustomers.length });
       for (let i = 0; i < processedCustomers.length; i++) {
-        await api.upsertCustomer(processedCustomers[i]);
+        const c = processedCustomers[i];
+        await api.upsertCustomer(c);
         setImportProgress({ current: i + 1, total: processedCustomers.length });
+        if (['deposit', 'scheduled', 'construction'].includes(c.status)) {
+          triggerWebhook('upsert', c);
+        }
       }
       
       setCustomers(prev => [...prev, ...processedCustomers]);
@@ -562,6 +642,9 @@ function App() {
             <button className={`nav-tab ${view === 'pending' ? 'active' : ''}`} onClick={() => setView('pending')}>
               <Clock size={17} /> 待施工區
             </button>
+            <button className={`nav-tab ${view === 'accessories' ? 'active' : ''}`} onClick={() => setView('accessories')}>
+              <Settings size={17} /> 配件安排
+            </button>
             <button className={`nav-tab ${view === 'calendar' ? 'active' : ''}`} onClick={() => setView('calendar')}>
               <Calendar size={17} /> 施工行事曆
             </button>
@@ -628,7 +711,15 @@ function App() {
             >
               <RefreshCcw size={18} className={isLoading ? 'animate-spin' : ''} />
             </button>
-            <button className="btn" onClick={handleLogout} style={{ background: '#f8fafc', color: '#64748b', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center' }}>
+            <button 
+              className="btn" 
+              onClick={() => setIsSettingsModalOpen(true)}
+              title="系統設定與 Webhook"
+              style={{ background: '#f8fafc', color: '#64748b', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+            >
+              <Settings size={18} />
+            </button>
+            <button className="btn" onClick={handleLogout} style={{ background: '#f8fafc', color: '#64748b', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
               <LogOut size={18} />
             </button>
           </div>
@@ -712,6 +803,12 @@ function App() {
           onAddRecord={handleAddFinanceRecord}
           onDeleteRecord={handleDeleteFinanceRecord}
           onSettle={handleSettleBook}
+        />
+      ) : view === 'accessories' ? (
+        <AccessoriesPage 
+          customers={customers}
+          onUpdateCustomer={handleUpdateCustomer}
+          onEditCustomer={handleEditCustomer}
         />
       ) : view === 'calendar' ? (
         <CalendarPage 
@@ -819,6 +916,85 @@ function App() {
           onCancel={() => setIsPendingImportModalOpen(false)} 
         />
       </Modal>
+
+      {/* Settings Modal */}
+      {isSettingsModalOpen && (
+        <Modal isOpen={isSettingsModalOpen} onClose={() => setIsSettingsModalOpen(false)} title="系統設定與 Webhook 串接">
+          <div style={{ padding: '10px 0' }}>
+            <p style={{ fontSize: '0.9rem', color: '#64748b', marginBottom: '15px', lineHeight: '1.5' }}>
+              設定您的 Make.com (Integromat) Webhook 網址，系統會自動在「預約留交車、事前準備更新、刪除排程」時，自動發送最新的行程資料與預先格式化的 Google 日曆標題（例如：Model Y-超啞灰藍-今日留車）。
+            </p>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px' }}>
+              <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#334155' }}>
+                Make.com Webhook 網址
+              </label>
+              <input 
+                type="text" 
+                placeholder="例如: https://hook.us1.make.com/xxxxxxxxxxxxxx" 
+                value={webhookUrl}
+                onChange={(e) => setWebhookUrl(e.target.value)}
+                style={{ 
+                  width: '100%', 
+                  padding: '10px 12px', 
+                  borderRadius: '8px', 
+                  border: '1px solid #e2e8f0', 
+                  fontSize: '0.9rem',
+                  outline: 'none'
+                }} 
+              />
+            </div>
+
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end', marginBottom: '25px', borderBottom: '1px dashed #e2e8f0', paddingBottom: '20px' }}>
+              <button 
+                className="btn btn-outline" 
+                onClick={() => setIsSettingsModalOpen(false)}
+                style={{ fontSize: '0.85rem', padding: '8px 16px', cursor: 'pointer' }}
+              >
+                取消
+              </button>
+              <button 
+                className="btn btn-primary" 
+                onClick={() => handleSaveWebhookSettings(webhookUrl)}
+                style={{ fontSize: '0.85rem', padding: '8px 16px', cursor: 'pointer' }}
+              >
+                儲存設定
+              </button>
+            </div>
+
+            <div>
+              <h4 style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#334155', marginBottom: '8px' }}>
+                歷史行程同步
+              </h4>
+              <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '12px', lineHeight: '1.4' }}>
+                如果您初次設定此功能，或是想重整您的 Google 日曆，點擊下方按鈕可將目前所有待施工及施工中的現有資料一次性批次送往您的 Google 日曆。
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <button 
+                  className="btn btn-primary" 
+                  onClick={handleBatchSyncWebhook}
+                  disabled={isSyncingWebhook || !webhookUrl}
+                  style={{ 
+                    fontSize: '0.85rem', 
+                    padding: '10px 18px', 
+                    background: '#0ea5e9', 
+                    borderColor: '#0ea5e9',
+                    color: '#fff',
+                    cursor: (isSyncingWebhook || !webhookUrl) ? 'not-allowed' : 'pointer'
+                  }}
+                >
+                  {isSyncingWebhook ? `同步中 (${syncProgress?.current}/${syncProgress?.total})...` : '批次同步現有行程至日曆'}
+                </button>
+                {isSyncingWebhook && syncProgress && (
+                  <div style={{ fontSize: '0.85rem', color: '#0ea5e9', fontWeight: 'bold' }}>
+                    已完成 {Math.round((syncProgress.current / syncProgress.total) * 100)}%
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
 
     </div>
 

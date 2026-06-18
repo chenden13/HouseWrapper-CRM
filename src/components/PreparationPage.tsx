@@ -134,14 +134,14 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
           <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: 0, textAlign: 'left', fontSize: '0.82rem', tableLayout: 'fixed' }}>
             <thead>
               <tr style={{ position: 'sticky', top: 0, zIndex: 10 }}>
-                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', width: '150px', borderBottom: '1px solid #e2e8f0' }}>客戶 / 車輛</th>
-                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', width: '100px', borderBottom: '1px solid #e2e8f0' }}>進場日期</th>
-                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '140px', borderBottom: '1px solid #e2e8f0' }}>加入排程</th>
-                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '120px', borderBottom: '1px solid #e2e8f0' }}>1. 膜料準備</th>
-                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '120px', borderBottom: '1px solid #e2e8f0' }}>2. 隔熱紙預約</th>
-                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '120px', borderBottom: '1px solid #e2e8f0' }}>3. 電子鏡安裝</th>
-                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '180px', borderBottom: '1px solid #e2e8f0' }}>4. 配件備料</th>
-                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', width: '200px', borderBottom: '1px solid #e2e8f0' }}>重要施工備註</th>
+                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', width: '140px', borderBottom: '1px solid #e2e8f0' }}>客戶 / 車輛</th>
+                <th style={{ padding: '15px 4px', background: '#f8fafc', color: '#64748b', fontWeight: '800', width: '75px', borderBottom: '1px solid #e2e8f0' }}>進場日期</th>
+                <th style={{ padding: '15px 4px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '115px', borderBottom: '1px solid #e2e8f0' }}>加入排程</th>
+                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '110px', borderBottom: '1px solid #e2e8f0' }}>1. 膜料準備</th>
+                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '160px', borderBottom: '1px solid #e2e8f0' }}>2. 隔熱紙預約</th>
+                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '110px', borderBottom: '1px solid #e2e8f0' }}>3. 電子鏡安裝</th>
+                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', textAlign: 'center', width: '210px', borderBottom: '1px solid #e2e8f0' }}>4. 配件備料</th>
+                <th style={{ padding: '15px', background: '#f8fafc', color: '#64748b', fontWeight: '800', width: '180px', borderBottom: '1px solid #e2e8f0' }}>重要施工備註</th>
               </tr>
             </thead>
             <tbody>
@@ -165,61 +165,61 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
                     </td>
 
                     {/* 進場日期 */}
-                    <td style={{ padding: '15px', borderBottom: '1px solid #f1f5f9' }}>
-                      <div style={{ fontWeight: '700', color: isDueSoon ? '#b45309' : '#334155', display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          <Calendar size={14} /> {customer.expectedStartDate?.slice(5) || '未定'}
+                    <td style={{ padding: '15px 4px', borderBottom: '1px solid #f1f5f9' }}>
+                      <div style={{ fontWeight: '700', color: isDueSoon ? '#b45309' : '#334155', display: 'flex', flexDirection: 'column', gap: '2px', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '2px', fontSize: '0.8rem' }}>
+                          <Calendar size={12} /> {customer.expectedStartDate?.slice(5) || '未定'}
                         </div>
                         {isDueSoon && (
-                          <span style={{ fontSize: '0.65rem', background: '#f59e0b', color: '#fff', padding: '1px 6px', borderRadius: '4px', width: 'fit-content', fontWeight: '800' }}>即將進場</span>
+                          <span style={{ fontSize: '0.6rem', background: '#f59e0b', color: '#fff', padding: '1px 4px', borderRadius: '4px', width: 'fit-content', fontWeight: '800' }}>即將</span>
                         )}
                       </div>
                     </td>
 
                     {/* 加入排程 */}
-                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #f1f5f9' }}>
-                      <div style={{ display: 'flex', gap: '6px', justifyContent: 'center' }}>
+                    <td style={{ padding: '10px 4px', textAlign: 'center', borderBottom: '1px solid #f1f5f9' }}>
+                      <div style={{ display: 'flex', gap: '4px', justifyContent: 'center' }}>
                         {/* 行事曆 */}
                         <button
                           onClick={() => handleToggle(customer, 'inCalendar')}
                           title={customer.inCalendar ? '已加入行事曆' : '未加入行事曆'}
                           style={{
-                            width: '36px', height: '36px', borderRadius: '8px', border: '1px solid',
+                            width: '32px', height: '32px', borderRadius: '6px', border: '1px solid',
                             cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s',
                             background: customer.inCalendar ? '#f0f9ff' : '#fff',
                             borderColor: customer.inCalendar ? '#0ea5e9' : '#e2e8f0',
                             color: customer.inCalendar ? '#0369a1' : '#cbd5e1'
                           }}
                         >
-                          {customer.inCalendar ? <CalendarCheck size={18} /> : <Calendar size={18} />}
+                          {customer.inCalendar ? <CalendarCheck size={16} /> : <Calendar size={16} />}
                         </button>
                         {/* 施工排程 */}
                         <button
                           onClick={() => handleToggle(customer, 'inConstructionSchedule')}
                           title={customer.inConstructionSchedule ? '已加入施工' : '未加入施工'}
                           style={{
-                            width: '36px', height: '36px', borderRadius: '8px', border: '1px solid',
+                            width: '32px', height: '32px', borderRadius: '6px', border: '1px solid',
                             cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s',
                             background: customer.inConstructionSchedule ? '#fdf4ff' : '#fff',
                             borderColor: customer.inConstructionSchedule ? '#a855f7' : '#e2e8f0',
                             color: customer.inConstructionSchedule ? '#7e22ce' : '#cbd5e1'
                           }}
                         >
-                          <Hammer size={18} />
+                          <Hammer size={16} />
                         </button>
                         {/* 洗車排程 */}
                         <button
                           onClick={() => handleToggle(customer, 'inWashSchedule')}
                           title={customer.inWashSchedule ? '已加入洗車' : '未加入洗車'}
                           style={{
-                            width: '36px', height: '36px', borderRadius: '8px', border: '1px solid',
+                            width: '32px', height: '32px', borderRadius: '6px', border: '1px solid',
                             cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s',
                             background: customer.inWashSchedule ? '#f0fdfa' : '#fff',
                             borderColor: customer.inWashSchedule ? '#14b8a6' : '#e2e8f0',
                             color: customer.inWashSchedule ? '#0d9488' : '#cbd5e1'
                           }}
                         >
-                          <Droplets size={18} />
+                          <Droplets size={16} />
                         </button>
                       </div>
                     </td>
@@ -250,17 +250,55 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
                     </td>
 
                     {/* 2. 隔熱紙 */}
-                    <td style={{ padding: '10px', textAlign: 'center', borderBottom: '1px solid #f1f5f9' }}>
+                    <td style={{ padding: '10px 6px', textAlign: 'center', borderBottom: '1px solid #f1f5f9' }}>
                       {customer.windowTint ? (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
                           <div style={{ fontSize: '0.75rem', color: '#1e293b', fontWeight: '800', lineHeight: '1.2' }}>
                             {customer.windowTintBrand}
                             <div style={{ color: '#0ea5e9', fontSize: '0.7rem' }}>{customer.windowTint}</div>
                           </div>
+
+                          {/* 隔熱紙深度資訊與未填提示 */}
+                          <div style={{ 
+                            fontSize: '0.68rem', 
+                            background: '#f8fafc', 
+                            padding: '4px 6px', 
+                            borderRadius: '6px', 
+                            border: '1px solid #e2e8f0',
+                            width: '100%',
+                            textAlign: 'left',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '2px'
+                          }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <span style={{ color: '#64748b' }}>前擋:</span>
+                              <span>{customer.tintDepthFrontWind || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <span style={{ color: '#64748b' }}>前座:</span>
+                              <span>{customer.tintDepthFrontSeat || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <span style={{ color: '#64748b' }}>後座:</span>
+                              <span>{customer.tintDepthRearSeat || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <span style={{ color: '#64748b' }}>後擋:</span>
+                              <span>{customer.tintDepthRearWind || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
+                            </div>
+                            {(customer.hasSunroof || customer.tintDepthSunroof) && (
+                              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <span style={{ color: '#64748b' }}>天窗:</span>
+                                <span>{customer.tintDepthSunroof || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
+                              </div>
+                            )}
+                          </div>
+
                           <button
                             onClick={() => handleToggle(customer, 'tintPrepDone')}
                             style={{
-                              width: '90%', padding: '6px 4px', borderRadius: '8px', border: '1px solid',
+                              width: '95%', padding: '6px 4px', borderRadius: '8px', border: '1px solid',
                               cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', transition: 'all 0.2s',
                               background: customer.tintPrepDone ? '#ecfdf5' : '#fff1f2',
                               borderColor: customer.tintPrepDone ? '#10b981' : '#f43f5e',
@@ -310,17 +348,17 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
                       {(customer.customAccessories || []).length > 0 || customer.electricMod ? (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
                           <div style={{ 
-                            fontSize: '0.72rem', 
+                            fontSize: '0.88rem', 
                             color: '#1e293b', 
-                            fontWeight: '700', 
-                            lineHeight: '1.3', 
+                            fontWeight: '800', 
+                            lineHeight: '1.4', 
                             width: '100%', 
                             whiteSpace: 'normal',
                             wordBreak: 'break-all',
                             textAlign: 'left'
                           }}>
-                            {customer.electricMod && <div style={{ color: '#ec4899', marginBottom: '2px' }}>{customer.electricModBrand || '電改項目'}</div>}
-                            {customer.customAccessories?.map(a => <div key={a.id} style={{ color: '#d97706', marginBottom: '2px' }}>• {a.name}</div>)}
+                            {customer.electricMod && <div style={{ color: '#ec4899', marginBottom: '4px' }}>{customer.electricModBrand || '電改項目'}</div>}
+                            {customer.customAccessories?.map(a => <div key={a.id} style={{ color: '#d97706', marginBottom: '4px' }}>• {a.name}</div>)}
                           </div>
                           <button
                             onClick={() => handleToggle(customer, 'partsPrepDone')}

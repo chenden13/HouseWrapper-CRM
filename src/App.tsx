@@ -642,9 +642,11 @@ function App() {
             <button className={`nav-tab ${view === 'pending' ? 'active' : ''}`} onClick={() => setView('pending')}>
               <Clock size={17} /> 待施工區
             </button>
+            {/* 配件安排先隱藏
             <button className={`nav-tab ${view === 'accessories' ? 'active' : ''}`} onClick={() => setView('accessories')}>
               <Settings size={17} /> 配件安排
             </button>
+            */}
             <button className={`nav-tab ${view === 'calendar' ? 'active' : ''}`} onClick={() => setView('calendar')}>
               <Calendar size={17} /> 施工行事曆
             </button>

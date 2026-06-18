@@ -259,41 +259,63 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
                           </div>
 
                           {/* 隔熱紙深度資訊與未填提示 */}
-                          <div style={{ 
-                            fontSize: '0.68rem', 
-                            background: '#f8fafc', 
-                            padding: '4px 6px', 
-                            borderRadius: '6px', 
-                            border: '1px solid #e2e8f0',
-                            width: '100%',
-                            textAlign: 'left',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '2px'
-                          }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <span style={{ color: '#64748b' }}>前擋:</span>
-                              <span>{customer.tintDepthFrontWind || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <span style={{ color: '#64748b' }}>前座:</span>
-                              <span>{customer.tintDepthFrontSeat || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <span style={{ color: '#64748b' }}>後座:</span>
-                              <span>{customer.tintDepthRearSeat || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                              <span style={{ color: '#64748b' }}>後擋:</span>
-                              <span>{customer.tintDepthRearWind || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
-                            </div>
-                            {(customer.hasSunroof || customer.tintDepthSunroof) && (
-                              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ color: '#64748b' }}>天窗:</span>
-                                <span>{customer.tintDepthSunroof || <span style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️未填</span>}</span>
+                          {(() => {
+                            const hasAnyDepth = !!(customer.tintDepthFrontWind || customer.tintDepthFrontSeat || customer.tintDepthRearSeat || customer.tintDepthRearWind || customer.tintDepthSunroof);
+                            if (!hasAnyDepth) {
+                              return (
+                                <div style={{ 
+                                  fontSize: '0.7rem', 
+                                  background: '#f8fafc', 
+                                  padding: '6px 8px', 
+                                  borderRadius: '6px', 
+                                  border: '1px solid #e2e8f0',
+                                  color: '#64748b',
+                                  width: '100%',
+                                  textAlign: 'center',
+                                  fontWeight: '600'
+                                }}>
+                                  尚未確認
+                                </div>
+                              );
+                            }
+                            return (
+                              <div style={{ 
+                                fontSize: '0.68rem', 
+                                background: '#f8fafc', 
+                                padding: '4px 6px', 
+                                borderRadius: '6px', 
+                                border: '1px solid #e2e8f0',
+                                width: '100%',
+                                textAlign: 'left',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '2px'
+                              }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                  <span style={{ color: '#64748b' }}>前擋:</span>
+                                  <span>{customer.tintDepthFrontWind || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                  <span style={{ color: '#64748b' }}>前座:</span>
+                                  <span>{customer.tintDepthFrontSeat || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                  <span style={{ color: '#64748b' }}>後座:</span>
+                                  <span>{customer.tintDepthRearSeat || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                  <span style={{ color: '#64748b' }}>後擋:</span>
+                                  <span>{customer.tintDepthRearWind || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
+                                </div>
+                                {(customer.hasSunroof || customer.tintDepthSunroof) && (
+                                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <span style={{ color: '#64748b' }}>天窗:</span>
+                                    <span>{customer.tintDepthSunroof || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
+                                  </div>
+                                )}
                               </div>
-                            )}
-                          </div>
+                            );
+                          })()}
 
                           <button
                             onClick={() => handleToggle(customer, 'tintPrepDone')}

@@ -41,7 +41,7 @@ export const AccessoriesPage: React.FC<AccessoriesPageProps> = ({
   const [editTintCategory, setEditTintCategory] = useState('');
   const [editFormData, setEditFormData] = useState<Partial<Customer>>({});
 
-  // 1. 過濾出有配件或隔熱紙需求且未完工的客戶
+  // 1. 過濾出有配件、隔熱紙、鍍膜、PPF、或贈品需求且未完工的客戶
   const accessoriesData = useMemo(() => {
     return customers
       .filter(c => c.status !== 'completed')
@@ -50,7 +50,18 @@ export const AccessoriesPage: React.FC<AccessoriesPageProps> = ({
         const hasMirror = !!(c.digitalMirror || c.digitalMirrorBrand || c.digitalMirrorPrice);
         const hasMod = !!(c.electricMod || c.electricModBrand || c.electricModPrice);
         const hasAcc = !!(c.customAccessories && c.customAccessories.length > 0);
-        return hasTint || hasMirror || hasMod || hasAcc;
+        const hasRearCoating = !!(c.rearCoating || c.rearCoatingPrice);
+        const hasHoodPpf = !!(c.hasHoodPpf || c.hoodPpfPrice);
+        const hasGift = !!(c.giftItems && c.giftItems.length > 0);
+        return hasTint || hasMirror || hasMod || hasAcc || hasRearCoating || hasHoodPpf || hasGift;
+      })
+      .sort((a, b) => {
+        const dateA = a.expectedStartDate || '';
+        const dateB = b.expectedStartDate || '';
+        if (!dateA && dateB) return 1;
+        if (dateA && !dateB) return -1;
+        if (!dateA && !dateB) return 0;
+        return dateA.localeCompare(dateB);
       })
       .filter(c => {
         const lowerSearch = searchTerm.toLowerCase();
@@ -352,13 +363,13 @@ export const AccessoriesPage: React.FC<AccessoriesPageProps> = ({
                     )}
                   </div>
 
-                  {/* 5. 客製配件 & 電改 */}
+                  {/* 5. 客製配件 & 電改 & 鍍膜/PPF/贈品 */}
                   <div style={{ textAlign: 'left', paddingRight: '15px' }}>
-                    {(hasAcc || hasMod) ? (
+                    {(hasAcc || hasMod || customer.rearCoating || customer.hasHoodPpf || (customer.giftItems && customer.giftItems.length > 0)) ? (
                       <div style={{ background: '#fef2f2', border: '1px solid #fee2e2', borderRadius: '8px', padding: '10px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                        <div style={{ flex: 1 }}>
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                           {hasMod && (
-                            <div style={{ marginBottom: '6px', borderBottom: hasAcc ? '1px dashed #fca5a5' : 'none', paddingBottom: hasAcc ? '4px' : '0' }}>
+                            <div style={{ paddingBottom: '4px', borderBottom: (hasAcc || customer.rearCoating || customer.hasHoodPpf || (customer.giftItems && customer.giftItems.length > 0)) ? '1px dashed #fca5a5' : 'none' }}>
                               <span style={{ fontSize: '0.72rem', background: '#ec4899', color: '#fff', padding: '1px 4px', borderRadius: '4px', marginRight: '4px', fontWeight: 'bold' }}>電改</span>
                               <strong style={{ color: '#9f1239' }}>{customer.electricMod}</strong> 
                               {customer.electricModPrice !== undefined && ` ($${customer.electricModPrice.toLocaleString()})`}
@@ -370,6 +381,32 @@ export const AccessoriesPage: React.FC<AccessoriesPageProps> = ({
                               )}
                             </div>
                           )}
+
+                          {customer.rearCoating && (
+                            <div style={{ paddingBottom: '4px', borderBottom: (hasAcc || customer.hasHoodPpf || (customer.giftItems && customer.giftItems.length > 0)) ? '1px dashed #fca5a5' : 'none' }}>
+                              <span style={{ fontSize: '0.72rem', background: '#059669', color: '#fff', padding: '1px 4px', borderRadius: '4px', marginRight: '4px', fontWeight: 'bold' }}>鍍膜</span>
+                              <strong style={{ color: '#065f46' }}>{customer.rearCoating}</strong>
+                              {customer.rearCoatingPrice !== undefined && ` ($${customer.rearCoatingPrice.toLocaleString()})`}
+                            </div>
+                          )}
+
+                          {customer.hasHoodPpf && (
+                            <div style={{ paddingBottom: '4px', borderBottom: (hasAcc || (customer.giftItems && customer.giftItems.length > 0)) ? '1px dashed #fca5a5' : 'none' }}>
+                              <span style={{ fontSize: '0.72rem', background: '#d97706', color: '#fff', padding: '1px 4px', borderRadius: '4px', marginRight: '4px', fontWeight: 'bold' }}>PPF</span>
+                              <strong style={{ color: '#92400e' }}>引擎蓋 PPF</strong>
+                              {customer.hoodPpfPrice !== undefined && ` ($${customer.hoodPpfPrice.toLocaleString()})`}
+                            </div>
+                          )}
+
+                          {customer.giftItems && customer.giftItems.length > 0 && (
+                            <div style={{ paddingBottom: '4px', borderBottom: hasAcc ? '1px dashed #fca5a5' : 'none' }}>
+                              <span style={{ fontSize: '0.72rem', background: '#4f46e5', color: '#fff', padding: '1px 4px', borderRadius: '4px', marginRight: '4px', fontWeight: 'bold' }}>贈品</span>
+                              <span style={{ color: '#3730a3', fontSize: '0.82rem', fontWeight: '600' }}>
+                                {customer.giftItems.join('、')}
+                              </span>
+                            </div>
+                          )}
+
                           {hasAcc && (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                               {customer.customAccessories?.map((acc) => (

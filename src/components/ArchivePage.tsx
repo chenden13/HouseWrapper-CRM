@@ -6,7 +6,8 @@ import {
   Search, Calendar, ShieldCheck,
   ChevronDown, ChevronUp, Gift, Package, CheckCircle2, FileUp, ListChecks,
   XCircle, FileText, AlertCircle, Hash, DollarSign,
-  ArrowUp, ArrowDown, Save, Image as ImageIcon, Camera, UserCheck, Clock, Trash2
+  ArrowUp, ArrowDown, Save, Image as ImageIcon, Camera, UserCheck, Clock, Trash2,
+  Palette, Shield, Wind
 } from 'lucide-react';
 
 
@@ -61,18 +62,128 @@ const Section = ({ icon, title, children, color = '#64748b' }: { icon: React.Rea
   </div>
 );
 
+const getCustomerBgColor = (service?: string) => {
+  if (!service) return '#eff6ff';
+  const s = service.toLowerCase();
+  if (s.includes('犀牛皮') && !s.includes('迎風面')) {
+    return '#f0fdf4';
+  }
+  if (s.includes('改色')) {
+    return '#fef2f2';
+  }
+  return '#eff6ff';
+};
+
+const getCustomerBorderColor = (service?: string) => {
+  if (!service) return '#dbeafe';
+  const s = service.toLowerCase();
+  if (s.includes('犀牛皮') && !s.includes('迎風面')) {
+    return '#dcfce7';
+  }
+  if (s.includes('改色')) {
+    return '#fee2e2';
+  }
+  return '#dbeafe';
+};
+
 export const ArchivePage: React.FC<ArchivePageProps> = ({ 
   customers, onBack, onUpdate, onEdit, onDeleteCustomer, userRole, onImportClick
 }) => {
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [showUnderConstruction, setShowUnderConstruction] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<'id' | 'date'>('date');
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 200;
 
-  const completedCustomers = customers.filter(c => c.status === 'completed' || c.status === 'construction');
+  // Extract all unique months of drop-offs for stats filter (e.g. YYYY-MM)
+  const uniqueMonths = React.useMemo(() => {
+    const monthsSet = new Set<string>();
+    customers.forEach(c => {
+      if (c.status === 'new') return;
+      const dateStr = c.expectedStartDate || c.constructionStartDate || c.deliveryDate || '';
+      if (/^\d{4}[-/]\d{1,2}/.test(dateStr)) {
+        const parts = dateStr.split(/[-/]/);
+        const y = parts[0];
+        const m = parts[1].padStart(2, '0');
+        monthsSet.add(`${y}-${m}`);
+      }
+    });
+    return Array.from(monthsSet).sort((a, b) => b.localeCompare(a));
+  }, [customers]);
+
+  const getTodayMonthStr = () => {
+    const d = new Date();
+    const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    const twTime = new Date(utc + (3600000 * 8));
+    const y = twTime.getFullYear();
+    const m = String(twTime.getMonth() + 1).padStart(2, '0');
+    return `${y}-${m}`;
+  };
+
+  const todayMonth = getTodayMonthStr();
+
+  const [selectedMonth, setSelectedMonth] = useState<string>(() => {
+    const defaultM = getTodayMonthStr();
+    return uniqueMonths.includes(defaultM) ? defaultM : (uniqueMonths[0] || defaultM);
+  });
+  const [filterMonth, setFilterMonth] = useState<string | null>(null);
+
+  const monthlyStats = React.useMemo(() => {
+    let total = 0;
+    let colorWrap = 0;
+    let ppf = 0;
+    let windFace = 0;
+    let others = 0;
+
+    customers.forEach(c => {
+      if (c.status === 'new') return;
+      const dateStr = c.expectedStartDate || c.constructionStartDate || c.deliveryDate || '';
+      if (/^\d{4}[-/]\d{1,2}/.test(dateStr)) {
+        const parts = dateStr.split(/[-/]/);
+        const y = parts[0];
+        const m = parts[1].padStart(2, '0');
+        const ym = `${y}-${m}`;
+        
+        if (ym === selectedMonth) {
+          total++;
+          const service = String(c.mainService || '').toLowerCase();
+          
+          if (service.includes('改色')) {
+            colorWrap++;
+          } else if (service.includes('犀牛皮') && !service.includes('迎風面')) {
+            ppf++;
+          } else if (service.includes('迎風面')) {
+            windFace++;
+          } else {
+            others++;
+          }
+        }
+      }
+    });
+
+    return { total, colorWrap, ppf, windFace, others };
+  }, [customers, selectedMonth]);
+
+  const completedCustomers = customers.filter(c => {
+    const isCompletedOrActive = c.status === 'completed' || (showUnderConstruction && ['construction', 'scheduled', 'deposit'].includes(c.status));
+    if (!isCompletedOrActive) return false;
+    
+    if (filterMonth) {
+      const dateStr = c.expectedStartDate || c.constructionStartDate || c.deliveryDate || '';
+      if (/^\d{4}[-/]\d{1,2}/.test(dateStr)) {
+        const parts = dateStr.split(/[-/]/);
+        const y = parts[0];
+        const m = parts[1].padStart(2, '0');
+        const ym = `${y}-${m}`;
+        return ym === filterMonth;
+      }
+      return false;
+    }
+    return true;
+  });
   const filteredCustomers = completedCustomers
     .filter(c => {
       const name = String(c.name || '').toLowerCase();
@@ -127,28 +238,41 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
         const cmp = idA.localeCompare(idB, undefined, { numeric: true });
         return sortOrder === 'asc' ? cmp : -cmp;
       } else {
+        const isValidDate = (str: string) => {
+          return /^\d{4}[-/]\d{1,2}[-/]\d{1,2}/.test(str);
+        };
+
+        const getSortDate = (c: Customer) => {
+          return c.expectedStartDate || c.constructionStartDate || c.deliveryDate || '';
+        };
+
+        const valA = getSortDate(a);
+        const valB = getSortDate(b);
+
+        const isDateA = isValidDate(valA);
+        const isDateB = isValidDate(valB);
+
+        // Put invalid/empty dates at the very bottom
+        if (isDateA && !isDateB) return -1;
+        if (!isDateA && isDateB) return 1;
+        if (!isDateA && !isDateB) {
+          return valA.localeCompare(valB);
+        }
+
+        // Both are valid dates, normalize and compare
         const normalizeDate = (d: string) => {
-          if (!d) return '';
-          // Handle 2026-2-5.6 or 2026-5-22.23 -> Take first part
           const firstPart = d.split('.')[0].trim();
           const parts = firstPart.split(/[-/]/);
-          if (parts.length < 3) return firstPart;
           const y = parts[0];
           const m = parts[1].padStart(2, '0');
           const day = parts[2].padStart(2, '0');
           return `${y}-${m}-${day}`;
         };
 
-        // Default sort by "Construction Start Time" (with fallback for old records)
-        let valA = normalizeDate(a.constructionStartDate || a.expectedEndDate || a.expectedStartDate || '');
-        let valB = normalizeDate(b.constructionStartDate || b.expectedEndDate || b.expectedStartDate || '');
-        
-        if (!valA && valB) return 1;
-        if (valA && !valB) return -1;
-        if (!valA && !valB) return 0;
+        const normA = normalizeDate(valA);
+        const normB = normalizeDate(valB);
 
-        const cmp = valA.localeCompare(valB);
-        return sortOrder === 'asc' ? cmp : -cmp;
+        return sortOrder === 'asc' ? normA.localeCompare(normB) : normB.localeCompare(normA);
       }
     });
 
@@ -484,6 +608,17 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
 
           <div style={{ display: 'flex', gap: '8px' }}>
             <button 
+              className={`btn ${showUnderConstruction ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => {
+                setShowUnderConstruction(prev => !prev);
+                setCurrentPage(1);
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', padding: '8px 12px' }}
+            >
+              <Clock size={15} /> 顯示未施工車輛
+            </button>
+
+            <button 
               className={`btn ${sortBy === 'id' ? 'btn-primary' : 'btn-outline'}`}
               onClick={() => {
                 if (sortBy === 'id') setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
@@ -511,12 +646,147 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
 
       </header>
 
+      {/* 📊 月份施工統計面板 */}
+      <div className="glass-panel" style={{ padding: '20px', borderRadius: '16px', border: '1px solid #e2e8f0', marginBottom: '24px', background: '#fff', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '1.2rem' }}>📊</span>
+            <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '900', color: '#1e293b' }}>當月施工統計與篩選</h3>
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <button 
+              className="btn btn-outline" 
+              style={{ padding: '6px 12px', fontSize: '0.8rem', borderRadius: '8px' }}
+              onClick={() => {
+                const idx = uniqueMonths.indexOf(selectedMonth);
+                if (idx < uniqueMonths.length - 1) {
+                  setSelectedMonth(uniqueMonths[idx + 1]);
+                }
+              }}
+              disabled={uniqueMonths.indexOf(selectedMonth) >= uniqueMonths.length - 1}
+            >
+              ◀ 上個月
+            </button>
+            
+            <select 
+              value={selectedMonth} 
+              onChange={(e) => setSelectedMonth(e.target.value)}
+              style={{ padding: '6px 12px', fontSize: '0.85rem', fontWeight: 'bold', borderRadius: '8px', border: '1px solid #cbd5e1', outline: 'none' }}
+            >
+              {uniqueMonths.length > 0 ? uniqueMonths.map(m => (
+                <option key={m} value={m}>{m.replace('-', ' 年 ')} 月</option>
+              )) : <option value={todayMonth}>{todayMonth.replace('-', ' 年 ')} 月</option>}
+            </select>
+            
+            <button 
+              className="btn btn-outline" 
+              style={{ padding: '6px 12px', fontSize: '0.8rem', borderRadius: '8px' }}
+              onClick={() => {
+                const idx = uniqueMonths.indexOf(selectedMonth);
+                if (idx > 0) {
+                  setSelectedMonth(uniqueMonths[idx - 1]);
+                }
+              }}
+              disabled={uniqueMonths.indexOf(selectedMonth) <= 0}
+            >
+              下個月 ▶
+            </button>
+
+            <div style={{ width: '1px', height: '24px', background: '#cbd5e1', margin: '0 8px' }}></div>
+
+            {filterMonth === selectedMonth ? (
+              <button 
+                className="btn" 
+                style={{ padding: '6px 14px', fontSize: '0.82rem', background: '#ef4444', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 'bold' }}
+                onClick={() => setFilterMonth(null)}
+              >
+                ✕ 清除篩選
+              </button>
+            ) : (
+              <button 
+                className="btn" 
+                style={{ padding: '6px 14px', fontSize: '0.82rem', background: 'var(--primary)', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 'bold' }}
+                onClick={() => {
+                  setFilterMonth(selectedMonth);
+                  setCurrentPage(1);
+                }}
+              >
+                🔍 篩選此月份車輛
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* 統計數據小卡 */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px' }}>
+          
+          <div style={{ background: '#f8fafc', padding: '12px 16px', borderRadius: '12px', border: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ background: '#e0f2fe', color: '#0369a1', padding: '8px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Clock size={20} />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 'bold' }}>當月施工總數</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: '900', color: '#0f172a' }}>{monthlyStats.total} <span style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>台</span></div>
+            </div>
+          </div>
+
+          <div style={{ background: '#fffbeb', padding: '12px 16px', borderRadius: '12px', border: '1px solid #fef3c7', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ background: '#fef3c7', color: '#d97706', padding: '8px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Palette size={20} />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.75rem', color: '#d97706', fontWeight: 'bold' }}>全車改色膜</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: '900', color: '#b45309' }}>{monthlyStats.colorWrap} <span style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>台</span></div>
+            </div>
+          </div>
+
+          <div style={{ background: '#f0fdf4', padding: '12px 16px', borderRadius: '12px', border: '1px solid #dcfce7', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ background: '#dcfce7', color: '#16a34a', padding: '8px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <ShieldCheck size={20} />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.75rem', color: '#16a34a', fontWeight: 'bold' }}>全車犀牛皮</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: '900', color: '#15803d' }}>{monthlyStats.ppf} <span style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>台</span></div>
+            </div>
+          </div>
+
+          <div style={{ background: '#ecfdf5', padding: '12px 16px', borderRadius: '12px', border: '1px solid #a7f3d0', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ background: '#a7f3d0', color: '#059669', padding: '8px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Wind size={20} />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.75rem', color: '#059669', fontWeight: 'bold' }}>迎風面保護</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: '900', color: '#047857' }}>{monthlyStats.windFace} <span style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>台</span></div>
+            </div>
+          </div>
+
+          <div style={{ background: '#f6f2f9', padding: '12px 16px', borderRadius: '12px', border: '1px solid #ebdcf5', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ background: '#ebdcf5', color: '#7e22ce', padding: '8px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <ListChecks size={20} />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.75rem', color: '#7e22ce', fontWeight: 'bold' }}>其他項目</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: '900', color: '#6b21a8' }}>{monthlyStats.others} <span style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>台</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        {filterMonth && (
+          <div style={{ marginTop: '12px', background: '#eff6ff', padding: '8px 12px', borderRadius: '8px', fontSize: '0.8rem', color: '#1d4ed8', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span>🔍 目前正在篩選：{filterMonth.replace('-', ' 年 ')} 月的留車案件（共計 {filteredCustomers.length} 筆資料）</span>
+            <button style={{ background: 'none', border: 'none', color: '#1d4ed8', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => setFilterMonth(null)}>清除過濾條件</button>
+          </div>
+        )}
+      </div>
+
       {renderPagination()}
 
       {/* ── Table Header ── */}
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: '70px 180px 180px 110px 110px 1.5fr 100px', 
+        gridTemplateColumns: '70px 240px 180px 110px 110px 1.5fr 100px', 
         padding: '0 16px 12px', 
         gap: '12px', 
         borderBottom: '1px solid #e2e8f0',
@@ -536,7 +806,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
         >
           編號
         </div>
-        <div>客戶資訊</div>
+        <div>客戶資料</div>
         <div>車輛資訊</div>
         <div>1.留車進場</div>
         <div>2.交車完工</div>
@@ -556,7 +826,7 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                 className="list-row"
                 style={{ 
                   display: 'grid', 
-                  gridTemplateColumns: '70px 180px 180px 110px 110px 1.5fr 100px',
+                  gridTemplateColumns: '70px 240px 180px 110px 110px 1.5fr 100px',
                   alignItems: 'center',
                   padding: '16px',
                   gap: '12px',
@@ -572,9 +842,18 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                   {String(customer.id).includes('無編號') || (String(customer.id).startsWith('c_') && String(customer.id).length > 10) ? '無編號' : (customer.id || '無編號')}
                 </div>
                 
-                {/* 2. 客戶資訊 */}
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                {/* 2. 客戶資料 */}
+                <div style={{
+                  backgroundColor: getCustomerBgColor(customer.mainService),
+                  padding: '6px 12px',
+                  borderRadius: '8px',
+                  border: `1px solid ${getCustomerBorderColor(customer.mainService)}`,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  minHeight: '44px'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                     <span style={{ fontWeight: '700', color: '#1e293b' }}>{customer.name}</span>
                     {customer.status === 'construction' && (
                       <button 
@@ -608,6 +887,36 @@ export const ArchivePage: React.FC<ArchivePageProps> = ({
                       >
                         正在施工中 (點擊完工)
                       </button>
+                    )}
+                    {customer.status === 'deposit' && (
+                      <span style={{ 
+                        padding: '2px 6px', 
+                        borderRadius: '4px', 
+                        fontSize: '0.7rem', 
+                        fontWeight: 'bold', 
+                        background: '#ffedd5', 
+                        color: '#c2410c',
+                        border: '1.5px solid #fed7aa',
+                        display: 'inline-flex',
+                        alignItems: 'center'
+                      }}>
+                        已付定金
+                      </span>
+                    )}
+                    {customer.status === 'scheduled' && (
+                      <span style={{ 
+                        padding: '2px 6px', 
+                        borderRadius: '4px', 
+                        fontSize: '0.7rem', 
+                        fontWeight: 'bold', 
+                        background: '#f3e8ff', 
+                        color: '#7e22ce',
+                        border: '1.5px solid #e9d5ff',
+                        display: 'inline-flex',
+                        alignItems: 'center'
+                      }}>
+                        已預約排程
+                      </span>
                     )}
                   </div>
                   <div style={{ fontSize: '0.78rem', color: '#64748b' }}>{customer.phone}</div>

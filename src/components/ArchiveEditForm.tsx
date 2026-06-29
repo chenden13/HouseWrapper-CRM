@@ -460,13 +460,13 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
             type="button" 
             className="btn" 
             onClick={() => {
-              if (window.confirm('確定要將此案件退回「施工中」狀態嗎？')) {
-                onSubmit({ ...formData, status: 'construction' });
+              if (window.confirm('確定要將此案件退回「待施工排程」嗎？')) {
+                onSubmit({ ...formData, status: 'scheduled' });
               }
             }}
             style={{ background: '#f59e0b', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 20px' }}
           >
-            <RotateCcw size={18} /> 返回施工中
+            <RotateCcw size={18} /> 返回待施工排程
           </button>
         ) : (
           formData.status === 'construction' && (

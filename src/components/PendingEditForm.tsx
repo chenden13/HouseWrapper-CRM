@@ -532,38 +532,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     onSubmit(prepareSubmitData(status), false, originalId);
   };
 
-  const handleMoveToConstruction = (e: React.FormEvent) => {
-    e.preventDefault();
-    const isConfirm = window.confirm('確定要轉入「現場施工」嗎？此案件將從排程區消失，進入施工站！');
-    if (!isConfirm) return;
 
-    // 初始化簡化版標準檢核清單
-    const simplifiedChecklist = [
-      { id: 'ck_std_1', name: '前置清潔 (預洗與表面深層清潔)', checked: false },
-      { id: 'ck_std_2', name: `膜料施工: ${formData.mainService || ''} (${formData.mainServiceBrand || ''} - ${formData.filmColor || ''})`, checked: false },
-      { id: 'ck_std_3', name: '贈送配件施工', checked: false },
-      { id: 'ck_std_4', name: '完工自主檢查 (收邊、氣泡、完整度)', checked: false },
-      { id: 'ck_std_5', name: '交車前清潔與環境整理', checked: false }
-    ];
-
-    // 動態加入加購項目
-    if (formData.windowTint) {
-      simplifiedChecklist.splice(2, 0, { id: 'ck_tint', name: `隔熱紙施工: ${formData.windowTint}`, checked: false });
-    }
-    if (formData.digitalMirror) {
-      simplifiedChecklist.splice(3, 0, { id: 'ck_mirror', name: `電子後視鏡安裝: ${formData.digitalMirror}`, checked: false });
-    }
-    if (formData.electricMod) {
-      simplifiedChecklist.splice(4, 0, { id: 'ck_electric', name: `電動改裝項目: ${formData.electricMod}`, checked: false });
-    }
-
-    const updatedData = prepareSubmitData('construction');
-    if (!updatedData.constructionChecklist || updatedData.constructionChecklist.length === 0) {
-      updatedData.constructionChecklist = simplifiedChecklist;
-    }
-
-    onSubmit(updatedData, true, originalId);
-  };
 
   const handleMoveToCompleted = (e: React.FormEvent) => {
     e.preventDefault();
@@ -1426,12 +1395,8 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
             </button>
           )}
 
-          {formData.status === 'construction' ? (
+          {(formData.status === 'construction' || (formData.status !== 'new' && customer)) && (
             <button type="button" className="btn" onClick={handleMoveToCompleted} style={{ background: '#10b981', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>確認完工並移入完工存檔區 →</button>
-          ) : (
-            formData.status !== 'new' && customer && (
-              <button type="button" className="btn" onClick={handleMoveToConstruction} style={{ background: '#10b981', color: '#fff', fontSize: '0.95rem', fontWeight: 'bold', padding: '10px 24px' }} disabled={isUploading}>確認並轉入現場施工 →</button>
-            )
           )}
         </div>
       )}

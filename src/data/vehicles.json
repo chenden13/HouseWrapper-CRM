@@ -4327,18 +4327,6 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "GLC（新款）",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "GLC（舊款）",
-    "size": "L",
-    "detailingSize": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
     "model": "GLE",
     "size": "XL",
     "detailingSize": "XL"
@@ -7019,6 +7007,7 @@
     "size": "2XL",
     "detailingSize": "2XL"
   },
+
   {
     "brand": "VOLVO",
     "model": "s60",

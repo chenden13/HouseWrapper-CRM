@@ -648,9 +648,11 @@ function App() {
             <button className={`nav-tab ${view === 'calendar' ? 'active' : ''}`} onClick={() => setView('calendar')}>
               <Calendar size={17} /> 施工行事曆
             </button>
+            {/* 事前準備暫時隱藏
             <button className={`nav-tab ${view === 'preparation' ? 'active' : ''}`} onClick={() => setView('preparation')}>
               <ClipboardList size={17} /> 事前準備
             </button>
+            */}
             {/* 現場監控暫時隱藏
             <button className={`nav-tab ${view === 'monitor' ? 'active' : ''}`} onClick={() => setView('monitor')}>
               <Hammer size={17} /> 現場監控

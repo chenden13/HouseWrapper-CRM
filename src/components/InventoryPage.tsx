@@ -72,10 +72,15 @@ const WIDTH_OPTIONS = [150, 140, 130, 120, 110, 100, 90, 80, 70, 60, 50, 40, 30,
 
 export const getItemWidth = (item?: Partial<FilmInventory> | null): number => {
   if (!item) return 150;
-  if (item.width !== undefined && !isNaN(Number(item.width))) return Number(item.width);
+  if (item.width !== undefined && !isNaN(Number(item.width))) {
+    const w = Number(item.width);
+    if (w >= 10 && w <= 150) return w;
+  }
   if (item.size) {
-    const parsed = parseInt(item.size, 10);
-    if (!isNaN(parsed) && parsed > 0) return parsed;
+    const str = String(item.size).trim();
+    if (str.includes('1.52') || str.includes('1.5')) return 150;
+    const parsed = parseInt(str, 10);
+    if (!isNaN(parsed) && parsed >= 10 && parsed <= 150) return parsed;
   }
   return 150;
 };

@@ -97,15 +97,15 @@ export const api = {
   },
 
   // --- 庫存 ---
-  getInventory: async () => {
+  getInventory: async (): Promise<FilmInventory[]> => {
     const { data, error } = await supabase.from('inventory').select('*');
     if (error) {
-      console.error('Supabase getInventory Error:', error);
-      throw error;
+      console.error('獲取庫存失敗:', error);
+      return [];
     }
     return (data || []).map(item => {
       const loc = item.location || {};
-      const parsedWidth = loc.width ? Number(loc.width) : (item.size && !isNaN(parseInt(item.size, 10)) ? parseInt(item.size, 10) : 150);
+      const parsedWidth = parseValidWidth(loc.width, item.size);
       return {
         ...item,
         lastUpdated: item.last_updated || item.lastUpdated,
@@ -123,7 +123,7 @@ export const api = {
 
   updateInventory: async (item: FilmInventory) => {
     const { id, lastUpdated, currentMeters, width, location, notes, ...rest } = item;
-    const finalWidth = width || (item.size && !isNaN(parseInt(item.size, 10)) ? parseInt(item.size, 10) : 150);
+    const finalWidth = parseValidWidth(width, item.size);
     
     // 將 currentMeters, width 與 notes 存入 location JSON 物件中，避免資料庫欄位缺失報錯
     const updateData: any = {

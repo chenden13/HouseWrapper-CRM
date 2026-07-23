@@ -130,11 +130,15 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
   });
 
   const getInventoryAt = (zone: string, section: number, slot: number) => {
-    return inventory.find(item => 
-      item.location.zone === zone && 
-      item.location.section === section && 
-      item.location.slot === slot
-    );
+    if (!inventory || !Array.isArray(inventory)) return undefined;
+    return inventory.find(item => {
+      if (!item || !item.location) return false;
+      const itemZone = String(item.location.zone || item.zone || '').trim().toUpperCase();
+      const targetZone = String(zone || '').trim().toUpperCase();
+      const itemSection = Number(item.location.section !== undefined ? item.location.section : item.section);
+      const itemSlot = Number(item.location.slot !== undefined ? item.location.slot : item.slot);
+      return itemZone === targetZone && itemSection === Number(section) && itemSlot === Number(slot);
+    });
   };
 
   const handleSlotClick = (zone: ZoneKey, section: number, slot: number) => {

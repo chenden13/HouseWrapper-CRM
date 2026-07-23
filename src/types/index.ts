@@ -167,6 +167,7 @@ export interface FilmInventory {
   brand: string;
   color: string;
   size: string;
+  width?: number;
   currentMeters?: number;
   location: StorageLocation;
   lastUpdated: string;

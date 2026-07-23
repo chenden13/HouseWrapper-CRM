@@ -54,6 +54,42 @@ const getSubGroups = (zone: ZoneKey) => {
 };
 
 
+const PRESET_LENGTHS = [
+  { label: '全新', value: 15 },
+  { label: '1米', value: 1 },
+  { label: '2米', value: 2 },
+  { label: '3米', value: 3 },
+  { label: '4米', value: 4 },
+  { label: '5米', value: 5 },
+  { label: '6米', value: 6 },
+  { label: '7米', value: 7 },
+  { label: '8米', value: 8 },
+  { label: '9米', value: 9 },
+  { label: '10米', value: 10 },
+];
+
+const WIDTH_OPTIONS = [150, 140, 130, 120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
+
+export const getItemWidth = (item?: Partial<FilmInventory> | null): number => {
+  if (!item) return 150;
+  if (item.width !== undefined && !isNaN(Number(item.width))) return Number(item.width);
+  if (item.size) {
+    const parsed = parseInt(item.size, 10);
+    if (!isNaN(parsed) && parsed > 0) return parsed;
+  }
+  return 150;
+};
+
+export const formatFilmDisplay = (item?: Partial<FilmInventory> | null): string => {
+  if (!item) return '';
+  const meters = item.currentMeters !== undefined ? item.currentMeters : 15;
+  if (meters >= 15) {
+    return '全新';
+  }
+  const w = getItemWidth(item);
+  return `${meters}米x${w}`;
+};
+
 export const InventoryPage: React.FC<InventoryPageProps> = ({ 
   inventory, inventoryLogs = [], purchaseRecords = [], userRole, onUpdateInventory, onAddInventory, onRemoveInventory, onAddPurchaseRecord, onBack 
 }) => {
@@ -63,6 +99,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
   const [activeSubGroupIndex, setActiveSubGroupIndex] = useState(0);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<Partial<FilmInventory> | null>(null);
+  const [isCustomLength, setIsCustomLength] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   // New states for purchase form
@@ -86,16 +123,20 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
     const existing = getInventoryAt(zone, section, slot);
     if (existing) {
       setEditingItem(existing);
+      const isPreset = PRESET_LENGTHS.some(p => p.value === existing.currentMeters);
+      setIsCustomLength(!isPreset);
     } else {
       setEditingItem({
         id: `INV-${Date.now()}`,
         brand: '',
         color: '',
-        size: '1.52m x 15m',
+        size: '150',
+        width: 150,
         currentMeters: 15, // 預設一捲約 15 米
         location: { zone, section, slot },
         lastUpdated: new Date().toISOString().split('T')[0]
       });
+      setIsCustomLength(false);
     }
     setIsEditModalOpen(true);
   };
@@ -117,11 +158,19 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     if (editingItem && editingItem.id) {
+      const w = getItemWidth(editingItem);
+      const itemToSave: FilmInventory = {
+        ...(editingItem as FilmInventory),
+        width: w,
+        size: String(w),
+        currentMeters: editingItem.currentMeters !== undefined ? editingItem.currentMeters : 15,
+        lastUpdated: new Date().toISOString().split('T')[0]
+      };
       const isNew = !inventory.find(i => i.id === editingItem.id);
       if (isNew) {
-        onAddInventory(editingItem as FilmInventory);
+        onAddInventory(itemToSave);
       } else {
-        onUpdateInventory({...(editingItem as FilmInventory), lastUpdated: new Date().toISOString().split('T')[0]});
+        onUpdateInventory(itemToSave);
       }
       setIsEditModalOpen(false);
       setEditingItem(null);
@@ -252,14 +301,15 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                   >
                     <div>
                       <div style={{ fontWeight: '800', fontSize: '0.95rem', color: '#1e293b' }}>{item.color}</div>
-                      <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>{item.brand} ({item.size})</div>
+                      <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>{item.brand} (寬度: {getItemWidth(item)})</div>
                       <div style={{ fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 'bold', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                         <MapPin size={12} /> {item.location.zone}區 - {item.location.zone}{item.location.section}貨架 - #{item.location.slot}儲位
                       </div>
                     </div>
                     <div style={{ textAlign: 'right', flexShrink: 0, paddingLeft: '12px' }}>
-                      <div style={{ fontWeight: '900', color: 'var(--primary)', fontSize: '1.2rem' }}>{item.currentMeters}</div>
-                      <div style={{ fontSize: '0.6rem', color: '#94a3b8' }}>METERS</div>
+                      <div style={{ fontWeight: '900', color: (item.currentMeters || 0) >= 15 ? '#059669' : 'var(--primary)', fontSize: (item.currentMeters || 0) >= 15 ? '1.15rem' : '1rem' }}>
+                        {formatFilmDisplay(item)}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -378,9 +428,15 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                                      >-1</button>
                                    </div>
 
-                                   <div style={{ minWidth: '40px', textAlign: 'center' }}>
-                                     <div style={{ fontWeight: '800', color: 'var(--primary)', fontSize: '0.9rem' }}>{item.currentMeters || 0}</div>
-                                     <div style={{ fontSize: '0.55rem', color: '#94a3b8', marginTop: '-2px' }}>METERS</div>
+                                   <div style={{ minWidth: '55px', textAlign: 'center', padding: '0 4px' }}>
+                                     <div style={{ 
+                                       fontWeight: '900', 
+                                       color: (item.currentMeters || 0) >= 15 ? '#059669' : 'var(--primary)', 
+                                       fontSize: (item.currentMeters || 0) >= 15 ? '0.95rem' : '0.85rem',
+                                       whiteSpace: 'nowrap'
+                                     }}>
+                                       {formatFilmDisplay(item)}
+                                     </div>
                                    </div>
 
                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
@@ -539,15 +595,90 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                 <input type="text" className="form-control" placeholder="冰川藍, 啞光黑..." value={editingItem?.color || ''} onChange={(e) => setEditingItem(prev => prev ? {...prev, color: e.target.value} : null)} required />
               </div>
               
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <div className="form-group" style={{ flex: 1 }}>
-                  <label className="form-label">目前長度 (公尺/M)</label>
-                  <input type="number" step="0.01" className="form-control" value={editingItem?.currentMeters || 0} onChange={(e) => setEditingItem(prev => prev ? {...prev, currentMeters: Number(e.target.value)} : null)} />
+              {/* 目前長度 */}
+              <div className="form-group">
+                <label className="form-label" style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>目前長度 (公尺/M)</label>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '8px' }}>
+                  {PRESET_LENGTHS.map(preset => {
+                    const isSelected = !isCustomLength && editingItem?.currentMeters === preset.value;
+                    return (
+                      <button
+                        key={preset.value}
+                        type="button"
+                        onClick={() => {
+                          setIsCustomLength(false);
+                          setEditingItem(prev => prev ? { ...prev, currentMeters: preset.value } : null);
+                        }}
+                        style={{
+                          padding: '6px 12px',
+                          borderRadius: '8px',
+                          border: '1px solid',
+                          borderColor: isSelected ? 'var(--primary)' : '#cbd5e1',
+                          background: isSelected ? 'var(--primary)' : '#fff',
+                          color: isSelected ? '#fff' : '#334155',
+                          fontSize: '0.85rem',
+                          fontWeight: isSelected ? 'bold' : 'normal',
+                          cursor: 'pointer',
+                          transition: 'all 0.15s'
+                        }}
+                      >
+                        {preset.label}
+                      </button>
+                    );
+                  })}
+                  <button
+                    type="button"
+                    onClick={() => setIsCustomLength(true)}
+                    style={{
+                      padding: '6px 12px',
+                      borderRadius: '8px',
+                      border: '1px solid',
+                      borderColor: isCustomLength ? 'var(--primary)' : '#cbd5e1',
+                      background: isCustomLength ? '#eff6ff' : '#fff',
+                      color: isCustomLength ? 'var(--primary)' : '#334155',
+                      fontSize: '0.85rem',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s'
+                    }}
+                  >
+                    自定長度
+                  </button>
                 </div>
-                <div className="form-group" style={{ flex: 1 }}>
-                  <label className="form-label">完整尺寸規格</label>
-                  <input type="text" className="form-control" placeholder="1.52m x 15m" value={editingItem?.size || ''} onChange={(e) => setEditingItem(prev => prev ? {...prev, size: e.target.value} : null)} />
-                </div>
+
+                {isCustomLength && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px' }}>
+                    <input
+                      type="number"
+                      step="0.1"
+                      min="0"
+                      className="form-control"
+                      placeholder="請輸入長度 (例如: 3.5)"
+                      value={editingItem?.currentMeters !== undefined ? editingItem.currentMeters : ''}
+                      onChange={(e) => setEditingItem(prev => prev ? { ...prev, currentMeters: Number(e.target.value) } : null)}
+                      style={{ flex: 1 }}
+                    />
+                    <span style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 'bold' }}>公尺 (M)</span>
+                  </div>
+                )}
+              </div>
+
+              {/* 寬度 */}
+              <div className="form-group">
+                <label className="form-label" style={{ fontWeight: 'bold', marginBottom: '6px', display: 'block' }}>寬度 (最大150，10的倍數)</label>
+                <select
+                  className="form-control"
+                  value={getItemWidth(editingItem)}
+                  onChange={(e) => {
+                    const w = Number(e.target.value);
+                    setEditingItem(prev => prev ? { ...prev, width: w, size: String(w) } : null);
+                  }}
+                  style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.95rem' }}
+                >
+                  {WIDTH_OPTIONS.map(w => (
+                    <option key={w} value={w}>{w}</option>
+                  ))}
+                </select>
               </div>
 
               <div className="form-group">

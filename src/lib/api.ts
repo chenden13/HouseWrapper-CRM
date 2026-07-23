@@ -6,6 +6,28 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
+export const parseValidWidth = (wVal: any, sizeVal?: any): number => {
+  if (wVal !== undefined && !isNaN(Number(wVal))) {
+    const num = Number(wVal);
+    if (num >= 10 && num <= 150) return num;
+  }
+  if (sizeVal) {
+    const str = String(sizeVal).trim();
+    const match = str.match(/([0-9.]+)\s*m/i);
+    if (match) {
+      const meters = parseFloat(match[1]);
+      if (meters > 0 && meters <= 3) {
+        const cm = Math.round(meters * 100);
+        if (cm >= 150) return 150;
+        if (cm >= 10) return cm;
+      }
+    }
+    const parsed = parseInt(str, 10);
+    if (!isNaN(parsed) && parsed >= 10 && parsed <= 150) return parsed;
+  }
+  return 150;
+};
+
 export const api = {
   // --- 客戶資料 ---
   getCustomers: async () => {

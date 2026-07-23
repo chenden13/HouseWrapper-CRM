@@ -115,7 +115,9 @@ export const api = {
         location: {
           zone: loc.zone || item.zone || 'A',
           section: Number(loc.section || item.section || 1),
-          slot: Number(loc.slot || item.slot || 1)
+          slot: Number(loc.slot || item.slot || 1),
+          width: parsedWidth,
+          currentMeters: Number(loc.currentMeters !== undefined ? loc.currentMeters : (item.current_meters || 0))
         }
       };
     });
@@ -123,18 +125,17 @@ export const api = {
 
   updateInventory: async (item: FilmInventory) => {
     const { id, lastUpdated, currentMeters, width, location, notes, ...rest } = item;
-    const finalWidth = parseValidWidth(width, item.size);
+    const finalWidth = width !== undefined ? Number(width) : parseValidWidth(width, item.size);
     
-    // 將 currentMeters, width 與 notes 存入 location JSON 物件中，避免資料庫欄位缺失報錯
+    // 將 currentMeters, width 與 notes 存入 location JSON 物件中，維持原始 size 欄位不被覆蓋
     const updateData: any = {
       ...rest,
       id,
-      size: String(finalWidth),
       last_updated: lastUpdated || new Date().toISOString().split('T')[0],
       location: {
         ...location,
         currentMeters: Number(currentMeters !== undefined ? currentMeters : 15),
-        width: Number(finalWidth),
+        width: finalWidth,
         notes: notes || '' // 安全存放備註
       }
     };

@@ -68,17 +68,30 @@ const PRESET_LENGTHS = [
   { label: '10米', value: 10 },
 ];
 
-const WIDTH_OPTIONS = [150, 140, 130, 120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
+const WIDTH_OPTIONS = [150, 140, 130, 120, 110, 100, 90, 80, 75, 70, 60, 50, 40, 30, 20, 10];
 
 export const getItemWidth = (item?: Partial<FilmInventory> | null): number => {
   if (!item) return 150;
+  const loc = (item.location || {}) as any;
+  if (loc.width !== undefined && !isNaN(Number(loc.width))) {
+    const w = Number(loc.width);
+    if (w >= 10 && w <= 150) return w;
+  }
   if (item.width !== undefined && !isNaN(Number(item.width))) {
     const w = Number(item.width);
     if (w >= 10 && w <= 150) return w;
   }
   if (item.size) {
     const str = String(item.size).trim();
-    if (str.includes('1.52') || str.includes('1.5')) return 150;
+    const match = str.match(/([0-9.]+)\s*m/i);
+    if (match) {
+      const meters = parseFloat(match[1]);
+      if (meters > 0 && meters <= 3) {
+        const cm = Math.round(meters * 100);
+        if (cm >= 150) return 150;
+        if (cm >= 10) return cm;
+      }
+    }
     const parsed = parseInt(str, 10);
     if (!isNaN(parsed) && parsed >= 10 && parsed <= 150) return parsed;
   }

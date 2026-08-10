@@ -368,15 +368,15 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     }
   }, [formData.hasHoodPpf, formData.mainService]);
 
-  // 犀牛皮自動將規格/系列填入膜料顏色 (迎風面犀牛皮則清空顏色)
+  // 犀牛皮自動將規格/系列填入膜料顏色 (迎風面犀牛皮、汽車美容、鍍膜則清空顏色)
   React.useEffect(() => {
     if (formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮') {
       const spec = formData.mainServiceSeries || '';
       if (formData.filmColor !== spec) {
         setFormData(prev => ({ ...prev, filmColor: spec }));
       }
-    } else if (formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮') {
-      // 迎風面犀牛皮無顏色，清空 filmColor
+    } else if (formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') {
+      // 迎風面犀牛皮、汽車美容、鍍膜無顏色，清空 filmColor
       if (formData.filmColor) {
         setFormData(prev => ({ ...prev, filmColor: '' }));
       }
@@ -793,26 +793,39 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               <option value="犀牛皮">犀牛皮</option>
               <option value="迎風面">迎風面</option>
               <option value="局部保護/改色">局部保護/改色</option>
+              <option value="汽車美容">汽車美容</option>
+              <option value="鍍膜">鍍膜</option>
             </select>
           </div>
           <div className="form-group col-span-2">
-            <label className="form-label">品牌</label>
-            <select name="mainServiceBrand" className="form-control" value={formData.mainServiceBrand || ''} onChange={(e) => {
-              handleChange(e);
-              setFormData(prev => ({ ...prev, mainServiceSeries: '' }));
-            }}>
-              <option value="">選擇品牌</option>
-              {((formData.mainService || '').includes('改色') 
-                ? ['AX', '3M', 'CYS', 'TeckWrap'] 
-                : (formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮')
-                  ? ['AX', 'Pixel8bot', '3M', 'Stek']
-                  : (formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮')
-                    ? ['Pixel8bit', '3M 150g', '3M 200g']
-                    : (formData.mainService === '局部保護/改色')
+            <label className="form-label">品牌/項目</label>
+            {(formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? (
+              <input
+                type="text"
+                name="mainServiceBrand"
+                className="form-control"
+                placeholder="手動輸入項目/品牌"
+                value={formData.mainServiceBrand || ''}
+                onChange={handleChange}
+              />
+            ) : (
+              <select name="mainServiceBrand" className="form-control" value={formData.mainServiceBrand || ''} onChange={(e) => {
+                handleChange(e);
+                setFormData(prev => ({ ...prev, mainServiceSeries: '' }));
+              }}>
+                <option value="">選擇品牌</option>
+                {((formData.mainService || '').includes('改色') 
+                  ? ['AX', '3M', 'CYS', 'TeckWrap'] 
+                  : (formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮')
+                    ? ['AX', 'Pixel8bot', '3M', 'Stek']
+                    : (formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮')
                       ? ['Pixel8bit', '3M 150g', '3M 200g']
-                      : ['3M', 'Michelin', 'Atarap', 'Stek']
-              ).map(brand => <option key={brand} value={brand}>{brand}</option>)}
-            </select>
+                      : (formData.mainService === '局部保護/改色')
+                        ? ['Pixel8bit', '3M 150g', '3M 200g']
+                        : ['3M', 'Michelin', 'Atarap', 'Stek']
+                ).map(brand => <option key={brand} value={brand}>{brand}</option>)}
+              </select>
+            )}
           </div>
 
           {(formData.mainService === '改色' || formData.mainService === '全車改色膜') && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') && (
@@ -841,11 +854,11 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               type="text" 
               name="filmColor" 
               className="form-control" 
-              placeholder={(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮') ? '無須填寫' : '顏色細項'} 
+              placeholder={(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? '無須填寫' : '顏色細項'} 
               value={formData.filmColor || ''} 
               onChange={handleChange} 
-              disabled={formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮'}
-              style={(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮') ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
+              disabled={formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜'}
+              style={(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
             />
           </div>
           <div className={`form-group ${(formData.mainService === '改色' || formData.mainService === '全車改色膜') && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') ? 'col-span-2' : 'col-span-4'}`}>

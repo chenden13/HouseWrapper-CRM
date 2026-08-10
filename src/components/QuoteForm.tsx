@@ -134,20 +134,34 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ customer, onSubmit, onCanc
           <option value="改色">改色</option>
           <option value="犀牛皮">犀牛皮</option>
           <option value="迎風面">迎風面</option>
+          <option value="局部保護/改色">局部保護/改色</option>
+          <option value="汽車美容">汽車美容</option>
+          <option value="鍍膜">鍍膜</option>
         </select>
       </div>
 
       <div className="form-group col-span-4">
-        <label className="form-label">品牌</label>
-        <select name="mainServiceBrand" className="form-control" value={formData.mainServiceBrand || ''} onChange={handleChange}>
-          <option value="">請選擇</option>
-          {((formData.mainService === '改色' || formData.mainService === '全車改色') 
-            ? ['AX', '3M', 'CYS', 'TeckWrap'] 
-            : ['3M', 'Michelin', 'Atarap', 'Stek']
-          ).map(brand => (
-            <option key={brand} value={brand}>{brand}</option>
-          ))}
-        </select>
+        <label className="form-label">品牌/項目</label>
+        {(formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? (
+          <input
+            type="text"
+            name="mainServiceBrand"
+            className="form-control"
+            placeholder="手動輸入項目/品牌"
+            value={formData.mainServiceBrand || ''}
+            onChange={handleChange}
+          />
+        ) : (
+          <select name="mainServiceBrand" className="form-control" value={formData.mainServiceBrand || ''} onChange={handleChange}>
+            <option value="">請選擇</option>
+            {((formData.mainService === '改色' || formData.mainService === '全車改色') 
+              ? ['AX', '3M', 'CYS', 'TeckWrap'] 
+              : ['3M', 'Michelin', 'Atarap', 'Stek']
+            ).map(brand => (
+              <option key={brand} value={brand}>{brand}</option>
+            ))}
+          </select>
+        )}
       </div>
 
       <div className="form-group col-span-4">

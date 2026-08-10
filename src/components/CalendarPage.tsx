@@ -85,6 +85,24 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
         constructionBg: '#f3dbdb',
         badge: '改色膜'
       };
+    } else if (service.includes('美容') || service.includes('汽車美容')) {
+      return {
+        bg: '#fdf4ff', // Soft purple
+        stayBorder: '#fae8ff',
+        border: '#f0abfc',
+        text: '#701a75',
+        constructionBg: '#f5d0fe',
+        badge: '汽車美容'
+      };
+    } else if (service.includes('鍍膜')) {
+      return {
+        bg: '#f0fdf4', // Soft cyan/emerald
+        stayBorder: '#dcfce7',
+        border: '#86efac',
+        text: '#14532d',
+        constructionBg: '#bbf7d0',
+        badge: '鍍膜'
+      };
     } else if (service.includes('局部')) {
       return {
         bg: '#f8f6f0', // Fresh light cream/sand
@@ -137,6 +155,20 @@ export const CalendarPage: React.FC<CalendarPageProps> = ({
         border: '#e8caca',
         text: '#5c3d3d',
         badge: '改色膜'
+      };
+    } else if (service.includes('美容') || service.includes('汽車美容')) {
+      return {
+        bg: '#fdf4ff',
+        border: '#f0abfc',
+        text: '#701a75',
+        badge: '汽車美容'
+      };
+    } else if (service.includes('鍍膜')) {
+      return {
+        bg: '#f0fdf4',
+        border: '#86efac',
+        text: '#14532d',
+        badge: '鍍膜'
       };
     } else if (service.includes('局部')) {
       return {

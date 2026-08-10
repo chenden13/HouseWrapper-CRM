@@ -265,16 +265,27 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
           <option value="犀牛皮">犀牛皮</option>
           <option value="迎風面">迎風面</option>
           <option value="局部保護/改色">局部保護/改色</option>
+          <option value="汽車美容">汽車美容</option>
+          <option value="鍍膜">鍍膜</option>
         </select>
       </div>
       <div className="form-group col-span-4">
-        <label className="form-label">施工品牌/系列</label>
-        <input type="text" name="mainServiceBrand" className="form-control" value={formData.mainServiceBrand || ''} onChange={handleChange} />
+        <label className="form-label">施工品牌/系列/項目</label>
+        <input type="text" name="mainServiceBrand" className="form-control" placeholder="手動輸入項目/品牌" value={formData.mainServiceBrand || ''} onChange={handleChange} />
       </div>
       <div className="form-group col-span-4">
         <label className="form-label">膜料顏色 (細項)</label>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <input type="text" name="filmColor" className="form-control" value={formData.filmColor || ''} onChange={handleChange} />
+          <input 
+            type="text" 
+            name="filmColor" 
+            className="form-control" 
+            value={(formData.mainService === '犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? '' : (formData.filmColor || '')} 
+            onChange={handleChange}
+            placeholder={(formData.mainService === '犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? '無須填寫' : '顏色細項'}
+            disabled={formData.mainService === '犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜'}
+            style={(formData.mainService === '犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
+          />
           <label style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', color: '#7c3aed', cursor: 'pointer' }}>
             <input type="checkbox" name="hasHoodPpf" checked={formData.hasHoodPpf || false} onChange={handleChange} /> 
             加購：引擎蓋+前葉子板犀牛皮 (Pixel8bit)

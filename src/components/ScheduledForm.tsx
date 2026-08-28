@@ -65,13 +65,27 @@ export const ScheduledForm: React.FC<ScheduledFormProps> = ({ customer, onUpdate
         </div>
         <div style={{ padding: '12px 16px' }}>
           <InfoRow label="主施工" value={customer.mainService ? `${customer.mainService}${customer.mainServiceBrand ? ` (${customer.mainServiceBrand})` : ''}` : undefined} />
-          <InfoRow label="隔熱紙" value={customer.windowTint ? `${customer.windowTint}${customer.windowTintBrand ? ` (${customer.windowTintBrand})` : ''}` : undefined} />
+          <InfoRow 
+            label="隔熱紙" 
+            value={(() => {
+              const main = customer.windowTintCustomName || customer.windowTintBrand || customer.windowTint;
+              if (!main && !customer.tintBrandFrontWind) return undefined;
+              const partsDetail = [
+                customer.tintBrandFrontWind || customer.tintDepthFrontWind ? `前擋:${customer.tintBrandFrontWind || ''} ${customer.tintModelFrontWind || ''} ${customer.tintDepthFrontWind || ''}%`.trim() : '',
+                customer.tintBrandFrontSeat || customer.tintDepthFrontSeat ? `前座:${customer.tintBrandFrontSeat || ''} ${customer.tintModelFrontSeat || ''} ${customer.tintDepthFrontSeat || ''}%`.trim() : '',
+                customer.tintBrandRearSeat || customer.tintDepthRearSeat ? `後座:${customer.tintBrandRearSeat || ''} ${customer.tintModelRearSeat || ''} ${customer.tintDepthRearSeat || ''}%`.trim() : '',
+                customer.tintBrandRearWind || customer.tintDepthRearWind ? `後擋:${customer.tintBrandRearWind || ''} ${customer.tintModelRearWind || ''} ${customer.tintDepthRearWind || ''}%`.trim() : '',
+                customer.tintBrandSunroof || customer.tintDepthSunroof ? `天窗:${customer.tintBrandSunroof || ''} ${customer.tintModelSunroof || ''} ${customer.tintDepthSunroof || ''}%`.trim() : '',
+              ].filter(Boolean).join(' | ');
+              return `${main || '隔熱紙'}${partsDetail ? ` [ ${partsDetail} ]` : ''}`;
+            })()} 
+          />
           <InfoRow label="電子後視鏡" value={customer.digitalMirror} />
           <InfoRow label="電改" value={customer.electricMod} />
           {customer.customAccessories?.filter(a => a.name).map(acc => (
             <InfoRow key={acc.id} label="配件" value={acc.name} />
           ))}
-          {!customer.mainService && !customer.windowTint && !customer.digitalMirror && !customer.electricMod && (
+          {!customer.mainService && !customer.windowTint && !customer.windowTintBrand && !customer.windowTintCustomName && !customer.digitalMirror && !customer.electricMod && (
             <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: 0 }}>尚無施工項目資料</p>
           )}
         </div>

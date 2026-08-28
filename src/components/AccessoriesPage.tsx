@@ -3,6 +3,8 @@ import {
   Search, Plus, Calendar, Settings, Check, Trash2, Edit2
 } from 'lucide-react';
 import type { Customer, Accessory } from '../types';
+import { WindowTintSection } from './WindowTintSection';
+import { migrateLegacyTintData } from '../data/tintConfig';
 
 interface AccessoriesPageProps {
   customers: Customer[];
@@ -95,20 +97,12 @@ export const AccessoriesPage: React.FC<AccessoriesPageProps> = ({
   // 3. 處理點擊搜尋到的客戶
   const handleSelectCustomer = (customer: Customer) => {
     setSelectedCustForEdit(customer);
-    setEditFormData({ ...customer });
-    
-    // 初始化隔熱紙類別
-    const currentSpec = customer.windowTintBrand || '';
-    const found = Object.entries(TINT_GROUPS).find(([, specs]) => specs.includes(currentSpec));
-    if (found) {
-      setEditTintCategory(found[0]);
-    } else if (currentSpec || customer.windowTint) {
-      setEditTintCategory('其他 (手動自訂)');
-    } else {
-      setEditTintCategory('');
-    }
-    
+    setEditFormData(migrateLegacyTintData(customer) as Customer);
     setIsAddModalOpen(false); // 關閉搜尋模態框
+  };
+
+  const handleWindowTintChange = (updates: Partial<Customer>) => {
+    setEditFormData(prev => ({ ...prev, ...updates }));
   };
 
   // 4. 處理快速編輯表單輸入變更
@@ -548,120 +542,12 @@ export const AccessoriesPage: React.FC<AccessoriesPageProps> = ({
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               
-              {/* 1. 隔熱紙需求區區 */}
-              <div style={{ border: '1px solid #e2e8f0', borderRadius: '12px', padding: '16px', background: '#f8fafc' }}>
-                <h4 style={{ margin: '0 0 12px 0', color: '#0369a1', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  ☀️ 隔熱紙需求
-                </h4>
-                
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '12px', alignItems: 'end', marginBottom: '12px' }}>
-                  <div className="col-span-4">
-                    <label className="form-label">品牌類別</label>
-                    <select 
-                      className="form-control" 
-                      value={editTintCategory} 
-                      onChange={(e) => {
-                        const newCategory = e.target.value;
-                        setEditTintCategory(newCategory);
-                        if (newCategory === '其他 (手動自訂)') {
-                          setEditFormData(prev => ({ 
-                            ...prev, 
-                            windowTint: prev.windowTint || '', 
-                            windowTintBrand: prev.windowTintBrand || '' 
-                          }));
-                        } else {
-                          setEditFormData(prev => ({ ...prev, windowTintBrand: '' }));
-                        }
-                      }}
-                    >
-                      <option value="">請選擇品牌</option>
-                      {Object.keys(TINT_GROUPS).map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                      <option value="其他 (手動自訂)">其他 (手動自訂)</option>
-                    </select>
-                  </div>
-
-                  {editTintCategory === '其他 (手動自訂)' ? (
-                    <>
-                      <div className="col-span-4">
-                        <label className="form-label">自訂品牌名稱</label>
-                        <input 
-                          type="text" 
-                          name="windowTint" 
-                          className="form-control" 
-                          placeholder="例如: V-Kool" 
-                          value={editFormData.windowTint || ''} 
-                          onChange={handleFormChange} 
-                        />
-                      </div>
-                      <div className="col-span-4">
-                        <label className="form-label">自訂規格/型號</label>
-                        <input 
-                          type="text" 
-                          name="windowTintBrand" 
-                          className="form-control" 
-                          placeholder="例如: V55" 
-                          value={editFormData.windowTintBrand || ''} 
-                          onChange={handleFormChange} 
-                        />
-                      </div>
-                    </>
-                  ) : (
-                    <div className="col-span-5">
-                      <label className="form-label">具體規格/型號</label>
-                      <select name="windowTintBrand" className="form-control" value={editFormData.windowTintBrand || ''} onChange={handleFormChange}>
-                        <option value="">選擇規格</option>
-                        {(TINT_GROUPS[editTintCategory] || []).map(b => <option key={b} value={b}>{b}</option>)}
-                      </select>
-                    </div>
-                  )}
-
-                  {editTintCategory !== '其他 (手動自訂)' && (
-                    <div className="col-span-3" style={{ paddingBottom: '10px' }}>
-                      <label style={{ fontSize: '0.82rem', display: 'flex', alignItems: 'center', gap: '6px', color: '#0369a1', cursor: 'pointer', fontWeight: '600' }}>
-                        <input type="checkbox" name="hasSunroof" checked={editFormData.hasSunroof || false} onChange={handleFormChange} /> 
-                        包含天窗
-                      </label>
-                    </div>
-                  )}
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '12px', marginBottom: '12px' }}>
-                  <div className="col-span-3">
-                    <label className="form-label">施工報價 ($)</label>
-                    <input type="number" name="windowTintPrice" className="form-control" placeholder="金額" value={editFormData.windowTintPrice || ''} onChange={handleFormChange} />
-                  </div>
-                  <div className="col-span-3">
-                    <label className="form-label">預約日期</label>
-                    <input type="date" name="windowTintDate" className="form-control" value={editFormData.windowTintDate || ''} onChange={handleFormChange} />
-                  </div>
-                  <div className="col-span-3">
-                    <label className="form-label">預約時段</label>
-                    <select name="windowTintScheduledTime" className="form-control" value={editFormData.windowTintScheduledTime || ''} onChange={handleFormChange}>
-                      <option value="">選擇時段</option>
-                      {["11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"].map(t => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="col-span-3">
-                    <label className="form-label">施工廠商</label>
-                    <select name="windowTintVendor" className="form-control" value={editFormData.windowTintVendor || ''} onChange={handleFormChange}>
-                      <option value="">選擇廠商</option>
-                      <option value="麟光">麟光</option>
-                      <option value="昆哥">昆哥</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
-                  {[['前擋', 'tintDepthFrontWind'], ['前座', 'tintDepthFrontSeat'], ['後座', 'tintDepthRearSeat'], ['後擋', 'tintDepthRearWind'], ['天窗', 'tintDepthSunroof']].map(([label, f]) => (
-                    <div key={f} style={{ flex: 1 }}>
-                      <label className="form-label" style={{ fontSize: '0.72rem', marginBottom: '2px' }}>{label}</label>
-                      <input type="number" name={f} className="form-control" placeholder="深度" value={(editFormData[f as keyof Customer] as string | number | undefined) || ''} onChange={handleFormChange} />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* 1. 隔熱紙需求區塊 (全新獨立部位與快速選項) */}
+              <WindowTintSection
+                formData={editFormData}
+                onChange={handleWindowTintChange}
+                carModel={editFormData.model}
+              />
 
               {/* 2. 電子鏡 / 行車記錄器 */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>

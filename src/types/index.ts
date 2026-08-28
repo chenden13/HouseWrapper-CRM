@@ -69,6 +69,7 @@ export interface Customer {
   
   windowTint?: string;
   windowTintBrand?: string;
+  windowTintCustomName?: string; // 隔熱紙自訂名稱/舊規格紀錄
   windowTintPrice?: number;
   hasSunroof?: boolean;
   windowTintScheduledTime?: string;
@@ -79,6 +80,16 @@ export interface Customer {
   tintDepthRearSeat?: string;
   tintDepthRearWind?: string;
   tintDepthSunroof?: string;
+  tintBrandFrontWind?: string;
+  tintModelFrontWind?: string;
+  tintBrandFrontSeat?: string;
+  tintModelFrontSeat?: string;
+  tintBrandRearSeat?: string;
+  tintModelRearSeat?: string;
+  tintBrandRearWind?: string;
+  tintModelRearWind?: string;
+  tintBrandSunroof?: string;
+  tintModelSunroof?: string;
   digitalMirror?: string;
   digitalMirrorBrand?: string;
   digitalMirrorPrice?: number;

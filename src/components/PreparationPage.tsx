@@ -251,68 +251,42 @@ export const PreparationPage: React.FC<PreparationPageProps> = ({ customers, onU
 
                     {/* 2. 隔熱紙 */}
                     <td style={{ padding: '10px 6px', textAlign: 'center', borderBottom: '1px solid #f1f5f9' }}>
-                      {customer.windowTint ? (
+                      {(customer.windowTint || customer.windowTintBrand || customer.windowTintCustomName || customer.tintBrandFrontWind) ? (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
                           <div style={{ fontSize: '0.75rem', color: '#1e293b', fontWeight: '800', lineHeight: '1.2' }}>
-                            {customer.windowTintBrand}
+                            {customer.windowTintCustomName || customer.windowTintBrand}
                             <div style={{ color: '#0ea5e9', fontSize: '0.7rem' }}>{customer.windowTint}</div>
                           </div>
 
-                          {/* 隔熱紙深度資訊與未填提示 */}
+                          {/* 隔熱紙各部位品牌/型號/深度資訊 */}
                           {(() => {
-                            const hasAnyDepth = !!(customer.tintDepthFrontWind || customer.tintDepthFrontSeat || customer.tintDepthRearSeat || customer.tintDepthRearWind || customer.tintDepthSunroof);
-                            if (!hasAnyDepth) {
+                            const parts = [
+                              { label: '前擋', brand: customer.tintBrandFrontWind, model: customer.tintModelFrontWind, depth: customer.tintDepthFrontWind },
+                              { label: '前座', brand: customer.tintBrandFrontSeat, model: customer.tintModelFrontSeat, depth: customer.tintDepthFrontSeat },
+                              { label: '後座', brand: customer.tintBrandRearSeat, model: customer.tintModelRearSeat, depth: customer.tintDepthRearSeat },
+                              { label: '後擋', brand: customer.tintBrandRearWind, model: customer.tintModelRearWind, depth: customer.tintDepthRearWind },
+                              { label: '天窗', brand: customer.tintBrandSunroof, model: customer.tintModelSunroof, depth: customer.tintDepthSunroof, isSunroof: true },
+                            ];
+                            const hasAnyDetail = parts.some(p => p.brand || p.model || p.depth);
+                            if (!hasAnyDetail) {
                               return (
-                                <div style={{ 
-                                  fontSize: '0.7rem', 
-                                  background: '#f8fafc', 
-                                  padding: '6px 8px', 
-                                  borderRadius: '6px', 
-                                  border: '1px solid #e2e8f0',
-                                  color: '#64748b',
-                                  width: '100%',
-                                  textAlign: 'center',
-                                  fontWeight: '600'
-                                }}>
-                                  尚未確認
+                                <div style={{ fontSize: '0.7rem', background: '#f8fafc', padding: '6px 8px', borderRadius: '6px', border: '1px solid #e2e8f0', color: '#64748b', width: '100%', textAlign: 'center', fontWeight: '600' }}>
+                                  尚未確認規格
                                 </div>
                               );
                             }
                             return (
-                              <div style={{ 
-                                fontSize: '0.68rem', 
-                                background: '#f8fafc', 
-                                padding: '4px 6px', 
-                                borderRadius: '6px', 
-                                border: '1px solid #e2e8f0',
-                                width: '100%',
-                                textAlign: 'left',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '2px'
-                              }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                  <span style={{ color: '#64748b' }}>前擋:</span>
-                                  <span>{customer.tintDepthFrontWind || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                  <span style={{ color: '#64748b' }}>前座:</span>
-                                  <span>{customer.tintDepthFrontSeat || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                  <span style={{ color: '#64748b' }}>後座:</span>
-                                  <span>{customer.tintDepthRearSeat || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                  <span style={{ color: '#64748b' }}>後擋:</span>
-                                  <span>{customer.tintDepthRearWind || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
-                                </div>
-                                {(customer.hasSunroof || customer.tintDepthSunroof) && (
-                                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <span style={{ color: '#64748b' }}>天窗:</span>
-                                    <span>{customer.tintDepthSunroof || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
-                                  </div>
-                                )}
+                              <div style={{ fontSize: '0.68rem', background: '#f8fafc', padding: '6px', borderRadius: '6px', border: '1px solid #e2e8f0', width: '100%', textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                                {parts.map(p => {
+                                  if (p.isSunroof && !customer.hasSunroof && !p.depth && !p.brand) return null;
+                                  const text = [p.brand, p.model, p.depth ? `${p.depth}%` : ''].filter(Boolean).join(' ');
+                                  return (
+                                    <div key={p.label} style={{ display: 'flex', justifyContent: 'space-between', gap: '4px' }}>
+                                      <span style={{ color: '#64748b', fontWeight: 'bold' }}>{p.label}:</span>
+                                      <span style={{ color: '#0f172a' }}>{text || <span style={{ color: '#94a3b8' }}>尚未確認</span>}</span>
+                                    </div>
+                                  );
+                                })}
                               </div>
                             );
                           })()}

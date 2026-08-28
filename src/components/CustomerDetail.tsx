@@ -36,10 +36,13 @@ export const CustomerDetail: React.FC<{ customer: Customer }> = ({ customer }) =
               <div style={{ fontWeight: '600' }}>{customer.mainService} ({customer.mainServiceBrand || '無'})</div>
             </div>
           )}
-          {customer.windowTint && (
+          {(customer.windowTint || customer.windowTintBrand || customer.windowTintCustomName) && (
             <div>
               <div style={{ fontSize: '0.75rem', color: '#64748b' }}>隔熱紙</div>
-              <div style={{ fontWeight: '600' }}>{customer.windowTint} ({customer.windowTintBrand || '無'})</div>
+              <div style={{ fontWeight: '600' }}>
+                {customer.windowTintCustomName || customer.windowTintBrand || customer.windowTint}
+                {customer.windowTintCustomName && customer.windowTintBrand ? ` (${customer.windowTintBrand})` : ''}
+              </div>
             </div>
           )}
           {customer.digitalMirror && (

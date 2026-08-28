@@ -9,6 +9,8 @@ import {
 import { api } from '../lib/api';
 import { getYouTubeEmbedUrl } from '../lib/utils';
 import type { CategorizedPhoto } from '../types';
+import { WindowTintSection } from './WindowTintSection';
+import { migrateLegacyTintData } from '../data/tintConfig';
 
 const TINT_GROUPS: Record<string, string[]> = {
   "3M": ["極黑", "極透", "方案1: 前(透)後(黑)", "方案2: 前、天(透) 身(黑)"],
@@ -37,15 +39,18 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
     // Data Migration: If it's an old record (missing constructionStartDate), 
     // move expectedEndDate to constructionStartDate and deliveryDate to expectedEndDate.
     const hasNewFormat = !!customer.constructionStartDate;
-    return {
+    return migrateLegacyTintData({
       ...customer,
       constructionStartDate: customer.constructionStartDate || customer.expectedEndDate || '',
       expectedEndDate: hasNewFormat ? customer.expectedEndDate : (customer.deliveryDate || ''),
       customAccessories: customer.customAccessories || [],
-
-    };
+    }) as Customer;
   });
   const [originalId] = useState(customer.id);
+
+  const handleWindowTintChange = (updates: Partial<Customer>) => {
+    setFormData(prev => ({ ...prev, ...updates }));
+  };
 
   const [damagePhotos, setDamagePhotos] = useState<CategorizedPhoto[]>(customer.damagePhotos || []);
   const [progressPhotos, setProgressPhotos] = useState<CategorizedPhoto[]>(customer.progressPhotos || []);
@@ -293,70 +298,13 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
         </div>
       </div>
       
-      <div className="form-group col-span-3">
-        <label className="form-label">隔熱紙品牌/項目</label>
-        <select 
-          className="form-control" 
-          value={tintCategory} 
-          onChange={(e) => {
-            const newCategory = e.target.value;
-            setTintCategory(newCategory);
-            if (newCategory === '其他 (手動自訂)') {
-              setFormData(prev => ({ 
-                ...prev, 
-                windowTint: prev.windowTint || '', 
-                windowTintBrand: prev.windowTintBrand || '' 
-              }));
-            } else {
-              setFormData(prev => ({ ...prev, windowTintBrand: '' }));
-            }
-          }}
-        >
-          <option value="">選擇品項</option>
-          {Object.keys(TINT_GROUPS).map(cat => <option key={cat} value={cat}>{cat}</option>)}
-          <option value="其他 (手動自訂)">其他 (手動自訂)</option>
-        </select>
+      <div className="col-span-12">
+        <WindowTintSection
+          formData={formData}
+          onChange={handleWindowTintChange}
+          carModel={formData.model}
+        />
       </div>
-      {tintCategory === '其他 (手動自訂)' ? (
-        <>
-          <div className="form-group col-span-3">
-            <label className="form-label">自訂品牌</label>
-            <input 
-              type="text" 
-              name="windowTint" 
-              className="form-control" 
-              placeholder="例如: V-Kool" 
-              value={formData.windowTint || ''} 
-              onChange={handleChange} 
-            />
-          </div>
-          <div className="form-group col-span-3">
-            <label className="form-label">自訂規格/型號</label>
-            <input 
-              type="text" 
-              name="windowTintBrand" 
-              className="form-control" 
-              placeholder="例如: V55" 
-              value={formData.windowTintBrand || ''} 
-              onChange={handleChange} 
-            />
-          </div>
-        </>
-      ) : (
-        <div className="form-group col-span-3">
-          <label className="form-label">具體規格選擇</label>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <select name="windowTintBrand" className="form-control" value={formData.windowTintBrand || ''} onChange={handleChange}>
-              <option value="">選擇規格</option>
-              {(TINT_GROUPS[tintCategory] || []).map(b => <option key={b} value={b}>{b}</option>)}
-            </select>
-            <label style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', color: '#0369a1', cursor: 'pointer' }}>
-              <input type="checkbox" name="hasSunroof" checked={formData.hasSunroof || false} onChange={handleChange} /> 
-              包含天窗施工
-            </label>
-          </div>
-        </div>
-      )}
       
       <div className="form-group col-span-3">
         <label className="form-label">電子後視鏡</label>

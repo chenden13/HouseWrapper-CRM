@@ -9,6 +9,8 @@ import { VehicleAutocomplete } from './VehicleAutocomplete';
 import { taiwanCounties } from '../data/counties';
 import { api } from '../lib/api';
 import { getYouTubeEmbedUrl } from '../lib/utils';
+import { WindowTintSection } from './WindowTintSection';
+import { migrateLegacyTintData } from '../data/tintConfig';
 
 const TINT_PRICE_TABLE: Record<string, { m3: number; m3_sunroof: number; my: number; my_sunroof: number }> = {
   "極黑": { m3: 26500, m3_sunroof: 29500, my: 24500, my_sunroof: 32500 },
@@ -153,12 +155,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     if (customer) {
       // 修正過往可能導致交車日期被清空的遷移邏輯
       // 確保 expectedEndDate (預計交車日期) 不會被 deliveryDate (通常施工中為空) 覆蓋
-      return { 
+      return migrateLegacyTintData({ 
         ...customer, 
         constructionStartDate: customer.constructionStartDate || '',
         expectedEndDate: customer.expectedEndDate || '',
         customAccessories: customer.customAccessories || [] 
-      };
+      });
     }
     // defaultStatus 由呼叫端決定：待施工區新增用 'scheduled'，諮詢區新增用 'new'
     return { id: onSuggestId, status: defaultStatus || 'scheduled', customAccessories: [] };
@@ -234,6 +236,13 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
     manualTotalPrice: customer?.totalAmount || 0,
     useManualTotal: false
   });
+
+  const handleWindowTintChange = (updates: Partial<Customer>) => {
+    setFormData(prev => ({ ...prev, ...updates }));
+    if (updates.windowTintPrice !== undefined) {
+      setPrices(prev => ({ ...prev, windowTintPrice: updates.windowTintPrice || 0 }));
+    }
+  };
 
   const getInitialDiscounts = (): string[] => {
      if (!customer?.appliedDiscountName) return [];
@@ -501,9 +510,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
       }
     });
 
-    const finalWindowTint = tintCategory === '其他 (手動自訂)'
-      ? formData.windowTint
-      : tintCategory;
+    const finalWindowTint = formData.windowTint || '';
 
     return {
       ...(formData as Customer),
@@ -899,136 +906,12 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
             </div>
           )}
 
-          {/* 隔熱紙項目 (優化後) */}
-          <React.Fragment>
-            <div className="col-span-12" style={{ borderLeft: '4px solid #3b82f6', background: '#f8fafc', padding: '12px 16px', borderRadius: '8px', marginBottom: '8px', marginTop: '16px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '16px', alignItems: 'end' }}>
-                <div className="col-span-4">
-                  <label className="form-label" style={{ fontWeight: 'bold', color: '#1e3a8a' }}>隔熱紙 - 品牌類別</label>
-                  <select 
-                    className="form-control" 
-                    value={tintCategory} 
-                    onChange={(e) => {
-                      const newCategory = e.target.value;
-                      setTintCategory(newCategory);
-                      if (newCategory === '其他 (手動自訂)') {
-                        setFormData(prev => ({ 
-                          ...prev, 
-                          windowTint: prev.windowTint || '', 
-                          windowTintBrand: prev.windowTintBrand || '' 
-                        }));
-                      } else {
-                        setFormData(prev => ({ ...prev, windowTintBrand: '' }));
-                      }
-                    }}
-                  >
-                    <option value="">請選擇品牌</option>
-                    {Object.keys(TINT_GROUPS).map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                    <option value="其他 (手動自訂)">其他 (手動自訂)</option>
-                  </select>
-                </div>
-                {tintCategory === '其他 (手動自訂)' ? (
-                  <>
-                    <div className="col-span-3">
-                      <label className="form-label" style={{ fontWeight: 'bold' }}>自訂品牌名稱</label>
-                      <input 
-                        type="text" 
-                        name="windowTint" 
-                        className="form-control" 
-                        placeholder="例如: V-Kool" 
-                        value={formData.windowTint || ''} 
-                        onChange={handleChange} 
-                      />
-                    </div>
-                    <div className="col-span-3">
-                      <label className="form-label" style={{ fontWeight: 'bold' }}>自訂規格/型號</label>
-                      <input 
-                        type="text" 
-                        name="windowTintBrand" 
-                        className="form-control" 
-                        placeholder="例如: V55" 
-                        value={formData.windowTintBrand || ''} 
-                        onChange={handleChange} 
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <div className="col-span-5">
-                    <label className="form-label" style={{ fontWeight: 'bold' }}>具體規格/型號</label>
-                    <select name="windowTintBrand" className="form-control" value={formData.windowTintBrand || ''} onChange={handleChange}>
-                      <option value="">選擇規格 (點選自動報價)</option>
-                      {(TINT_GROUPS[tintCategory] || []).map(b => <option key={b} value={b}>{b}</option>)}
-                    </select>
-                  </div>
-                )}
-                <div className={tintCategory === '其他 (手動自訂)' ? 'col-span-2' : 'col-span-3'} style={{ paddingBottom: '10px' }}>
-                  <label style={{ fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '8px', color: '#0369a1', cursor: 'pointer', fontWeight: '600' }}>
-                    <input type="checkbox" name="hasSunroof" checked={formData.hasSunroof || false} onChange={handleChange} /> 
-                    包含天窗施工
-                  </label>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '12px', marginTop: '12px', alignItems: 'center' }}>
-                <div style={{ flex: '0 0 140px' }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工金額</label>
-                  <input type="number" name="windowTintPrice" className="form-control" value={prices.windowTintPrice || ''} onChange={handlePriceChange} placeholder="$" />
-                </div>
-                <div style={{ flex: '0 0 160px' }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計進場日期</label>
-                  <input type="date" name="windowTintDate" className="form-control" value={formData.windowTintDate || ''} onChange={handleChange} />
-                </div>
-                <div style={{ flex: '0 0 140px' }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>預計時段</label>
-                  <select name="windowTintScheduledTime" className="form-control" value={formData.windowTintScheduledTime || ''} onChange={handleChange}>
-                    <option value="">選擇時段</option>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
-                    <option value="17:00">17:00</option>
-                    <option value="18:00">18:00</option>
-                    <option value="19:00">19:00</option>
-                    <option value="20:00">20:00</option>
-                    <option value="21:00">21:00</option>
-                  </select>
-                </div>
-                <div style={{ flex: '0 0 140px' }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>施工廠商</label>
-                  <select name="windowTintVendor" className="form-control" value={formData.windowTintVendor || ''} onChange={handleChange}>
-                    <option value="">選擇廠商</option>
-                    <option value="麟光">麟光</option>
-                    <option value="昆哥">昆哥</option>
-                  </select>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>
-                <div style={{ flex: 1 }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>前擋</label>
-                  <input type="number" name="tintDepthFrontWind" className="form-control" value={formData.tintDepthFrontWind || ''} onChange={handleChange} placeholder="深度數字" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>前座</label>
-                  <input type="number" name="tintDepthFrontSeat" className="form-control" value={formData.tintDepthFrontSeat || ''} onChange={handleChange} placeholder="深度數字" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>後座</label>
-                  <input type="number" name="tintDepthRearSeat" className="form-control" value={formData.tintDepthRearSeat || ''} onChange={handleChange} placeholder="深度數字" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>後擋</label>
-                  <input type="number" name="tintDepthRearWind" className="form-control" value={formData.tintDepthRearWind || ''} onChange={handleChange} placeholder="深度數字" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px' }}>天窗</label>
-                  <input type="number" name="tintDepthSunroof" className="form-control" value={formData.tintDepthSunroof || ''} onChange={handleChange} placeholder="深度數字" />
-                </div>
-              </div>
-            </div>
-          </React.Fragment>
+          {/* 隔熱紙項目 (全新獨立部位與快速選項) */}
+          <WindowTintSection 
+            formData={formData} 
+            onChange={handleWindowTintChange} 
+            carModel={formData.model} 
+          />
 
           {/* 其他配件項目 (同步優化) */}
           {[

@@ -907,11 +907,13 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
           )}
 
           {/* 隔熱紙項目 (全新獨立部位與快速選項) */}
-          <WindowTintSection 
-            formData={formData} 
-            onChange={handleWindowTintChange} 
-            carModel={formData.model} 
-          />
+          <div className="col-span-12" style={{ gridColumn: '1 / -1', width: '100%' }}>
+            <WindowTintSection 
+              formData={formData} 
+              onChange={handleWindowTintChange} 
+              carModel={formData.model} 
+            />
+          </div>
 
           {/* 其他配件項目 (同步優化) */}
           {[

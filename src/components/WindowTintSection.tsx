@@ -115,15 +115,21 @@ export const WindowTintSection: React.FC<WindowTintSectionProps> = ({
   ];
 
   return (
-    <div style={{
-      borderLeft: '4px solid #3b82f6',
-      background: '#f8fafc',
-      padding: '16px',
-      borderRadius: '12px',
-      marginBottom: '16px',
-      marginTop: '16px',
-      boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
-    }}>
+    <div 
+      className="col-span-12"
+      style={{
+        width: '100%',
+        gridColumn: '1 / -1',
+        borderLeft: '4px solid #3b82f6',
+        background: '#f8fafc',
+        padding: '16px',
+        borderRadius: '12px',
+        marginBottom: '16px',
+        marginTop: '16px',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+        boxSizing: 'border-box'
+      }}
+    >
       {/* 標題與快速選項按鈕群 */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -254,7 +260,7 @@ export const WindowTintSection: React.FC<WindowTintSectionProps> = ({
         <div style={{ fontSize: '0.78rem', fontWeight: '700', color: '#1e40af', marginBottom: '8px' }}>
           各部位獨立品牌、型號與深度 (VLT%) 配置
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: '10px' }}>
           {partsList.map((p) => {
             const brandKey = `tintBrand${p.id}` as keyof Customer;
             const modelKey = `tintModel${p.id}` as keyof Customer;

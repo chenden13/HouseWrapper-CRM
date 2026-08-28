@@ -543,11 +543,13 @@ export const AccessoriesPage: React.FC<AccessoriesPageProps> = ({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               
               {/* 1. 隔熱紙需求區塊 (全新獨立部位與快速選項) */}
-              <WindowTintSection
-                formData={editFormData}
-                onChange={handleWindowTintChange}
-                carModel={editFormData.model}
-              />
+              <div className="col-span-12" style={{ gridColumn: '1 / -1', width: '100%' }}>
+                <WindowTintSection
+                  formData={editFormData}
+                  onChange={handleWindowTintChange}
+                  carModel={editFormData.model}
+                />
+              </div>
 
               {/* 2. 電子鏡 / 行車記錄器 */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>

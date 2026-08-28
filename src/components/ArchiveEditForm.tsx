@@ -298,7 +298,7 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
         </div>
       </div>
       
-      <div className="col-span-12">
+      <div className="col-span-12" style={{ gridColumn: '1 / -1', width: '100%' }}>
         <WindowTintSection
           formData={formData}
           onChange={handleWindowTintChange}

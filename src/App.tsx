@@ -1,3 +1,4 @@
+import { AccessorySettlementPage } from './components/AccessorySettlementPage';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 // Build hash refresh: 2026-05-08 19:03
@@ -26,7 +27,7 @@ import { FinancePage } from './components/FinancePage';
 import { PriceInquiryPage } from './components/PriceInquiryPage';
 import { TrackingPage } from './components/TrackingPage';
 import { PreparationPage } from './components/PreparationPage';
-import { History, Box, LogOut, Clock, UserPlus, Bell, ClipboardList, RefreshCcw, Calendar, Settings } from 'lucide-react';
+import { Calculator,  History, Box, LogOut, Clock, UserPlus, Bell, ClipboardList, RefreshCcw, Calendar, Settings  } from 'lucide-react';
 import { CalendarPage } from './components/CalendarPage';
 import { MobileCalendar } from './components/mobile/MobileCalendar';
 import { triggerWebhook } from './lib/webhook';
@@ -645,6 +646,9 @@ function App() {
             <button className={`nav-tab ${view === 'accessories' ? 'active' : ''}`} onClick={() => setView('accessories')}>
               <Settings size={17} /> 配件安排
             </button>
+            <button className={`nav-tab ${view === 'settlement' ? 'active' : ''}`} onClick={() => setView('settlement')}>
+              <Calculator size={17} /> 配件費用結算
+            </button>
             <button className={`nav-tab ${view === 'calendar' ? 'active' : ''}`} onClick={() => setView('calendar')}>
               <Calendar size={17} /> 施工行事曆
             </button>
@@ -661,9 +665,9 @@ function App() {
             <button className={`nav-tab ${view === 'inventory' ? 'active' : ''}`} onClick={() => setView('inventory')}>
               <Box size={17} /> 膜料庫存
             </button>
-            <button className={`nav-tab ${view === 'tracking' ? 'active' : ''}`} onClick={() => setView('tracking')}>
+            {/* <button className={`nav-tab ${view === 'tracking' ? 'active' : ''}`} onClick={() => setView('tracking')}>
               <Bell size={17} /> 售後追蹤
-            </button>
+            </button> */}
             <button className={`nav-tab ${view === 'archive' ? 'active' : ''}`} onClick={() => setView('archive')}>
               <History size={17} /> 完工檔案
             </button>
@@ -812,6 +816,8 @@ function App() {
           onUpdateCustomer={handleUpdateCustomer}
           onEditCustomer={handleEditCustomer}
         />
+      ) : view === 'settlement' ? (
+        <AccessorySettlementPage />
       ) : view === 'calendar' ? (
         <CalendarPage 
           customers={customers}

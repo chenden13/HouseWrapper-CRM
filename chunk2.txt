@@ -1,1 +1,0 @@
-﻿  { id: 'SET-202608-001', month: '2026-08', date: '2026-08-28', customerName: '陳先生', licensePlate: 'BJA-8899', vehicleModel: 'Tesla Model Y', category: '隔熱紙', brand: '3M', itemTitle: '全車極透+極黑尊爵隔熱紙方案', depthSpec: '前擋 極透 MA70 + 車身 極黑 MB20 + 天窗 冰鑽 KT8 (滿版滿貼工法 Lv.3)', vendorName: '極光專業隔熱紙門市', vendorCost: 18500, customerPrice: 30500, status: 'pending', notes: '含天窗與無邊框玻璃滿版貼膜工資' },

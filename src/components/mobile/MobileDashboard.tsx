@@ -1,5 +1,5 @@
 import React from 'react';
-import { 
+import { Calculator, 
   UserPlus, Clock, Hammer, History, Box, Wallet, 
   Settings, LogOut, User as UserIcon, Plus, ChevronRight, Tag, Calendar
 } from 'lucide-react';
@@ -20,6 +20,7 @@ export const MobileDashboard: React.FC<MobileDashboardProps> = ({ user, onNaviga
   const menuItems = [
     { id: 'inquiry', label: '諮詢進件', icon: UserPlus, color: '#3b82f6', count: stats.inquiry },
     { id: 'pending', label: '待施工區', icon: Clock, color: '#f59e0b', count: stats.pending },
+    { id: 'settlement', label: '配件費用結算', icon: Calculator, color: '#4f46e5' },
     { id: 'calendar', label: '施工行事曆', icon: Calendar, color: '#10b981' },
     // { id: 'monitor', label: '施工監控', icon: Hammer, color: '#ef4444', count: stats.monitor },
     { id: 'archive', label: '完工檔案', icon: History, color: '#6366f1' },

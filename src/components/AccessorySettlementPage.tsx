@@ -34,6 +34,8 @@ export interface SettlementRecord {
 }
 
 const DEFAULT_VENDORS = [
+  '麟光',
+  '昆哥',
   '極光專業隔熱紙門市',
   'FSK 授權加盟施工旗艦店',
   '快譯通/大邁電改工程部',

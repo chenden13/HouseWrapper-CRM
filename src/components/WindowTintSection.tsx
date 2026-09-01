@@ -240,18 +240,39 @@ export const WindowTintSection: React.FC<WindowTintSectionProps> = ({
         </div>
 
         <div className="col-span-3">
-          <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px', color: '#475569' }}>施工廠商</label>
+          <label className="form-label" style={{ fontSize: '0.75rem', marginBottom: '2px', color: '#475569', fontWeight: 'bold' }}>施工廠商</label>
           <select 
             name="windowTintVendor" 
             className="form-control" 
-            value={formData.windowTintVendor || ''} 
-            onChange={(e) => onChange({ windowTintVendor: e.target.value })}
+            value={
+              !formData.windowTintVendor ? '' :
+              ['麟光', '昆哥'].includes(formData.windowTintVendor) ? formData.windowTintVendor : '其他'
+            } 
+            onChange={(e) => {
+              const val = e.target.value;
+              if (val === '其他') {
+                onChange({ windowTintVendor: '其他' });
+              } else {
+                onChange({ windowTintVendor: val });
+              }
+            }}
           >
             <option value="">選擇廠商</option>
             <option value="麟光">麟光</option>
             <option value="昆哥">昆哥</option>
-            <option value="自施工">自施工</option>
+            <option value="其他">其他 (自訂手動填寫)</option>
           </select>
+
+          {(!formData.windowTintVendor || !['麟光', '昆哥', ''].includes(formData.windowTintVendor)) && (
+            <input
+              type="text"
+              className="form-control"
+              style={{ marginTop: '6px', fontSize: '0.75rem', background: '#f0f9ff', borderColor: '#0284c7', color: '#0369a1', fontWeight: 'bold' }}
+              placeholder="請輸入自訂廠商名稱"
+              value={formData.windowTintVendor === '其他' ? '' : (formData.windowTintVendor || '')}
+              onChange={(e) => onChange({ windowTintVendor: e.target.value || '其他' })}
+            />
+          )}
         </div>
       </div>
 

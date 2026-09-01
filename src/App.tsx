@@ -817,7 +817,7 @@ function App() {
           onEditCustomer={handleEditCustomer}
         />
       ) : view === 'settlement' ? (
-        <AccessorySettlementPage />
+        <AccessorySettlementPage customers={customers} />
       ) : view === 'calendar' ? (
         <CalendarPage 
           customers={customers}

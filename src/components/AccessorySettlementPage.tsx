@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Calculator, 
   Calendar, 
@@ -12,8 +12,10 @@ import {
   Layers, 
   X,
   TrendingUp,
-  ArrowUpDown
+  ArrowUpDown,
+  Trash2
 } from 'lucide-react';
+import type { Customer } from '../types';
 
 export interface SettlementRecord {
   id: string;
@@ -31,6 +33,11 @@ export interface SettlementRecord {
   customerPrice: number;
   status: 'pending' | 'settled' | 'reviewing';
   notes?: string;
+  isManual?: boolean;
+}
+
+interface AccessorySettlementPageProps {
+  customers?: Customer[];
 }
 
 const DEFAULT_VENDORS = [
@@ -43,166 +50,103 @@ const DEFAULT_VENDORS = [
   '好室精品配件工坊'
 ];
 
-const INITIAL_RECORDS: SettlementRecord[] = [
-  {
-    id: 'SET-202608-001',
-    month: '2026-08',
-    date: '2026-08-28',
-    customerName: '陳先生',
-    licensePlate: 'BJA-8899',
-    vehicleModel: 'Tesla Model Y',
-    category: '隔熱紙',
-    brand: '3M',
-    itemTitle: '全車極透+極黑尊爵隔熱紙方案',
-    depthSpec: '前擋 極透 MA70 + 車身 極黑 MB20 + 天窗 冰鑽 KT8 (滿版滿貼工法 Lv.3)',
-    vendorName: '極光專業隔熱紙門市',
-    vendorCost: 18500,
-    customerPrice: 30500,
-    status: 'pending',
-    notes: '含天窗與無邊框玻璃滿版貼膜工資'
-  },
-  {
-    id: 'SET-202608-002',
-    month: '2026-08',
-    date: '2026-08-26',
-    customerName: '林小姐',
-    licensePlate: 'EAE-1688',
-    vehicleModel: 'Tesla Model 3 Highland',
-    category: '電子後視鏡',
-    brand: '快譯通',
-    itemTitle: '快譯通 S95B 4K星光夜視電子後視鏡',
-    depthSpec: '車外鏡頭防水安裝 + 專用降壓線隱藏走線 + 後保桿專用鏡頭座',
-    vendorName: '快譯通/大邁電改工程部',
-    vendorCost: 8800,
-    customerPrice: 14000,
-    status: 'pending',
-    notes: '煥新版 Model 3 特殊後保桿走線工法'
-  },
-  {
-    id: 'SET-202608-003',
-    month: '2026-08',
-    date: '2026-08-24',
-    customerName: '張董事長',
-    licensePlate: 'RCA-7777',
-    vehicleModel: 'Porsche Macan EV',
-    category: '配件',
-    brand: 'STEK / AX Wrap',
-    itemTitle: '全車鍍鉻件亮黑化包覆與水箱護罩黑化',
-    depthSpec: '全車側窗框黑化 (AX高光黑) + 前氣壩黑化 + 尾標燻黑 (高抗刮深度黑化Lv.2)',
-    vendorName: '好室精品配件工坊',
-    vendorCost: 7500,
-    customerPrice: 15000,
-    status: 'settled',
-    notes: '包含原廠拆裝配件工資'
-  },
-  {
-    id: 'SET-202608-004',
-    month: '2026-08',
-    date: '2026-08-20',
-    customerName: '黃醫師',
-    licensePlate: 'BMV-9988',
-    vehicleModel: 'BMW i4 M50',
-    category: '電改',
-    brand: '星空燈光 (StarAmbient)',
-    itemTitle: '64色環艙幻彩氛圍燈與四門雙層光導',
-    depthSpec: '全車18燈頭 + 四門中控隱藏式光線條 + 專用 App 獨立控光控制模組',
-    vendorName: '星馳汽車電子工程',
-    vendorCost: 12000,
-    customerPrice: 22000,
-    status: 'pending',
-    notes: '原廠保固專用不破線協議盒'
-  },
-  {
-    id: 'SET-202608-005',
-    month: '2026-08',
-    date: '2026-08-18',
-    customerName: '許先生',
-    licensePlate: 'BNN-5200',
-    vehicleModel: 'Mercedes-Benz EQE SUV',
-    category: '隔熱紙',
-    brand: 'FSK 冰鑽',
-    itemTitle: 'FSK 冰鑽 KT 全車旗艦頂級隔熱紙',
-    depthSpec: '前擋 KT68 (高透光高隔熱) + 車身 KT15 (高隱密奈米陶瓷) (滿貼施工)',
-    vendorName: 'FSK 授權加盟施工旗艦店',
-    vendorCost: 23000,
-    customerPrice: 37500,
-    status: 'settled',
-    notes: '廠商附送原廠6年電子保固卡'
-  },
-  {
-    id: 'SET-202608-006',
-    month: '2026-08',
-    date: '2026-08-15',
-    customerName: '郭經理',
-    licensePlate: 'ATP-3366',
-    vehicleModel: 'Lexus RX500h',
-    category: '電子後視鏡',
-    brand: '大邁 (DAMAI)',
-    itemTitle: '大邁 M996 2K前後雙錄串流電子後視鏡',
-    depthSpec: '車外防水鏡頭 + 車內靜電貼 + 保險絲盒專用不斷電供電線',
-    vendorName: '快譯通/大邁電改工程部',
-    vendorCost: 7500,
-    customerPrice: 12800,
-    status: 'reviewing',
-    notes: '等待廠商發票對帳'
-  },
-  {
-    id: 'SET-202608-007',
-    month: '2026-08',
-    date: '2026-08-10',
-    customerName: '蔡小姐',
-    licensePlate: 'BPQ-6688',
-    vehicleModel: 'Tesla Model Y',
-    category: '電改',
-    brand: '邁斯 (MAIS)',
-    itemTitle: '前備箱電動開合與腳踢感應升級',
-    depthSpec: '雙桿靜音電吸馬達 + 防水感應雷達 + 車內大螢幕控制連動',
-    vendorName: '星馳汽車電子工程',
-    vendorCost: 9500,
-    customerPrice: 16800,
-    status: 'settled',
-    notes: '已含專用模組測試費用'
-  },
-  {
-    id: 'SET-202607-001',
-    month: '2026-07',
-    date: '2026-07-29',
-    customerName: '鄭先生',
-    licensePlate: 'AFG-1122',
-    vehicleModel: 'Audi Q8 e-tron',
-    category: '隔熱紙',
-    brand: '桑馬克 (SunMark)',
-    itemTitle: '桑馬克 Smart + XC MAX 尊榮隔熱紙',
-    depthSpec: '前擋 Smart 70 (智慧光控) + 車身 XC 20 (防爆陶瓷)',
-    vendorName: '極光專業隔熱紙門市',
-    vendorCost: 19000,
-    customerPrice: 32500,
-    status: 'settled',
-    notes: '7月份廠商款項已完成電匯'
-  },
-  {
-    id: 'SET-202607-002',
-    month: '2026-07',
-    date: '2026-07-22',
-    customerName: '廖先生',
-    licensePlate: 'CLT-9900',
-    vehicleModel: 'Tesla Model 3',
-    category: '電子後視鏡',
-    brand: 'DOD',
-    itemTitle: 'DOD T-one plus 結合後鏡頭一體式電子後視鏡',
-    depthSpec: '前/後雙錄 + 鏡頭角度自動調整 + Tesla專用支架固定',
-    vendorName: '快譯通/大邁電改工程部',
-    vendorCost: 13000,
-    customerPrice: 20000,
-    status: 'settled',
-    notes: '7月份全額結清'
-  }
-];
+export const AccessorySettlementPage: React.FC<AccessorySettlementPageProps> = ({ customers = [] }) => {
+  // Local storage for manually added records
+  const [manualRecords, setManualRecords] = useState<SettlementRecord[]>(() => {
+    try {
+      const saved = localStorage.getItem('crm_manual_settlements');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
+  });
 
-export const AccessorySettlementPage: React.FC = () => {
-  const [records, setRecords] = useState<SettlementRecord[]>(INITIAL_RECORDS);
-  
-  // Default filter to 'all' so records are shown ordered by date descending
+  useEffect(() => {
+    try {
+      localStorage.setItem('crm_manual_settlements', JSON.stringify(manualRecords));
+    } catch (e) {
+      console.error('Failed to save manual settlements', e);
+    }
+  }, [manualRecords]);
+
+  // Dynamically extract real records from CRM customers database
+  const realCustomerRecords = useMemo(() => {
+    const extracted: SettlementRecord[] = [];
+
+    customers.forEach(c => {
+      const dateVal = (c as any).windowTintDate || (c as any).constructionDate || (c as any).date || (c as any).createdAt || new Date().toISOString().split('T')[0];
+      const monthVal = dateVal.substring(0, 7);
+      const custName = c.name || (c as any).customerName || '客戶';
+      const plate = (c as any).licensePlate || (c as any).plate || '';
+      const car = (c as any).carModel || (c as any).vehicleModel || (c as any).carType || '';
+
+      // 1. 隔熱紙施工紀錄
+      if ((c as any).windowTintPrice || (c as any).windowTintVendor || (c as any).windowTintPresetId || (c as any).tintBrandFront || (c as any).windowTintCustomName) {
+        const vendor = (c as any).windowTintVendor || '未指定廠商';
+        const price = Number((c as any).windowTintPrice) || 0;
+        const cost = Number((c as any).windowTintVendorCost) || Number((c as any).tintCost) || 0;
+        
+        let depthDetails = [];
+        if ((c as any).tintBrandFront) depthDetails.push(`前擋: ${(c as any).tintBrandFront} ${(c as any).tintModelFront || ''} ${(c as any).tintDepthFront || ''}`.trim());
+        if ((c as any).tintBrandSideFront) depthDetails.push(`前側: ${(c as any).tintBrandSideFront} ${(c as any).tintModelSideFront || ''} ${(c as any).tintDepthSideFront || ''}`.trim());
+        if ((c as any).tintBrandSideRear) depthDetails.push(`後側: ${(c as any).tintBrandSideRear} ${(c as any).tintModelSideRear || ''} ${(c as any).tintDepthSideRear || ''}`.trim());
+        if ((c as any).tintBrandRear) depthDetails.push(`後擋: ${(c as any).tintBrandRear} ${(c as any).tintModelRear || ''} ${(c as any).tintDepthRear || ''}`.trim());
+        if ((c as any).tintBrandSunroof) depthDetails.push(`天窗: ${(c as any).tintBrandSunroof} ${(c as any).tintModelSunroof || ''} ${(c as any).tintDepthSunroof || ''}`.trim());
+
+        const specText = depthDetails.length > 0 ? depthDetails.join(' | ') : ((c as any).windowTintCustomName || '全車隔熱紙施工配置');
+
+        extracted.push({
+          id: `TINT-${c.id || Math.random().toString(36).substr(2, 6)}`,
+          month: monthVal,
+          date: dateVal,
+          customerName: custName,
+          licensePlate: plate,
+          vehicleModel: car,
+          category: '隔熱紙',
+          brand: (c as any).tintBrandFront || (c as any).windowTintBrand || '隔熱紙',
+          itemTitle: (c as any).windowTintCustomName || (c as any).windowTintPresetId || '隔熱紙方案',
+          depthSpec: specText,
+          vendorName: vendor,
+          vendorCost: cost,
+          customerPrice: price,
+          status: c.status === 'completed' || (c as any).status === 'archive' ? 'settled' : 'pending',
+          notes: (c as any).notes || (c as any).tintNotes || ''
+        });
+      }
+
+      // 2. 配件 / 電改 / 電子後視鏡 (如有的話)
+      if (Array.isArray((c as any).accessories)) {
+        (c as any).accessories.forEach((acc: any, idx: number) => {
+          extracted.push({
+            id: `ACC-${c.id}-${idx}`,
+            month: monthVal,
+            date: dateVal,
+            customerName: custName,
+            licensePlate: plate,
+            vehicleModel: car,
+            category: acc.category || (acc.name?.includes('後視鏡') ? '電子後視鏡' : acc.name?.includes('燈') || acc.name?.includes('電') ? '電改' : '配件'),
+            brand: acc.brand || '合作廠商品牌',
+            itemTitle: acc.name || acc.itemTitle || '配件項目',
+            depthSpec: acc.spec || acc.description || '標準安裝工法',
+            vendorName: acc.vendor || acc.vendorName || '合作廠商',
+            vendorCost: Number(acc.cost || acc.vendorCost) || 0,
+            customerPrice: Number(acc.price || acc.customerPrice) || 0,
+            status: acc.status || (c.status === 'completed' ? 'settled' : 'pending'),
+            notes: acc.notes || ''
+          });
+        });
+      }
+    });
+
+    return extracted;
+  }, [customers]);
+
+  // Combine real database records with manual local records
+  const allRecords = useMemo(() => {
+    return [...manualRecords, ...realCustomerRecords];
+  }, [manualRecords, realCustomerRecords]);
+
+  // Filters & Sorting
   const [selectedMonth, setSelectedMonth] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedVendor, setSelectedVendor] = useState<string>('all');
@@ -211,7 +155,7 @@ export const AccessorySettlementPage: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
   
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [vendorSelectMode, setVendorSelectMode] = useState<string>('極光專業隔熱紙門市');
+  const [vendorSelectMode, setVendorSelectMode] = useState<string>('麟光');
   const [customVendorInput, setCustomVendorInput] = useState<string>('');
 
   const [formData, setFormData] = useState<Partial<SettlementRecord>>({
@@ -221,7 +165,7 @@ export const AccessorySettlementPage: React.FC = () => {
     brand: '',
     itemTitle: '',
     depthSpec: '',
-    vendorName: '極光專業隔熱紙門市',
+    vendorName: '麟光',
     vendorCost: 0,
     customerPrice: 0,
     customerName: '',
@@ -232,18 +176,17 @@ export const AccessorySettlementPage: React.FC = () => {
   });
 
   const monthsList = useMemo(() => {
-    const set = new Set(records.map(r => r.month));
+    const set = new Set(allRecords.map(r => r.month));
     return Array.from(set).sort().reverse();
-  }, [records]);
+  }, [allRecords]);
 
   const vendorsList = useMemo(() => {
-    const set = new Set(records.map(r => r.vendorName));
+    const set = new Set(allRecords.map(r => r.vendorName));
     return Array.from(set).sort();
-  }, [records]);
+  }, [allRecords]);
 
-  // Filter and Sort by Date
   const filteredRecords = useMemo(() => {
-    const result = records.filter(r => {
+    const result = allRecords.filter(r => {
       if (selectedMonth !== 'all' && r.month !== selectedMonth) return false;
       if (selectedCategory !== 'all' && r.category !== selectedCategory) return false;
       if (selectedVendor !== 'all' && r.vendorName !== selectedVendor) return false;
@@ -263,13 +206,12 @@ export const AccessorySettlementPage: React.FC = () => {
       return true;
     });
 
-    // Default sort by date
     return result.sort((a, b) => {
       const timeA = new Date(a.date).getTime();
       const timeB = new Date(b.date).getTime();
       return sortOrder === 'desc' ? timeB - timeA : timeA - timeB;
     });
-  }, [records, selectedMonth, selectedCategory, selectedVendor, selectedStatus, searchTerm, sortOrder]);
+  }, [allRecords, selectedMonth, selectedCategory, selectedVendor, selectedStatus, searchTerm, sortOrder]);
 
   const stats = useMemo(() => {
     const totalVendorCost = filteredRecords.reduce((acc, curr) => acc + curr.vendorCost, 0);
@@ -295,13 +237,19 @@ export const AccessorySettlementPage: React.FC = () => {
   }, [filteredRecords]);
 
   const handleToggleStatus = (id: string) => {
-    setRecords(prev => prev.map(item => {
+    setManualRecords(prev => prev.map(item => {
       if (item.id === id) {
         const nextStatus = item.status === 'pending' ? 'settled' : item.status === 'settled' ? 'reviewing' : 'pending';
         return { ...item, status: nextStatus };
       }
       return item;
     }));
+  };
+
+  const handleDeleteRecord = (id: string) => {
+    if (confirm('確定要刪除此筆對帳紀錄嗎？')) {
+      setManualRecords(prev => prev.filter(r => r.id !== id));
+    }
   };
 
   const handleAddSubmit = (e: React.FormEvent) => {
@@ -317,7 +265,7 @@ export const AccessorySettlementPage: React.FC = () => {
     const monthVal = formData.date ? formData.date.substring(0, 7) : new Date().toISOString().substring(0, 7);
 
     const newRecord: SettlementRecord = {
-      id: `SET-${monthVal.replace('-', '')}-${Math.floor(1000 + Math.random() * 9000)}`,
+      id: `MAN-${Date.now()}-${Math.floor(1000 + Math.random() * 9000)}`,
       month: monthVal,
       date: formData.date || new Date().toISOString().split('T')[0],
       customerName: formData.customerName || '散客',
@@ -331,10 +279,11 @@ export const AccessorySettlementPage: React.FC = () => {
       vendorCost: Number(formData.vendorCost) || 0,
       customerPrice: Number(formData.customerPrice) || 0,
       status: (formData.status as any) || 'pending',
-      notes: formData.notes || ''
+      notes: formData.notes || '',
+      isManual: true
     };
 
-    setRecords(prev => [newRecord, ...prev]);
+    setManualRecords(prev => [newRecord, ...prev]);
     setIsModalOpen(false);
     setFormData({
       month: new Date().toISOString().substring(0, 7),
@@ -343,7 +292,7 @@ export const AccessorySettlementPage: React.FC = () => {
       brand: '',
       itemTitle: '',
       depthSpec: '',
-      vendorName: '極光專業隔熱紙門市',
+      vendorName: '麟光',
       vendorCost: 0,
       customerPrice: 0,
       customerName: '',
@@ -352,7 +301,7 @@ export const AccessorySettlementPage: React.FC = () => {
       status: 'pending',
       notes: ''
     });
-    setVendorSelectMode('極光專業隔熱紙門市');
+    setVendorSelectMode('麟光');
     setCustomVendorInput('');
   };
 
@@ -401,7 +350,7 @@ export const AccessorySettlementPage: React.FC = () => {
               配件費用對帳結算系統
             </h2>
             <span style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: '500' }}>
-              依施工日期倒序排列，手動記錄與結算隔熱紙、配件、電改及電子後視鏡廠商成本與款項
+              自動整合系統內現有與未來新增之隔熱紙/配件施工單紀錄 (${allRecords.length} 筆)
             </span>
           </div>
         </div>
@@ -541,10 +490,10 @@ export const AccessorySettlementPage: React.FC = () => {
               style={{ padding: '10px 14px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff', fontSize: '0.9rem', fontWeight: '700', color: '#1e293b', cursor: 'pointer' }}
             >
               <option value="all">🏷️ 全部配件項目類別</option>
-              <option value="隔熱紙">☀️ 隔熱紙 (3M/FSK/桑馬克/舒熱佳/Xpel...)</option>
-              <option value="配件">🛠️ 配件 (黑化/套件/包覆...)</option>
-              <option value="電改">⚡ 電改 (氛圍燈/電尾門/電踢...)</option>
-              <option value="電子後視鏡">📹 電子後視鏡 (快譯通/大邁/DOD...)</option>
+              <option value="隔熱紙">☀️ 隔熱紙</option>
+              <option value="配件">🛠️ 配件</option>
+              <option value="電改">⚡ 電改</option>
+              <option value="電子後視鏡">📹 電子後視鏡</option>
             </select>
           </div>
 
@@ -611,7 +560,7 @@ export const AccessorySettlementPage: React.FC = () => {
                     <td style={{ padding: '16px 16px', verticalAlign: 'top' }}>
                       <div style={{ fontWeight: '800', color: '#0f172a' }}>{r.vehicleModel}</div>
                       <div style={{ fontSize: '0.8rem', color: '#475569', marginTop: '2px' }}>
-                        {r.customerName} <span style={{ color: '#6366f1', fontWeight: 'bold' }}>({r.licensePlate})</span>
+                        {r.customerName} {r.licensePlate && <span style={{ color: '#6366f1', fontWeight: 'bold' }}>({r.licensePlate})</span>}
                       </div>
                     </td>
 
@@ -651,7 +600,7 @@ export const AccessorySettlementPage: React.FC = () => {
                       <div style={{ fontSize: '1.05rem', fontWeight: '900', color: '#dc2626' }}>
                         $${r.vendorCost.toLocaleString()}
                       </div>
-                      <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>手填成本金額</div>
+                      <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>成本金額</div>
                     </td>
 
                     <td style={{ padding: '16px 16px', textAlign: 'right', verticalAlign: 'top' }}>
@@ -664,24 +613,35 @@ export const AccessorySettlementPage: React.FC = () => {
                     </td>
 
                     <td style={{ padding: '16px 16px', textAlign: 'center', verticalAlign: 'top' }}>
-                      <button
-                        onClick={() => handleToggleStatus(r.id)}
-                        style={{
-                          border: 'none', padding: '6px 14px', borderRadius: '12px', cursor: 'pointer',
-                          fontWeight: '800', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '4px',
-                          background: r.status === 'settled' ? '#dcfce7' : r.status === 'pending' ? '#fffbeb' : '#e0f2fe',
-                          color: r.status === 'settled' ? '#15803d' : r.status === 'pending' ? '#b45309' : '#0369a1',
-                          boxShadow: '0 2px 4px rgba(0,0,0,0.05)', transition: 'all 0.2s'
-                        }}
-                      >
-                        {r.status === 'settled' ? (
-                          <><CheckCircle2 size={14} /> 已完成結算</>
-                        ) : r.status === 'pending' ? (
-                          <><Clock size={14} /> 待對帳付款</>
-                        ) : (
-                          <><AlertCircle size={14} /> 對帳審核中</>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                        <button
+                          onClick={() => handleToggleStatus(r.id)}
+                          style={{
+                            border: 'none', padding: '6px 14px', borderRadius: '12px', cursor: 'pointer',
+                            fontWeight: '800', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '4px',
+                            background: r.status === 'settled' ? '#dcfce7' : r.status === 'pending' ? '#fffbeb' : '#e0f2fe',
+                            color: r.status === 'settled' ? '#15803d' : r.status === 'pending' ? '#b45309' : '#0369a1',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)', transition: 'all 0.2s'
+                          }}
+                        >
+                          {r.status === 'settled' ? (
+                            <><CheckCircle2 size={14} /> 已完成結算</>
+                          ) : r.status === 'pending' ? (
+                            <><Clock size={14} /> 待對帳付款</>
+                          ) : (
+                            <><AlertCircle size={14} /> 對帳審核中</>
+                          )}
+                        </button>
+                        {r.isManual && (
+                          <button
+                            onClick={() => handleDeleteRecord(r.id)}
+                            style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer', padding: '4px' }}
+                            title="刪除自訂紀錄"
+                          >
+                            <Trash2 size={15} />
+                          </button>
                         )}
-                      </button>
+                      </div>
                     </td>
                   </tr>
                 ))
@@ -689,8 +649,8 @@ export const AccessorySettlementPage: React.FC = () => {
                 <tr>
                   <td colSpan={8} style={{ padding: '60px 20px', textAlign: 'center', color: '#94a3b8' }}>
                     <Calculator size={40} style={{ opacity: 0.3, marginBottom: '10px' }} />
-                    <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>沒有符合條件的結算紀錄</div>
-                    <div style={{ fontSize: '0.85rem', marginTop: '4px' }}>請調整頂部時間、類別或廠商篩選器</div>
+                    <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>尚無施工配件對帳紀錄</div>
+                    <div style={{ fontSize: '0.85rem', marginTop: '4px' }}>請於待施工案件填寫隔熱紙廠商，或點擊右上角新增紀錄</div>
                   </td>
                 </tr>
               )}
@@ -751,7 +711,7 @@ export const AccessorySettlementPage: React.FC = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#475569', marginBottom: '6px' }}>配合廠商 (選擇預設或手寫)</label>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#475569', marginBottom: '6px' }}>配合廠商</label>
                   <select
                     value={vendorSelectMode}
                     onChange={e => setVendorSelectMode(e.target.value)}
@@ -765,7 +725,7 @@ export const AccessorySettlementPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#475569', marginBottom: '6px' }}>深度品牌 (3M, FSK, 快譯通...)</label>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#475569', marginBottom: '6px' }}>深度品牌 (3M, FSK...)</label>
                   <input
                     type="text"
                     placeholder="請輸入品牌"
@@ -782,7 +742,7 @@ export const AccessorySettlementPage: React.FC = () => {
                   <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#4338ca', marginBottom: '6px' }}>請輸入自訂廠商名稱</label>
                   <input
                     type="text"
-                    placeholder="例如: 新配合隔熱紙店家"
+                    placeholder="例如: 新配合店家"
                     value={customVendorInput}
                     onChange={e => setCustomVendorInput(e.target.value)}
                     required
@@ -795,7 +755,7 @@ export const AccessorySettlementPage: React.FC = () => {
                 <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#475569', marginBottom: '6px' }}>施工項目名稱</label>
                 <input
                   type="text"
-                  placeholder="例如: 快譯通 S95B 4K星光夜視電子後視鏡"
+                  placeholder="例如: 全車隔熱紙貼膜"
                   value={formData.itemTitle}
                   onChange={e => setFormData({ ...formData, itemTitle: e.target.value })}
                   required
@@ -804,9 +764,9 @@ export const AccessorySettlementPage: React.FC = () => {
               </div>
 
               <div style={{ marginBottom: '16px' }}>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#475569', marginBottom: '6px' }}>深度與規格細節說明 (滿貼工法/鏡頭型態/走線等)</label>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '700', color: '#475569', marginBottom: '6px' }}>深度與規格細節說明</label>
                 <textarea
-                  placeholder="例如: 前擋 MA70 + 車身 MB20 (滿版滿貼工法)"
+                  placeholder="例如: 前擋 MA70 + 車身 MB20"
                   value={formData.depthSpec}
                   onChange={e => setFormData({ ...formData, depthSpec: e.target.value })}
                   rows={2}

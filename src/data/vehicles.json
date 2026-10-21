@@ -4099,12 +4099,6 @@
   },
   {
     "brand": "MERCEDES-BENZ",
-    "model": "a",
-    "size": "M",
-    "detailingSize": "M"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
     "model": "A-Class Hatchback",
     "size": "M",
     "detailingSize": "M"
@@ -4138,12 +4132,6 @@
     "model": "AMG GT Coupe",
     "size": "L",
     "detailingSize": "L"
-  },
-  {
-    "brand": "MERCEDES-BENZ",
-    "model": "b",
-    "size": "M",
-    "detailingSize": "M"
   },
   {
     "brand": "MERCEDES-BENZ",

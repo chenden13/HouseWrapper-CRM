@@ -58,23 +58,62 @@ const COLOR_WRAP_SERIES: Record<string, Record<string, number>> = {
 
 const PPF_PRICING: Record<string, Record<string, number>> = {
   'AX': {
+    'K系列 (亮面)': 90000,
+    'X系列 (亮面)': 100000,
+    'M系列 (消光)': 100000,
+    // 完整保留舊規格與簡寫相容性
     '亮面': 90000,
-    '消光': 100000
+    '消光': 100000,
+    'K系列': 90000,
+    'X系列': 100000,
+    'M系列': 100000,
+  },
+  'Pixel8bit': {
+    '亮面 (7.5mil)': 100000,
+    '消光 (8.5mil)': 110000,
+    '亮面': 100000,
+    '消光': 110000,
   },
   'Pixel8bot': {
+    '亮面 (7.5mil)': 100000,
+    '消光 (8.5mil)': 110000,
     '亮面': 100000,
-    '消光': 110000
+    '消光': 110000,
   },
   '3M': {
-    '100g (亮面)': 110000,
     '150g (亮面)': 125000,
     '200g (亮面)': 135000,
-    '200m (消光)': 145000
+    '200m (消光)': 145000,
+    // 完整保留舊規格相容性
+    '100g (亮面)': 110000,
+    '150g': 125000,
+    '200g': 135000,
+    '200m': 145000,
   },
   'Stek': {
-    'Lite (亮面)': 130000,
-    'Matte (消光)': 140000
+    'C clear (亮面)': 110000,
+    'DYNO PURE+ (亮面)': 140000,
+    'C matte (消光)': 120000,
+    'Dyno matte (消光)': 150000,
+    // 原本 stek 亮面即新版 dyno pure+ $140,000，消光即新版 dyno matte $150,000，完整保留相容性
+    'Lite (亮面)': 140000,
+    'Matte (消光)': 150000,
+    '亮面': 140000,
+    '消光': 150000,
+    'C clear': 110000,
+    'DYNO PURE+': 140000,
+    'C matte': 120000,
+    'Dyno matte': 150000,
   }
+};
+
+// 犀牛皮規格選項（下拉選單主要顯示的新規格列表）
+const PPF_ACTIVE_SERIES: Record<string, string[]> = {
+  'AX': ['K系列 (亮面)', 'X系列 (亮面)', 'M系列 (消光)'],
+  'Pixel8bit': ['亮面 (7.5mil)', '消光 (8.5mil)'],
+  'Pixel8bot': ['亮面 (7.5mil)', '消光 (8.5mil)'],
+  '3M': ['150g (亮面)', '200g (亮面)', '200m (消光)'],
+  'Stek': ['C clear (亮面)', 'DYNO PURE+ (亮面)', 'C matte (消光)', 'Dyno matte (消光)']
 };
 
 const FRONT_PPF_PRICING: Record<string, number> = {
@@ -825,7 +864,7 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
                 {((formData.mainService || '').includes('改色') 
                   ? ['AX', '3M', 'CYS', 'TeckWrap'] 
                   : (formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮')
-                    ? ['AX', 'Pixel8bot', '3M', 'Stek']
+                    ? (formData.mainServiceBrand === 'Pixel8bot' ? ['AX', 'Pixel8bit', 'Pixel8bot', '3M', 'Stek'] : ['AX', 'Pixel8bit', '3M', 'Stek'])
                     : (formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮')
                       ? ['Pixel8bit', '3M 150g', '3M 200g']
                       : (formData.mainService === '局部保護/改色')
@@ -851,7 +890,13 @@ export const PendingEditForm: React.FC<PendingEditFormProps> = ({
               <label className="form-label" style={{ color: '#059669', fontWeight: 'bold' }}>規格/系列</label>
               <select name="mainServiceSeries" className="form-control" value={formData.mainServiceSeries || ''} onChange={handleChange} style={{ borderColor: '#10b981', background: '#f0fdf4' }}>
                 <option value="">選擇規格</option>
-                {Object.keys(PPF_PRICING[formData.mainServiceBrand] || {}).map(s => <option key={s} value={s}>{s}</option>)}
+                {(() => {
+                  const brand = formData.mainServiceBrand;
+                  const active = PPF_ACTIVE_SERIES[brand] || Object.keys(PPF_PRICING[brand] || {});
+                  const current = formData.mainServiceSeries;
+                  const options = current && !active.includes(current) ? [current, ...active] : active;
+                  return options.map(s => <option key={s} value={s}>{s}</option>);
+                })()}
               </select>
             </div>
           )}

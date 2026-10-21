@@ -36,18 +36,18 @@ const DETAILING_PRICING: Record<string, { wash: number; interior: number; miniDe
 
 const PPF_PRICING: Record<string, Record<string, number>> = {
   '亮面犀牛皮': {
-    'AX (亮面)': 90000,
-    'Pixel8bot (亮面)': 100000,
-    '3M 100g (亮面)': 110000,
-    '3M 150g (亮面)': 125000,
-    '3M 200g (亮面)': 135000,
-    'Stek Lite (亮面)': 130000
+    'AX K系列 (亮面 7.5mil)': 90000,
+    'AX X系列 (亮面 8.5mil)': 100000,
+    'Stek C clear (亮面 7.5mil)': 110000,
+    '3M 150g (亮面 7.5mil)': 125000,
+    '3M 200g (亮面 7.9mil)': 135000,
+    'Stek DYNO PURE+ (亮面 8mil)': 140000
   },
   '消光犀牛皮': {
-    'AX (消光)': 100000,
-    'Pixel8bot (消光)': 110000,
-    '3M 200m (消光)': 145000,
-    'Stek Matte (消光)': 140000
+    'AX M系列 (消光 8.5mil)': 100000,
+    'Stek C matte (消光 7.5mil)': 120000,
+    '3M 200m (消光 7.9mil)': 145000,
+    'Stek Dyno matte (消光 8mil)': 150000
   }
 };
 

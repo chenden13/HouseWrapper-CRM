@@ -3464,8 +3464,8 @@
   {
     "brand": "LEXUS",
     "model": "lm",
-    "size": "3XL",
-    "detailingSize": "3XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "LEXUS",
@@ -4106,26 +4106,26 @@
   {
     "brand": "MERCEDES-BENZ",
     "model": "A-Class Hatchback",
-    "size": "A",
-    "detailingSize": "A"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "MERCEDES-BENZ",
     "model": "A-Class Sedan",
-    "size": "A",
-    "detailingSize": "A"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "MERCEDES-BENZ",
     "model": "A35",
-    "size": "A",
-    "detailingSize": "A"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "MERCEDES-BENZ",
     "model": "A45 AMG",
-    "size": "A",
-    "detailingSize": "A"
+    "size": "M",
+    "detailingSize": "M"
   },
   {
     "brand": "MERCEDES-BENZ",
@@ -6560,8 +6560,8 @@
   {
     "brand": "TOYOTA",
     "model": "alphard (new)",
-    "size": "3XL",
-    "detailingSize": "3XL"
+    "size": "2XL",
+    "detailingSize": "2XL"
   },
   {
     "brand": "TOYOTA",
@@ -6992,8 +6992,8 @@
   {
     "brand": "Volvo",
     "model": "XC70",
-    "size": "33",
-    "detailingSize": "33"
+    "size": "XL",
+    "detailingSize": "XL"
   },
   {
     "brand": "Volvo",
@@ -7007,7 +7007,6 @@
     "size": "2XL",
     "detailingSize": "2XL"
   },
-
   {
     "brand": "VOLVO",
     "model": "s60",

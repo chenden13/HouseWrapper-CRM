@@ -19,10 +19,21 @@ interface InventoryPageProps {
 }
 
 
-const ZONE_CONFIG = {
+interface ZoneConfigItem {
+  sections: number;
+  slots: number;
+  name: string;
+  getSlots?: (section: number) => number;
+}
+
+const ZONE_CONFIG: Record<'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G', ZoneConfigItem> = {
   A: { sections: 3, slots: 20, name: '牆面 (A1~A3)' },
   B: { sections: 2, slots: 20, name: '靠牆兩層架 (B1~B2)' },
-  C: { sections: 6, slots: 12, name: '倒V型貨架 (C1~C6)' },
+  C: { 
+    sections: 8, 
+    slots: 24, 
+    name: '倒V型貨架 (C1~C8)'
+  },
   D: { sections: 6, slots: 30, name: '直立層架1 (D1~D6)' },
   E: { sections: 5, slots: 30, name: '直立層架2 (E1~E5)' },
   F: { sections: 5, slots: 30, name: '直立層架3 (F1~F5)' },
@@ -31,10 +42,24 @@ const ZONE_CONFIG = {
 
 type ZoneKey = keyof typeof ZONE_CONFIG;
 
+const getSlotCount = (zone: ZoneKey, section: number): number => {
+  const config = ZONE_CONFIG[zone];
+  if (!config) return 24;
+  if (config.getSlots) {
+    return config.getSlots(section);
+  }
+  return config.slots;
+};
+
 // 智慧合併分組顯示輔助函數
 const getSubGroups = (zone: ZoneKey) => {
   const config = ZONE_CONFIG[zone];
-  if (config.sections <= 3) {
+  if (zone === 'C') {
+    return [
+      { label: 'C1 ~ C4', sections: [1, 2, 3, 4] },
+      { label: 'C5 ~ C8', sections: [5, 6, 7, 8] }
+    ];
+  } else if (config.sections <= 3) {
     return [{
       label: `${zone}1 ~ ${zone}${config.sections}`,
       sections: Array.from({ length: config.sections }, (_, i) => i + 1)
@@ -398,18 +423,20 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
 
               <div style={{ 
                 display: 'grid', 
-                gridTemplateColumns: `repeat(${Math.min(getSubGroups(activeZone)[activeSubGroupIndex]?.sections.length || 1, 3)}, minmax(0, 1fr))`, 
-                gap: '24px',
+                gridTemplateColumns: `repeat(${Math.min((getSubGroups(activeZone)[activeSubGroupIndex] || getSubGroups(activeZone)[0])?.sections?.length || 1, 4)}, minmax(0, 1fr))`, 
+                gap: '20px',
                 width: '100%',
-                alignItems: 'flex-start'
+                alignItems: 'flex-start',
+                overflowX: 'auto',
+                paddingBottom: '16px'
               }}>
-                {(getSubGroups(activeZone)[activeSubGroupIndex]?.sections || [1]).map(sectionNum => (
-                  <div key={sectionNum} style={{ display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                {((getSubGroups(activeZone)[activeSubGroupIndex] || getSubGroups(activeZone)[0])?.sections || [1]).map(sectionNum => (
+                  <div key={sectionNum} style={{ minWidth: '220px', display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
                     <h3 style={{ margin: '0 0 8px 0', color: '#1e293b', fontSize: '1.15rem', fontWeight: '800', borderLeft: '4px solid var(--primary)', paddingLeft: '8px' }}>
                       貨架編號：{activeZone}{sectionNum}
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      {Array.from({ length: ZONE_CONFIG[activeZone].slots }, (_, i) => i + 1).map(slotNum => {
+                      {Array.from({ length: getSlotCount(activeZone, sectionNum) }, (_, i) => i + 1).map(slotNum => {
                         const item = getInventoryAt(activeZone, sectionNum, slotNum);
                         return (
                           <div 

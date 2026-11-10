@@ -106,6 +106,8 @@ function parseLocation(currentTitle, col0Val, sequentialSlotCounter, blockIndex)
   else if (titleClean.includes('D4')) { zone = 'C'; section = 4; }
   else if (titleClean.includes('D5')) { zone = 'C'; section = 5; }
   else if (titleClean.includes('D6')) { zone = 'C'; section = 6; }
+  else if (titleClean.includes('D7') || titleClean.includes('C7')) { zone = 'C'; section = 7; }
+  else if (titleClean.includes('D8') || titleClean.includes('C8')) { zone = 'C'; section = 8; }
   
   else if (titleClean.includes('C1-1')) { zone = 'D'; section = 1; }
   else if (titleClean.includes('C1-2')) { zone = 'D'; section = 2; }

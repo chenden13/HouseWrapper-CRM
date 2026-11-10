@@ -168,7 +168,7 @@ export interface ChecklistItem {
 }
 
 export interface StorageLocation {
-  zone: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+  zone: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | string;
   section: number;
   slot: number;
 }

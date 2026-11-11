@@ -251,7 +251,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
   console.log('InventoryPage Received PurchaseRecords:', purchaseRecords?.length);
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
+    <div style={{ padding: '16px 24px', width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
         <div>
           <button onClick={onBack} style={{ background: 'none', border: 'none', color: 'var(--primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: 0, marginBottom: '8px', fontWeight: 'bold' }}>
@@ -371,7 +371,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
       <div style={{ position: 'relative' }}>
         {activeTab === 'storage' && (
           /* Original Storage View code */
-          <div style={{ display: 'grid', gridTemplateColumns: '170px 1fr', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: '16px' }}>
             <aside style={{ display: 'flex', flexDirection: 'column', gap: '8px', flexShrink: 0 }}>
               {Object.entries(ZONE_CONFIG).map(([key, config]) => (
                 <button 
@@ -393,8 +393,8 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
               ))}
             </aside>
 
-            <main className="glass-panel" style={{ padding: '24px', minHeight: '600px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', borderBottom: '1px solid #f1f5f9', paddingBottom: '16px' }}>
+            <main className="glass-panel" style={{ padding: '20px', minHeight: '600px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid #f1f5f9', paddingBottom: '14px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <MapPin color="var(--primary)" size={20} />
                   <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>當前區域：{ZONE_CONFIG[activeZone].name}</span>
@@ -424,15 +424,15 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
               <div style={{ 
                 display: 'grid', 
                 gridTemplateColumns: `repeat(${Math.min((getSubGroups(activeZone)[activeSubGroupIndex] || getSubGroups(activeZone)[0])?.sections?.length || 1, 4)}, minmax(0, 1fr))`, 
-                gap: '20px',
+                gap: '14px',
                 width: '100%',
                 alignItems: 'flex-start',
                 overflowX: 'auto',
                 paddingBottom: '16px'
               }}>
                 {((getSubGroups(activeZone)[activeSubGroupIndex] || getSubGroups(activeZone)[0])?.sections || [1]).map(sectionNum => (
-                  <div key={sectionNum} style={{ minWidth: '220px', display: 'flex', flexDirection: 'column', gap: '12px', background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-                    <h3 style={{ margin: '0 0 8px 0', color: '#1e293b', fontSize: '1.15rem', fontWeight: '800', borderLeft: '4px solid var(--primary)', paddingLeft: '8px' }}>
+                  <div key={sectionNum} style={{ minWidth: '240px', display: 'flex', flexDirection: 'column', gap: '10px', background: '#f8fafc', padding: '12px 14px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ margin: '0 0 6px 0', color: '#1e293b', fontSize: '1.15rem', fontWeight: '800', borderLeft: '4px solid var(--primary)', paddingLeft: '8px' }}>
                       貨架編號：{activeZone}{sectionNum}
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -443,45 +443,70 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                             key={slotNum}
                             onClick={() => handleSlotClick(activeZone, sectionNum, slotNum)}
                             style={{
-                              display: 'flex', alignItems: 'center', gap: '12px', borderRadius: '10px', border: '1px solid',
+                              display: 'flex', alignItems: 'center', gap: '8px', borderRadius: '10px', border: '1px solid',
                               borderColor: item ? 'var(--primary)' : '#e2e8f0',
                               background: item ? '#eff6ff' : '#fff',
-                              padding: '10px 14px', cursor: 'pointer', transition: 'all 0.2s',
+                              padding: '8px 10px', cursor: 'pointer', transition: 'all 0.2s',
                               boxShadow: item ? '0 2px 4px rgba(59, 130, 246, 0.05)' : 'none',
                               position: 'relative'
                             }}
                           >
-                            <div style={{ width: '40px', fontWeight: '800', color: '#94a3b8', fontSize: '0.9rem' }}>
+                            <div style={{ width: '30px', fontWeight: '800', color: '#94a3b8', fontSize: '0.85rem', flexShrink: 0 }}>
                               #{slotNum}
                             </div>
                             
                             {item ? (
-                              <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: '12px', minWidth: 0 }}>
+                              <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: '8px', minWidth: 0 }}>
                                 <div style={{ flex: 1, minWidth: 0 }}>
-                                  <div style={{ fontWeight: '800', fontSize: '0.92rem', color: '#1e293b', wordBreak: 'break-word', lineHeight: '1.2' }}>{item.color}</div>
-                                  <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px', wordBreak: 'break-word' }}>{item.brand}</div>
+                                  <div 
+                                    style={{ 
+                                      fontWeight: '800', 
+                                      fontSize: '0.92rem', 
+                                      color: '#1e293b', 
+                                      whiteSpace: 'nowrap', 
+                                      overflow: 'hidden', 
+                                      textOverflow: 'ellipsis', 
+                                      lineHeight: '1.2' 
+                                    }}
+                                    title={item.color}
+                                  >
+                                    {item.color}
+                                  </div>
+                                  <div 
+                                    style={{ 
+                                      fontSize: '0.75rem', 
+                                      color: '#64748b', 
+                                      marginTop: '2px', 
+                                      whiteSpace: 'nowrap', 
+                                      overflow: 'hidden', 
+                                      textOverflow: 'ellipsis' 
+                                    }}
+                                    title={item.brand}
+                                  >
+                                    {item.brand}
+                                  </div>
                                 </div>
                                 
                                 {/* Meter adjustment controls */}
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#fff', padding: '3px 6px', borderRadius: '25px', border: '1px solid #e2e8f0', flexShrink: 0 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: '#fff', padding: '2px 5px', borderRadius: '20px', border: '1px solid #e2e8f0', flexShrink: 0 }}>
                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                                      <button 
                                        onClick={(e) => handleAdjustMeters(item, -0.1, e)}
-                                       style={{ width: '28px', height: '16px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.55rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       style={{ width: '25px', height: '15px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.52rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', padding: 0 }}
                                        title="減少 10cm"
                                      >-0.1</button>
                                      <button 
                                        onClick={(e) => handleAdjustMeters(item, -1, e)}
-                                       style={{ width: '28px', height: '16px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fee2e2', color: '#dc2626', fontSize: '0.6rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       style={{ width: '25px', height: '15px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fee2e2', color: '#dc2626', fontSize: '0.58rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', padding: 0 }}
                                        title="減少 1M"
                                      >-1</button>
                                    </div>
 
-                                   <div style={{ minWidth: '55px', textAlign: 'center', padding: '0 4px' }}>
+                                   <div style={{ minWidth: '48px', textAlign: 'center', padding: '0 2px' }}>
                                      <div style={{ 
                                        fontWeight: '900', 
                                        color: (item.currentMeters || 0) >= 15 ? '#059669' : 'var(--primary)', 
-                                       fontSize: (item.currentMeters || 0) >= 15 ? '0.95rem' : '0.85rem',
+                                       fontSize: (item.currentMeters || 0) >= 15 ? '0.9rem' : '0.82rem',
                                        whiteSpace: 'nowrap'
                                      }}>
                                        {formatFilmDisplay(item)}
@@ -491,12 +516,12 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                                      <button 
                                        onClick={(e) => handleAdjustMeters(item, 0.1, e)}
-                                       style={{ width: '28px', height: '16px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.55rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       style={{ width: '25px', height: '15px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#fff', color: '#64748b', fontSize: '0.52rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', padding: 0 }}
                                        title="增加 10cm"
                                      >+0.1</button>
                                      <button 
                                        onClick={(e) => handleAdjustMeters(item, 1, e)}
-                                       style={{ width: '28px', height: '16px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#ecfdf5', color: '#059669', fontSize: '0.6rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                                       style={{ width: '25px', height: '15px', borderRadius: '3px', border: '1px solid #e2e8f0', background: '#ecfdf5', color: '#059669', fontSize: '0.58rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', padding: 0 }}
                                        title="增加 1M"
                                      >+1</button>
                                    </div>

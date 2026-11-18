@@ -1,0 +1,1 @@
+const https = require('https'); https.get('https://chenden13.github.io/housewrapper-price/assets/index-82d43a46.js', (res) = let js = ''; res.on('data', d = += d); res.on('end', () = console.log('Contains XS?', js.includes('XS')); console.log('Contains 2XL?', js.includes('2XL')); }) })  

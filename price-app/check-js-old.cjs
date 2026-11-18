@@ -1,0 +1,9 @@
+const https = require('https');
+https.get('https://chenden13.github.io/housewrapper-price/assets/index-82d43a46.js', (res) => {
+  let js = '';
+  res.on('data', d => js += d);
+  res.on('end', () => {
+    console.log('Old hardcoded text exists?', js.includes('精緻洗車服務'));
+    console.log('New logic exists?', js.includes('XS') && js.includes('sIndex'));
+  });
+});

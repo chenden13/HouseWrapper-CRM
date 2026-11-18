@@ -1,0 +1,4632 @@
+[
+  {
+    "seq": 1,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-109",
+    "englishName": "Rose Pink",
+    "colorName": "薔薇粉",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 2,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-106",
+    "englishName": "Tulip Pink",
+    "colorName": "鬱金香粉",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 3,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-113",
+    "englishName": "Oolong Milk Tea Pink",
+    "colorName": "烏龍奶茶粉",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 4,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1211",
+    "englishName": "Ultra Gloss Sakura Pink",
+    "colorName": "高亮櫻花粉",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 5,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1215",
+    "englishName": "Ultra Gloss Begonia Pink",
+    "colorName": "高亮海棠粉",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 6,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1216",
+    "englishName": "Ultra Gloss  Shell Pink",
+    "colorName": "高亮貝殼粉",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 7,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1218",
+    "englishName": "Ultra Gloss Porsche Pink",
+    "colorName": "高亮粉",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 8,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-116",
+    "englishName": "Ultra Gloss Pink Purple",
+    "colorName": "超亮粉紫",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 9,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-132",
+    "englishName": "Rocca Pink",
+    "colorName": "珞珈粉",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 10,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-117",
+    "englishName": "Morganite Red",
+    "colorName": "摩根石紅",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 11,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-123",
+    "englishName": "Coral Orange",
+    "colorName": "珊瑚橘",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 12,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-119",
+    "englishName": "Ultra Gloss Rose Red",
+    "colorName": "超亮玫紅",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 13,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1261",
+    "englishName": "Ultra Gloss Tiffany",
+    "colorName": "高亮Tiffany",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 14,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1231",
+    "englishName": "Ultra Gloss Lemon Yellow",
+    "colorName": "高亮檸檬黃",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 15,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1233",
+    "englishName": "Ultra Gloss Sahara yellow",
+    "colorName": "高亮撒哈拉黃",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 16,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1236",
+    "englishName": "Ultra Gloss Yellow",
+    "colorName": "高亮黃",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 17,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1230",
+    "englishName": "Ultra Gloss Deep Yellow",
+    "colorName": "高亮深黃",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 18,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-311",
+    "englishName": "Golden Rice Fragrance",
+    "colorName": "稻香黃",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 19,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-360",
+    "englishName": "Milton Yellow",
+    "colorName": "密爾頓黃",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 20,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-MAX0045",
+    "englishName": "Mint Green Ripples",
+    "colorName": "薄荷曼波綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 21,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-422",
+    "englishName": "Cardamom Green",
+    "colorName": "豆蔻綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 22,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-433",
+    "englishName": "Viperia Green",
+    "colorName": "韋佩利亞綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 23,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-426",
+    "englishName": "Moss Green",
+    "colorName": "苔蘚綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 24,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-429",
+    "englishName": "Armor Green",
+    "colorName": "裝甲綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 25,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1241",
+    "englishName": "Ultra Gloss  Khaki Green",
+    "colorName": "高亮卡其綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 26,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-450",
+    "englishName": "Moss Green",
+    "colorName": "莫森綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 27,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-460",
+    "englishName": "Classic Green",
+    "colorName": "經典綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 28,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-470",
+    "englishName": "Rapid Green",
+    "colorName": "極速綠",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 29,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1266",
+    "englishName": "Ultra Gloss Misty Blue",
+    "colorName": "高亮迷霧藍",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 30,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1263",
+    "englishName": "Ultra Gloss Sea Breeae Blue",
+    "colorName": "高亮海風藍",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 31,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-606",
+    "englishName": "Alps Blue",
+    "colorName": "阿爾卑斯藍",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 32,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-609",
+    "englishName": "Tanager",
+    "colorName": "唐納雀",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 33,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-611",
+    "englishName": "Moroccan Azure Blue",
+    "colorName": "摩洛哥碧藍",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 34,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-616",
+    "englishName": "Klein Blue",
+    "colorName": "克萊因藍",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 35,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-629",
+    "englishName": "Misty Blue",
+    "colorName": "煙雨藍",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 36,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-555",
+    "englishName": "Kanas Cyan",
+    "colorName": "喀納斯青",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 37,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1273",
+    "englishName": "Ultra Gloss Lavender",
+    "colorName": "高亮薰衣草",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 38,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-MAX0070",
+    "englishName": "Stellalou Purple",
+    "colorName": "星黛紫",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 39,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-MAX0079",
+    "englishName": "Punk Purple",
+    "colorName": "朋克紫",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 40,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-709",
+    "englishName": "Misty Gray Purple",
+    "colorName": "迷霧灰紫",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 41,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-716",
+    "englishName": "Vortex Violet",
+    "colorName": "霧霾紫灰",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 42,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-MAX0077",
+    "englishName": "Beetroot Purple",
+    "colorName": "甜菜根紫",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 43,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1220",
+    "englishName": "Ultra Gloss Orange",
+    "colorName": "高亮橙",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 44,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-022",
+    "englishName": "Peach Almond",
+    "colorName": "桃米杏",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 45,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-066",
+    "englishName": "Cuban Sand",
+    "colorName": "古巴沙色",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 46,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-069",
+    "englishName": "Piano Cocoa",
+    "colorName": "鋼琴可哥色",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 47,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-071",
+    "englishName": "Macchiato Bubbles",
+    "colorName": "碼奇朵泡泡",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 48,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-073",
+    "englishName": "Tea-colored Birch",
+    "colorName": "茶色樺木",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 49,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-076",
+    "englishName": "Milk Coffee",
+    "colorName": "奶咖",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 50,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1281",
+    "englishName": "Ultra Gloss Volcanic Gray",
+    "colorName": "高亮火山灰",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 51,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-808",
+    "englishName": "Arctic Gray",
+    "colorName": "北極灰",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 52,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-E-833",
+    "englishName": "Pigeon Grey",
+    "colorName": "鴿子灰",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 53,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1100",
+    "englishName": "Ultra Gloss Piano White",
+    "colorName": "鋼琴白",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 54,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AD1190",
+    "englishName": "Ultra Gloss Piano Black",
+    "colorName": "鋼琴黑",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 55,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AB1199",
+    "englishName": "Matte Black",
+    "colorName": "亞光黑",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 56,
+    "series": "E系列",
+    "seriesLabel": "E系列",
+    "code": "E-AB1198",
+    "englishName": "Matte Deep Black",
+    "colorName": "磨砂黑",
+    "basePrice": 10500,
+    "extraPrice": 0
+  },
+  {
+    "seq": 57,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-XY9866",
+    "englishName": "Romanee Red",
+    "colorName": "羅曼尼紅",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 58,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-XY9846",
+    "englishName": "Venom Green",
+    "colorName": "毒液綠",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 59,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-699",
+    "englishName": "Jacaranda Blue",
+    "colorName": "藍花楹",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 60,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-688",
+    "englishName": "Radiant Blue",
+    "colorName": "溢彩藍",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 61,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-YY9887",
+    "englishName": "Capri Grey Purple",
+    "colorName": "卡普里灰紫",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 62,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AP9111",
+    "englishName": "Fantastic Pink",
+    "colorName": "夢幻粉",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 63,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AP9179",
+    "englishName": "Fantastic Silver  Purple",
+    "colorName": "夢幻銀幻紫",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 64,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AP9137",
+    "englishName": "Fantastic Grey Purple",
+    "colorName": "夢幻灰魅紫",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 65,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AP2286",
+    "englishName": "Fantastic Rock Gray",
+    "colorName": "夢幻岩石灰",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 66,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AP2288",
+    "englishName": "Fantastic Green Gray",
+    "colorName": "夢幻松石灰",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 67,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AP9133",
+    "englishName": "Fantastic Gray",
+    "colorName": "夢幻灰",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 68,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AO9000",
+    "englishName": "Laser Flash White",
+    "colorName": "鐳射閃白",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 69,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AO9005",
+    "englishName": "Laser Flash Silver",
+    "colorName": "鐳射閃銀",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 70,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AO9088",
+    "englishName": "Laser Flash Gray",
+    "colorName": "鐳射閃灰",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 71,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AO9090",
+    "englishName": "Laser Flash Black",
+    "colorName": "鐳射閃黑",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 72,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AO9600",
+    "englishName": "Matte Laser Flash White",
+    "colorName": "亞面鐳射閃白",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 73,
+    "series": "G-漸變系列",
+    "seriesLabel": "G系列（漸變）",
+    "code": "G-AO9688",
+    "englishName": "Matte Laser Flash Gray",
+    "colorName": "亞面鐳射閃灰",
+    "basePrice": 13500,
+    "extraPrice": 5000
+  },
+  {
+    "seq": 74,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-AN8060",
+    "englishName": "Matte Diamond Blue Silver",
+    "colorName": "亞面鑽石藍銀",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 75,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-AN8047",
+    "englishName": "Diamond green purple sparkle",
+    "colorName": "鑽石綠變紫",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 76,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-AP9141",
+    "englishName": "Fantastic Spring Green",
+    "colorName": "星空早春綠",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 77,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-AP9142",
+    "englishName": "Fantastic Matte  Spring Green",
+    "colorName": "亞面星空早春綠",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 78,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T- AN5568",
+    "englishName": "Shining Raspberry Red",
+    "colorName": "鑽石藍莓紅",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 79,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-XY9888",
+    "englishName": "Phantom Grey",
+    "colorName": "星空灰魅影",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 80,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-XY9891",
+    "englishName": "Chameleon Black Red",
+    "colorName": "星空黑魅紅",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 81,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-XY9893",
+    "englishName": "Chameleon Black Red",
+    "colorName": "流光黑魅紅",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 82,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-YY001",
+    "englishName": "Gloss Mimosa Red",
+    "colorName": "亮草綠妃紅",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 83,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-YY002",
+    "englishName": "Matte Mimosa Red",
+    "colorName": "草綠妃紅",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 84,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-DBS11",
+    "englishName": "Spectral Blue",
+    "colorName": "幻彩光普藍",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 85,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-XZ7789",
+    "englishName": "3D Colorful Gray",
+    "colorName": "3D炫彩灰",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 86,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-XY9831",
+    "englishName": "Gloss Galaxy Pink",
+    "colorName": "中金星空粉",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 87,
+    "series": "T-特調系列",
+    "seriesLabel": "T系列（特調）",
+    "code": "T-XY9886",
+    "englishName": "Gloss Galaxy Grey",
+    "colorName": "中灰極度粉",
+    "basePrice": 15500,
+    "extraPrice": 8000
+  },
+  {
+    "seq": 1,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-030",
+    "englishName": "Liquid Metal Crescent White",
+    "colorName": "液態金屬月牙白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 2,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL000",
+    "englishName": "Liquid Metal Silver",
+    "colorName": "液態金屬銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 3,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-031",
+    "englishName": "Liquid Metal Mercury Gray",
+    "colorName": "液態金屬水銀灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 4,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-032",
+    "englishName": "Liquid Metal Aluminum Mercury",
+    "colorName": "液態金屬鋁水銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 5,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-034",
+    "englishName": "Liquid Metal Moonlight Silver",
+    "colorName": "液態金屬月光銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 6,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-035",
+    "englishName": "Liquid Metal Stellar Silver",
+    "colorName": "液態金屬星瀚銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 7,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-019",
+    "englishName": "Flowing Stardust Silver",
+    "colorName": "流動星芒銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 8,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL013",
+    "englishName": "Liquid Metal  Shell Pink",
+    "colorName": "液態金屬貝殼粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 9,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-111",
+    "englishName": "Liquid Metal Champagne Pink",
+    "colorName": "液態金屬香檳粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 10,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL001",
+    "englishName": "Liquid Metal Dragon Blood",
+    "colorName": "液態金屬龍血紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 11,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL005",
+    "englishName": "Liquid Metal Somato blue",
+    "colorName": "液態金屬索瑪托藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 12,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL006",
+    "englishName": "Liquid Metal Midnight Blue",
+    "colorName": "液態金屬湛藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 13,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL071",
+    "englishName": "Liquid Metal  Venetian Purple",
+    "colorName": "液態金屬威尼斯紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 14,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL004",
+    "englishName": "Liquid Metal Yellow",
+    "colorName": "液態金屬黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 15,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-222",
+    "englishName": "Liquid Metal Volcano Orange",
+    "colorName": "液態金屬火山橙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 16,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL011",
+    "englishName": "Liquid Metal Misty Gold",
+    "colorName": "液態金屬迷霧金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 17,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL008",
+    "englishName": "Liquid Metal Gray Tungsten Steel",
+    "colorName": "液態金屬鎢鋼",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 18,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL088",
+    "englishName": "Liquid Metal Brown",
+    "colorName": "液態金屬啡",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 19,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL099",
+    "englishName": "Liquid Metal Copper",
+    "colorName": "液態金屬銅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 20,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXL009",
+    "englishName": "Liquid Metal Bronze",
+    "colorName": "液態金屬古銅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 21,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-818",
+    "englishName": "Liquid Metal Agate Gray",
+    "colorName": "液態金屬瑪瑙灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 22,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-820",
+    "englishName": "Liquid Metal Profound Gray",
+    "colorName": "液態金屬深邃灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 23,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-950",
+    "englishName": "Liquid Metal Black",
+    "colorName": "液態金屬黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 24,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXXL003",
+    "englishName": "Matte Liquid Metal GT Silver",
+    "colorName": "亞液態金屬GT銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 25,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXXL000",
+    "englishName": "Matte Liquid Metal Silver",
+    "colorName": "亞液態金屬銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 26,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XXXL001",
+    "englishName": "Matte Liquid Metal Dragon Blood",
+    "colorName": "亞液態金屬龍血紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 27,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-771",
+    "englishName": "Raspberry Pink Purple",
+    "colorName": "樹莓粉紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 28,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-016",
+    "englishName": "Alexander Silver",
+    "colorName": "亞力山大銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 29,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-113",
+    "englishName": "Rosewater Pink",
+    "colorName": "玫瑰水粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 30,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-116",
+    "englishName": "Lolita Pink",
+    "colorName": "洛麗塔粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 31,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2640",
+    "englishName": "Ultra-Matte Energy Yellow",
+    "colorName": "能量黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 32,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-411",
+    "englishName": "Ultra Matte Khaki Green",
+    "colorName": "超亞卡其綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 33,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-412",
+    "englishName": "Ultra Matte Vitality Green",
+    "colorName": "超亞元氣綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 34,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2649",
+    "englishName": "Ultra-Matte Green",
+    "colorName": "超亞綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 35,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-416",
+    "englishName": "Ultra Matte Ash Green",
+    "colorName": "超亞灰綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 36,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-819",
+    "englishName": "Ultra Matte Liquid Combat Green",
+    "colorName": "超亞液態戰鬥綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 37,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-420",
+    "englishName": "Ultra Matte Ash Misty Green",
+    "colorName": "超亞灰蒙綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 38,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-430",
+    "englishName": "Ultra Matte Lightning Green",
+    "colorName": "超亞閃電綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 39,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-436",
+    "englishName": "Ultra Matte Ink Green",
+    "colorName": "超亞墨綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 40,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2646",
+    "englishName": "Ultra matte olive green",
+    "colorName": "超亞橄欖綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 41,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XAMS0040",
+    "englishName": "Ultra-Matte Mysterious Green",
+    "colorName": "神秘綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 42,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2668",
+    "englishName": "Ultra-Matte  Prussian Blue",
+    "colorName": "普魯士藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 43,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2666",
+    "englishName": "Ultra-Matte Mugello Blue",
+    "colorName": "穆傑羅藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 44,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2685",
+    "englishName": "Ultra-Matte Grey Stone",
+    "colorName": "超亞灰藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 45,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-669",
+    "englishName": "Ultra Matte Abyssal Blue",
+    "colorName": "超亞黑幻藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 46,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2697",
+    "englishName": "Ultra-Matte Black Purple",
+    "colorName": "超亞黑幻紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 47,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-609",
+    "englishName": "Ultra Matte Stellalou Purple",
+    "colorName": "超亞星黛紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 48,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-233",
+    "englishName": "Ultra Matte Flame Orange",
+    "colorName": "超亞火焰橙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 49,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-039",
+    "englishName": "Ultra Matte Peach Almond",
+    "colorName": "超啞桃米杏",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 50,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2681",
+    "englishName": "Ultra-Matte Distant Mountain Gray",
+    "colorName": "遠山灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 51,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2682",
+    "englishName": "Ultra-Matte Battleship Gray",
+    "colorName": "戰艦灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 52,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2689",
+    "englishName": "Ultra-Matte Quiet Night Gray",
+    "colorName": "靜夜灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 53,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2688",
+    "englishName": "Power Grey",
+    "colorName": "能量灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 54,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-810",
+    "englishName": "Monza Gray",
+    "colorName": "蒙紮灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 55,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-815",
+    "englishName": "Ultra Matte Metallic Sketch Gray",
+    "colorName": "超亞金屬素描灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 56,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2686",
+    "englishName": "Ultra-Matte Dark Gray",
+    "colorName": "深邃灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 57,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-826",
+    "englishName": "Ultra Matte Meteorite Gray",
+    "colorName": "超亞隕石灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 58,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-830",
+    "englishName": "Ultra Matte Fantasy Volcanic Gray",
+    "colorName": "超亞夢幻火山灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 59,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2683",
+    "englishName": "Ultra-Matte Obsidian Gray",
+    "colorName": "曜石灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 60,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-011",
+    "englishName": "Ultra Matte Moon White",
+    "colorName": "超亞皓月白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 61,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-930",
+    "englishName": "Ultra Matte Liquid Obsidian Black",
+    "colorName": "超亞液態曜石黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 62,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XA2690",
+    "englishName": "Ultra-Matte Black",
+    "colorName": "超亞黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 63,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AH2345",
+    "englishName": "Moonlight Jade",
+    "colorName": "月光玉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 64,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AH2341",
+    "englishName": "Avocado Green",
+    "colorName": "牛油果綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 65,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AH2342",
+    "englishName": "Ash Green",
+    "colorName": "灰蒙綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 66,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AH2361",
+    "englishName": "Tranquil Blue",
+    "colorName": "靜謐藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 67,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3000",
+    "englishName": "Pearl Metallic White",
+    "colorName": "電光金屬白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 68,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3005",
+    "englishName": "Pearl Metallic Silver",
+    "colorName": "電光金屬銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 69,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3030",
+    "englishName": "Pearl Metallic Yellow",
+    "colorName": "電光金屬黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 70,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3047",
+    "englishName": "Pearl Metallic Tender Green",
+    "colorName": "電光金屬嫩芽綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 71,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3045",
+    "englishName": "Pearl Metallic Emerald",
+    "colorName": "電光金屬祖母綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 72,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3046",
+    "englishName": "Pearl Metallic Tiffany",
+    "colorName": "電光金屬Tiffany",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 73,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3067",
+    "englishName": "Pearl Metallic Storm Blue",
+    "colorName": "電光金屬風暴藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 74,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3011",
+    "englishName": "Pearl Metallic Sakura Pink",
+    "colorName": "電光金屬櫻花粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 75,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3039",
+    "englishName": "Pearl Metallic Rose Gold",
+    "colorName": "電光金屬玫瑰金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 76,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3088",
+    "englishName": "Pearl Metallic Combat Gray",
+    "colorName": "電光金屬戰鬥灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 77,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3086",
+    "englishName": "Pearl Metallic Titanium Silver",
+    "colorName": "電光金屬鈦銀灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 78,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3083",
+    "englishName": "Pearl Metallic Titanium Gray",
+    "colorName": "電光金屬鈦灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 79,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3089",
+    "englishName": "Pearl Metallic Deep Space Gray",
+    "colorName": "電光金屬深空灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 80,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AE3090",
+    "englishName": "Pearl Metallic Black",
+    "colorName": "電光金屬黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 81,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AC9900",
+    "englishName": "Ceramic White",
+    "colorName": "陶瓷白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 82,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AF2090",
+    "englishName": "Ceramics Black",
+    "colorName": "陶瓷黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 83,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1305",
+    "englishName": "Satin Silver",
+    "colorName": "綢緞銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 84,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1311",
+    "englishName": "Satin Fresh Powder",
+    "colorName": "綢緞清新粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 85,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1375",
+    "englishName": "Satin Red Tea Purple",
+    "colorName": "綢緞赤茶紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 86,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1340",
+    "englishName": "Satin Tiffany",
+    "colorName": "綢緞Tiffany",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 87,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1339",
+    "englishName": "Satin Desert Yellow",
+    "colorName": "綢緞沙漠黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 88,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1333",
+    "englishName": "Satin  Fluorescentr Yellow",
+    "colorName": "綢緞螢光黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 89,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1341",
+    "englishName": "Satin Khaki Green",
+    "colorName": "綢緞卡其綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 90,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1366",
+    "englishName": "Satin Glacier Blue",
+    "colorName": "綢緞冰川藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 91,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1349",
+    "englishName": "Satin Army Green",
+    "colorName": "綢緞軍綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 92,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AQ1390",
+    "englishName": "Satin Black",
+    "colorName": "綢緞黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 93,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4000",
+    "englishName": "Metallic White",
+    "colorName": "金屬白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 94,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4005",
+    "englishName": "Metallic Silver",
+    "colorName": "金屬銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 95,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4017",
+    "englishName": "Metallic Black Rose",
+    "colorName": "金屬黑玫瑰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 96,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4033",
+    "englishName": "Metallic Yellow",
+    "colorName": "金屬黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 97,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4031",
+    "englishName": "Metallic Champagne Gold",
+    "colorName": "金屬香檳金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 98,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4088",
+    "englishName": "Metallic Tungsten Steel",
+    "colorName": "金屬鎢鋼",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 99,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4083",
+    "englishName": "Metallic Titanium Gray",
+    "colorName": "金屬鈦灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 100,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4090",
+    "englishName": "Metallic Black",
+    "colorName": "金屬黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 101,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI3300",
+    "englishName": "Dawn White",
+    "colorName": "曙光白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 102,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AJ5000",
+    "englishName": "Pearl Lustre White",
+    "colorName": "珠光白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 103,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AJ5099",
+    "englishName": "Pearl Lustre Black",
+    "colorName": "珠光黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 104,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XC3305",
+    "englishName": "Matte Chrome Metallic Silver",
+    "colorName": "亞面電鍍金屬銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 105,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XC3340",
+    "englishName": "Matte Chrome Metallic Green",
+    "colorName": "亞面電鍍金屬綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 106,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XC3370",
+    "englishName": "Matte Chrome Metallic Violet",
+    "colorName": "亞面電鍍金屬紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 107,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XC3375",
+    "englishName": "Matte Metallic Red Tea Purple",
+    "colorName": "亞面金屬赤茶紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 108,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XC3380",
+    "englishName": "Matte Chrome Metallic Tungsten Steel",
+    "colorName": "亞面電鍍金屬鎢鋼",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 109,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XC3390",
+    "englishName": "Matte Chrome Metallic Black",
+    "colorName": "亞面電鍍金屬黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 110,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AM8001",
+    "englishName": "Diamond White Pink",
+    "colorName": "鑽石白粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 111,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AM8006",
+    "englishName": "Diamond White Blue",
+    "colorName": "鑽石白藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 112,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AM8003",
+    "englishName": "Diamond White Gold",
+    "colorName": "鑽石白金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 113,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AM8011",
+    "englishName": "Matte Diamond White Pink",
+    "colorName": "亞面鑽石白粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 114,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AM8016",
+    "englishName": "Matte Diamond White Blue",
+    "colorName": "亞面鑽石白藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 115,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AM8013",
+    "englishName": "Matte Diamond White Gold",
+    "colorName": "亞面鑽石白金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 116,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-CHN201",
+    "englishName": "Ume pink",
+    "colorName": "烏梅子醬",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 117,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PRO101",
+    "englishName": "Dynamic Pink",
+    "colorName": "靈動粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 118,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XE0011",
+    "englishName": "Compete Speed Pink",
+    "colorName": "競速粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 119,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-E-411",
+    "englishName": "Vitality Green",
+    "colorName": "元氣綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 120,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-E-441",
+    "englishName": "Evergreen",
+    "colorName": "艾弗格林綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 121,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-CHN202",
+    "englishName": "Qianshancui",
+    "colorName": "千山翠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 122,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-E-633",
+    "englishName": "Sky Blue",
+    "colorName": "黎空藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 123,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-E-721",
+    "englishName": "Midsummer Purple",
+    "colorName": "仲夏紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 124,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-E-733",
+    "englishName": "Rosemary Purple",
+    "colorName": "迷迭香紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 125,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-SUP111",
+    "englishName": "Super Purple",
+    "colorName": "超級紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 126,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-E-166",
+    "englishName": "Sunset Coral",
+    "colorName": "落日珊瑚",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 127,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-XE0020",
+    "englishName": "Compete Speed   Orange",
+    "colorName": "競速時光橙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 128,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AI4026",
+    "englishName": "Compete Speed Orange",
+    "colorName": "競速橙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 1,
+    "series": "復古車",
+    "seriesLabel": "復古車",
+    "code": "V-PSE1111",
+    "englishName": "Packard Pink",
+    "colorName": "派卡德粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 2,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9106",
+    "englishName": "Moongem",
+    "colorName": "月光寶石",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 3,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9101",
+    "englishName": "Pink Pig",
+    "colorName": "粉豬",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 4,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6511",
+    "englishName": "Frozen Berry Metallic",
+    "colorName": "冰莓粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 5,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9111",
+    "englishName": "Strawberry Red",
+    "colorName": "草莓紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 6,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9112",
+    "englishName": "Ruby Star",
+    "colorName": "星光寶石紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 7,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6516",
+    "englishName": "Carmine Red",
+    "colorName": "胭脂紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 8,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6518",
+    "englishName": "Cherry Metallic",
+    "colorName": "車厘子紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 9,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6536",
+    "englishName": "Signal Yellow",
+    "colorName": "信號黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 10,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9113",
+    "englishName": "Mint Green",
+    "colorName": "薄荷綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 11,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6549",
+    "englishName": "Acid Green",
+    "colorName": "酸性綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 12,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9103",
+    "englishName": "Shade Green",
+    "colorName": "暗影綠金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 13,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9114",
+    "englishName": "Auratium  Green",
+    "colorName": "鎓綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 14,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9115",
+    "englishName": "Light Green",
+    "colorName": "淺綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 15,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9117",
+    "englishName": "Signal Green",
+    "colorName": "信號綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 16,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6545",
+    "englishName": "Olive Green",
+    "colorName": "橄欖綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 17,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6546",
+    "englishName": "Racing Green",
+    "colorName": "賽車綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 18,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6540",
+    "englishName": "Aventurine Green",
+    "colorName": "砂金石綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 19,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6543",
+    "englishName": "Mamba Green",
+    "colorName": "曼巴綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 20,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9127",
+    "englishName": "Oak Green Metallic Neo",
+    "colorName": "橡樹綠金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 21,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9125",
+    "englishName": "Underberg Green",
+    "colorName": "安德伯格綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 22,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9120",
+    "englishName": "Brewster Green",
+    "colorName": "布魯斯特綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 23,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9126",
+    "englishName": "Black Olive",
+    "colorName": "黑橄欖",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 24,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6566",
+    "englishName": "Meissen Blue",
+    "colorName": "邁森藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 25,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6562",
+    "englishName": "Frozen Blue Metallic",
+    "colorName": "冰晶藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 26,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9119",
+    "englishName": "Bay Blue",
+    "colorName": "海灣藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 27,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6568",
+    "englishName": "Arrow Blue",
+    "colorName": "箭藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 28,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6561",
+    "englishName": "Miami Blue",
+    "colorName": "邁阿密藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 29,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6563",
+    "englishName": "Neptune Blue",
+    "colorName": "海王星藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 30,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6565",
+    "englishName": "Gentian Blue Metallic",
+    "colorName": "龍膽藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 31,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6569",
+    "englishName": "Immense Blue",
+    "colorName": "深邃藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 32,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9132",
+    "englishName": "Lugano Blue",
+    "colorName": "盧加諾藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 33,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9129",
+    "englishName": "Montego Blue Metallic",
+    "colorName": "蒙特戈藍金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 34,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9116",
+    "englishName": "Gulf Orange",
+    "colorName": "海灣橙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 35,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6520",
+    "englishName": "Lava Orange",
+    "colorName": "熔岩橙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 36,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9121",
+    "englishName": "Papaya Metallic",
+    "colorName": "帕派雅橙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 37,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9176",
+    "englishName": "Provence",
+    "colorName": "普羅旺斯紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 38,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6571",
+    "englishName": "Ultra violet",
+    "colorName": "GT紫羅蘭",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 39,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9171",
+    "englishName": "Amethyst Metallic",
+    "colorName": "紫水晶金屬",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 40,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6519",
+    "englishName": "Mahogany Metallic",
+    "colorName": "桃紅木",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 41,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9900",
+    "englishName": "Sepia Brown",
+    "colorName": "希皮亞棕",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 42,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9166",
+    "englishName": "Madeira Gold Metallic",
+    "colorName": "馬德拉金金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 43,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6500",
+    "englishName": "GT Silver",
+    "colorName": "GT銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 44,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6581",
+    "englishName": "Chalk Grey",
+    "colorName": "亞灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 45,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6580",
+    "englishName": "Agate Grey",
+    "colorName": "瑪瑙灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 46,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9128",
+    "englishName": "Arctic Grey",
+    "colorName": "極地灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 47,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9130",
+    "englishName": "Ice Grey Metallic",
+    "colorName": "淩空灰金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 48,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6588",
+    "englishName": "Agate dark gray",
+    "colorName": "瑪瑙深灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 49,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6589",
+    "englishName": "Volcano Grey Metallic",
+    "colorName": "火山灰金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 50,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6509",
+    "englishName": "Fine White Metallic Paint",
+    "colorName": "細花白金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 51,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9109",
+    "englishName": "Dolomite",
+    "colorName": "原廠白雲石",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 52,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-PO9131",
+    "englishName": "Jet Black Metallic",
+    "colorName": "黑玉色金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 53,
+    "series": "保時捷",
+    "seriesLabel": "保時捷",
+    "code": "V-XPE6542",
+    "englishName": "Matte Urban Bamboo Chromaflair",
+    "colorName": "亞面城市翠竹",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 54,
+    "series": "法拉利",
+    "seriesLabel": "法拉利",
+    "code": "V-FERR30",
+    "englishName": "Bianco Avorio",
+    "colorName": "象牙白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 55,
+    "series": "法拉利",
+    "seriesLabel": "法拉利",
+    "code": "V-FERR10",
+    "englishName": "Rosso Corsa",
+    "colorName": "賽車紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 56,
+    "series": "法拉利",
+    "seriesLabel": "法拉利",
+    "code": "V-XFM6641",
+    "englishName": "Verde Francesca",
+    "colorName": "法蘭西斯卡綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 57,
+    "series": "勞斯萊斯",
+    "seriesLabel": "勞斯萊斯",
+    "code": "V-XRR41",
+    "englishName": "Segano Green",
+    "colorName": "嵯峨綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 58,
+    "series": "勞斯萊斯",
+    "seriesLabel": "勞斯萊斯",
+    "code": "V-XRR49",
+    "englishName": "Aquilla Metallic",
+    "colorName": "阿奎拉金屬",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 59,
+    "series": "勞斯萊斯",
+    "seriesLabel": "勞斯萊斯",
+    "code": "V-XRR66",
+    "englishName": "Blue Velvet",
+    "colorName": "藍色天鵝絨",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 60,
+    "series": "勞斯萊斯",
+    "seriesLabel": "勞斯萊斯",
+    "code": "V-XRR77",
+    "englishName": "Amethyst",
+    "colorName": "紫晶石",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 61,
+    "series": "勞斯萊斯",
+    "seriesLabel": "勞斯萊斯",
+    "code": "V-XRR91",
+    "englishName": "Deep Carnelian",
+    "colorName": "深瑪瑙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 62,
+    "series": "勞斯萊斯",
+    "seriesLabel": "勞斯萊斯",
+    "code": "V-XRR93",
+    "englishName": "Black Kirsch",
+    "colorName": "黑櫻桃酒",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 63,
+    "series": "勞斯萊斯",
+    "seriesLabel": "勞斯萊斯",
+    "code": "V-XRR96",
+    "englishName": "Lyrical Copper",
+    "colorName": "抒情銅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 64,
+    "series": "勞斯萊斯",
+    "seriesLabel": "勞斯萊斯",
+    "code": "V-XRR88",
+    "englishName": "Tempest Grey",
+    "colorName": "風暴灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 65,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1113",
+    "englishName": "Vibrant Coral",
+    "colorName": "原廠珊瑚橘",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 66,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1111",
+    "englishName": "Blush Pearl",
+    "colorName": "胭脂珍珠粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 67,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1141",
+    "englishName": "Hardly Green",
+    "colorName": "哈德林綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 68,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1146",
+    "englishName": "Racing Green",
+    "colorName": "馬丁賽車綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 69,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-XDB1140",
+    "englishName": "Rainbow Emerald Green",
+    "colorName": "虹彩祖母綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 70,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1161",
+    "englishName": "Mako Blue",
+    "colorName": "鯊魚藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 71,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1163",
+    "englishName": "Ming Blue",
+    "colorName": "鈷藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 72,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1166",
+    "englishName": "Royal Indigo",
+    "colorName": "皇家錠藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 73,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1171",
+    "englishName": "Amethyst Red",
+    "colorName": "水晶葡萄紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 74,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1182",
+    "englishName": "Silver Fox",
+    "colorName": "銀狐灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 75,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1181",
+    "englishName": "Grey Bull",
+    "colorName": "公牛灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 76,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1188",
+    "englishName": "Satin Solar Bronze",
+    "colorName": "緞面尚格嫣",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 77,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1145",
+    "englishName": "Satin Racing Green",
+    "colorName": "緞面賽車綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 78,
+    "series": "阿斯頓馬丁",
+    "seriesLabel": "阿斯頓馬丁",
+    "code": "V-DB1169",
+    "englishName": "Satin Concours Blue",
+    "colorName": "緞面競賽藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 79,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6016",
+    "englishName": "Macho Pink",
+    "colorName": "猛男粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 80,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6033",
+    "englishName": "Sao Paulo Yellow",
+    "colorName": "聖保羅黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 81,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6046",
+    "englishName": "Isle Of Man Grven",
+    "colorName": "曼島綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 82,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6043",
+    "englishName": "goodwood green",
+    "colorName": "古德伍德綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 83,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6041",
+    "englishName": "San Remo Green",
+    "colorName": "聖雷莫綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 84,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6065",
+    "englishName": "Zandvoort Blue",
+    "colorName": "贊德福特藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 85,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6063",
+    "englishName": "Yas Marina Blue",
+    "colorName": "阿布達比藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 86,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6068",
+    "englishName": "Long Beach Blue",
+    "colorName": "海岸藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 87,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6061",
+    "englishName": "Danquan Stone Blue",
+    "colorName": "丹泉石藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 88,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6069",
+    "englishName": "Gem Cyan",
+    "colorName": "寶石青",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 89,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6096",
+    "englishName": "Azurite Black",
+    "colorName": "藍晶黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 90,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6019",
+    "englishName": "Brocade Red",
+    "colorName": "錦緞紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 91,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6081",
+    "englishName": "Brooklyn Grey",
+    "colorName": "布魯克林灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 92,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6083",
+    "englishName": "Bernina Grey",
+    "colorName": "貝爾尼納灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 93,
+    "series": "寶馬",
+    "seriesLabel": "寶馬",
+    "code": "V-XBMW6089",
+    "englishName": "Dravit Grey",
+    "colorName": "碧璽灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 94,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6046",
+    "englishName": "Metallic Emerald",
+    "colorName": "祖母石綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 95,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6049",
+    "englishName": "Metallic Dark Turquoise",
+    "colorName": "松石綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 96,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6061",
+    "englishName": "China Blue",
+    "colorName": "瓷器藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 97,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6066",
+    "englishName": "Cavansite Blue",
+    "colorName": "水矽礬鈣石藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 98,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6068",
+    "englishName": "Carbon Gray Blue",
+    "colorName": "炭灰藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 99,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6030",
+    "englishName": "Desert Sand",
+    "colorName": "原廠沙漠黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 100,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6016",
+    "englishName": "Rubellite Red",
+    "colorName": "碧璽紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 101,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ2686",
+    "englishName": "Mountain Gray",
+    "colorName": "山灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 102,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6089",
+    "englishName": "Moonlight Grey",
+    "colorName": "月光石灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 103,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6099",
+    "englishName": "Graphite Gray",
+    "colorName": "石墨灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 104,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6098",
+    "englishName": "Gloss Graphite Gray",
+    "colorName": "亮石墨灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 105,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6039",
+    "englishName": "Champagne Gold",
+    "colorName": "原廠香檳金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 106,
+    "series": "賓士",
+    "seriesLabel": "賓士",
+    "code": "V-XBZ6090",
+    "englishName": "Obsidian Black",
+    "colorName": "曜岩黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 107,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6101",
+    "englishName": "Florett Silver",
+    "colorName": "花劍銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 108,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6141",
+    "englishName": "Viper Green",
+    "colorName": "蝰蛇綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 109,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6146",
+    "englishName": "Sonoma Green",
+    "colorName": "索諾瑪綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 110,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6143",
+    "englishName": "goodwood green",
+    "colorName": "古德伍德綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 111,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6142",
+    "englishName": "Hell Green",
+    "colorName": "地獄綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 112,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6145",
+    "englishName": "Avalon Green Metallic",
+    "colorName": "阿瓦隆綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 113,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6140",
+    "englishName": "Battle Green",
+    "colorName": "戰鬥綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 114,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6144",
+    "englishName": "District Green",
+    "colorName": "耀夜綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 115,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6149",
+    "englishName": "Gothic Blue Green",
+    "colorName": "哥特蘭綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 116,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6160",
+    "englishName": "Frosted Glass Blue",
+    "colorName": "玻璃藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 117,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6162",
+    "englishName": "Sepang Blue",
+    "colorName": "雪邦藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 118,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6161",
+    "englishName": "Navarra Blue",
+    "colorName": "那瓦勒藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 119,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6171",
+    "englishName": "Berry Purple",
+    "colorName": "漿果紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 120,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6173",
+    "englishName": "Venetian Purple",
+    "colorName": "威尼斯紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 121,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD1286",
+    "englishName": "Nardo Grey",
+    "colorName": "納多灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 122,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6188",
+    "englishName": "Daytona Grey",
+    "colorName": "天雲灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 123,
+    "series": "奧迪",
+    "seriesLabel": "奧迪",
+    "code": "V-XAD6189",
+    "englishName": "Nano Gray",
+    "colorName": "納諾灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 1,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI1505",
+    "englishName": "Space Silver",
+    "colorName": "太空銀金屬漆MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 2,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI1515",
+    "englishName": "Brilliant Magenta",
+    "colorName": "璀璨洋紅MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 3,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI1541",
+    "englishName": "Shadow Teal",
+    "colorName": "小米影青色MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 4,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI1543",
+    "englishName": "Emerald Green",
+    "colorName": "寶石綠金屬漆MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 5,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI1545",
+    "englishName": "Parrot Green",
+    "colorName": "鸚鵡綠MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 6,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-690",
+    "englishName": "Bay Blue",
+    "colorName": "海灣藍MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 7,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-779",
+    "englishName": "Sunset Violet",
+    "colorName": "霞光紫MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 8,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-456",
+    "englishName": "Olive Green",
+    "colorName": "橄欖綠MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 9,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-656",
+    "englishName": "Meteor Bluo",
+    "colorName": "流星藍MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 10,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-818",
+    "englishName": "Cambrian Gray",
+    "colorName": "寒武岩灰MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 11,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-211",
+    "englishName": "Lava Orange",
+    "colorName": "熔岩橙MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 12,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-833",
+    "englishName": "Elegant Gray",
+    "colorName": "雅灰MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 13,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-080",
+    "englishName": "Pearl White",
+    "colorName": "珍珠白MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 14,
+    "series": "小米",
+    "seriesLabel": "小米",
+    "code": "V-MI-913",
+    "englishName": "Diamond Black",
+    "colorName": "鑽石黑金屬漆MI",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 15,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-433",
+    "englishName": "Forest Green",
+    "colorName": "森林綠TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 16,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-633",
+    "englishName": "Glacier Blue",
+    "colorName": "冰川藍TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 17,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-638",
+    "englishName": "Deep Blue",
+    "colorName": "深海藍TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 18,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-133",
+    "englishName": "Crimson Red",
+    "colorName": "緋紅TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 19,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-166",
+    "englishName": "Ultra Red",
+    "colorName": "烈焰紅TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 20,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-020",
+    "englishName": "Quicksilver Metallic",
+    "colorName": "水銀金屬漆TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 21,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-021",
+    "englishName": "Starlight Silver",
+    "colorName": "星光銀TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 22,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-022",
+    "englishName": "Quick Silver",
+    "colorName": "冷光銀TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 23,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-826",
+    "englishName": "Stealth Gray",
+    "colorName": "隱形灰TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 24,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-833",
+    "englishName": "Slip Grey",
+    "colorName": "滑石灰TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 25,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-930",
+    "englishName": "Obsidian Black Metallic",
+    "colorName": "曜石黑金屬漆TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 26,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-033",
+    "englishName": "Satin Rose Gold",
+    "colorName": "緞面玫瑰金TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 27,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-066",
+    "englishName": "Satin Ceramic White",
+    "colorName": "緞面陶瓷白TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 28,
+    "series": "特斯拉",
+    "seriesLabel": "特斯拉",
+    "code": "V-T-990",
+    "englishName": "Satin Stealth Black",
+    "colorName": "緞面隱秘黑TES",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 29,
+    "series": "問界",
+    "seriesLabel": "問界",
+    "code": "V-AITO011",
+    "englishName": "Jinrui Red",
+    "colorName": "金瑞紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 30,
+    "series": "馬自達",
+    "seriesLabel": "馬自達",
+    "code": "V-XDZ6919",
+    "englishName": "Soul  Red",
+    "colorName": "魂動紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 31,
+    "series": "紅旗",
+    "seriesLabel": "紅旗",
+    "code": "V-XCH930",
+    "englishName": "Akka Gold",
+    "colorName": "阿卡金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 32,
+    "series": "紅旗",
+    "seriesLabel": "紅旗",
+    "code": "V-XCH970",
+    "englishName": "Gentian Purple",
+    "colorName": "龍膽紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 33,
+    "series": "捷豹",
+    "seriesLabel": "捷豹",
+    "code": "V-XJB6849",
+    "englishName": "Royal Green",
+    "colorName": "皇家綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 34,
+    "series": "極氪",
+    "seriesLabel": "極氪",
+    "code": "V-ZEE08",
+    "englishName": "Paris Cream Beige",
+    "colorName": "巴黎玄米",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 35,
+    "series": "大眾",
+    "seriesLabel": "大眾",
+    "code": "V-VW606",
+    "englishName": "Biscay blue",
+    "colorName": "比斯開藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 36,
+    "series": "小鵬",
+    "seriesLabel": "小鵬",
+    "code": "V-XPEVP7",
+    "englishName": "Super Flash Green",
+    "colorName": "超閃綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 37,
+    "series": "小鵬",
+    "seriesLabel": "小鵬",
+    "code": "V-XPEVP8",
+    "englishName": "Interstellar Green",
+    "colorName": "星際綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 38,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO13",
+    "englishName": "First Light Kiss",
+    "colorName": "鏡空粉NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 39,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO41",
+    "englishName": "Dawn Mist Green",
+    "colorName": "晨霧綠NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 40,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO33",
+    "englishName": "Sunbathe Yellow",
+    "colorName": "雲初黃NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 41,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO22",
+    "englishName": "Luminous Orange",
+    "colorName": "霞光橙NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 42,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO61",
+    "englishName": "Strotosphere Blue",
+    "colorName": "同溫層藍NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 43,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO63",
+    "englishName": "Airspace Blue",
+    "colorName": "宇航藍NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 44,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO43",
+    "englishName": "Arctic Green",
+    "colorName": "極光綠NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 45,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO77",
+    "englishName": "Spiritual Purple",
+    "colorName": "原廠靈境紫NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 46,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO09",
+    "englishName": "Sunlight Gold",
+    "colorName": "曙光金NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 47,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO19",
+    "englishName": "Mars Red",
+    "colorName": "火星紅NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 48,
+    "series": "蔚來",
+    "seriesLabel": "蔚來",
+    "code": "V-NIO88",
+    "englishName": "New Moon Silver",
+    "colorName": "月輝銀NIO",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 49,
+    "series": "邁凱倫",
+    "seriesLabel": "邁凱倫",
+    "code": "V-XH6369",
+    "englishName": "Pacific Blue",
+    "colorName": "太平洋藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 50,
+    "series": "邁凱倫",
+    "seriesLabel": "邁凱倫",
+    "code": "V-XH6320",
+    "englishName": "McLaren Orange",
+    "colorName": "邁凱倫橙",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 51,
+    "series": "邁凱倫",
+    "seriesLabel": "邁凱倫",
+    "code": "V-XH6379",
+    "englishName": "Mauvine Blue",
+    "colorName": "馬威利紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 52,
+    "series": "邁凱倫",
+    "seriesLabel": "邁凱倫",
+    "code": "V-XH6330",
+    "englishName": "Solis Yellow",
+    "colorName": "索利斯金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 53,
+    "series": "mini",
+    "seriesLabel": "mini",
+    "code": "V-MI0001",
+    "englishName": "Pepper White",
+    "colorName": "胡椒白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 54,
+    "series": "mini",
+    "seriesLabel": "mini",
+    "code": "V-MINI05",
+    "englishName": "Melting Silver",
+    "colorName": "流光銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 55,
+    "series": "mini",
+    "seriesLabel": "mini",
+    "code": "V-MINI02",
+    "englishName": "Sage Green",
+    "colorName": "尤加利青",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 56,
+    "series": "蘭博基尼",
+    "seriesLabel": "蘭博基尼",
+    "code": "V-LA0040",
+    "englishName": "Verde Gea Lucldo",
+    "colorName": "超亮綠金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 57,
+    "series": "蘭博基尼",
+    "seriesLabel": "蘭博基尼",
+    "code": "V-LA0041",
+    "englishName": "Verde Gea",
+    "colorName": "緞面綠金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 58,
+    "series": "蘭博基尼",
+    "seriesLabel": "蘭博基尼",
+    "code": "V-LA0002",
+    "englishName": "Flare Yellow",
+    "colorName": "烈焰黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 59,
+    "series": "蘭博基尼",
+    "seriesLabel": "蘭博基尼",
+    "code": "V-LA0003",
+    "englishName": "Dazzling Yellow",
+    "colorName": "耀眼黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 60,
+    "series": "蘭博基尼",
+    "seriesLabel": "蘭博基尼",
+    "code": "V-LA0005",
+    "englishName": "Ceramic Blue",
+    "colorName": "原廠陶瓷藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 61,
+    "series": "蘭博基尼",
+    "seriesLabel": "蘭博基尼",
+    "code": "V-LA0006",
+    "englishName": "Blu Aegir",
+    "colorName": "艾吉爾藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 62,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6606",
+    "englishName": "Frosty Flakes",
+    "colorName": "冰霜白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 63,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6610",
+    "englishName": "Mary Kay Pink",
+    "colorName": "玫琳凱粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 64,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6616",
+    "englishName": "Passion Pink",
+    "colorName": "激情粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 65,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-BE6642",
+    "englishName": "Bricish Racing Green",
+    "colorName": "英國賽車綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 66,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-BE6643",
+    "englishName": "Cumbrian Green",
+    "colorName": "坎布里亞綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 67,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6646",
+    "englishName": "Verdant Green",
+    "colorName": "翡翠綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 68,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6649",
+    "englishName": "Deep Emerald Green",
+    "colorName": "深翠綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 69,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6666",
+    "englishName": "Glacier Blue",
+    "colorName": "冰川藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 70,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6669",
+    "englishName": "Long Beach Blue",
+    "colorName": "長灘藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 71,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6689",
+    "englishName": "Anthracite",
+    "colorName": "煤炭灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 72,
+    "series": "賓利",
+    "seriesLabel": "賓利",
+    "code": "V-XBE6676",
+    "englishName": "Grey Violet",
+    "colorName": "灰紫羅蘭",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 73,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-XLR691",
+    "englishName": "Grasmere Green",
+    "colorName": "格拉斯米爾綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 74,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-XLR694",
+    "englishName": "Pangea Green",
+    "colorName": "盤古綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 75,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-XLR696",
+    "englishName": "Tuscan Blue",
+    "colorName": "托斯卡納藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 76,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-XLR6963",
+    "englishName": "Byron Bay Blue",
+    "colorName": "拜倫灣藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 77,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-XLR606",
+    "englishName": "Batumi Gold",
+    "colorName": "巴統金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 78,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-XLR608",
+    "englishName": "Satin Sunset Gold",
+    "colorName": "緞面暮光金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 79,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-XLR609",
+    "englishName": "Satin Copper Metallic",
+    "colorName": "緞面古銅金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 80,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-XLR688",
+    "englishName": "Corinthian Bronze",
+    "colorName": "科林斯銅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 81,
+    "series": "路虎",
+    "seriesLabel": "路虎",
+    "code": "V-LR699",
+    "englishName": "Santorini Black",
+    "colorName": "聖托裡尼黑",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 82,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-AC8809",
+    "englishName": "Shell White",
+    "colorName": "貝殼白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 83,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PW0010",
+    "englishName": "Pearl White",
+    "colorName": "珍珠白",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 84,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PW0011",
+    "englishName": "Pearl White Pink",
+    "colorName": "珍珠白粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 85,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PW0013",
+    "englishName": "Pearl White Blue",
+    "colorName": "珍珠白藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 86,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PW0018",
+    "englishName": "Pearl White Purple",
+    "colorName": "珍珠白紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 87,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PW0016",
+    "englishName": "Pearl White  Gold",
+    "colorName": "珍珠白金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 88,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PM0111",
+    "englishName": "Pearl Metallic White Pink",
+    "colorName": "電光白粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 89,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PM0118",
+    "englishName": "Pearl Metallic White Purple",
+    "colorName": "電光白紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 90,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-PM0116",
+    "englishName": "Pearl Metallic White  Gold",
+    "colorName": "電光白金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 91,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-026",
+    "englishName": "Glinting Silver",
+    "colorName": "浮光銀",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 92,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-171",
+    "englishName": "Sweet Peach Pink",
+    "colorName": "甜桃粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 93,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-120",
+    "englishName": "Macaron White Peach Pink",
+    "colorName": "馬卡龍白桃粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 94,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-129",
+    "englishName": "Glass Pink Gold",
+    "colorName": "琉璃粉金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 95,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-130",
+    "englishName": "Splendid Pink",
+    "colorName": "花悅粉",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 96,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-160",
+    "englishName": "Cocoa Red",
+    "colorName": "可哥紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 97,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-136",
+    "englishName": "Rhodes Red",
+    "colorName": "羅德斯紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 98,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-139",
+    "englishName": "Glass Tower Red",
+    "colorName": "琉璃塔塔紅",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 99,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-313",
+    "englishName": "Chanel Yellow",
+    "colorName": "香奈兒黃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 100,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-419",
+    "englishName": "Cardamom",
+    "colorName": "豆蔻",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 101,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-426",
+    "englishName": "Fresh Green",
+    "colorName": "清新綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 102,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-446",
+    "englishName": "Ideal Green",
+    "colorName": "理想的綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 103,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-488",
+    "englishName": "Aden Green",
+    "colorName": "亞丁綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 104,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-467",
+    "englishName": "Dark Night British Green",
+    "colorName": "暗夜英國綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 105,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-469",
+    "englishName": "Metallic Midnight Green",
+    "colorName": "金屬午夜綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 106,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-480",
+    "englishName": "Diamond Aurora Green",
+    "colorName": "鑽石極光綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 107,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-630",
+    "englishName": "Fantasy Blue",
+    "colorName": "綺想藍",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 108,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-705",
+    "englishName": "Monet Purple",
+    "colorName": "莫内紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 109,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-731",
+    "englishName": "Spiritual Purple",
+    "colorName": "靈境紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 110,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-732",
+    "englishName": "Galaxy Purple",
+    "colorName": "銀河紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 111,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-735",
+    "englishName": "Purple Plum",
+    "colorName": "烏梅紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 112,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-736",
+    "englishName": "Ideal Purple",
+    "colorName": "理想的紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 113,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-756",
+    "englishName": "Ruibai Purple",
+    "colorName": "盧比萊紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 114,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-766",
+    "englishName": "Dolotta Purple",
+    "colorName": "多洛塔紫",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 115,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-769",
+    "englishName": "Phantom Metallic Purple",
+    "colorName": "幻影紫金屬",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 116,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-267",
+    "englishName": "Flame Orange Metallic",
+    "colorName": "烈焰橙金屬漆",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 117,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-020",
+    "englishName": "White Marble",
+    "colorName": "白雲石",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 118,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-060",
+    "englishName": "Dawn Gold",
+    "colorName": "曙光金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 119,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-640",
+    "englishName": "Distant Peak Blue-Green",
+    "colorName": "亮遠峰藍魅綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 120,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-690",
+    "englishName": "Distant Peak Blue-Gold",
+    "colorName": "亮遠峰藍魅金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 121,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-880",
+    "englishName": "Manhattan Gray",
+    "colorName": "曼哈頓灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 122,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-V-888",
+    "englishName": "Manhattan Gray",
+    "colorName": "月岩灰",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 123,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-SS033",
+    "englishName": "Satin Peach Fuzz",
+    "colorName": "緞面柔和桃",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 124,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-SS063",
+    "englishName": "Satin Blue Gold",
+    "colorName": "緞面藍魅金",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  },
+  {
+    "seq": 125,
+    "series": "V系列",
+    "seriesLabel": "V系列（液態金屬）",
+    "code": "V-SS064",
+    "englishName": "Satin Blue Green",
+    "colorName": "緞面藍魅綠",
+    "basePrice": 12500,
+    "extraPrice": 3000
+  }
+]

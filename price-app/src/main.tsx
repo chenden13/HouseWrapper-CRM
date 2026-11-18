@@ -7,3 +7,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>,
 )
+// Force rebuild hash  
+console.log(Date.now());  

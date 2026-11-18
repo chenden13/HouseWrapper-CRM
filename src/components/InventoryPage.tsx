@@ -94,6 +94,7 @@ const PRESET_LENGTHS = [
 ];
 
 const WIDTH_OPTIONS = [150, 140, 130, 120, 110, 100, 90, 80, 75, 70, 60, 50, 40, 30, 20, 10];
+const PRESET_BRANDS = ['AX', '3M', 'STEK', '禿鷹', '8BIT'];
 
 export const getItemWidth = (item?: Partial<FilmInventory> | null): number => {
   if (!item) return 150;
@@ -143,6 +144,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<Partial<FilmInventory> | null>(null);
   const [isCustomLength, setIsCustomLength] = useState(false);
+  const [isCustomBrand, setIsCustomBrand] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   // New states for purchase form
@@ -172,10 +174,13 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
       setEditingItem(existing);
       const isPreset = PRESET_LENGTHS.some(p => p.value === existing.currentMeters);
       setIsCustomLength(!isPreset);
+      const existingBrand = (existing.brand || '').trim();
+      const isBrandPreset = PRESET_BRANDS.some(b => b.toLowerCase() === existingBrand.toLowerCase());
+      setIsCustomBrand(!isBrandPreset);
     } else {
       setEditingItem({
         id: `INV-${Date.now()}`,
-        brand: '',
+        brand: 'AX',
         color: '',
         size: '150',
         width: 150,
@@ -184,6 +189,7 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
         lastUpdated: new Date().toISOString().split('T')[0]
       });
       setIsCustomLength(false);
+      setIsCustomBrand(false);
     }
     setIsEditModalOpen(true);
   };
@@ -662,7 +668,45 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
             <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div className="form-group">
                 <label className="form-label">膜料廠牌</label>
-                <input type="text" className="form-control" placeholder="3M, AX, STEK..." value={editingItem?.brand || ''} onChange={(e) => setEditingItem(prev => prev ? {...prev, brand: e.target.value} : null)} required />
+                <select
+                  className="form-control"
+                  value={
+                    isCustomBrand
+                      ? '其他'
+                      : (PRESET_BRANDS.find(b => b.toLowerCase() === (editingItem?.brand || '').trim().toLowerCase()) || 'AX')
+                  }
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val === '其他') {
+                      setIsCustomBrand(true);
+                      const currentBrand = (editingItem?.brand || '').trim();
+                      const isCurrentlyPreset = PRESET_BRANDS.some(b => b.toLowerCase() === currentBrand.toLowerCase());
+                      if (isCurrentlyPreset) {
+                        setEditingItem(prev => prev ? { ...prev, brand: '' } : null);
+                      }
+                    } else {
+                      setIsCustomBrand(false);
+                      setEditingItem(prev => prev ? { ...prev, brand: val } : null);
+                    }
+                  }}
+                  style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.95rem' }}
+                >
+                  {PRESET_BRANDS.map(b => (
+                    <option key={b} value={b}>{b}</option>
+                  ))}
+                  <option value="其他">其他 (自填)</option>
+                </select>
+                {isCustomBrand && (
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="請輸入自填品牌名稱..."
+                    value={editingItem?.brand || ''}
+                    onChange={(e) => setEditingItem(prev => prev ? { ...prev, brand: e.target.value } : null)}
+                    style={{ marginTop: '8px' }}
+                    required
+                  />
+                )}
               </div>
               <div className="form-group">
                 <label className="form-label">顏色</label>

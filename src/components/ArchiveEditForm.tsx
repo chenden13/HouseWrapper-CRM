@@ -11,6 +11,7 @@ import { getYouTubeEmbedUrl } from '../lib/utils';
 import type { CategorizedPhoto } from '../types';
 import { WindowTintSection } from './WindowTintSection';
 import { migrateLegacyTintData } from '../data/tintConfig';
+import vehiclesData from '../data/vehicles.json';
 
 const TINT_GROUPS: Record<string, string[]> = {
   "3M": ["極黑", "極透", "方案1: 前(透)後(黑)", "方案2: 前、天(透) 身(黑)"],
@@ -21,6 +22,102 @@ const TINT_GROUPS: Record<string, string[]> = {
   "量子膜": ["量子膜 ZX"],
   "皇家": ["皇家 Supreme"],
   "Xpel": ["Xpel-X2 Plus"]
+};
+
+const COLOR_WRAP_SERIES: Record<string, Record<string, number>> = {
+  'AX': {
+    'E系列': 60000,
+    'V系列': 63000,
+    'G系列': 65000,
+    'T系列': 68000,
+  },
+  '3M': {
+    'G/M/S系列': 70000,
+    'GP/SP系列': 75000,
+    'HG系列': 80000,
+  }
+};
+
+const PPF_PRICING: Record<string, Record<string, number>> = {
+  'AX': {
+    'K系列 (亮面)': 90000,
+    'X系列 (亮面)': 100000,
+    'M系列 (消光)': 100000,
+    '亮面': 90000,
+    '消光': 100000,
+    'K系列': 90000,
+    'X系列': 100000,
+    'M系列': 100000,
+  },
+  'Pixel8bit': {
+    '亮面 (7.5mil)': 100000,
+    '消光 (8.5mil)': 110000,
+    '亮面': 100000,
+    '消光': 110000,
+  },
+  'Pixel8bot': {
+    '亮面 (7.5mil)': 100000,
+    '消光 (8.5mil)': 110000,
+    '亮面': 100000,
+    '消光': 110000,
+  },
+  '3M': {
+    '150g (亮面)': 125000,
+    '200g (亮面)': 135000,
+    '200m (消光)': 145000,
+    '100g (亮面)': 110000,
+    '150g': 125000,
+    '200g': 135000,
+    '200m': 145000,
+  },
+  'Stek': {
+    'C clear (亮面)': 110000,
+    'DYNO PURE+ (亮面)': 140000,
+    'C matte (消光)': 120000,
+    'Dyno matte (消光)': 150000,
+    'Lite (亮面)': 140000,
+    'Matte (消光)': 150000,
+    '亮面': 140000,
+    '消光': 150000,
+    'C clear': 110000,
+    'DYNO PURE+': 140000,
+    'C matte': 120000,
+    'Dyno matte': 150000,
+  }
+};
+
+const PPF_ACTIVE_SERIES: Record<string, string[]> = {
+  'AX': ['K系列 (亮面)', 'X系列 (亮面)', 'M系列 (消光)'],
+  'Pixel8bit': ['亮面 (7.5mil)', '消光 (8.5mil)'],
+  'Pixel8bot': ['亮面 (7.5mil)', '消光 (8.5mil)'],
+  '3M': ['150g (亮面)', '200g (亮面)', '200m (消光)'],
+  'Stek': ['C clear (亮面)', 'DYNO PURE+ (亮面)', 'C matte (消光)', 'Dyno matte (消光)']
+};
+
+const FRONT_PPF_PRICING: Record<string, number> = {
+  'Pixel8bit': 35000,
+  '3M 150g': 45000,
+  '3M 200g': 55000
+};
+
+const WIND_PPF_PRICING: Record<string, number> = {
+  'Pixel8bit': 35000,
+  '3M 150g': 45000,
+  '3M 200g': 55000
+};
+
+const REAR_COATING_PRICING: Record<string, number> = {
+  'Servfaces (一年期)': 12000,
+  'CarPro (兩年期)': 18000
+};
+
+const SIZE_OFFSET: Record<string, number> = {
+  'XS': -5000,
+  'S': 0,
+  'M': 5000,
+  'L': 10000,
+  'XL': 15000,
+  '2XL': 20000,
 };
 
 
@@ -39,18 +136,134 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
     // Data Migration: If it's an old record (missing constructionStartDate), 
     // move expectedEndDate to constructionStartDate and deliveryDate to expectedEndDate.
     const hasNewFormat = !!customer.constructionStartDate;
+    const initialSeries =
+      customer.mainServiceSeries ||
+      ((customer.mainService === '犀牛皮' || customer.mainService === '全車犀牛皮') && customer.filmColor
+        ? customer.filmColor
+        : '');
     return migrateLegacyTintData({
       ...customer,
+      mainServiceSeries: initialSeries,
       constructionStartDate: customer.constructionStartDate || customer.expectedEndDate || '',
       expectedEndDate: hasNewFormat ? customer.expectedEndDate : (customer.deliveryDate || ''),
       customAccessories: customer.customAccessories || [],
     }) as Customer;
   });
   const [originalId] = useState(customer.id);
+  const isInitialMount = React.useRef(true);
+
+  // 依據車輛品牌與車型自動推算尺寸 (若舊檔案未存 vehicleSize 也能正確計算價格)
+  const effectiveVehicleSize = React.useMemo(() => {
+    const b = (formData.brand || '').trim().toLowerCase();
+    const m = (formData.model || '').trim().toLowerCase();
+    if (b && m) {
+      const exact = vehiclesData.find(
+        v => v.brand.toLowerCase() === b && v.model.toLowerCase() === m
+      );
+      if (exact?.size) return exact.size;
+    }
+    if (m) {
+      const byModel = vehiclesData.find(v => v.model.toLowerCase() === m);
+      if (byModel?.size) return byModel.size;
+    }
+    return formData.vehicleSize || '';
+  }, [formData.brand, formData.model, formData.vehicleSize]);
+
+  // 計算小計與自動更新總成交報價輔助函數
+  const recalculateTotal = React.useCallback((nextData: Customer) => {
+    let subtotal =
+      Number(nextData.mainServicePrice || 0) +
+      Number(nextData.windowTintPrice || 0) +
+      Number(nextData.digitalMirrorPrice || 0) +
+      Number(nextData.electricModPrice || 0) +
+      Number(nextData.rearCoatingPrice || 0) +
+      Number(nextData.hoodPpfPrice || 0);
+    (nextData.customAccessories || []).forEach(acc => {
+      subtotal += Number(acc.price) || 0;
+    });
+    const discount = Number(nextData.discountAmount || 0);
+    return Math.max(0, subtotal - discount);
+  }, []);
 
   const handleWindowTintChange = (updates: Partial<Customer>) => {
-    setFormData(prev => ({ ...prev, ...updates }));
+    setFormData(prev => {
+      const next = { ...prev, ...updates };
+      if (updates.windowTintPrice !== undefined) {
+        next.totalAmount = recalculateTotal(next);
+      }
+      return next;
+    });
   };
+
+  // 主施工項目 (改色/犀牛皮/迎風面/局部) 對應價格與膜料顏色自動帶入邏輯 (與建檔規則一致)
+  React.useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    const service = formData.mainService || '';
+    const brand = formData.mainServiceBrand || '';
+    const series = formData.mainServiceSeries || '';
+    const size = effectiveVehicleSize;
+
+    let targetPrice: number | null = null;
+
+    if ((service === '改色' || service === '全車改色膜') && (brand === 'AX' || brand === '3M') && series) {
+      const basePrices = COLOR_WRAP_SERIES[brand];
+      if (basePrices && basePrices[series]) {
+        const basePrice = basePrices[series];
+        const offset = SIZE_OFFSET[size] || 0;
+        targetPrice = basePrice + offset;
+      }
+    } else if ((service === '犀牛皮' || service === '全車犀牛皮') && brand && series) {
+      const basePrices = PPF_PRICING[brand];
+      if (basePrices && basePrices[series]) {
+        const basePrice = basePrices[series];
+        const offset = SIZE_OFFSET[size] || 0;
+        targetPrice = basePrice + offset;
+      }
+    } else if (service === '局部保護/改色' && brand && FRONT_PPF_PRICING[brand]) {
+      let price = FRONT_PPF_PRICING[brand];
+      if (size === 'XL') price += 5000;
+      else if (size === '2XL') price += 10000;
+      targetPrice = price;
+    } else if ((service === '迎風面' || service === '迎風面犀牛皮') && brand && WIND_PPF_PRICING[brand]) {
+      let price = WIND_PPF_PRICING[brand];
+      if (size === 'XL') price += 5000;
+      else if (size === '2XL') price += 10000;
+      targetPrice = price;
+    }
+
+    setFormData(prev => {
+      let changed = false;
+      const next = { ...prev };
+
+      if (effectiveVehicleSize && prev.vehicleSize !== effectiveVehicleSize) {
+        next.vehicleSize = effectiveVehicleSize;
+        changed = true;
+      }
+
+      if (service === '犀牛皮' || service === '全車犀牛皮') {
+        if (prev.filmColor !== series) {
+          next.filmColor = series;
+          changed = true;
+        }
+      } else if (service === '迎風面' || service === '迎風面犀牛皮' || service === '汽車美容' || service === '鍍膜') {
+        if (prev.filmColor) {
+          next.filmColor = '';
+          changed = true;
+        }
+      }
+
+      if (targetPrice !== null && targetPrice > 0 && prev.mainServicePrice !== targetPrice) {
+        next.mainServicePrice = targetPrice;
+        next.totalAmount = recalculateTotal(next);
+        changed = true;
+      }
+
+      return changed ? next : prev;
+    });
+  }, [formData.mainService, formData.mainServiceBrand, formData.mainServiceSeries, effectiveVehicleSize, recalculateTotal]);
 
   const [damagePhotos, setDamagePhotos] = useState<CategorizedPhoto[]>(customer.damagePhotos || []);
   const [progressPhotos, setProgressPhotos] = useState<CategorizedPhoto[]>(customer.progressPhotos || []);
@@ -98,14 +311,24 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
   };
 
   const removeAccessory = (id: string) => {
-    setFormData(prev => ({ ...prev, customAccessories: prev.customAccessories?.filter(a => a.id !== id) }));
+    setFormData(prev => {
+      const next = { ...prev, customAccessories: prev.customAccessories?.filter(a => a.id !== id) };
+      next.totalAmount = recalculateTotal(next);
+      return next;
+    });
   };
 
   const updateAccessory = (id: string, field: 'name' | 'price', value: string | number) => {
-    setFormData(prev => ({
-      ...prev,
-      customAccessories: prev.customAccessories?.map(a => a.id === id ? { ...a, [field]: value } : a)
-    }));
+    setFormData(prev => {
+      const next = {
+        ...prev,
+        customAccessories: prev.customAccessories?.map(a => a.id === id ? { ...a, [field]: value } : a)
+      };
+      if (field === 'price') {
+        next.totalAmount = recalculateTotal(next);
+      }
+      return next;
+    });
   };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, type: 'damage' | 'progress') => {
@@ -260,11 +483,28 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
       <div className="form-group col-span-12">
         <h3 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#6366f1' }}>
           <Shield size={18} /> 施工內容與配件
+          {effectiveVehicleSize && (
+            <span style={{ fontSize: '0.78rem', background: '#e0e7ff', color: '#4338ca', padding: '2px 8px', borderRadius: '6px', fontWeight: 'bold' }}>
+              車型尺寸: {effectiveVehicleSize}
+            </span>
+          )}
         </h3>
       </div>
-      <div className="form-group col-span-4">
+      <div className="form-group col-span-3">
         <label className="form-label">主施工項目</label>
-        <select name="mainService" className="form-control" value={formData.mainService || ''} onChange={handleChange}>
+        <select
+          name="mainService"
+          className="form-control"
+          value={formData.mainService || ''}
+          onChange={(e) => {
+            const val = e.target.value;
+            setFormData(prev => ({
+              ...prev,
+              mainService: val,
+              mainServiceSeries: '',
+            }));
+          }}
+        >
           <option value="">請選擇</option>
           <option value="改色">改色</option>
           <option value="犀牛皮">犀牛皮</option>
@@ -275,28 +515,138 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
           <option value="鍍膜">鍍膜</option>
         </select>
       </div>
-      <div className="form-group col-span-4">
-        <label className="form-label">施工品牌/系列/項目</label>
-        <input type="text" name="mainServiceBrand" className="form-control" placeholder="手動輸入項目/品牌" value={formData.mainServiceBrand || ''} onChange={handleChange} />
+      <div className="form-group col-span-3">
+        <label className="form-label">品牌/項目</label>
+        {(formData.mainService === '汽車美容' || formData.mainService === '鍍膜' || formData.mainService === '改色犀牛皮') ? (
+          <input
+            type="text"
+            name="mainServiceBrand"
+            className="form-control"
+            placeholder="手動輸入項目/品牌"
+            value={formData.mainServiceBrand || ''}
+            onChange={handleChange}
+          />
+        ) : (
+          <select
+            name="mainServiceBrand"
+            className="form-control"
+            value={formData.mainServiceBrand || ''}
+            onChange={(e) => {
+              const val = e.target.value;
+              setFormData(prev => ({
+                ...prev,
+                mainServiceBrand: val,
+                mainServiceSeries: '',
+              }));
+            }}
+          >
+            <option value="">選擇品牌</option>
+            {(() => {
+              const baseBrands = (formData.mainService || '').includes('改色')
+                ? ['AX', '3M', 'CYS', 'TeckWrap']
+                : (formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮')
+                  ? (formData.mainServiceBrand === 'Pixel8bot' ? ['AX', 'Pixel8bit', 'Pixel8bot', '3M', 'Stek'] : ['AX', 'Pixel8bit', '3M', 'Stek'])
+                  : (formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '局部保護/改色')
+                    ? ['Pixel8bit', '3M 150g', '3M 200g']
+                    : ['AX', '3M', 'Stek', 'Pixel8bit'];
+              const current = formData.mainServiceBrand;
+              const options = current && !baseBrands.includes(current) ? [current, ...baseBrands] : baseBrands;
+              return options.map(brand => <option key={brand} value={brand}>{brand}</option>);
+            })()}
+          </select>
+        )}
       </div>
-      <div className="form-group col-span-4">
+
+      {(formData.mainService === '改色' || formData.mainService === '全車改色膜') && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M') && (
+        <div className="form-group col-span-2">
+          <label className="form-label" style={{ color: '#2563eb', fontWeight: 'bold' }}>等級/系列</label>
+          <select
+            name="mainServiceSeries"
+            className="form-control"
+            value={formData.mainServiceSeries || ''}
+            onChange={handleChange}
+            style={{ borderColor: '#3b82f6', background: '#eff6ff' }}
+          >
+            <option value="">選擇系列</option>
+            {Object.keys(COLOR_WRAP_SERIES[formData.mainServiceBrand] || {}).map(s => (
+              <option key={s} value={s}>{s}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮') && formData.mainServiceBrand && (
+        <div className="form-group col-span-2">
+          <label className="form-label" style={{ color: '#059669', fontWeight: 'bold' }}>規格/系列</label>
+          <select
+            name="mainServiceSeries"
+            className="form-control"
+            value={formData.mainServiceSeries || ''}
+            onChange={handleChange}
+            style={{ borderColor: '#10b981', background: '#f0fdf4' }}
+          >
+            <option value="">選擇規格 (亮面/消光)</option>
+            {(() => {
+              const brand = formData.mainServiceBrand;
+              const active = PPF_ACTIVE_SERIES[brand] || Object.keys(PPF_PRICING[brand] || {});
+              const current = formData.mainServiceSeries;
+              const options = current && !active.includes(current) ? [current, ...active] : active;
+              return options.map(s => <option key={s} value={s}>{s}</option>);
+            })()}
+          </select>
+        </div>
+      )}
+
+      <div className="form-group col-span-2">
         <label className="form-label">膜料顏色 (細項)</label>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <input 
             type="text" 
             name="filmColor" 
             className="form-control" 
-            value={(formData.mainService === '犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? '' : (formData.filmColor || '')} 
+            value={(formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? '' : (formData.filmColor || '')} 
             onChange={handleChange}
-            placeholder={(formData.mainService === '犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? '無須填寫' : '顏色細項'}
-            disabled={formData.mainService === '犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜'}
-            style={(formData.mainService === '犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
+            placeholder={(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? '無須填寫' : '顏色細項'}
+            disabled={formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜'}
+            style={(formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮' || formData.mainService === '迎風面' || formData.mainService === '迎風面犀牛皮' || formData.mainService === '汽車美容' || formData.mainService === '鍍膜') ? { backgroundColor: '#f1f5f9', cursor: 'not-allowed' } : undefined}
           />
           <label style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', color: '#7c3aed', cursor: 'pointer' }}>
-            <input type="checkbox" name="hasHoodPpf" checked={formData.hasHoodPpf || false} onChange={handleChange} /> 
+            <input
+              type="checkbox"
+              name="hasHoodPpf"
+              checked={formData.hasHoodPpf || false}
+              onChange={(e) => {
+                const checked = e.target.checked;
+                setFormData(prev => {
+                  const hoodPrice = checked ? 18000 : 0;
+                  const next = { ...prev, hasHoodPpf: checked, hoodPpfPrice: hoodPrice };
+                  next.totalAmount = recalculateTotal(next);
+                  return next;
+                });
+              }}
+            /> 
             加購：引擎蓋+前葉子板犀牛皮 (Pixel8bit)
           </label>
         </div>
+      </div>
+
+      <div className={`form-group ${((formData.mainService === '改色' || formData.mainService === '全車改色膜') && (formData.mainServiceBrand === 'AX' || formData.mainServiceBrand === '3M')) || ((formData.mainService === '犀牛皮' || formData.mainService === '全車犀牛皮') && formData.mainServiceBrand) ? 'col-span-2' : 'col-span-4'}`}>
+        <label className="form-label">施工價格 ($)</label>
+        <input
+          type="number"
+          name="mainServicePrice"
+          className="form-control"
+          placeholder="0"
+          value={formData.mainServicePrice || ''}
+          onChange={(e) => {
+            const val = Number(e.target.value);
+            setFormData(prev => {
+              const next = { ...prev, mainServicePrice: val };
+              next.totalAmount = recalculateTotal(next);
+              return next;
+            });
+          }}
+        />
       </div>
       
       <div className="col-span-12" style={{ gridColumn: '1 / -1', width: '100%' }}>
@@ -313,7 +663,26 @@ export const ArchiveEditForm: React.FC<ArchiveEditFormProps> = ({ customer, onSu
       </div>
       <div className="form-group col-span-3">
         <label className="form-label">後半車鍍膜</label>
-        <select name="rearCoating" className="form-control" value={formData.rearCoating || ''} onChange={handleChange}>
+        <select
+          name="rearCoating"
+          className="form-control"
+          value={formData.rearCoating || ''}
+          onChange={(e) => {
+            const val = e.target.value;
+            setFormData(prev => {
+              let coatPrice = 0;
+              if (val && REAR_COATING_PRICING[val]) {
+                coatPrice = REAR_COATING_PRICING[val];
+                if (effectiveVehicleSize === 'L') coatPrice += 1000;
+                else if (effectiveVehicleSize === 'XL') coatPrice += 2000;
+                else if (effectiveVehicleSize === '2XL') coatPrice += 3000;
+              }
+              const next = { ...prev, rearCoating: val, rearCoatingPrice: coatPrice };
+              next.totalAmount = recalculateTotal(next);
+              return next;
+            });
+          }}
+        >
           <option value="">無加購</option>
           <option value="Servfaces (一年期)">Servfaces (一年期)</option>
           <option value="CarPro (兩年期)">CarPro (兩年期)</option>

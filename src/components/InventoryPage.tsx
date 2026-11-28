@@ -89,6 +89,7 @@ const PRESET_LENGTHS = [
   { label: '全新', value: 15 },
   { label: '1米', value: 1 },
   { label: '2米', value: 2 },
+  { label: '2.6米', value: 2.6 },
   { label: '3米', value: 3 },
   { label: '4米', value: 4 },
   { label: '5米', value: 5 },
@@ -104,13 +105,13 @@ const PRESET_BRANDS = ['AX', '3M', 'STEK', '禿鷹', '8BIT'];
 
 export const getItemWidth = (item?: Partial<FilmInventory> | null): number => {
   if (!item) return 150;
+  if (item.width !== undefined && !isNaN(Number(item.width))) {
+    const w = Number(item.width);
+    if (w >= 10 && w <= 150) return w;
+  }
   const loc = (item.location || {}) as any;
   if (loc.width !== undefined && !isNaN(Number(loc.width))) {
     const w = Number(loc.width);
-    if (w >= 10 && w <= 150) return w;
-  }
-  if (item.width !== undefined && !isNaN(Number(item.width))) {
-    const w = Number(item.width);
     if (w >= 10 && w <= 150) return w;
   }
   if (item.size) {
@@ -731,7 +732,19 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                         type="button"
                         onClick={() => {
                           setIsCustomLength(false);
-                          setEditingItem(prev => prev ? { ...prev, currentMeters: preset.value } : null);
+                          setEditingItem(prev => {
+                            if (!prev) return null;
+                            if (preset.value === 2.6) {
+                              return {
+                                ...prev,
+                                currentMeters: preset.value,
+                                width: 75,
+                                size: '75',
+                                location: prev.location ? { ...prev.location, width: 75 } as any : prev.location
+                              };
+                            }
+                            return { ...prev, currentMeters: preset.value };
+                          });
                         }}
                         style={{
                           padding: '6px 12px',
@@ -795,7 +808,12 @@ export const InventoryPage: React.FC<InventoryPageProps> = ({
                   value={getItemWidth(editingItem)}
                   onChange={(e) => {
                     const w = Number(e.target.value);
-                    setEditingItem(prev => prev ? { ...prev, width: w, size: String(w) } : null);
+                    setEditingItem(prev => prev ? {
+                      ...prev,
+                      width: w,
+                      size: String(w),
+                      location: prev.location ? { ...prev.location, width: w } as any : prev.location
+                    } : null);
                   }}
                   style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '0.95rem' }}
                 >

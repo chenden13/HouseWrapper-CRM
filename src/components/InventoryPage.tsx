@@ -30,9 +30,9 @@ const ZONE_CONFIG: Record<'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G', ZoneConfigIte
   A: { sections: 3, slots: 20, name: '牆面 (A1~A3)' },
   B: { sections: 2, slots: 20, name: '靠牆兩層架 (B1~B2)' },
   C: { 
-    sections: 8, 
+    sections: 12, 
     slots: 24, 
-    name: '倒V型貨架 (C1~C8)'
+    name: '倒V型貨架 (C1~C12)'
   },
   D: { sections: 8, slots: 50, name: '直立層架1 (D1~D8)' },
   E: { sections: 5, slots: 30, name: '直立層架2 (E1~E5)' },
@@ -54,7 +54,13 @@ const getSlotCount = (zone: ZoneKey, section: number): number => {
 // 智慧合併分組顯示輔助函數
 const getSubGroups = (zone: ZoneKey) => {
   const config = ZONE_CONFIG[zone];
-  if (config.sections === 8) {
+  if (config.sections === 12) {
+    return [
+      { label: `${zone}1 ~ ${zone}4`, sections: [1, 2, 3, 4] },
+      { label: `${zone}5 ~ ${zone}8`, sections: [5, 6, 7, 8] },
+      { label: `${zone}9 ~ ${zone}12`, sections: [9, 10, 11, 12] }
+    ];
+  } else if (config.sections === 8) {
     return [
       { label: `${zone}1 ~ ${zone}4`, sections: [1, 2, 3, 4] },
       { label: `${zone}5 ~ ${zone}8`, sections: [5, 6, 7, 8] }
